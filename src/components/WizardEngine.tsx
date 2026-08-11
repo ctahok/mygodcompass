@@ -113,7 +113,14 @@ export default function WizardEngine() {
         )}
 
         {/* ===== Footer ===== */}
-        <footer className="text-center text-xs text-slate-600 mt-4">{t("app.footer")}</footer>
+        <footer className="text-center text-xs text-slate-600 mt-4">
+          {t("app.footer")}
+          <div className="mt-1">
+            <a href="mailto:ij@klaud.uk" className="text-amber-500/80 hover:text-amber-400 transition-colors">
+              ij@klaud.uk
+            </a>
+          </div>
+        </footer>
       </div>
     </div>
   );
