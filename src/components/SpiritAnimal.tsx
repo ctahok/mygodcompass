@@ -10,9 +10,9 @@ export default function SpiritAnimal() {
   return (
     <div className="relative flex flex-col items-center select-none" aria-label={done ? "Journey complete" : "Ontological Compass"}>
       <div className="relative">
-        {/* Static icon from local file - fox icon */}
+        {/* Static icon from local file - journey toward growth */}
         <Image
-          src="/fox-icon.jpg"
+          src="/journey-icon.jpg"
           alt={done ? "Journey complete" : "Ontological Compass DAG"}
           width={72}
           height={72}
