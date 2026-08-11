@@ -1,0 +1,154 @@
+// ============================================================
+// i18n setup — EN / RU / AZ with browser language detection
+// ============================================================
+
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+
+export const resources = {
+  en: {
+    translation: {
+      app: {
+        title: "The Ontological Compass",
+        subtitle: "A gamified journey to define your exact concept of God",
+        start: "Begin the Journey",
+        restart: "Start Over",
+        back: "Back",
+        next: "Continue",
+        progress: "Coherence",
+        tooltip: "What does this mean?",
+        blueprint: "The Blueprint",
+        socialProof: "other users defined God exactly this way",
+        community: "You are in the {{pct}}% of users",
+        similarMinds: "Your definition matches",
+        share: "Share my Definition",
+        copied: "Copied to clipboard!",
+        footer: "Built with philosophical rigor, not dogma.",
+      },
+      animal: {
+        neutral: "Watching...",
+        coherent: "In harmony",
+        conflict: "Hmm, that contradicts...",
+        complete: "Ascended!",
+      },
+      terms: {
+        ontology: "The study of what exists and how things are categorized.",
+        monotheism: "Belief in a single supreme God.",
+        polytheism: "Belief in multiple gods with distinct domains.",
+        pantheism: "The belief that God and the universe are identical.",
+        deism: "God created the universe but does not intervene in it.",
+        theism: "Belief in a God who actively interacts with the world.",
+        constructivism: "The view that categories like 'God' are created by societies or minds.",
+        realism: "The view that things exist independently of human minds.",
+      },
+      meta: {
+        description: "Answer a few questions and discover your exact concept of God — mapped through the history of philosophy.",
+      },
+    },
+  },
+  ru: {
+    translation: {
+      app: {
+        title: "Онтологический Компас",
+        subtitle: "Игровое путешествие к определению вашего понятия Бога",
+        start: "Начать путешествие",
+        restart: "Начать заново",
+        back: "Назад",
+        next: "Продолжить",
+        progress: "Когерентность",
+        tooltip: "Что это значит?",
+        blueprint: "Чертёж",
+        socialProof: "других пользователей определили Бога точно так же",
+        community: "Вы в {{pct}}% пользователей",
+        similarMinds: "Ваше определение совпадает с",
+        share: "Поделиться определением",
+        copied: "Скопировано в буфер!",
+        footer: "Создано с философской строгостью, а не догмой.",
+      },
+      animal: {
+        neutral: "Наблюдает...",
+        coherent: "В гармонии",
+        conflict: "Хм, это противоречие...",
+        complete: "Вознёсся!",
+      },
+      terms: {
+        ontology: "Учение о том, что существует и как вещи категоризируются.",
+        monotheism: "Вера в единого верховного Бога.",
+        polytheism: "Вера во множество богов с разными сферами.",
+        pantheism: "Учение о том, что Бог и вселенная тождественны.",
+        deism: "Бог создал вселенную, но не вмешивается в неё.",
+        theism: "Вера в Бога, активно взаимодействующего с миром.",
+        constructivism: "Взгляд, что категории вроде «Бога» созданы обществами или сознанием.",
+        realism: "Взгляд, что вещи существуют независимо от человеческого сознания.",
+      },
+      meta: {
+        description: "Ответьте на несколько вопросов и узнайте своё точное понятие Бога — через историю философии.",
+      },
+    },
+  },
+  az: {
+    translation: {
+      app: {
+        title: "Ontoloji Kompas",
+        subtitle: "Tanrı haqqında dəqiq anlayışınızı müəyyən etmək üçün oyunlaşdırılmış səyahət",
+        start: "Səyahətə başla",
+        restart: "Başdan başla",
+        back: "Geri",
+        next: "Davam et",
+        progress: "Uyğunluq",
+        tooltip: "Bu nə deməkdir?",
+        blueprint: "Plan",
+        socialProof: "digər istifadəçi Tanrını məhz belə müəyyən edib",
+        community: "Siz istifadəçilərin {{pct}}%-indəsiniz",
+        similarMinds: "Tərifiniz uyğun gəlir",
+        share: "Tərifimi paylaş",
+        copied: "Panoya kopyalandı!",
+        footer: "Fəlsəfi sərtliklə qurulub, dogma ilə yox.",
+      },
+      animal: {
+        neutral: "Müşahidə edir...",
+        coherent: "Harmoniyada",
+        conflict: "Hmm, bu ziddiyyətdir...",
+        complete: "Ucaldı!",
+      },
+      terms: {
+        ontology: "Nəyin mövcud olduğunu və şeylərin necə kateqoriyalaşdırıldığını öyrənən təlim.",
+        monotheism: "Vahid ali Tanrıya inam.",
+        polytheism: "Fərqli sahələri olan çoxlu tanrılara inam.",
+        pantheism: "Tanrı və kainatın eyni olması inancı.",
+        deism: "Tanrı kainatı yaradıb, amma ona müdaxilə etmir.",
+        theism: "Dünya ilə fəal əlaqədə olan Tanrıya inam.",
+        constructivism: "«Tanrı» kimi kateqoriyaların cəmiyyət və ya şüur tərəfindən yaradıldığı görüşü.",
+        realism: "Şeylərin insan şüurundan asılı olmayaraq mövcud olduğu görüşü.",
+      },
+      meta: {
+        description: "Bir neçə suala cavab verin və fəlsəfə tarixi boyunca Tanrı haqqında dəqiq anlayışınızı kəşf edin.",
+      },
+    },
+  },
+};
+
+/** Detect a supported language, defaulting to EN */
+function detectLang(): "en" | "ru" | "az" {
+  if (typeof window === "undefined") return "en";
+  const nav = navigator.language?.toLowerCase() ?? "en";
+  if (nav.startsWith("ru")) return "ru";
+  if (nav.startsWith("az")) return "az";
+  return "en";
+}
+
+if (!i18n.isInitialized) {
+  i18n
+    .use(LanguageDetector)
+    .use(initReactI18next)
+    .init({
+      resources,
+      lng: detectLang(),
+      fallbackLng: "en",
+      supportedLngs: ["en", "ru", "az"],
+      interpolation: { escapeValue: false },
+    });
+}
+
+export default i18n;
