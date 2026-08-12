@@ -120,6 +120,9 @@ export default function WizardEngine() {
               ij@klaud.uk
             </a>
           </div>
+          <div className="mt-1 text-slate-500">
+            Copyright 2026 © www.klaud.uk
+          </div>
         </footer>
       </div>
     </div>
