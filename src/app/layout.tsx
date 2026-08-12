@@ -17,9 +17,17 @@ export const viewport: Viewport = {
   themeColor: "#020617",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale?: string }>;
+}) {
+  const { locale } = await params;
+  const lang = locale ?? "en";
   return (
-    <html lang="en" className="dark">
+    <html lang={lang} className="dark">
       <body className="bg-slate-950 antialiased">{children}</body>
     </html>
   );

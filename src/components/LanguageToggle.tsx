@@ -22,6 +22,9 @@ export default function LanguageToggle() {
   const change = (code: Lang) => {
     setLang(code);
     i18n.changeLanguage(code);
+    // Navigate to the locale-prefixed URL (keeps /en /ru /az paths)
+    const path = window.location.pathname.replace(/^\/(en|ru|az)\/?/, "");
+    window.location.href = `/${code}/${path}`.replace(/\/$/, "");
   };
 
   return (
