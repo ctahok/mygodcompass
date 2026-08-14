@@ -1,0 +1,46 @@
+{
+  "terminal_secular_humanist": [
+    {"title": {"en": "Secular Humanism (Stanford Encyclopedia of Philosophy)", "ru": "Светский гуманизм (Станфордская энциклопедия философии)", "az": "Dünyəvi humanizm (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/secular-humanism/", "type": "sep"},
+    {"title": {"en": "Humanism (Wikipedia)", "ru": "Гуманизм (Википедия)", "az": "Humanizm (Vikipediya)"}, "url": "https://en.wikipedia.org/wiki/Humanism", "type": "wikipedia"}
+  ],
+  "terminal_deist": [
+    {"title": {"en": "Deism (Stanford Encyclopedia of Philosophy)", "ru": "Деизм (Станфордская энциклопедия философии)", "az": "Deizm (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/deism/", "type": "sep"},
+    {"title": {"en": "Deism (Wikipedia)", "ru": "Деизм (Википедия)", "az": "Deizm (Vikipediya)"}, "url": "https://en.wikipedia.org/wiki/Deism", "type": "wikipedia"}
+  ],
+  "terminal_durkheimian": [
+    {"title": {"en": "Émile Durkheim (Stanford Encyclopedia of Philosophy)", "ru": "Эмиль Дюркгейм (Станфордская энциклопедия философии)", "az": "Emil Dürkheym (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/durkheim/", "type": "sep"},
+    {"title": {"en": "The Elementary Forms of Religious Life (Wikipedia)", "ru": "Элементарные формы религиозной жизни (Википедия)", "az": "Dini həyatın elementar formaları (Vikipediya)"}, "url": "https://en.wikipedia.org/wiki/The_Elementary_Forms_of_Religious_Life", "type": "wikipedia"}
+  ],
+  "terminal_jungian": [
+    {"title": {"en": "Carl Jung (Stanford Encyclopedia of Philosophy)", "ru": "Карл Юнг (Станфордская энциклопедия философии)", "az": "Karl Yunq (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/jung/", "type": "sep"},
+    {"title": {"en": "Analytical Psychology (Wikipedia)", "ru": "Аналитическая психология (Википедия)", "az": "Analitik psixologiya (Vikipediya)"}, "url": "https://en.wikipedia.org/wiki/Analytical_psychology", "type": "wikipedia"}
+  ],
+  "terminal_olympian": [
+    {"title": {"en": "Hellenistic Religion (Wikipedia)", "ru": "эллинистическая религия (Википедия)", "az": "Ellinist dini (Vikipediya)"}, "url": "https://en.wikipedia.org/wiki/Hellenistic_religion", "type": "wikipedia"},
+    {"title": {"en": "Greek Mythology (Wikipedia)", "ru": "Греческая мифология (Википедия)", "az": "Yunan mifologiyası (Vikipediya)"}, "url": "https://en.wikipedia.org/wiki/Greek_mythology", "type": "wikipedia"}
+  ],
+  "terminal_spinozan": [
+    {"title": {"en": "Baruch Spinoza (Stanford Encyclopedia of Philosophy)", "ru": "Барух Спиноза (Станфордская энциклопедия философии)", "az": "Barux Spinoza (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/spinoza/", "type": "sep"},
+    {"title": {"en": "Pantheism (Stanford Encyclopedia of Philosophy)", "ru": "Пантеизм (Станфордская энциклопедия философии)", "az": "Panteizm (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/pantheism/", "type": "sep"}
+  ],
+  "terminal_hegelian": [
+    {"title": {"en": "Georg Wilhelm Friedrich Hegel (Stanford Encyclopedia of Philosophy)", "ru": "Георг Вильгельм Фридрих Гегель (Станфордская энциклопедия философии)", "az": "Qeorg Vilhelm Fridrix Hegel (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/hegel/", "type": "sep"},
+    {"title": {"en": "Absolute Idealism (Stanford Encyclopedia of Philosophy)", "ru": "Абсолютный идеализм (Станфордская энциклопедия философии)", "az": "Mütləq idealizm (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/idealism/", "type": "sep"}
+  ],
+  "terminal_classical_theist": [
+    {"title": {"en": "Classical Theism (Stanford Encyclopedia of Philosophy)", "ru": "Классический теизм (Станфордская энциклопедия философии)", "az": "Klassik teizm (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/classical-theism/", "type": "sep"},
+    {"title": {"en": "Thomas Aquinas (Stanford Encyclopedia of Philosophy)", "ru": "Фома Аквинский (Станфордская энциклопедия философии)", "az": "Toma Akvinalı (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/aquinas/", "type": "sep"}
+  ],
+  "terminal_mystical_theist": [
+    {"title": {"en": "Mysticism (Stanford Encyclopedia of Philosophy)", "ru": "Мистицизм (Станфордская энциклопедия философии)", "az": "Mistikizm (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/mysticism/", "type": "sep"},
+    {"title": {"en": "Meister Eckhart (Stanford Encyclopedia of Philosophy)", "ru": "Мейстер Экхарт (Станфордская энциклопедия философии)", "az": "Meyster Exhart (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/meckhart/", "type": "sep"}
+  ],
+  "terminal_bahai": [
+    {"title": {"en": "Bahá'í Faith (Wikipedia)", "ru": "Бахаи (Википедия)", "az": "Bəhai dini (Vikipediya)"}, "url": "https://en.wikipedia.org/wiki/Bah%C3%A1%27%C3%AD_Faith", "type": "wikipedia"},
+    {"title": {"en": "Bahá'í International Community (Official)", "ru": "Бахаиское международное сообщество (Официальный)", "az": "Bəhai Beynəlxalq Cəmiyyəti (Rəsmi)"}, "url": "https://www.bic.org/", "type": "official"}
+  ],
+  "terminal_druze": [
+    {"title": {"en": "Druze (Wikipedia)", "ru": "Друзы (Википедия)", "az": "Druzkilər (Vikipediya)"}, "url": "https://en.wikipedia.org/wiki/Druze", "type": "wikipedia"},
+    {"title": {"en": "Druze Faith (Britannica)", "ru": "Друзская вера (Британника)", "az": "Druzu inamı (Britannica)"}, "url": "https://www.britannica.com/topic/Druze", "type": "academic"}
+  ]
+}

@@ -34,6 +34,14 @@ export interface Terminal {
   percent_of_users: number;
   similar_minds: LocalizedText[];
   tags: string[];
+  /** Reputable online references for further reading */
+  references?: Reference[];
+}
+
+export interface Reference {
+  title: LocalizedText;
+  url: string;
+  type: "wikipedia" | "sep" | "official" | "academic" | "other";
 }
 
 // ------------------------------------------------------------

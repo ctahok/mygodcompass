@@ -34,6 +34,34 @@ body {
   transition: stroke 0.3s ease, stroke-width 0.3s ease, opacity 0.3s ease;
 }
 
+/* Mermaid map */
+.mermaid-svg-host svg {
+  max-width: none !important;
+  height: auto;
+  display: block;
+}
+.mermaid-svg-host svg .edgeLabel {
+  background-color: rgba(15, 23, 42, 0.85) !important;
+  color: #cbd5e1 !important;
+  font-size: 10px !important;
+  padding: 3px 6px !important;
+  border-radius: 6px;
+  border: 1px solid rgba(100, 116, 139, 0.2);
+  line-height: 1.35 !important;
+}
+.mermaid-svg-host svg .nodeLabel {
+  font-size: 12px !important;
+  line-height: 1.3 !important;
+}
+.mermaid-svg-host svg .node rect,
+.mermaid-svg-host svg .node polygon,
+.mermaid-svg-host svg .node path {
+  stroke-width: 1.5px;
+}
+.mermaid-svg-host svg .edgePath .path {
+  stroke-width: 1.2px;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

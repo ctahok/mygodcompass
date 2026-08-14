@@ -15,7 +15,7 @@ import ProgressBar from "./ProgressBar";
 import LanguageToggle from "./LanguageToggle";
 import QuestionCard from "./QuestionCard";
 import DefinitionCard from "./DefinitionCard";
-import FamilyTree from "./FamilyTree";
+import MermaidMap from "./MermaidMap";
 import { useWizard, isAtTerminal } from "@/store/wizardStore";
 
 export default function WizardEngine() {
@@ -105,10 +105,10 @@ export default function WizardEngine() {
           </div>
         )}
 
-        {/* ===== The Family Tree ===== */}
+        {/* ===== The Theogony Decision Map (mermaid.js) ===== */}
         {started && (
           <div className="mb-10">
-            <FamilyTree />
+            <MermaidMap />
           </div>
         )}
 
