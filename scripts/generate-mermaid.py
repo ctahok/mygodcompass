@@ -2,8 +2,11 @@
 """Parse ontology.ts and emit a Mermaid flowchart of the full question tree. v2 (block-based)."""
 import re, json
 
-SRC = "/home/iliko/projects/ontological-compass/src/data/ontology.ts"
-OUT = "/home/iliko/projects/ontological-compass/ontology-tree.mmd"
+import os
+
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SRC = os.path.join(BASE, "src", "data", "ontology.ts")
+OUT = os.path.join(BASE, "public", "ontology-tree.mmd")
 OUT_JSON = "/tmp/ontology_stats.json"
 
 src = open(SRC, encoding="utf-8").read()
