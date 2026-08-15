@@ -16,6 +16,7 @@ export const resources = {
         restart: "Start Over",
         back: "Back",
         next: "Continue",
+        continue: "Continue",
         progress: "Coherence",
         tooltip: "What does this mean?",
         blueprint: "The Blueprint",
@@ -25,12 +26,15 @@ export const resources = {
         share: "Share my Definition",
         copied: "Copied to clipboard!",
         footer: "Built with philosophical rigor, not dogma.",
+        freeTextPlaceholder: "Describe in your own words...",
+        scaleLow: "Not at all",
+        scaleHigh: "Completely"
       },
       animal: {
         neutral: "Watching...",
         coherent: "In harmony",
         conflict: "Hmm, that contradicts...",
-        complete: "Ascended!",
+        complete: "Ascended!"
       },
       terms: {
         ontology: "The study of what exists and how things are categorized.",
@@ -40,12 +44,12 @@ export const resources = {
         deism: "God created the universe but does not intervene in it.",
         theism: "Belief in a God who actively interacts with the world.",
         constructivism: "The view that categories like 'God' are created by societies or minds.",
-        realism: "The view that things exist independently of human minds.",
+        realism: "The view that things exist independently of human minds."
       },
       meta: {
-        description: "Answer a few questions and discover your exact concept of God — mapped through the history of philosophy.",
-      },
-    },
+        description: "Answer a few questions and discover your exact concept of God — mapped through the history of philosophy."
+      }
+    }
   },
   ru: {
     translation: {
@@ -56,6 +60,7 @@ export const resources = {
         restart: "Начать заново",
         back: "Назад",
         next: "Продолжить",
+        continue: "Продолжить",
         progress: "Когерентность",
         tooltip: "Что это значит?",
         blueprint: "Чертёж",
@@ -65,12 +70,15 @@ export const resources = {
         share: "Поделиться определением",
         copied: "Скопировано в буфер!",
         footer: "Создано с философской строгостью, а не догмой.",
+        freeTextPlaceholder: "Опишите своими словами...",
+        scaleLow: "Совсем нет",
+        scaleHigh: "Полностью"
       },
       animal: {
         neutral: "Наблюдает...",
         coherent: "В гармонии",
         conflict: "Хм, это противоречие...",
-        complete: "Вознёсся!",
+        complete: "Вознёсся!"
       },
       terms: {
         ontology: "Учение о том, что существует и как вещи категоризируются.",
@@ -80,12 +88,12 @@ export const resources = {
         deism: "Бог создал вселенную, но не вмешивается в неё.",
         theism: "Вера в Бога, активно взаимодействующего с миром.",
         constructivism: "Взгляд, что категории вроде «Бога» созданы обществами или сознанием.",
-        realism: "Взгляд, что вещи существуют независимо от человеческого сознания.",
+        realism: "Взгляд, что вещи существуют независимо от человеческого сознания."
       },
       meta: {
-        description: "Ответьте на несколько вопросов и узнайте своё точное понятие Бога — через историю философии.",
-      },
-    },
+        description: "Ответьте на несколько вопросов и узнайте своё точное понятие Бога — через историю философии."
+      }
+    }
   },
   az: {
     translation: {
@@ -96,6 +104,7 @@ export const resources = {
         restart: "Başdan başla",
         back: "Geri",
         next: "Davam et",
+        continue: "Davam et",
         progress: "Uyğunluq",
         tooltip: "Bu nə deməkdir?",
         blueprint: "Plan",
@@ -105,12 +114,15 @@ export const resources = {
         share: "Tərifimi paylaş",
         copied: "Panoya kopyalandı!",
         footer: "Fəlsəfi sərtliklə qurulub, dogma ilə yox.",
+        freeTextPlaceholder: "Öz sözlərinizlə təsvir edin...",
+        scaleLow: "Həqiqətən yox",
+        scaleHigh: "Tamamilə"
       },
       animal: {
         neutral: "Müşahidə edir...",
         coherent: "Harmoniyada",
         conflict: "Hmm, bu ziddiyyətdir...",
-        complete: "Ucaldı!",
+        complete: "Ucaldı!"
       },
       terms: {
         ontology: "Nəyin mövcud olduğunu və şeylərin necə kateqoriyalaşdırıldığını öyrənən təlim.",
@@ -120,13 +132,13 @@ export const resources = {
         deism: "Tanrı kainatı yaradıb, amma ona müdaxilə etmir.",
         theism: "Dünya ilə fəal əlaqədə olan Tanrıya inam.",
         constructivism: "«Tanrı» kimi kateqoriyaların cəmiyyət və ya şüur tərəfindən yaradıldığı görüşü.",
-        realism: "Şeylərin insan şüurundan asılı olmayaraq mövcud olduğu görüşü.",
+        realism: "Şeylərin insan şüurundan asılı olmayaraq mövcud olduğu görüşü."
       },
       meta: {
-        description: "Bir neçə suala cavab verin və fəlsəfə tarixi boyunca Tanrı haqqında dəqiq anlayışınızı kəşf edin.",
-      },
-    },
-  },
+        description: "Bir neçə suala cavab verin və fəlsəfə tarixi boyunca Tanrı haqqında dəqiq anlayışınızı kəşf edin."
+      }
+    }
+  }
 };
 
 /** Detect a supported language, defaulting to EN */
