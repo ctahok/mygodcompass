@@ -1,46 +1,1142 @@
 {
   "terminal_secular_humanist": [
-    {"title": {"en": "Secular Humanism (Stanford Encyclopedia of Philosophy)", "ru": "Светский гуманизм (Станфордская энциклопедия философии)", "az": "Dünyəvi humanizm (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/secular-humanism/", "type": "sep"},
-    {"title": {"en": "Humanism (Wikipedia)", "ru": "Гуманизм (Википедия)", "az": "Humanizm (Vikipediya)"}, "url": "https://en.wikipedia.org/wiki/Humanism", "type": "wikipedia"}
+    {
+      "title": {
+        "en": "Secular Humanism (Stanford Encyclopedia of Philosophy)",
+        "ru": "Светский гуманизм (Станфордская энциклопедия философии)",
+        "az": "Dünyəvi humanizm (Stanford fəlsəfə ensiklopediyası)"
+      },
+      "url": "https://plato.stanford.edu/entries/secular-humanism/",
+      "type": "sep"
+    },
+    {
+      "title": {
+        "en": "Humanism (Wikipedia)",
+        "ru": "Гуманизм (Википедия)",
+        "az": "Humanizm (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Humanism",
+      "type": "wikipedia"
+    }
   ],
   "terminal_deist": [
-    {"title": {"en": "Deism (Stanford Encyclopedia of Philosophy)", "ru": "Деизм (Станфордская энциклопедия философии)", "az": "Deizm (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/deism/", "type": "sep"},
-    {"title": {"en": "Deism (Wikipedia)", "ru": "Деизм (Википедия)", "az": "Deizm (Vikipediya)"}, "url": "https://en.wikipedia.org/wiki/Deism", "type": "wikipedia"}
+    {
+      "title": {
+        "en": "Deism (Stanford Encyclopedia of Philosophy)",
+        "ru": "Деизм (Станфордская энциклопедия философии)",
+        "az": "Deizm (Stanford fəlsəfə ensiklopediyası)"
+      },
+      "url": "https://plato.stanford.edu/entries/deism/",
+      "type": "sep"
+    },
+    {
+      "title": {
+        "en": "Deism (Wikipedia)",
+        "ru": "Деизм (Википедия)",
+        "az": "Deizm (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Deism",
+      "type": "wikipedia"
+    }
   ],
   "terminal_durkheimian": [
-    {"title": {"en": "Émile Durkheim (Stanford Encyclopedia of Philosophy)", "ru": "Эмиль Дюркгейм (Станфордская энциклопедия философии)", "az": "Emil Dürkheym (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/durkheim/", "type": "sep"},
-    {"title": {"en": "The Elementary Forms of Religious Life (Wikipedia)", "ru": "Элементарные формы религиозной жизни (Википедия)", "az": "Dini həyatın elementar formaları (Vikipediya)"}, "url": "https://en.wikipedia.org/wiki/The_Elementary_Forms_of_Religious_Life", "type": "wikipedia"}
+    {
+      "title": {
+        "en": "Émile Durkheim (Stanford Encyclopedia of Philosophy)",
+        "ru": "Эмиль Дюркгейм (Станфордская энциклопедия философии)",
+        "az": "Emil Dürkheym (Stanford fəlsəfə ensiklopediyası)"
+      },
+      "url": "https://plato.stanford.edu/entries/durkheim/",
+      "type": "sep"
+    },
+    {
+      "title": {
+        "en": "The Elementary Forms of Religious Life (Wikipedia)",
+        "ru": "Элементарные формы религиозной жизни (Википедия)",
+        "az": "Dini həyatın elementar formaları (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/The_Elementary_Forms_of_Religious_Life",
+      "type": "wikipedia"
+    }
   ],
   "terminal_jungian": [
-    {"title": {"en": "Carl Jung (Stanford Encyclopedia of Philosophy)", "ru": "Карл Юнг (Станфордская энциклопедия философии)", "az": "Karl Yunq (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/jung/", "type": "sep"},
-    {"title": {"en": "Analytical Psychology (Wikipedia)", "ru": "Аналитическая психология (Википедия)", "az": "Analitik psixologiya (Vikipediya)"}, "url": "https://en.wikipedia.org/wiki/Analytical_psychology", "type": "wikipedia"}
+    {
+      "title": {
+        "en": "Carl Jung (Stanford Encyclopedia of Philosophy)",
+        "ru": "Карл Юнг (Станфордская энциклопедия философии)",
+        "az": "Karl Yunq (Stanford fəlsəfə ensiklopediyası)"
+      },
+      "url": "https://plato.stanford.edu/entries/jung/",
+      "type": "sep"
+    },
+    {
+      "title": {
+        "en": "Analytical Psychology (Wikipedia)",
+        "ru": "Аналитическая психология (Википедия)",
+        "az": "Analitik psixologiya (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Analytical_psychology",
+      "type": "wikipedia"
+    }
   ],
   "terminal_olympian": [
-    {"title": {"en": "Hellenistic Religion (Wikipedia)", "ru": "эллинистическая религия (Википедия)", "az": "Ellinist dini (Vikipediya)"}, "url": "https://en.wikipedia.org/wiki/Hellenistic_religion", "type": "wikipedia"},
-    {"title": {"en": "Greek Mythology (Wikipedia)", "ru": "Греческая мифология (Википедия)", "az": "Yunan mifologiyası (Vikipediya)"}, "url": "https://en.wikipedia.org/wiki/Greek_mythology", "type": "wikipedia"}
+    {
+      "title": {
+        "en": "Hellenistic Religion (Wikipedia)",
+        "ru": "эллинистическая религия (Википедия)",
+        "az": "Ellinist dini (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Hellenistic_religion",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Greek Mythology (Wikipedia)",
+        "ru": "Греческая мифология (Википедия)",
+        "az": "Yunan mifologiyası (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Greek_mythology",
+      "type": "wikipedia"
+    }
   ],
   "terminal_spinozan": [
-    {"title": {"en": "Baruch Spinoza (Stanford Encyclopedia of Philosophy)", "ru": "Барух Спиноза (Станфордская энциклопедия философии)", "az": "Barux Spinoza (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/spinoza/", "type": "sep"},
-    {"title": {"en": "Pantheism (Stanford Encyclopedia of Philosophy)", "ru": "Пантеизм (Станфордская энциклопедия философии)", "az": "Panteizm (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/pantheism/", "type": "sep"}
+    {
+      "title": {
+        "en": "Baruch Spinoza (Stanford Encyclopedia of Philosophy)",
+        "ru": "Барух Спиноза (Станфордская энциклопедия философии)",
+        "az": "Barux Spinoza (Stanford fəlsəfə ensiklopediyası)"
+      },
+      "url": "https://plato.stanford.edu/entries/spinoza/",
+      "type": "sep"
+    },
+    {
+      "title": {
+        "en": "Pantheism (Stanford Encyclopedia of Philosophy)",
+        "ru": "Пантеизм (Станфордская энциклопедия философии)",
+        "az": "Panteizm (Stanford fəlsəfə ensiklopediyası)"
+      },
+      "url": "https://plato.stanford.edu/entries/pantheism/",
+      "type": "sep"
+    }
   ],
   "terminal_hegelian": [
-    {"title": {"en": "Georg Wilhelm Friedrich Hegel (Stanford Encyclopedia of Philosophy)", "ru": "Георг Вильгельм Фридрих Гегель (Станфордская энциклопедия философии)", "az": "Qeorg Vilhelm Fridrix Hegel (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/hegel/", "type": "sep"},
-    {"title": {"en": "Absolute Idealism (Stanford Encyclopedia of Philosophy)", "ru": "Абсолютный идеализм (Станфордская энциклопедия философии)", "az": "Mütləq idealizm (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/idealism/", "type": "sep"}
+    {
+      "title": {
+        "en": "Georg Wilhelm Friedrich Hegel (Stanford Encyclopedia of Philosophy)",
+        "ru": "Георг Вильгельм Фридрих Гегель (Станфордская энциклопедия философии)",
+        "az": "Qeorg Vilhelm Fridrix Hegel (Stanford fəlsəfə ensiklopediyası)"
+      },
+      "url": "https://plato.stanford.edu/entries/hegel/",
+      "type": "sep"
+    },
+    {
+      "title": {
+        "en": "Absolute Idealism (Stanford Encyclopedia of Philosophy)",
+        "ru": "Абсолютный идеализм (Станфордская энциклопедия философии)",
+        "az": "Mütləq idealizm (Stanford fəlsəfə ensiklopediyası)"
+      },
+      "url": "https://plato.stanford.edu/entries/idealism/",
+      "type": "sep"
+    }
   ],
   "terminal_classical_theist": [
-    {"title": {"en": "Classical Theism (Stanford Encyclopedia of Philosophy)", "ru": "Классический теизм (Станфордская энциклопедия философии)", "az": "Klassik teizm (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/classical-theism/", "type": "sep"},
-    {"title": {"en": "Thomas Aquinas (Stanford Encyclopedia of Philosophy)", "ru": "Фома Аквинский (Станфордская энциклопедия философии)", "az": "Toma Akvinalı (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/aquinas/", "type": "sep"}
+    {
+      "title": {
+        "en": "Classical Theism (Stanford Encyclopedia of Philosophy)",
+        "ru": "Классический теизм (Станфордская энциклопедия философии)",
+        "az": "Klassik teizm (Stanford fəlsəfə ensiklopediyası)"
+      },
+      "url": "https://plato.stanford.edu/entries/classical-theism/",
+      "type": "sep"
+    },
+    {
+      "title": {
+        "en": "Thomas Aquinas (Stanford Encyclopedia of Philosophy)",
+        "ru": "Фома Аквинский (Станфордская энциклопедия философии)",
+        "az": "Toma Akvinalı (Stanford fəlsəfə ensiklopediyası)"
+      },
+      "url": "https://plato.stanford.edu/entries/aquinas/",
+      "type": "sep"
+    }
   ],
   "terminal_mystical_theist": [
-    {"title": {"en": "Mysticism (Stanford Encyclopedia of Philosophy)", "ru": "Мистицизм (Станфордская энциклопедия философии)", "az": "Mistikizm (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/mysticism/", "type": "sep"},
-    {"title": {"en": "Meister Eckhart (Stanford Encyclopedia of Philosophy)", "ru": "Мейстер Экхарт (Станфордская энциклопедия философии)", "az": "Meyster Exhart (Stanford fəlsəfə ensiklopediyası)"}, "url": "https://plato.stanford.edu/entries/meckhart/", "type": "sep"}
+    {
+      "title": {
+        "en": "Mysticism (Stanford Encyclopedia of Philosophy)",
+        "ru": "Мистицизм (Станфордская энциклопедия философии)",
+        "az": "Mistikizm (Stanford fəlsəfə ensiklopediyası)"
+      },
+      "url": "https://plato.stanford.edu/entries/mysticism/",
+      "type": "sep"
+    },
+    {
+      "title": {
+        "en": "Meister Eckhart (Stanford Encyclopedia of Philosophy)",
+        "ru": "Мейстер Экхарт (Станфордская энциклопедия философии)",
+        "az": "Meyster Exhart (Stanford fəlsəfə ensiklopediyası)"
+      },
+      "url": "https://plato.stanford.edu/entries/meckhart/",
+      "type": "sep"
+    }
   ],
   "terminal_bahai": [
-    {"title": {"en": "Bahá'í Faith (Wikipedia)", "ru": "Бахаи (Википедия)", "az": "Bəhai dini (Vikipediya)"}, "url": "https://en.wikipedia.org/wiki/Bah%C3%A1%27%C3%AD_Faith", "type": "wikipedia"},
-    {"title": {"en": "Bahá'í International Community (Official)", "ru": "Бахаиское международное сообщество (Официальный)", "az": "Bəhai Beynəlxalq Cəmiyyəti (Rəsmi)"}, "url": "https://www.bic.org/", "type": "official"}
+    {
+      "title": {
+        "en": "Bahá'í Faith (Wikipedia)",
+        "ru": "Бахаи (Википедия)",
+        "az": "Bəhai dini (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Bah%C3%A1%27%C3%AD_Faith",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Bahá'í International Community (Official)",
+        "ru": "Бахаиское международное сообщество (Официальный)",
+        "az": "Bəhai Beynəlxalq Cəmiyyəti (Rəsmi)"
+      },
+      "url": "https://www.bic.org/",
+      "type": "official"
+    }
   ],
   "terminal_druze": [
-    {"title": {"en": "Druze (Wikipedia)", "ru": "Друзы (Википедия)", "az": "Druzkilər (Vikipediya)"}, "url": "https://en.wikipedia.org/wiki/Druze", "type": "wikipedia"},
-    {"title": {"en": "Druze Faith (Britannica)", "ru": "Друзская вера (Британника)", "az": "Druzu inamı (Britannica)"}, "url": "https://www.britannica.com/topic/Druze", "type": "academic"}
+    {
+      "title": {
+        "en": "Druze (Wikipedia)",
+        "ru": "Друзы (Википедия)",
+        "az": "Druzkilər (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Druze",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Druze Faith (Britannica)",
+        "ru": "Друзская вера (Британника)",
+        "az": "Druzu inamı (Britannica)"
+      },
+      "url": "https://www.britannica.com/topic/Druze",
+      "type": "academic"
+    }
+  ],
+  "terminal_catholic_scholastic": [
+    {
+      "title": {
+        "en": "Thomism (Stanford Encyclopedia of Philosophy)",
+        "ru": "Фомизм (Станфордская энциклопедия философии)",
+        "az": "Tomizm (Stanford fəlsəfə ensiklopediyası)"
+      },
+      "url": "https://plato.stanford.edu/entries/thomism/",
+      "type": "sep"
+    },
+    {
+      "title": {
+        "en": "Catholicism (Wikipedia)",
+        "ru": "Католицизм (Википедия)",
+        "az": "Katoliçizm (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Catholicism",
+      "type": "wikipedia"
+    }
+  ],
+  "terminal_catholic_mystical": [
+    {
+      "title": {
+        "en": "Christian Mysticism (Stanford Encyclopedia of Philosophy)",
+        "ru": "Христианский мистицизм (Станфордская энциклопедия философии)",
+        "az": "Xristian mistikizmi (Stanford fəlsəfə ensiklopediyası)"
+      },
+      "url": "https://plato.stanford.edu/entries/christian-mysticism/",
+      "type": "sep"
+    },
+    {
+      "title": {
+        "en": "Augustine of Hippo (Stanford Encyclopedia of Philosophy)",
+        "ru": "Августин Гиппонский (Станфордская энциклопедия философии)",
+        "az": "Avqustin Hipponlu (Stanford fəlsəfə ensiklopediyası)"
+      },
+      "url": "https://plato.stanford.edu/entries/augustine/",
+      "type": "sep"
+    }
+  ],
+  "terminal_catholic_charismatic": [
+    {
+      "title": {
+        "en": "Catholic Charismatic Renewal (Wikipedia)",
+        "ru": "Католическое харизматическое обновление (Википедия)",
+        "az": "Katolik xarizmatik yenilənmə (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Catholic_Charismatic_Renewal",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Charismatic Christianity (Wikipedia)",
+        "ru": "Харизматическое христианство (Википедия)",
+        "az": "Xarizmatik xristianlıq (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Charismatic_Christianity",
+      "type": "wikipedia"
+    }
+  ],
+  "terminal_catholic_traditionalist": [
+    {
+      "title": {
+        "en": "Traditionalist Catholicism (Wikipedia)",
+        "ru": "Традиционалистский католицизм (Википедия)",
+        "az": "Tradisionalist katoluçizm (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Traditionalist_Catholicism",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Tridentine Mass (Wikipedia)",
+        "ru": "Тридентская месса (Википедия)",
+        "az": "Trident missası (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Tridentine_Mass",
+      "type": "wikipedia"
+    }
+  ],
+  "terminal_catholic_liberation": [
+    {
+      "title": {
+        "en": "Liberation Theology (Stanford Encyclopedia of Philosophy)",
+        "ru": "Теология освобождения (Станфордская энциклопедия философии)",
+        "az": "Azadlıq teologiyası (Stanford fəlsəfə ensiklopediyası)"
+      },
+      "url": "https://plato.stanford.edu/entries/liberation-theology/",
+      "type": "sep"
+    },
+    {
+      "title": {
+        "en": "Liberation Theology (Wikipedia)",
+        "ru": "Теология освобождения (Википедия)",
+        "az": "Azadlıq teologiyası (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Liberation_theology",
+      "type": "wikipedia"
+    }
+  ],
+  "terminal_catholic_maronite": [
+    {
+      "title": {
+        "en": "Maronite Church (Wikipedia)",
+        "ru": "Маронитская церковь (Википедия)",
+        "az": "Maronit kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Maronite_Church",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Maronite Church (Official)",
+        "ru": "Маронитская церковь (Официальный)",
+        "az": "Maronit kilsəsi (Rəsmi)"
+      },
+      "url": "http://www.maronite.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_catholic_melkite": [
+    {
+      "title": {
+        "en": "Melkite Greek Catholic Church (Wikipedia)",
+        "ru": "Мелькитская греко-католическая церковь (Википедия)",
+        "az": "Melkit Yunan-Katolik kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Melkite_Greek_Catholic_Church",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Melkite Greek Catholic Church (Official)",
+        "ru": "Мелькитская греко-католическая церковь (Официальный)",
+        "az": "Melkit Yunan-Katolik kilsəsi (Rəsmi)"
+      },
+      "url": "https://melkite.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_catholic_ukrainian": [
+    {
+      "title": {
+        "en": "Ukrainian Greek Catholic Church (Wikipedia)",
+        "ru": "Украинская греко-католическая церковь (Википедия)",
+        "az": "Ukrayna Yunan-Katolik kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Ukrainian_Greek_Catholic_Church",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Ukrainian Greek Catholic Church (Official)",
+        "ru": "Украинская греко-католическая церковь (Официальный)",
+        "az": "Ukrayna Yunan-Katolik kilsəsi (Rəsmi)"
+      },
+      "url": "https://www.ugcc.org.ua/",
+      "type": "official"
+    }
+  ],
+  "terminal_catholic_chaldean": [
+    {
+      "title": {
+        "en": "Chaldean Catholic Church (Wikipedia)",
+        "ru": "Халдейская католическая церковь (Википедия)",
+        "az": "Xaldey Katolik kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Chaldean_Catholic_Church",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Chaldean Catholic Church (Official)",
+        "ru": "Халдейская католическая церковь (Официальный)",
+        "az": "Xaldey Katolik kilsəsi (Rəsmi)"
+      },
+      "url": "https://www.chaldeanpatriarchate.com/",
+      "type": "official"
+    }
+  ],
+  "terminal_catholic_syro": [
+    {
+      "title": {
+        "en": "Syro-Malabar Church (Wikipedia)",
+        "ru": "Сиро-малабарская церковь (Википедия)",
+        "az": "Siro-Malabar kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Syro-Malabar_Church",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Syro-Malankara Church (Wikipedia)",
+        "ru": "Сиро-маланкарская церковь (Википедия)",
+        "az": "Siro-Malankara kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Syro-Malankara_Catholic_Church",
+      "type": "wikipedia"
+    }
+  ],
+  "terminal_catholic_other_eastern": [
+    {
+      "title": {
+        "en": "Eastern Catholic Churches (Wikipedia)",
+        "ru": "Восточно-католические церкви (Википедия)",
+        "az": "Şərqi Katolik kilsələri (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Eastern_Catholic_Churches",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Eastern Catholic Churches (Vatican)",
+        "ru": "Восточно-католические церкви (Ватикан)",
+        "az": "Şərqi Katolik kilsələri (Vatikan)"
+      },
+      "url": "https://www.vatican.va/roman_curia/congregations/ccorientes/index.htm",
+      "type": "official"
+    }
+  ],
+  "terminal_catholic_jesuit": [
+    {
+      "title": {
+        "en": "Society of Jesus (Wikipedia)",
+        "ru": "Общество Иисуса (Википедия)",
+        "az": "İsa Cəmiyyəti (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Society_of_Jesus",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Ignatian Spirituality (Jesuit.org)",
+        "ru": "Игнатианская духовность (Jesuit.org)",
+        "az": "İqnati mənəviyyəti (Jesuit.org)"
+      },
+      "url": "https://www.ignatianspirituality.com/",
+      "type": "official"
+    }
+  ],
+  "terminal_catholic_franciscan": [
+    {
+      "title": {
+        "en": "Franciscan (Wikipedia)",
+        "ru": "Францисканцы (Википедия)",
+        "az": "Fransiskanlar (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Franciscan",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Franciscan Archive (Official)",
+        "ru": "Францисканский архив (Официальный)",
+        "az": "Fransiskan arxivi (Rəsmi)"
+      },
+      "url": "https://www.franciscan-archive.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_catholic_dominican": [
+    {
+      "title": {
+        "en": "Dominican Order (Wikipedia)",
+        "ru": "Доминиканский орден (Википедия)",
+        "az": "Dominikan ordeni (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Dominican_Order",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Order of Preachers (Official)",
+        "ru": "Орден проповедников (Официальный)",
+        "az": "Təbliğçilər ordeni (Rəsmi)"
+      },
+      "url": "https://www.op.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_catholic_carmelite": [
+    {
+      "title": {
+        "en": "Carmelites (Wikipedia)",
+        "ru": "Кармелиты (Википедия)",
+        "az": "Karmelitlər (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Carmelites",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Carmelite Order (Official)",
+        "ru": "Кармелитский орден (Официальный)",
+        "az": "Karmelit ordeni (Rəsmi)"
+      },
+      "url": "https://www.carmelite.net/",
+      "type": "official"
+    }
+  ],
+  "terminal_catholic_benedictine": [
+    {
+      "title": {
+        "en": "Benedictines (Wikipedia)",
+        "ru": "Бенедиктины (Википедия)",
+        "az": "Benediktinlər (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Benedictines",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Order of Saint Benedict (Official)",
+        "ru": "Орден святого Венедикта (Официальный)",
+        "az": "Müqəddəs Benedikt ordeni (Rəsmi)"
+      },
+      "url": "https://www.osb.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_catholic_other_order": [
+    {
+      "title": {
+        "en": "Religious Institute (Wikipedia)",
+        "ru": "Монашеский орден (Википедия)",
+        "az": "Dini orden (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Religious_institute",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Opus Dei (Official)",
+        "ru": "Опус Деи (Официальный)",
+        "az": "Opus Dei (Rəsmi)"
+      },
+      "url": "https://www.opusdei.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_orthodox_greek": [
+    {
+      "title": {
+        "en": "Greek Orthodox Church (Wikipedia)",
+        "ru": "Греческая православная церковь (Википедия)",
+        "az": "Yunan pravoslav kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Greek_Orthodox_Church",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Ecumenical Patriarchate (Official)",
+        "ru": "Вселенский патриархат (Официальный)",
+        "az": "Ümumdünya patriarxlığı (Rəsmi)"
+      },
+      "url": "https://www.patriarchate.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_orthodox_antiochian": [
+    {
+      "title": {
+        "en": "Antiochian Orthodox Church (Wikipedia)",
+        "ru": "Антиохийская православная церковь (Википедия)",
+        "az": "Antioxiya pravoslav kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Antiochian_Orthodox_Church",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Greek Orthodox Patriarchate of Antioch (Official)",
+        "ru": "Антиохийский греческий патриархат (Официальный)",
+        "az": "Antioxiya Yunan patriarxlığı (Rəsmi)"
+      },
+      "url": "https://www.antiochpatriarchate.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_orthodox_other_slavic": [
+    {
+      "title": {
+        "en": "Serbian Orthodox Church (Wikipedia)",
+        "ru": "Сербская православная церковь (Википедия)",
+        "az": "Serb pravoslav kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Serbian_Orthodox_Church",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Bulgarian Orthodox Church (Wikipedia)",
+        "ru": "Болгарская православная церковь (Википедия)",
+        "az": "Bolqar pravoslav kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Bulgarian_Orthodox_Church",
+      "type": "wikipedia"
+    }
+  ],
+  "terminal_orthodox_old_believer": [
+    {
+      "title": {
+        "en": "Old Believers (Wikipedia)",
+        "ru": "Старообрядцы (Википедия)",
+        "az": "Köhnə inananlar (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Old_Believers",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Old Believers (Britannica)",
+        "ru": "Старообрядцы (Британника)",
+        "az": "Köhnə inananlar (Britannica)"
+      },
+      "url": "https://www.britannica.com/topic/Old-Believers",
+      "type": "academic"
+    }
+  ],
+  "terminal_orthodox_true": [
+    {
+      "title": {
+        "en": "True Orthodoxy (Wikipedia)",
+        "ru": "Истинное православие (Википедия)",
+        "az": "Həqiqi pravoslavlıq (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/True_Orthodoxy",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Old Calendarists (Wikipedia)",
+        "ru": "Старокалендарники (Википедия)",
+        "az": "Köhnə takvimçilər (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Old_Calendarists",
+      "type": "wikipedia"
+    }
+  ],
+  "terminal_orthodox_russian_mainstream": [
+    {
+      "title": {
+        "en": "Russian Orthodox Church (Wikipedia)",
+        "ru": "Русская православная церковь (Википедия)",
+        "az": "Rus pravoslav kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Russian_Orthodox_Church",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Moscow Patriarchate (Official)",
+        "ru": "Московский патриархат (Официальный)",
+        "az": "Moskva patriarxlığı (Rəsmi)"
+      },
+      "url": "https://mospat.ru/",
+      "type": "official"
+    }
+  ],
+  "terminal_orthodox_rocor": [
+    {
+      "title": {
+        "en": "Russian Orthodox Church Outside Russia (Wikipedia)",
+        "ru": "Русская православная церковь заграницей (Википедия)",
+        "az": "Xaricdəki rus pravoslav kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Russian_Orthodox_Church_Outside_Russia",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "ROCOR (Official)",
+        "ru": "РПЦЗ (Официальный)",
+        "az": "RPÇX (Rəsmi)"
+      },
+      "url": "https://www.synod.com/",
+      "type": "official"
+    }
+  ],
+  "terminal_orthodox_edinovertsy": [
+    {
+      "title": {
+        "en": "Edinovertsy (Wikipedia)",
+        "ru": "Единоверцы (Википедия)",
+        "az": "Edinovertsilər (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Edinovertsy",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Old Ritualists (Wikipedia)",
+        "ru": "Старообрядцы (Википедия)",
+        "az": "Köhnə ayinçilər (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Old_Ritualists",
+      "type": "wikipedia"
+    }
+  ],
+  "terminal_oriental_coptic": [
+    {
+      "title": {
+        "en": "Coptic Orthodox Church (Wikipedia)",
+        "ru": "Коптская православная церковь (Википедия)",
+        "az": "Kopt pravoslav kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Coptic_Orthodox_Church",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Coptic Orthodox Church (Official)",
+        "ru": "Коптская православная церковь (Официальный)",
+        "az": "Kopt pravoslav kilsəsi (Rəsmi)"
+      },
+      "url": "https://copticpope.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_oriental_armenian": [
+    {
+      "title": {
+        "en": "Armenian Apostolic Church (Wikipedia)",
+        "ru": "Армянская апостольская церковь (Википедия)",
+        "az": "Erməni apostolik kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Armenian Church (Official)",
+        "ru": "Армянская церковь (Официальный)",
+        "az": "Erməni kilsəsi (Rəsmi)"
+      },
+      "url": "https://www.armenianchurch.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_oriental_ethiopian": [
+    {
+      "title": {
+        "en": "Ethiopian Orthodox Tewahedo Church (Wikipedia)",
+        "ru": "Эфиопская православная тевахедо церковь (Википедия)",
+        "az": "Efiop pravoslav Tevahedo kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Ethiopian_Orthodox_Tewahedo_Church",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Ethiopian Orthodox Church (Official)",
+        "ru": "Эфиопская православная церковь (Официальный)",
+        "az": "Efiop pravoslav kilsəsi (Rəsmi)"
+      },
+      "url": "https://www.ethiopianorthodox.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_oriental_eritrean": [
+    {
+      "title": {
+        "en": "Eritrean Orthodox Tewahedo Church (Wikipedia)",
+        "ru": "Эритрейская православная тевахедо церковь (Википедия)",
+        "az": "Eritreya pravoslav Tevahedo kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Eritrean_Orthodox_Tewahedo_Church",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Eritrean Orthodox Church (Official)",
+        "ru": "Эритрейская православная церковь (Официальный)",
+        "az": "Eritreya pravoslav kilsəsi (Rəsmi)"
+      },
+      "url": "https://www.eritreanorthodox.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_oriental_syriac": [
+    {
+      "title": {
+        "en": "Syriac Orthodox Church (Wikipedia)",
+        "ru": "Сирийская православная церковь (Википедия)",
+        "az": "Suriya pravoslav kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Syriac_Orthodox_Church",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Syriac Orthodox Church (Official)",
+        "ru": "Сирийская православная церковь (Официальный)",
+        "az": "Suriya pravoslav kilsəsi (Rəsmi)"
+      },
+      "url": "https://www.syriacorthodox.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_oriental_malankara": [
+    {
+      "title": {
+        "en": "Malankara Orthodox Syrian Church (Wikipedia)",
+        "ru": "Маланкарская православная сирийская церковь (Википедия)",
+        "az": "Malankara pravoslav suriya kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Malankara_Orthodox_Syrian_Church",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Indian Orthodox Church (Official)",
+        "ru": "Индийская православная церковь (Официальный)",
+        "az": "Hindistan pravoslav kilsəsi (Rəsmi)"
+      },
+      "url": "https://www.orthodoxchurch.in/",
+      "type": "official"
+    }
+  ],
+  "terminal_protestant_quaker": [
+    {
+      "title": {
+        "en": "Quakers (Wikipedia)",
+        "ru": "Квейкеры (Википедия)",
+        "az": "Kvekerlər (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Quakers",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Friends World Committee (Official)",
+        "ru": "Всемирный комитет друзей (Официальный)",
+        "az": "Dostlar dünya komitəsi (Rəsmi)"
+      },
+      "url": "https://fwcc.world/",
+      "type": "official"
+    }
+  ],
+  "terminal_lutheran_confessional": [
+    {
+      "title": {
+        "en": "Confessional Lutheranism (Wikipedia)",
+        "ru": "Исповедальный лютеранство (Википедия)",
+        "az": "İtirafçı lyuteranlıq (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Confessional_Lutheranism",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Book of Concord (Wikipedia)",
+        "ru": "Конкордиенская формула (Википедия)",
+        "az": "Uzla formula (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Book_of_Concord",
+      "type": "wikipedia"
+    }
+  ],
+  "terminal_lutheran_mainline": [
+    {
+      "title": {
+        "en": "Evangelical Lutheran Church in America (Wikipedia)",
+        "ru": "Евангелическо-лютеранская церковь в Америке (Википедия)",
+        "az": "Amerikada evanqelik-lyuteran kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Evangelical_Lutheran_Church_in_America",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "ELCA (Official)",
+        "ru": "ЕЛЦА (Официальный)",
+        "az": "ELCA (Rəsmi)"
+      },
+      "url": "https://www.elca.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_lutheran_nordic": [
+    {
+      "title": {
+        "en": "Church of Sweden (Wikipedia)",
+        "ru": "Церковь Швеции (Википедия)",
+        "az": "İsvəç kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Church_of_Sweden",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Church of Norway (Wikipedia)",
+        "ru": "Церковь Норвегии (Википедия)",
+        "az": "Norveç kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Church_of_Norway",
+      "type": "wikipedia"
+    }
+  ],
+  "terminal_lutheran_laestadian": [
+    {
+      "title": {
+        "en": "Laestadianism (Wikipedia)",
+        "ru": "Лестадианство (Википедия)",
+        "az": "Leyestadianizm (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Laestadianism",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Lars Levi Laestadius (Wikipedia)",
+        "ru": "Ларс Леви Лестадиус (Википедия)",
+        "az": "Lars Levi Leyestadius (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Lars_Levi_Laestadius",
+      "type": "wikipedia"
+    }
+  ],
+  "terminal_reformed_pcusa": [
+    {
+      "title": {
+        "en": "Presbyterian Church (USA) (Wikipedia)",
+        "ru": "Пресвитерианская церковь (США) (Википедия)",
+        "az": "Presviteran kilsəsi (ABŞ) (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Presbyterian_Church_(USA)",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "PC(USA) (Official)",
+        "ru": "ПЦ(США) (Официальный)",
+        "az": "PK(ABŞ) (Rəsmi)"
+      },
+      "url": "https://www.pcusa.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_reformed_conservative": [
+    {
+      "title": {
+        "en": "Presbyterian Church in America (Wikipedia)",
+        "ru": "Пресвитерианская церковь в Америке (Википедия)",
+        "az": "Amerikada presviteran kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Presbyterian_Church_in_America",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "PCA (Official)",
+        "ru": "ПКА (Официальный)",
+        "az": "PCA (Rəsmi)"
+      },
+      "url": "https://www.pcanet.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_reformed_continental": [
+    {
+      "title": {
+        "en": "Continental Reformed Churches (Wikipedia)",
+        "ru": "Континентальные реформированные церкви (Википедия)",
+        "az": "Kontinental reform olunmuş kilsələr (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Continental_Reformed_churches",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "World Communion of Reformed Churches (Official)",
+        "ru": "Всемирное сообщество реформированных церквей (Официальный)",
+        "az": "Dünya reform olunmuş kilsələr cəmiyyəti (Rəsmi)"
+      },
+      "url": "https://wcrc.ch/",
+      "type": "official"
+    }
+  ],
+  "terminal_reformed_new_calvinism": [
+    {
+      "title": {
+        "en": "New Calvinism (Wikipedia)",
+        "ru": "Новый кальвинизм (Википедия)",
+        "az": "Yeni kalvinizm (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/New_Calvinism",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "The Gospel Coalition (Official)",
+        "ru": "Евангелие союза (Официальный)",
+        "az": "İncil koalisiiyası (Rəsmi)"
+      },
+      "url": "https://www.thegospelcoalition.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_reformed_theonomy": [
+    {
+      "title": {
+        "en": "Theonomy (Wikipedia)",
+        "ru": "Теономия (Википедия)",
+        "az": "Teonomiya (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Theonomy",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Christian Reconstructionism (Wikipedia)",
+        "ru": "Христианский реконструкционизм (Википедия)",
+        "az": "Xristian rekonstrüksionizm (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Christian_reconstructionism",
+      "type": "wikipedia"
+    }
+  ],
+  "terminal_anglican_anglocatholic": [
+    {
+      "title": {
+        "en": "Anglo-Catholicism (Wikipedia)",
+        "ru": "Англо-католицизм (Википедия)",
+        "az": "İngilo-katoluçizm (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Anglo-Catholicism",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Anglican Communion (Official)",
+        "ru": "Англиканское общение (Официальный)",
+        "az": "Anglikan ittifaqı (Rəsmi)"
+      },
+      "url": "https://www.anglicancommunion.org/",
+      "type": "official"
+    }
+  ],
+  "terminal_anglican_broad": [
+    {
+      "title": {
+        "en": "Broad Church (Wikipedia)",
+        "ru": "Широкая церковь (Википедия)",
+        "az": "Geniş kilsə (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Broad_church",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Anglicanism (Wikipedia)",
+        "ru": "Англиканизм (Википедия)",
+        "az": "Anglikanizm (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Anglicanism",
+      "type": "wikipedia"
+    }
+  ],
+  "terminal_anglican_low": [
+    {
+      "title": {
+        "en": "Low Church (Wikipedia)",
+        "ru": "Низкая церковь (Википедия)",
+        "az": "Aşağı kilsə (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Low_church",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Evangelical Anglicanism (Wikipedia)",
+        "ru": "Евангелический англиканизм (Википедия)",
+        "az": "Evanqelik anglikanizm (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Evangelical_Anglicanism",
+      "type": "wikipedia"
+    }
+  ],
+  "terminal_anglican_acna": [
+    {
+      "title": {
+        "en": "Anglican Church in North America (Wikipedia)",
+        "ru": "Англиканская церковь в Северной Америке (Википедия)",
+        "az": "Şimal Amerikada ang likan kilsəsi (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Anglican_Church_in_North_America",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "ACNA (Official)",
+        "ru": "АЦСА (Официальный)",
+        "az": "ACNA (Rəsmi)"
+      },
+      "url": "https://anglicanchurch.net/",
+      "type": "official"
+    }
+  ],
+  "terminal_anglican_continuing": [
+    {
+      "title": {
+        "en": "Continuing Anglicanism (Wikipedia)",
+        "ru": "Продолжающийся англиканизм (Википедия)",
+        "az": "Davam edən anglikanizm (Vikipediya)"
+      },
+      "url": "https://en.wikipedia.org/wiki/Continuing_Anglicanism",
+      "type": "wikipedia"
+    },
+    {
+      "title": {
+        "en": "Traditional Anglican Communion (Official)",
+        "ru": "Традиционное англиканское общение (Официальный)",
+        "az": "Tradisional ang likan ittifaqı (Rəsmi)"
+      },
+      "url": "https://www.traditionalanglicancommunion.org/",
+      "type": "official"
+    }
   ]
 }

@@ -18,7 +18,7 @@ export default function FamilyTree() {
     () =>
       nodes.map((n) => {
         const isOnPath = onPath.has(n.id);
-        const isCurrent = path.length > 0 && n.id === path[path.length - 1].nextNode;
+        const isCurrent = path.length > 0 && n.id === path[path.length - 1].nextNodeIds[0];
         return {
           id: n.id,
           position: { x: n.x, y: n.y },

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "python3 scripts/generate-mermaid.py && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "generate-mermaid": "python3 scripts/generate-mermaid.py"

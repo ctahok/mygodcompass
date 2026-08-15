@@ -1,479 +1,58 @@
 flowchart TD
     %% Auto-generated from src/data/ontology.ts — do not edit by hand
-    existence["Does a higher power exist?"]
-    ontology_realism["Is God a mind-independent entity — or a social/mental construct?"]
-    composition["Is God One, Many, or Everything?"]
-    relation["Does God interact with us — or leave us alone?"]
-    personalism["Is this God a person — or a force?"]
-    constructivist_branch["If God is a construct — what constructs it?"]
-    polytheism_type["What kind of many?"]
-    pantheism_type["How is God related to the universe?"]
-    historical_revelation["Did God reveal himself in human history?"]
-    trinity_question["Is God triune (Father, Son, Spirit)?"]
-    christian_major_branch["Which major Christian communion?"]
-    catholic_rites["Which Catholic rite or spiritual family?"]
-    catholic_latin_spirituality["Which spiritual tradition within the Latin Rite?"]
-    eastern_catholic_church["Which Eastern Catholic Church?"]
-    catholic_religious_order["Which religious order spirituality?"]
-    orthodox_jurisdiction["Which Orthodox jurisdiction or tradition?"]
-    russian_orthodox_branch["Which stream within Russian Orthodoxy?"]
-    oriental_orthodox_church["Which Oriental Orthodox (Non-Chalcedonian) church?"]
-    protestant_tradition["Which Protestant / Evangelical family?"]
-    lutheran_branch["Which Lutheran expression?"]
-    reformed_branch["Which Reformed / Presbyterian tradition?"]
-    anglican_branch["Which Anglican / Episcopal expression?"]
-    anabaptist_branch["Which Anabaptist tradition?"]
-    baptist_branch["Which Baptist tradition?"]
-    methodist_branch["Which Methodist / Wesleyan-Holiness tradition?"]
-    pentecostal_branch["Which Pentecostal / Charismatic family?"]
-    nondenom_branch["Which non-denominational / Evangelical expression?"]
-    adventist_branch["Which Adventist / Restorationist tradition?"]
-    restorationist_branch["Which Restorationist movement?"]
-    lds_branch["Which Latter-day Saint tradition?"]
-    abrahamic_unitarian_branch["Which strictly-unitarian Abrahamic tradition?"]
-    islam_major_branch["Which major Islamic division?"]
-    sunni_madhhab["Which Sunni legal school (Madhhab)?"]
-    hanafi_branch["Which Hanafi theological / revivalist movement?"]
-    deobandi_branch["Which Deobandi-aligned stream?"]
-    maliki_branch["Which Maliki-region spiritual path?"]
-    shafii_branch["Which Shafi'i spiritual path?"]
-    hanbali_branch["Which Hanbali theological path?"]
-    wahhabi_branch["Which Wahhabi / Salafi-aligned expression?"]
-    salafi_jihadist_branch["Which militant Salafi-Jihadist movement?"]
-    salafi_branch["Which Salafi expression?"]
-    shia_branch["Which Shia succession path (Imam line)?"]
-    twelver_branch["Which Twelver legal/methodological school?"]
-    usuli_branch["Which Usuli-aligned expression?"]
-    ismaili_branch["Which Ismaili (Sevener) lineage?"]
-    nizari_branch["Which Nizari expression?"]
-    mustali_branch["Which Musta'li Bohra community?"]
-    zaidi_branch["Which Zaidi (Fiver) expression?"]
-    sufi_tariqa["Which Sufi order (Tariqa)?"]
-    judaism_major_branch["Which Jewish movement?"]
-    orthodox_judaism_branch["Which Orthodox Jewish path?"]
-    haredi_branch["Which Haredi community?"]
-    hasidic_branch["Which Hasidic dynasty?"]
-    modern_orthodox_branch["Which Modern Orthodox expression?"]
-    other_unitarian_branch["Which other unitarian tradition?"]
-    hindu_tradition["Which Hindu tradition (sampradaya)?"]
-    vaishnava_branch["Which Vaishnava lineage?"]
-    shaiva_branch["Which Shaiva lineage?"]
-    shakta_branch["Which Shakta tradition?"]
-    smartism_branch["Which Smartist / Advaita expression?"]
-    abstract_type["What is this abstract force, exactly?"]
-    terminal_secular_humanist(["The Secular Humanist"])
-    terminal_deist(["The Clockmaker Deist"])
-    terminal_durkheimian(["The Durkheimian Constructivist"])
-    terminal_jungian(["The Jungian Constructivist"])
-    terminal_olympian(["The Olympian Polytheist"])
-    terminal_spinozan(["The Spinozan Pantheist"])
-    terminal_hegelian(["The Hegelian Absolutist"])
-    terminal_classical_theist(["The Classical Theist (Thomistic)"])
-    terminal_mystical_theist(["The Mystical Theist"])
-    terminal_bahai(["The Bahá'í"])
-    terminal_druze(["The Druze"])
-    terminal_catholic_scholastic(["The Scholastic Catholic"])
-    terminal_catholic_mystical(["The Augustinian Mystic"])
-    terminal_catholic_charismatic(["The Charismatic Catholic"])
-    terminal_catholic_traditionalist(["The Traditionalist Catholic"])
-    terminal_catholic_liberation(["The Liberation Theologian"])
-    terminal_catholic_maronite(["The Maronite Catholic"])
-    terminal_catholic_melkite(["The Melkite Catholic"])
-    terminal_catholic_ukrainian(["The Ukrainian Greek Catholic"])
-    terminal_catholic_chaldean(["The Chaldean Catholic"])
-    terminal_catholic_syro(["The Syro-Malabar Catholic"])
-    terminal_catholic_other_eastern(["The Other Eastern Catholic"])
-    terminal_catholic_jesuit(["The Jesuit"])
-    terminal_catholic_franciscan(["The Franciscan"])
-    terminal_catholic_dominican(["The Dominican"])
-    terminal_catholic_carmelite(["The Carmelite"])
-    terminal_catholic_benedictine(["The Benedictine"])
-    terminal_catholic_other_order(["The Religious Life Catholic"])
-    terminal_orthodox_greek(["The Greek Orthodox"])
-    terminal_orthodox_antiochian(["The Antiochian Orthodox"])
-    terminal_orthodox_other_slavic(["The Slavic Orthodox"])
-    terminal_orthodox_old_believer(["The Old Believer"])
-    terminal_orthodox_true(["The True Orthodox"])
-    terminal_orthodox_russian_mainstream(["The Russian Orthodox"])
-    terminal_orthodox_rocor(["The ROCOR Orthodox"])
-    terminal_orthodox_edinovertsy(["The Edinoverets"])
-    terminal_oriental_coptic(["The Coptic Orthodox"])
-    terminal_oriental_armenian(["The Armenian Apostolic"])
-    terminal_oriental_ethiopian(["The Ethiopian Orthodox"])
-    terminal_oriental_eritrean(["The Eritrean Orthodox"])
-    terminal_oriental_syriac(["The Syriac Orthodox"])
-    terminal_oriental_malankara(["The Malankara Orthodox"])
-    terminal_protestant_quaker(["The Quaker"])
-    terminal_lutheran_confessional(["The Confessional Lutheran"])
-    terminal_lutheran_mainline(["The Mainline Lutheran"])
-    terminal_lutheran_nordic(["The Nordic Lutheran"])
-    terminal_lutheran_laestadian(["The Laestadian"])
-    terminal_reformed_pcusa(["The Mainline Presbyterian"])
-    terminal_reformed_conservative(["The Confessional Presbyterian"])
-    terminal_reformed_continental(["The Continental Reformed"])
-    terminal_reformed_new_calvinism(["The New Calvinist"])
-    terminal_reformed_theonomy(["The Theonomist"])
-    terminal_anglican_anglocatholic(["The Anglo-Catholic"])
-    terminal_anglican_broad(["The Broad Church Anglican"])
-    terminal_anglican_low(["The Evangelical Anglican"])
-    terminal_anglican_acna(["The ACNA Anglican"])
-    terminal_anglican_continuing(["The Continuing Anglican"])
-    terminal_anabaptist_amish(["The Old Order Amish"])
-    terminal_anabaptist_conservative_mennonite(["The Conservative Mennonite"])
-    terminal_anabaptist_mennonite_mainline(["The Mennonite"])
-    terminal_anabaptist_hutterite(["The Hutterite"])
-    terminal_anabaptist_brethren(["The Brethren"])
-    terminal_baptist_sbc(["The Southern Baptist"])
-    terminal_baptist_abcusa(["The American Baptist"])
-    terminal_baptist_independent_fundamentalist(["The Independent Fundamentalist Baptist"])
-    terminal_baptist_reformed(["The Reformed Baptist"])
-    terminal_baptist_general(["The General Baptist"])
-    terminal_baptist_primitive(["The Primitive Baptist"])
-    terminal_methodist_umc(["The Wesleyan Methodist"])
-    terminal_methodist_ame(["The AME Methodist"])
-    terminal_methodist_wesleyan_holiness(["The Holiness Methodist"])
-    terminal_methodist_salvation_army(["The Salvationist"])
-    terminal_pentecostal_classical(["The Classical Pentecostal"])
-    terminal_pentecostal_oneness(["The Oneness Pentecostal"])
-    terminal_pentecostal_charismatic(["The Charismatic"])
-    terminal_pentecostal_word_faith(["The Word of Faith"])
-    terminal_pentecostal_nar(["The New Apostolic Reformer"])
-    terminal_nondenom_bible_church(["The Bible Church Evangelical"])
-    terminal_nondenom_megachurch(["The Megachurch Attender"])
-    terminal_nondenom_neo_calvinist(["The Neo-Calvinist Evangelical"])
-    terminal_nondenom_progressive(["The Progressive Evangelical"])
-    terminal_adventist_sda(["The Seventh-day Adventist"])
-    terminal_adventist_cog7(["The Church of God (7th Day)"])
-    terminal_adventist_jw(["The Jehovah's Witness"])
-    terminal_adventist_other(["The Christadelphian"])
-    terminal_restorationist_community_christ(["The Community of Christ"])
-    terminal_restorationist_flds(["The Fundamentalist LDS"])
-    terminal_restorationist_unitarian(["The Unitarian Universalist"])
-    terminal_restorationist_christian_science(["The Christian Scientist"])
-    terminal_lds_main(["The Latter-day Saint"])
-    terminal_lds_coc(["The Community of Christ (LDS)"])
-    terminal_lds_other(["The Other Latter Day Saint"])
-    terminal_islam_ibadi(["The Ibadi Muslim"])
-    terminal_islam_just_muslim(["The Non-Madhhab Muslim"])
-    terminal_islam_maturidi(["The Maturidi Hanafi"])
-    terminal_islam_barelvi(["The Barelvi Muslim"])
-    terminal_islam_tablighi(["The Tablighi Muslim"])
-    terminal_islam_gulen(["The Hizmet Follower"])
-    terminal_islam_deobandi_main(["The Deobandi Muslim"])
-    terminal_islam_taliban(["The Taliban-aligned"])
-    terminal_islam_jamiat_ulema(["The Jamiat Ulema"])
-    terminal_islam_tijaniyyah(["The Tijani"])
-    terminal_islam_qadiriyya(["The Qadiri Sufi"])
-    terminal_islam_muridiyya(["The Murid"])
-    terminal_islam_maliki_orthodox(["The Maliki Muslim"])
-    terminal_islam_ba_alawi(["The Ba 'Alawi Sufi"])
-    terminal_islam_shadhiliyya(["The Shadhili Sufi"])
-    terminal_islam_shafii_ashari(["The Ash'ari Shafi'i"])
-    terminal_islam_shafii_orthodox(["The Shafi'i Muslim"])
-    terminal_islam_athari_hanbali(["The Athari Hanbali"])
-    terminal_islam_saudi_wahhabi(["The Saudi Wahhabi"])
-    terminal_islam_quietist_salafi(["The Quietist Salafi"])
-    terminal_islam_activist_salafi(["The Activist Salafi"])
-    terminal_islam_pure_salafi(["The Salafi Muslim"])
-    terminal_islam_alqaeda(["The Al-Qaeda Aligned"])
-    terminal_islam_isis(["The ISIS Aligned"])
-    terminal_islam_boko_haram(["The Boko Haram Aligned"])
-    terminal_islam_al_shabaab(["The Al-Shabaab Aligned"])
-    terminal_islam_hts(["The HTS Aligned"])
-    terminal_islam_jihadist_other(["The Jihadist"])
-    terminal_islam_alawite(["The Alawite"])
-    terminal_islam_alevi(["The Alevi"])
-    terminal_islam_akhbari(["The Akhbari Shia"])
-    terminal_islam_shaykhi(["The Shaykhi Shia"])
-    terminal_islam_iranian_establishment(["The Iranian Establishment Shia"])
-    terminal_islam_hezbollah(["The Hezbollah-aligned"])
-    terminal_islam_al_dawa(["The Al-Da'wa Shia"])
-    terminal_islam_najaf_quietist(["The Najaf Quietist Shia"])
-    terminal_islam_azerbaijani_twelver(["The Azerbaijani Twelver"])
-    terminal_islam_ismaili_other(["The Ismaili Muslim"])
-    terminal_islam_nizari_modern(["The Nizari Ismaili"])
-    terminal_islam_hashashin(["The Hashashin Heritage"])
-    terminal_islam_dawoodi_bohra(["The Dawoodi Bohra"])
-    terminal_islam_sulaymani_bohra(["The Sulaymani Bohra"])
-    terminal_islam_alavi_bohra(["The Alavi Bohra"])
-    terminal_islam_zaidi_traditional(["The Zaidi Muslim"])
-    terminal_islam_houthi(["The Houthi-aligned"])
-    terminal_islam_naqshbandi(["The Naqshbandi Sufi"])
-    terminal_islam_mevlevi(["The Mevlevi"])
-    terminal_islam_chishti(["The Chishti Sufi"])
-    terminal_islam_sufi_other(["The Sufi Muslim"])
-    terminal_judaism_conservative(["The Conservative Jew"])
-    terminal_judaism_reform(["The Reform Jew"])
-    terminal_judaism_reconstructionist(["The Reconstructionist Jew"])
-    terminal_judaism_karaites(["The Karaite Jew"])
-    terminal_judaism_samaritan(["The Samaritan"])
-    terminal_judaism_centrist(["The Centrist Orthodox Jew"])
-    terminal_judaism_hardal(["The Hardal Jew"])
-    terminal_judaism_litvish(["The Litvak"])
-    terminal_judaism_sephardic_haredi(["The Sephardic Haredi"])
-    terminal_judaism_chabad(["The Chabad Hasid"])
-    terminal_judaism_satmar(["The Satmar Hasid"])
-    terminal_judaism_other_hasidic(["The Hasidic Jew"])
-    terminal_judaism_religious_zionist(["The Religious Zionist"])
-    terminal_judaism_open_orthodox(["The Open Orthodox Jew"])
-    terminal_judaism_torah_umadda(["The Torah u-Madda Jew"])
-    terminal_hindu_other(["The New Hindu Movement"])
-    terminal_hindu_iskcon(["The ISKCON Devotee"])
-    terminal_hindu_swaminarayan(["The Swaminarayan Devotee"])
-    terminal_hindu_sri_vaishnava(["The Sri Vaishnava"])
-    terminal_hindu_madhva(["The Madhva Vaishnava"])
-    terminal_hindu_ramandi(["The Ramanandi Bhakta"])
-    terminal_hindu_shaiva_siddhanta(["The Shaiva Siddhanta"])
-    terminal_hindu_kashmir_shaiva(["The Kashmir Shaiva"])
-    terminal_hindu_lingayat(["The Lingayat"])
-    terminal_hindu_nath(["The Nath Yogi"])
-    terminal_hindu_kali(["The Kali Bhakta"])
-    terminal_hindu_sri_vidya(["The Sri Vidya Sadhaka"])
-    terminal_hindu_durga(["The Durga Devotee"])
-    terminal_hindu_advaita(["The Advaitin"])
-    terminal_hindu_neo_vedanta(["The Neo-Vedantin"])
-    terminal_hindu_arsha(["The Smarta Hindu"])
-    existence -->|"No — I am an atheist"| terminal_secular_humanist
-    existence -->|"Yes — I believe there is"| ontology_realism
-    existence -->|"I'm unsure"| ontology_realism
-    ontology_realism -->|"Mind-independent (like a mountain)"| composition
-    ontology_realism -->|"A social/mental construct (like money)"| constructivist_branch
-    composition -->|"One (Monotheism)"| relation
-    composition -->|"Many (Polytheism)"| polytheism_type
-    composition -->|"Everything (Pantheism)"| pantheism_type
-    relation -->|"God interacts with us (Theism)"| personalism
-    relation -->|"God left us alone (Deism)"| terminal_deist
-    personalism -->|"A Person (has will/emotion)"| historical_revelation
-    personalism -->|"An Abstract Force (gravity/logic)"| abstract_type
-    constructivist_branch -->|"Society itself (Durkheimian)"| terminal_durkheimian
-    constructivist_branch -->|"The human psyche (Jungian)"| terminal_jungian
-    polytheism_type -->|"Personal gods with domains (Greek/Roman)"| terminal_olympian
-    polytheism_type -->|"Cosmic forces/aspects (Hindu tradition)"| hindu_tradition
-    pantheism_type -->|"God IS the universe (Spinozan)"| terminal_spinozan
-    pantheism_type -->|"God is the universe's unfolding reason (Hegelian)"| terminal_hegelian
-    historical_revelation -->|"Yes — through scripture &amp; prophets"| trinity_question
-    historical_revelation -->|"No — only through inner experience"| terminal_mystical_theist
-    trinity_question -->|"Yes — Triune (Christianity)"| christian_major_branch
-    trinity_question -->|"No — strictly one (Judaism/Islam)"| abrahamic_unitarian_branch
-    christian_major_branch -->|"Roman Catholic (Papal authority)"| catholic_rites
-    christian_major_branch -->|"Eastern Orthodox (Autocephalous churches)"| orthodox_jurisdiction
-    christian_major_branch -->|"Oriental Orthodox (Non-Chalcedonian)"| oriental_orthodox_church
-    christian_major_branch -->|"Protestant / Evangelical (Reformation heritage)"| protestant_tradition
-    christian_major_branch -->|"Restorationist / Other (LDS, JW, etc.)"| restorationist_branch
-    catholic_rites -->|"Latin (Roman) Rite — mainstream Western"| catholic_latin_spirituality
-    catholic_rites -->|"Eastern Catholic Churches — Eastern liturgy, papal communion"| eastern_catholic_church
-    catholic_rites -->|"Religious Orders (Jesuit, Franciscan, Dominican, etc.)"| catholic_religious_order
-    catholic_latin_spirituality -->|"Thomistic / Scholastic (Aquinas, reason &amp; faith)"| terminal_catholic_scholastic
-    catholic_latin_spirituality -->|"Augustinian / Mystical (interior prayer, grace)"| terminal_catholic_mystical
-    catholic_latin_spirituality -->|"Charismatic Renewal (Holy Spirit gifts, praise)"| terminal_catholic_charismatic
-    catholic_latin_spirituality -->|"Traditionalist / Tridentine Mass (pre-Vatican II)"| terminal_catholic_traditionalist
-    catholic_latin_spirituality -->|"Liberation Theology (option for the poor)"| terminal_catholic_liberation
-    eastern_catholic_church -->|"Maronite (Lebanon, Antiochene rite)"| terminal_catholic_maronite
-    eastern_catholic_church -->|"Melkite Greek Catholic (Byzantine rite)"| terminal_catholic_melkite
-    eastern_catholic_church -->|"Ukrainian Greek Catholic (largest Eastern Catholic)"| terminal_catholic_ukrainian
-    eastern_catholic_church -->|"Chaldean Catholic (Iraq, East Syriac rite)"| terminal_catholic_chaldean
-    eastern_catholic_church -->|"Syro-Malabar / Syro-Malankara (India)"| terminal_catholic_syro
-    eastern_catholic_church -->|"Other Eastern Catholic (Coptic, Armenian, Romanian, etc.)"| terminal_catholic_other_eastern
-    catholic_religious_order -->|"Jesuit (Ignatian spirituality, discernment, education)"| terminal_catholic_jesuit
-    catholic_religious_order -->|"Franciscan (poverty, nature, Christ-centered)"| terminal_catholic_franciscan
-    catholic_religious_order -->|"Dominican (veritas, preaching, study)"| terminal_catholic_dominican
-    catholic_religious_order -->|"Carmelite (contemplative: Teresa of Ávila, John of the Cross)"| terminal_catholic_carmelite
-    catholic_religious_order -->|"Benedictine / Trappist (ora et labora, stability)"| terminal_catholic_benedictine
-    catholic_religious_order -->|"Salesian / Opus Dei / Focolare / Other"| terminal_catholic_other_order
-    orthodox_jurisdiction -->|"Greek / Constantinople (Ecumenical Patriarchate)"| terminal_orthodox_greek
-    orthodox_jurisdiction -->|"Russian Orthodox (Moscow Patriarchate)"| russian_orthodox_branch
-    orthodox_jurisdiction -->|"Antiochian / Arab Orthodox"| terminal_orthodox_antiochian
-    orthodox_jurisdiction -->|"Serbian / Bulgarian / Romanian / Georgian / Other Slavic"| terminal_orthodox_other_slavic
-    orthodox_jurisdiction -->|"Old Believers (pre-Nikonian rites, split 1666)"| terminal_orthodox_old_believer
-    orthodox_jurisdiction -->|"True Orthodoxy / Genuine Orthodox (anti-ecumenist)"| terminal_orthodox_true
-    russian_orthodox_branch -->|"Mainstream Moscow Patriarchate (official)"| terminal_orthodox_russian_mainstream
-    russian_orthodox_branch -->|"ROCOR (Russian Orthodox Church Outside Russia)"| terminal_orthodox_rocor
-    russian_orthodox_branch -->|"Old Ritualists / Edinovertsy (reconciled Old Believers)"| terminal_orthodox_edinovertsy
-    oriental_orthodox_church -->|"Coptic Orthodox (Egypt, Pope of Alexandria)"| terminal_oriental_coptic
-    oriental_orthodox_church -->|"Armenian Apostolic (Etchmiadzin, Armenia)"| terminal_oriental_armenian
-    oriental_orthodox_church -->|"Ethiopian Orthodox Tewahedo (Addis Ababa)"| terminal_oriental_ethiopian
-    oriental_orthodox_church -->|"Eritrean Orthodox Tewahedo (Asmara)"| terminal_oriental_eritrean
-    oriental_orthodox_church -->|"Syriac Orthodox (Antioch, West Syriac rite)"| terminal_oriental_syriac
-    oriental_orthodox_church -->|"Malankara Orthodox Syrian (India)"| terminal_oriental_malankara
-    protestant_tradition -->|"Lutheran (Book of Concord, justification by faith)"| lutheran_branch
-    protestant_tradition -->|"Reformed / Calvinist (TULIP, covenant theology)"| reformed_branch
-    protestant_tradition -->|"Anglican / Episcopalian (Via Media, Book of Common Prayer)"| anglican_branch
-    protestant_tradition -->|"Anabaptist (believer's baptism, pacifism, discipleship)"| anabaptist_branch
-    protestant_tradition -->|"Baptist (believer's baptism, congregationalism)"| baptist_branch
-    protestant_tradition -->|"Methodist / Wesleyan (Arminian, holiness, social gospel)"| methodist_branch
-    protestant_tradition -->|"Pentecostal / Charismatic (Spirit baptism, gifts, healing)"| pentecostal_branch
-    protestant_tradition -->|"Non-Denominational / Evangelical (Bible churches, megachurches)"| nondenom_branch
-    protestant_tradition -->|"Adventist / Restorationist (Sabbath, investigative judgment)"| adventist_branch
-    protestant_tradition -->|"Quaker / Friends (Inner Light, silent worship)"| terminal_protestant_quaker
-    lutheran_branch -->|"Confessional Lutheran (LCMS, WELS, ELS)"| terminal_lutheran_confessional
-    lutheran_branch -->|"Mainline / ELCA (ecumenical, progressive)"| terminal_lutheran_mainline
-    lutheran_branch -->|"Nordic Folk Churches (Sweden, Denmark, Norway, Finland)"| terminal_lutheran_nordic
-    lutheran_branch -->|"Laestadianism (conservative pietist revival)"| terminal_lutheran_laestadian
-    reformed_branch -->|"Presbyterian (PCUSA — mainline, progressive)"| terminal_reformed_pcusa
-    reformed_branch -->|"Presbyterian (PCA, OPC, EPC — conservative)"| terminal_reformed_conservative
-    reformed_branch -->|"Continental Reformed (Dutch Reformed, CRCNA)"| terminal_reformed_continental
-    reformed_branch -->|"Sovereign Grace / New Calvinism (Acts 29, TGC)"| terminal_reformed_new_calvinism
-    reformed_branch -->|"Christian Reconstructionism / Theonomy"| terminal_reformed_theonomy
-    anglican_branch -->|"Anglo-Catholic / High Church (ritual, apostolic succession)"| terminal_anglican_anglocatholic
-    anglican_branch -->|"Broad Church / Central (via media, moderate)"| terminal_anglican_broad
-    anglican_branch -->|"Low Church / Evangelical Anglican (scripture, preaching)"| terminal_anglican_low
-    anglican_branch -->|"ACNA / GAFCON (Global South, conservative)"| terminal_anglican_acna
-    anglican_branch -->|"Continuing Anglican (traditional BCP 1928)"| terminal_anglican_continuing
-    anabaptist_branch -->|"Old Order Amish (horse &amp; buggy, plain dress)"| terminal_anabaptist_amish
-    anabaptist_branch -->|"Conservative Mennonites (plain, nonresistant)"| terminal_anabaptist_conservative_mennonite
-    anabaptist_branch -->|"Mennonite Church USA / Canada (peace theology)"| terminal_anabaptist_mennonite_mainline
-    anabaptist_branch -->|"Hutterites (communal living, colonies)"| terminal_anabaptist_hutterite
-    anabaptist_branch -->|"Brethren / Church of the Brethren (Dunkers)"| terminal_anabaptist_brethren
-    baptist_branch -->|"Southern Baptist Convention (SBC — conservative)"| terminal_baptist_sbc
-    baptist_branch -->|"American Baptist (ABCUSA — mainline, progressive)"| terminal_baptist_abcusa
-    baptist_branch -->|"Independent Fundamentalist (KJV-only, separatist)"| terminal_baptist_independent_fundamentalist
-    baptist_branch -->|"Reformed Baptist (1689 Confession, Calvinistic)"| terminal_baptist_reformed
-    baptist_branch -->|"General Baptist (Arminian, free will)"| terminal_baptist_general
-    baptist_branch -->|"Primitive Baptist (hyper-Calvinist, no missions)"| terminal_baptist_primitive
-    methodist_branch -->|"United Methodist / Global Methodist (mainline Wesleyan)"| terminal_methodist_umc
-    methodist_branch -->|"African Methodist Episcopal (AME / AME Zion)"| terminal_methodist_ame
-    methodist_branch -->|"Wesleyan Church / Church of the Nazarene (Holiness)"| terminal_methodist_wesleyan_holiness
-    methodist_branch -->|"Salvation Army (sacramental theology, social work)"| terminal_methodist_salvation_army
-    pentecostal_branch -->|"Classical Pentecostal (Assemblies of God, Church of God)"| terminal_pentecostal_classical
-    pentecostal_branch -->|"Oneness / Apostolic (Acts 2:38, Jesus-only baptism)"| terminal_pentecostal_oneness
-    pentecostal_branch -->|"Charismatic Movement (within mainline churches)"| terminal_pentecostal_charismatic
-    pentecostal_branch -->|"Word of Faith / Prosperity (Kenneth Hagin, Copeland)"| terminal_pentecostal_word_faith
-    pentecostal_branch -->|"New Apostolic Reformation (NAR, apostles &amp; prophets)"| terminal_pentecostal_nar
-    nondenom_branch -->|"Evangelical Bible Church (expository preaching)"| terminal_nondenom_bible_church
-    nondenom_branch -->|"Megachurch attendee (Hillsong, Life.Church, Saddleback)"| terminal_nondenom_megachurch
-    nondenom_branch -->|"Neo-Calvinist Evangelical (Mark Driscoll, Tim Keller)"| terminal_nondenom_neo_calvinist
-    nondenom_branch -->|"Open/Progressive Evangelical (affirming, inclusive)"| terminal_nondenom_progressive
-    adventist_branch -->|"Seventh-day Adventist (Sabbath, prophetic gift, health)"| terminal_adventist_sda
-    adventist_branch -->|"Church of God (Seventh Day) / Other Sabbath-keeping"| terminal_adventist_cog7
-    adventist_branch -->|"Jehovah's Witnesses (Watchtower, 144,000)"| terminal_adventist_jw
-    adventist_branch -->|"Christadelphians / Church of God International"| terminal_adventist_other
-    restorationist_branch -->|"Latter-day Saints (Mormon: LDS Church)"| lds_branch
-    restorationist_branch -->|"Community of Christ (formerly RLDS)"| terminal_restorationist_community_christ
-    restorationist_branch -->|"Fundamentalist LDS (polygamous FLDS, AUB)"| terminal_restorationist_flds
-    restorationist_branch -->|"Unitarian / Universalist (Unitarian-Universalism)"| terminal_restorationist_unitarian
-    restorationist_branch -->|"Christian Science / New Thought (Mary Baker Eddy)"| terminal_restorationist_christian_science
-    lds_branch -->|"The Church of Jesus Christ of Latter-day Saints (main)"| terminal_lds_main
-    lds_branch -->|"Community of Christ (RLDS, ecumenical direction)"| terminal_lds_coc
-    lds_branch -->|"Other Latter Day Saint denominations (Strangite, Bickertonite)"| terminal_lds_other
-    abrahamic_unitarian_branch -->|"Islam (Quran, Muhammad)"| islam_major_branch
-    abrahamic_unitarian_branch -->|"Judaism (Torah, covenant)"| judaism_major_branch
-    abrahamic_unitarian_branch -->|"Neither — I affirm one God outside these (e.g. Baha'i, Samaritan, Druze)"| other_unitarian_branch
-    islam_major_branch -->|"Sunni (followers of the Sunnah)"| sunni_madhhab
-    islam_major_branch -->|"Shia (Party of Ali — Imams)"| shia_branch
-    islam_major_branch -->|"Ibadi (Oman, Kharijite heritage)"| terminal_islam_ibadi
-    islam_major_branch -->|"Sufi / Tariqa-focused (mystical path across divisions)"| sufi_tariqa
-    sunni_madhhab -->|"Hanafi (Turkey, Central Asia, South Asia)"| hanafi_branch
-    sunni_madhhab -->|"Maliki (North &amp; West Africa)"| maliki_branch
-    sunni_madhhab -->|"Shafi'i (East Africa, Southeast Asia)"| shafii_branch
-    sunni_madhhab -->|"Hanbali (Saudi Arabia, conservative)"| hanbali_branch
-    sunni_madhhab -->|"Athari / Salafi creed (no madhhab, textualist)"| salafi_branch
-    sunni_madhhab -->|"I don't follow a school / Just Muslim"| terminal_islam_just_muslim
-    hanafi_branch -->|"Maturidi mainstream (Turkey, Central Asia)"| terminal_islam_maturidi
-    hanafi_branch -->|"Deobandi (South Asia, Darul Uloom)"| deobandi_branch
-    hanafi_branch -->|"Barelvi (South Asia, Sufi veneration)"| terminal_islam_barelvi
-    hanafi_branch -->|"Tablighi Jamaat (missionary movement)"| terminal_islam_tablighi
-    hanafi_branch -->|"Gülen / Hizmet movement (Turkey-based)"| terminal_islam_gulen
-    deobandi_branch -->|"Mainstream Deobandi (Darul Uloom Deoband)"| terminal_islam_deobandi_main
-    deobandi_branch -->|"Tablighi Jamaat (global missionary da'wah)"| terminal_islam_tablighi
-    deobandi_branch -->|"Taliban-aligned (Pakistani Deobandi seminaries)"| terminal_islam_taliban
-    deobandi_branch -->|"Jamiat Ulema-e-Islam (political Deobandi)"| terminal_islam_jamiat_ulema
-    maliki_branch -->|"Tijaniyyah Sufi order (West Africa)"| terminal_islam_tijaniyyah
-    maliki_branch -->|"Qadiriyya Sufi order (North &amp; West Africa)"| terminal_islam_qadiriyya
-    maliki_branch -->|"Muridiyya (Senegal, Amadou Bamba)"| terminal_islam_muridiyya
-    maliki_branch -->|"Maliki without Sufi order (orthodox fiqh path)"| terminal_islam_maliki_orthodox
-    shafii_branch -->|"Ba 'Alawi / Alawi Sufi (Yemen, Indonesia)"| terminal_islam_ba_alawi
-    shafii_branch -->|"Shadhiliyya Sufi order (Egypt, Levant)"| terminal_islam_shadhiliyya
-    shafii_branch -->|"Ash'ari creed Shafi'i (Southeast Asia mainstream)"| terminal_islam_shafii_ashari
-    shafii_branch -->|"Shafi'i without Sufi order"| terminal_islam_shafii_orthodox
-    hanbali_branch -->|"Athari / Traditionalist Hanbali (textual literalism)"| terminal_islam_athari_hanbali
-    hanbali_branch -->|"Wahhabi / Saudi Salafism (Muhammad ibn Abd al-Wahhab)"| wahhabi_branch
-    hanbali_branch -->|"Salafi-Jihadism (rejects all madhhabs)"| salafi_jihadist_branch
-    wahhabi_branch -->|"Official Saudi Wahhabism (state-sponsored)"| terminal_islam_saudi_wahhabi
-    wahhabi_branch -->|"Quietist Salafi (Madkhali, politically neutral)"| terminal_islam_quietist_salafi
-    wahhabi_branch -->|"Haraki / Activist Salafi (political engagement)"| terminal_islam_activist_salafi
-    wahhabi_branch -->|"Takfiri / Excommunicating Salafi (declares Muslims apostates)"| salafi_jihadist_branch
-    salafi_jihadist_branch -->|"Al-Qaeda (global jihad network)"| terminal_islam_alqaeda
-    salafi_jihadist_branch -->|"ISIS / ISIL / Daesh (self-styled caliphate)"| terminal_islam_isis
-    salafi_jihadist_branch -->|"Boko Haram (West Africa)"| terminal_islam_boko_haram
-    salafi_jihadist_branch -->|"Al-Shabaab (East Africa)"| terminal_islam_al_shabaab
-    salafi_jihadist_branch -->|"Jabhat al-Nusra / HTS (Syria)"| terminal_islam_hts
-    salafi_jihadist_branch -->|"Other / not affiliated"| terminal_islam_jihadist_other
-    salafi_branch -->|"Pure Salafiyya (revival of the Salaf, non-political)"| terminal_islam_pure_salafi
-    salafi_branch -->|"Quietist / Madkhali Salafi"| terminal_islam_quietist_salafi
-    salafi_branch -->|"Haraki / Activist Salafi (Sahwa, political)"| terminal_islam_activist_salafi
-    salafi_branch -->|"Salafi-Jihadism (violent fringe)"| salafi_jihadist_branch
-    shia_branch -->|"Twelver / Imamiyyah (12 Imams, hidden Mahdi)"| twelver_branch
-    shia_branch -->|"Ismaili / Seveners (Aga Khan, esoteric)"| ismaili_branch
-    shia_branch -->|"Zaidi / Fivers (Yemen, closest to Sunni)"| zaidi_branch
-    shia_branch -->|"Alawite / Nusayri (Syria, distinct theology)"| terminal_islam_alawite
-    shia_branch -->|"Alevi (Turkey, Anatolian folk Shia)"| terminal_islam_alevi
-    twelver_branch -->|"Usuli (dominant ~95%, ijtihad, Marjas)"| usuli_branch
-    twelver_branch -->|"Akhbari (rejects ijtihad, traditions only)"| terminal_islam_akhbari
-    twelver_branch -->|"Shaykhism (19th-c. esoteric, Mahdi anticipation)"| terminal_islam_shaykhi
-    usuli_branch -->|"Iranian establishment (Islamic Republic)"| terminal_islam_iranian_establishment
-    usuli_branch -->|"Hezbollah-aligned (Lebanon)"| terminal_islam_hezbollah
-    usuli_branch -->|"Al-Da'wa party (Iraq)"| terminal_islam_al_dawa
-    usuli_branch -->|"Quietist Najaf school (Sistani, apolitical)"| terminal_islam_najaf_quietist
-    usuli_branch -->|"Azerbaijani / Caspian Twelver (regional)"| terminal_islam_azerbaijani_twelver
-    ismaili_branch -->|"Nizari Ismaili (living Imam — Aga Khan)"| nizari_branch
-    ismaili_branch -->|"Musta'li Ismaili (hidden Imam, Bohras)"| mustali_branch
-    ismaili_branch -->|"Other Ismaili / not affiliated"| terminal_islam_ismaili_other
-    nizari_branch -->|"Modern Nizari Ismaili (Aga Khan IV, pluralism)"| terminal_islam_nizari_modern
-    nizari_branch -->|"Nizari historical / Hashashin heritage (Alamut)"| terminal_islam_hashashin
-    mustali_branch -->|"Dawoodi Bohras (Mumbai/Gujarat, Da'i al-Mutlaq)"| terminal_islam_dawoodi_bohra
-    mustali_branch -->|"Sulaymani Bohras (Yemen)"| terminal_islam_sulaymani_bohra
-    mustali_branch -->|"Alavi Bohras (India)"| terminal_islam_alavi_bohra
-    zaidi_branch -->|"Traditional Zaidi (Yemen, hadawi school)"| terminal_islam_zaidi_traditional
-    zaidi_branch -->|"Houthi / Ansar Allah-aligned (Yemen, political-militant)"| terminal_islam_houthi
-    sufi_tariqa -->|"Qadiriyya (Abdul-Qadir Gilani)"| terminal_islam_qadiriyya
-    sufi_tariqa -->|"Naqshbandi (Central Asia, Turkey)"| terminal_islam_naqshbandi
-    sufi_tariqa -->|"Mevlevi (Rumi, whirling dervishes)"| terminal_islam_mevlevi
-    sufi_tariqa -->|"Chishti (Indian subcontinent)"| terminal_islam_chishti
-    sufi_tariqa -->|"Shadhili / Tijani / Rifa'i (Africa, Middle East)"| terminal_islam_shadhiliyya
-    sufi_tariqa -->|"Non-affiliated Sufi / Islamic mysticism"| terminal_islam_sufi_other
-    judaism_major_branch -->|"Orthodox Judaism (Torah is binding)"| orthodox_judaism_branch
-    judaism_major_branch -->|"Conservative Judaism (Halakha evolves)"| terminal_judaism_conservative
-    judaism_major_branch -->|"Reform / Progressive Judaism (ethics over law)"| terminal_judaism_reform
-    judaism_major_branch -->|"Reconstructionist Judaism (Judaism as civilization)"| terminal_judaism_reconstructionist
-    judaism_major_branch -->|"Karaite Judaism (Torah only, no Talmud)"| terminal_judaism_karaites
-    judaism_major_branch -->|"Samaritans (Mount Gerizim, own Torah)"| terminal_judaism_samaritan
-    orthodox_judaism_branch -->|"Haredi / Ultra-Orthodox (separation from secular)"| haredi_branch
-    orthodox_judaism_branch -->|"Modern Orthodox (Halakha + modern life)"| modern_orthodox_branch
-    orthodox_judaism_branch -->|"Centrist Orthodoxy (Yeshiva University)"| terminal_judaism_centrist
-    orthodox_judaism_branch -->|"Hardal / Nationalist Haredi (Torah + Zionism)"| terminal_judaism_hardal
-    haredi_branch -->|"Hasidic (mystical joy, Rebbes)"| hasidic_branch
-    haredi_branch -->|"Misnagdim / Litvish (Talmudic intellect)"| terminal_judaism_litvish
-    haredi_branch -->|"Sephardic Haredi (Shas, Mizrahi tradition)"| terminal_judaism_sephardic_haredi
-    hasidic_branch -->|"Chabad-Lubavitch (global outreach)"| terminal_judaism_chabad
-    hasidic_branch -->|"Satmar (insulated, anti-Zionist)"| terminal_judaism_satmar
-    hasidic_branch -->|"Bobov / Ger / Belz / Vizhnitz (Polish-Hungarian dynasties)"| terminal_judaism_other_hasidic
-    modern_orthodox_branch -->|"Religious Zionism (Mizrachi, Bnei Akiva)"| terminal_judaism_religious_zionist
-    modern_orthodox_branch -->|"Open Orthodoxy (progressive within Orthodoxy)"| terminal_judaism_open_orthodox
-    modern_orthodox_branch -->|"Torah Umadda (Yeshiva University philosophy)"| terminal_judaism_torah_umadda
-    other_unitarian_branch -->|"Baha'i Faith (Bahá'u'lláh, unity of religions)"| terminal_bahai
-    other_unitarian_branch -->|"Druze (esoteric offshoot of Ismailism)"| terminal_druze
-    other_unitarian_branch -->|"Samaritan / Karaite (early Israelite divisions)"| terminal_judaism_samaritan
-    other_unitarian_branch -->|"Unitarian Universalism (non-creedal)"| terminal_restorationist_unitarian
-    hindu_tradition -->|"Vaishnavism (Vishnu/Krishna as Supreme)"| vaishnava_branch
-    hindu_tradition -->|"Shaivism (Shiva as Supreme)"| shaiva_branch
-    hindu_tradition -->|"Shaktism (Goddess/Devi as Supreme)"| shakta_branch
-    hindu_tradition -->|"Smartism (five deities, Advaita Vedanta)"| smartism_branch
-    hindu_tradition -->|"Ayyavazhi / Other new Hindu movements"| terminal_hindu_other
-    vaishnava_branch -->|"ISKCON / Hare Krishna (Gaudiya Vaishnavism)"| terminal_hindu_iskcon
-    vaishnava_branch -->|"Swaminarayan (BAPS, Akshar-Purushottam)"| terminal_hindu_swaminarayan
-    vaishnava_branch -->|"Sri Vaishnava (Ramanuja, Vishishtadvaita)"| terminal_hindu_sri_vaishnava
-    vaishnava_branch -->|"Madhva Vaishnava (Dvaita, dualism)"| terminal_hindu_madhva
-    vaishnava_branch -->|"Ramanandi / North Indian bhakti (Tulsidas)"| terminal_hindu_ramandi
-    shaiva_branch -->|"Shaiva Siddhanta (Tamil Nadu, dualist)"| terminal_hindu_shaiva_siddhanta
-    shaiva_branch -->|"Kashmir Shaivism (Trika, monistic)"| terminal_hindu_kashmir_shaiva
-    shaiva_branch -->|"Lingayat / Virashaiva (Basava, no Vedic rituals)"| terminal_hindu_lingayat
-    shaiva_branch -->|"Nath / Hatha Yoga tradition (Gorakhnath)"| terminal_hindu_nath
-    shakta_branch -->|"Kali worship (Bengal, Ramakrishna)"| terminal_hindu_kali
-    shakta_branch -->|"Sri Vidya / Lalita (Tantric goddess worship)"| terminal_hindu_sri_vidya
-    shakta_branch -->|"Durga / Navaratri devotional (mainstream Shakta)"| terminal_hindu_durga
-    smartism_branch -->|"Advaita Vedanta (Shankara, non-dualism)"| terminal_hindu_advaita
-    smartism_branch -->|"Neo-Vedanta / Integral Yoga (Vivekananda, Aurobindo)"| terminal_hindu_neo_vedanta
-    smartism_branch -->|"Arsha / Vedic orthopraxy (ritual Smarta)"| terminal_hindu_arsha
-    abstract_type -->|"The universe itself (Spinozan)"| terminal_spinozan
-    abstract_type -->|"An absolute that unfolds through history (Hegelian)"| terminal_hegelian
-    abstract_type -->|"A rational first cause (Aristotelian/Thomistic)"| terminal_classical_theist
+    start["What kind of orientation best describes you?"]
+    nonreligious["Do you nevertheless regard any reality, value, or experience as sacred, transcendent, or spiritually significant?"]
+    secular_profile["How would you describe your non-religious orientation?"]
+    rnatural_profile["Which term fits your naturalistic sacred orientation?"]
+    nonlabel_profile["You have chosen not to categorise your orientation. Would you like to add a free-text self-description?"]
+    ultimate["Do you affirm an ultimate, sacred, divine, spiritual, or transcendent reality?"]
+    nontheistic["Do you identify with a non-theistic religion, philosophy, or practice?"]
+    agnostic["How would you characterise your current stance?"]
+    practicefirst["What is your primary entry point — practice, community, ancestry, or tradition?"]
+    reality["How do you understand ultimate or sacred reality?"]
+    agency["Is ultimate reality personal, impersonal, both, or beyond those categories?"]
+    relation["How, if at all, does ultimate reality relate to people and the world?"]
+    knowing["How is religious or spiritual truth best known?"]
+    belonging["Which traditions, communities, practices, and cultural inheritances matter to you? Select all that apply."]
+    abrahamic_detail["Which Abrahamic tradition(s) do you identify with? Select all that apply."]
+    southasian_detail["Which South Asian tradition(s)? Select all that apply."]
+    eastasian_detail["Which East Asian tradition(s)? Select all that apply."]
+    indigenous_detail["Which Indigenous / ancestral tradition? Self-describe your people/region."]
+    pagan_detail["Which contemporary Pagan path? Select all that apply."]
+    esoteric_detail["Which esoteric / spiritualist tradition? Select all that apply."]
+    newreligion_detail["Which new religious movement or independent path?"]
+    hindu_detail["Which Hindu tradition(s)? Select all that apply."]
+    free_text_nonrel["Describe your non-religious orientation"]
+    start -->|"I do not use religious or spiritual categories"| nonreligious
+    start -->|"I use, or am open to, religious/spiritual/philosophical categories"| ultimate
+    start -->|"Unsure / exploring / varies by context"| ultimate
+    nonreligious -->|"No — nothing is sacred or transcendent for me"| secular_profile
+    nonreligious -->|"Yes or perhaps — I relate to something as sacred/transcendent"| rnatural_profile
+    nonreligious -->|"The question is unclear to me"| nonlabel_profile
+    secular_profile -->|"Other self-described"| free_text_nonrel
+    rnatural_profile -->|"Other self-described"| free_text_rnatural
+    ultimate -->|"No — I do not affirm such a reality"| nontheistic
+    ultimate -->|"Unsure / suspended judgment / seeking"| agnostic
+    ultimate -->|"Not framed this way — I start from practice, community, ancestry, or tradition"| practicefirst
+    ultimate -->|"Yes — I affirm an ultimate/sacred/divine reality"| reality
+    nontheistic -->|"Other self-described"| free_text_nt
+    nontheistic -->|"I prefer to start from practice/community rather than belief"| practicefirst
+    agnostic -->|"Other self-described"| free_text_agnostic
+    practicefirst -->|"Other self-described"| free_text_practice
+    belonging -->|"Jewish; Christian; Muslim; Baháʼí; Samaritan; Druze; Mandaean; Yazidi; Rastafari; other Abrahamic/West Asian"| abrahamic_detail
+    belonging -->|"Hindu traditions; Sikh; Jain; Buddhist; other South Asian/Himalayan traditions"| southasian_detail
+    belonging -->|"Daoist; Confucian; Chinese folk/religious traditions; Shinto; Korean traditions; Vietnamese traditions; Japanese new religions"| eastasian_detail
+    belonging -->|"Indigenous, land-based, ancestral, African traditional, African diasporic, Pacific, American, or circumpolar traditions — self-described region/people first"| indigenous_detail
+    belonging -->|"Contemporary Pagan, Heathen, Druid, Wiccan, reconstructionist, or related"| pagan_detail
+    belonging -->|"Spiritualist, Theosophical, occult/esoteric, New Thought, New Age, or related"| esoteric_detail
+    belonging -->|"New religious movement or independent spiritual path"| newreligion_detail
+    belonging -->|"Other self-described (free text)"| free_text_belonging
+    abrahamic_detail -->|"Other Abrahamic / West Asian (self-described)"| free_text_abrahamic
+    southasian_detail -->|"Hindu traditions"| hindu_detail
+    southasian_detail -->|"Other South Asian / Himalayan (self-described)"| free_text_southasian
+    eastasian_detail -->|"Other East Asian (self-described)"| free_text_eastasian
+    indigenous_detail -->|"Enter your tradition / people / region"| free_text_indigenous
+    pagan_detail -->|"Other Pagan / related (self-described)"| free_text_pagan
+    esoteric_detail -->|"Other esoteric / related (self-described)"| free_text_esoteric
+    newreligion_detail -->|"Enter name / description"| free_text_nr
+    hindu_detail -->|"Other Hindu / new movements (self-described)"| free_text_hindu

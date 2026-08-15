@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Parse ontology.ts and emit a Mermaid flowchart of the full question tree. v2 (block-based)."""
-import re, json
-
+"""Parse ontology.ts (v2 multi-axis graph) and emit a Mermaid flowchart."""
+import re
+import json
 import os
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -10,64 +10,123 @@ OUT = os.path.join(BASE, "public", "ontology-tree.mmd")
 OUT_JSON = "/tmp/ontology_stats.json"
 
 src = open(SRC, encoding="utf-8").read()
-nodes_part, terminals_part = src.split("export const TERMINALS", 1)
 
-BLOCK_RE = re.compile(r'^  ([a-zA-Z_]\w*): \{(.*?)\n  \},?$', re.M | re.S)
+# Regex to find node blocks: id: { ... }
+NODE_BLOCK_RE = re.compile(r'^  ([a-zA-Z_]\w*): \{(.*?)\n  \},?$', re.M | re.S)
 
 def en_of(block_text, key):
+    """Extract English text from a LocalizedText field."""
     m = re.search(key + r': \{\s*en: "((?:[^"\\]|\\.)*)"', block_text, re.S)
     return m.group(1).replace('\\"', '"') if m else ""
 
-def parse_blocks(part):
-    blocks = {}
-    for nid, body in BLOCK_RE.findall(part):
-        node_id = nid
-        m = re.search(r'node_id: "(\w+)"', body)
-        if m:
-            node_id = m.group(1)
-        question = en_of(body, "question") or en_of(body, "title")
-        opts = []
-        if "options:" in body:
-            opt_section = body.split("options: [", 1)[1]
-            chunks = re.split(r'\n\s*\{', opt_section)
-            for ch in chunks[1:]:
-                lbl = en_of(ch, "label")
-                nxt = re.search(r'next_node: "(\w+)"', ch)
-                opts.append({"label": lbl, "next": nxt.group(1) if nxt else None})
-        blocks[node_id] = {"node_id": node_id, "question": question, "options": opts}
-    return blocks
+def extract_choices(text):
+    """Extract choices array from a node body, handling nested brackets."""
+    idx = text.find('choices: [')
+    if idx < 0:
+        return ""
+    idx += len('choices: [')
+    depth = 1
+    for i, ch in enumerate(text[idx:]):
+        if ch == '[':
+            depth += 1
+        elif ch == ']':
+            depth -= 1
+            if depth == 0:
+                return text[idx:idx+i]
+    return ""
 
-nodes = parse_blocks(nodes_part)
-terminals = parse_blocks(terminals_part)
+def parse_choice_blocks(choices_text):
+    """Parse individual choice objects from choices array text."""
+    choices = []
+    i = 0
+    while i < len(choices_text):
+        # Find next choice start
+        if choices_text[i] == '{':
+            depth = 1
+            start = i
+            i += 1
+            while i < len(choices_text) and depth > 0:
+                if choices_text[i] == '{':
+                    depth += 1
+                elif choices_text[i] == '}':
+                    depth -= 1
+                i += 1
+            if depth == 0:
+                choice_text = choices_text[start:i]
+                # Parse this choice
+                cid_match = re.search(r'id:\s*"(\w+)"', choice_text)
+                label = en_of(choice_text, "label")
+                next_nodes = []
+                next_match = re.search(r'next:\s*\[(.*?)\]', choice_text, re.S)
+                if next_match:
+                    next_str = next_match.group(1)
+                    next_nodes = re.findall(r'"(\w+)"', next_str)
+                if cid_match:
+                    choices.append({
+                        "id": cid_match.group(1),
+                        "label": label,
+                        "next": next_nodes,
+                    })
+        else:
+            i += 1
+    return choices
 
-known = set(nodes) | set(terminals)
-dangling = [(nid, o["label"], o["next"]) for nid, b in nodes.items() for o in b["options"]
-            if o["next"] not in known]
+def parse_nodes(part):
+    """Parse all node blocks from the NODES record."""
+    nodes = {}
+    for nid, body in NODE_BLOCK_RE.findall(part):
+        # Extract prompt (question)
+        prompt = en_of(body, "prompt")
+        # Extract choices
+        choices_text = extract_choices(body)
+        choices = parse_choice_blocks(choices_text)
+        nodes[nid] = {
+            "node_id": nid,
+            "prompt": prompt,
+            "choices": choices,
+        }
+    return nodes
+
+nodes = parse_nodes(src)
+
+known = set(nodes.keys())
+dangling = []
+for nid, node in nodes.items():
+    for c in node["choices"]:
+        for nxt in c["next"]:
+            if nxt not in known:
+                dangling.append((nid, c["label"], nxt))
 
 # --- Mermaid generation ---
 def esc(s):
-    return s.replace("&", "&amp;").replace('"', "&quot;")
+    return s.replace("&", "&").replace('"', '\\"')
 
-mmd = ["flowchart TD",
-       "    %% Auto-generated from src/data/ontology.ts — do not edit by hand"]
-for nid, b in nodes.items():
-    mmd.append(f'    {nid}["{esc(b["question"] or nid)}"]')
-for tid, b in terminals.items():
-    mmd.append(f'    {tid}(["{esc(b["question"] or tid)}"])')
-for nid, b in nodes.items():
-    for o in b["options"]:
-        if o["next"]:
-            mmd.append(f'    {nid} -->|"{esc(o["label"])}"| {o["next"]}')
+mmd = [
+    "flowchart TD",
+    "    %% Auto-generated from src/data/ontology.ts — do not edit by hand"
+]
+for nid, node in nodes.items():
+    label = esc(node["prompt"] or nid)
+    mmd.append(f'    {nid}["{label}"]')
+
+for nid, node in nodes.items():
+    for c in node["choices"]:
+        for nxt in c["next"]:
+            edge_label = esc(c["label"])
+            if edge_label:
+                mmd.append(f'    {nid} -->|"{edge_label}"| {nxt}')
+            else:
+                mmd.append(f'    {nid} --> {nxt}')
 
 mmd_text = "\n".join(mmd) + "\n"
 open(OUT, "w", encoding="utf-8").write(mmd_text)
 
 stats = {
     "question_nodes": len(nodes),
-    "terminal_nodes": len(terminals),
-    "total_options": sum(len(b["options"]) for b in nodes.values()),
+    "terminal_nodes": 0,  # v2 has no separate terminals; profiles are computed
+    "total_options": sum(len(n["choices"]) for n in nodes.values()),
     "dangling_edges": dangling,
-    "max_fanout": sorted(((len(b["options"]), nid) for nid, b in nodes.items()), reverse=True)[:3],
+    "max_fanout": sorted(((len(n["choices"]), nid) for nid, n in nodes.items()), reverse=True)[:3],
 }
 json.dump(stats, open(OUT_JSON, "w"), ensure_ascii=False, indent=2)
 print(json.dumps(stats, ensure_ascii=False, indent=2))

@@ -10,15 +10,17 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { currentTerminal, useWizard } from "@/store/wizardStore";
+import type { Profile } from "@/data/ontology";
 
 export default function DefinitionCard() {
   const { t } = useTranslation();
   const path = useWizard((s) => s.path);
+  const profile = useWizard((s) => s.profile);
   const reset = useWizard((s) => s.reset);
   const lang = useWizard((s) => s.lang);
   const [copied, setCopied] = useState(false);
 
-  const terminal = currentTerminal({ path });
+  const terminal = currentTerminal({ path, profile });
   if (!terminal) return null;
 
   const shareText = `${terminal.title[lang]} — ${terminal.blueprint[lang]}`;
@@ -45,40 +47,20 @@ export default function DefinitionCard() {
 
         {/* Title */}
         <h2 className="text-2xl md:text-3xl font-bold text-amber-100 mb-4">
-          {t("app.community", { pct: terminal.percent_of_users })}
+          {t("app.blueprint")}
           <span className="block mt-1 text-lg text-slate-300 font-semibold">{terminal.title[lang]}</span>
         </h2>
 
         {/* The Blueprint */}
         <p className="text-slate-300 leading-relaxed mb-5">{terminal.blueprint[lang]}</p>
 
-        {/* Ontology chips */}
+        {/* Profile tags */}
         <div className="flex flex-wrap gap-2 mb-6">
-          {["realist", "personalism", "interventionist"].map((k) => (
+          {(profile?.orientation || []).slice(0, 3).map((k) => (
             <span key={k} className="rounded-full border border-slate-700 bg-slate-800/60 px-3 py-1 text-[11px] text-slate-300 capitalize">
               {k}
             </span>
           ))}
-        </div>
-
-        {/* Social proof */}
-        <div className="rounded-xl bg-slate-900/70 border border-slate-800 px-4 py-3 mb-5">
-          <p className="text-sm text-slate-300">
-            <span className="font-bold text-amber-300">{terminal.social_proof.toLocaleString(lang === "ru" ? "ru-RU" : lang === "az" ? "az-AZ" : "en-GB")}</span>{" "}
-            {t("app.socialProof")}
-          </p>
-        </div>
-
-        {/* Similar minds */}
-        <div className="mb-6">
-          <p className="text-[11px] uppercase tracking-widest text-slate-500 mb-2">{t("app.similarMinds")}</p>
-          <div className="flex flex-wrap gap-2">
-            {terminal.similar_minds.map((m) => (
-              <span key={m[lang]} className="rounded-lg border border-slate-700 bg-slate-800/50 px-3 py-1.5 text-xs text-slate-300 italic">
-                {m[lang]}
-              </span>
-            ))}
-          </div>
         </div>
 
         {/* Actions */}
