@@ -15,5 +15,9 @@
         { "key": "Cross-Origin-Resource-Policy", "value": "same-origin" }
       ]
     }
+  ],
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/:locale/", "destination": "/:locale/index.html" }
   ]
 }
