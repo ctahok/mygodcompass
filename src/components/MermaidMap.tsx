@@ -64,6 +64,9 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
   const [viewMode, setViewMode] = useState<"full" | "pruned">("pruned");
   const [autoFitted, setAutoFitted] = useState(false);
   const [zoom, setZoom] = useState(1);
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [isPanning, setIsPanning] = useState(false);
+  const [panStart, setPanStart] = useState({ x: 0, y: 0 });
   const svgHostRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const renderIdRef = useRef(0);
@@ -158,6 +161,27 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
   useEffect(() => {
     setAutoFitted(false);
   }, [source]);
+
+  // Pan handlers
+  const handleMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.button !== 0) return; // only left click
+    setIsPanning(true);
+    setPanStart({ x: e.clientX - pan.x, y: e.clientY - pan.y });
+    e.preventDefault();
+  }, [pan.x, pan.y]);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isPanning) return;
+    setPan({ x: e.clientX - panStart.x, y: e.clientY - panStart.y });
+  }, [isPanning, panStart.x, panStart.y]);
+
+  const handleMouseUp = useCallback(() => {
+    setIsPanning(false);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsPanning(false);
+  }, []);
 
   const handleDownload = useCallback(async () => {
     if (!svgHostRef.current || !containerRef.current) return;
@@ -271,17 +295,26 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
       {/* SVG Host */}
       <div
         ref={svgHostRef}
-        className="w-full h-full touch-pan-x touch-pan-y"
+        className="w-full h-full touch-pan-x touch-pan-y cursor-grab"
         style={{
           overflow: "auto",
           WebkitOverflowScrolling: "touch",
         }}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
       >
         <div key={svgKey} className="min-w-full min-h-full" style={{ minHeight: height }}>
           {svgContent && (
             <div
               className="w-full h-full"
-              style={{ transform: `scale(${zoom})`, transformOrigin: "top left", width: `${100 / zoom}%`, height: `${100 / zoom}%` }}
+              style={{
+                transform: `scale(${zoom}) translate(${pan.x / zoom}px, ${pan.y / zoom}px)`,
+                transformOrigin: "top left",
+                width: `${100 / zoom}%`,
+                height: `${100 / zoom}%`,
+              }}
               dangerouslySetInnerHTML={{ __html: svgContent }}
             />
           )}

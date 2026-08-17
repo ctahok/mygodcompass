@@ -11,6 +11,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { type Choice, type LocalizedText, type Lang } from "@/data/ontology";
 import { useWizard, currentNodeId, currentNode } from "@/store/wizardStore";
+import { getTermDefinition, type TermDefinition } from "@/data/termDefinitions";
 
 function TermTip({ text }: { text: LocalizedText }) {
   const { t } = useTranslation();
@@ -36,6 +37,62 @@ function TermTip({ text }: { text: LocalizedText }) {
             className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-[11px] leading-snug text-slate-300 shadow-xl z-30"
           >
             {text[lang]}
+            <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-700" />
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </span>
+  );
+}
+
+/**
+ * TermInfo — small "i" button next to a choice label showing a gloss
+ * (localized) plus clickable authoritative sources (SEP, Wikipedia, etc.).
+ */
+function TermInfo({ def }: { def: TermDefinition }) {
+  const { t } = useTranslation();
+  const lang = useWizard((s) => s.lang);
+  const [open, setOpen] = useState(false);
+
+  return (
+    <span className="relative inline-flex items-center">
+      <button
+        type="button"
+        aria-label={t("app.tooltip")}
+        onClick={(e) => {
+          e.stopPropagation();
+          setOpen((o) => !o);
+        }}
+        className="ml-1.5 inline-flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full border border-slate-600/70 bg-slate-800/80 text-[11px] font-bold text-slate-400 hover:border-amber-400/70 hover:text-amber-300 focus-visible:outline-amber-400 transition-colors cursor-pointer"
+      >
+        i
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.span
+            initial={{ opacity: 0, y: 4, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 4, scale: 0.96 }}
+            transition={{ duration: 0.15 }}
+            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 rounded-lg border border-slate-700 bg-slate-900 px-3.5 py-3 text-[11px] leading-snug text-slate-300 shadow-xl z-40"
+          >
+            <span className="block text-slate-200">{def.gloss[lang]}</span>
+            {def.sources.length > 0 && (
+              <span className="mt-2 block border-t border-slate-800 pt-1.5">
+                {def.sources.map((src, idx) => (
+                  <a
+                    key={idx}
+                    href={src.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="block py-0.5 text-amber-300/90 hover:text-amber-200 hover:underline"
+                  >
+                    ↗ {src.title[lang]}
+                  </a>
+                ))}
+              </span>
+            )}
             <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-700" />
           </motion.span>
         )}
@@ -153,6 +210,7 @@ export default function QuestionCard() {
               <span className="flex-1 text-base text-slate-100 group-hover:text-amber-200 transition-colors">
                 {renderLabel(opt.label, lang)}
               </span>
+              {getTermDefinition(opt.id) && <TermInfo def={getTermDefinition(opt.id)!} />}
               {opt.allowsMultiple && (
                 <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-700 text-slate-400">
                   +more
@@ -233,6 +291,7 @@ export default function QuestionCard() {
                   <span className="text-sm text-slate-300 group-hover:text-amber-300 transition-colors">
                     {renderLabel(opt.label, lang)}
                   </span>
+                  {getTermDefinition(opt.id) && <TermInfo def={getTermDefinition(opt.id)!} />}
                 </motion.button>
               ))}
             </div>

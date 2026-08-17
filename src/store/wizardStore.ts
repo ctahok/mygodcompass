@@ -5,6 +5,7 @@
 // ============================================================
 
 import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 import { NODES, type Choice, type Node, type Profile, type Lang, type LocalizedText } from "@/data/ontology";
 
 export interface PathStep {
@@ -387,72 +388,89 @@ function buildProfile(tags: string[], freeTexts: string[]): Profile {
   return profile;
 }
 
-export const useWizard = create<WizardState>((set, get) => ({
-  path: [],
-  pendingNodes: [],
-  begun: false,
-  finished: false,
-  lang: "en",
-  profile: null,
-  candidateScores: {},
+export const useWizard = create<WizardState>()(
+  persist(
+    (set, get) => ({
+      path: [],
+      pendingNodes: [],
+      begun: false,
+      finished: false,
+      lang: "en",
+      profile: null,
+      candidateScores: {},
 
-  begin: () => set({ begun: true }),
+      begin: () => set({ begun: true }),
 
-  // For single-select nodes (or first choice in multi)
-  answer: (choiceIds: string[], freeText?: string) => {
-    const { path, pendingNodes } = get();
-    const currentNodeId = path.length === 0 ? START_NODE : (path[path.length - 1].nextNodeIds[0] || pendingNodes[0] || START_NODE);
-    const node = NODES[currentNodeId];
-    if (!node) return;
+      // For single-select nodes (or first choice in multi)
+      answer: (choiceIds: string[], freeText?: string) => {
+        const { path, pendingNodes } = get();
+        const currentNodeId = path.length === 0 ? START_NODE : (path[path.length - 1].nextNodeIds[0] || pendingNodes[0] || START_NODE);
+        const node = NODES[currentNodeId];
+        if (!node) return;
 
-    const choices = choiceIds.map(id => node.choices.find(c => c.id === id)).filter(Boolean) as Choice[];
-    if (!choices.length) return;
+        const choices = choiceIds.map(id => node.choices.find(c => c.id === id)).filter(Boolean) as Choice[];
+        if (!choices.length) return;
 
-    const allTags = choices.flatMap(c => c.tags || []);
-    const allNext = choices.flatMap(c => c.next || []);
+        const allTags = choices.flatMap(c => c.tags || []);
+        const allNext = choices.flatMap(c => c.next || []);
 
-    // Merge: if a next node is already pending, don't duplicate; otherwise append new ones
-    const mergedNext = [...new Set([...pendingNodes, ...allNext])];
+        // Merge: if a next node is already pending, don't duplicate; otherwise append new ones
+        const mergedNext = [...new Set([...pendingNodes, ...allNext])];
 
-    const step: PathStep = {
-      nodeId: currentNodeId,
-      choiceIds,
-      tags: allTags,
-      nextNodeIds: allNext.length > 0 ? allNext : (pendingNodes.length > 0 ? [pendingNodes[0]] : []),
-      freeText,
-    };
+        const step: PathStep = {
+          nodeId: currentNodeId,
+          choiceIds,
+          tags: allTags,
+          nextNodeIds: allNext.length > 0 ? allNext : (pendingNodes.length > 0 ? [pendingNodes[0]] : []),
+          freeText,
+        };
 
-    set(state => {
-      const newPath = [...state.path, step];
-      // Accumulate all tags from path
-      const accumulatedTags = newPath.flatMap(s => s.tags);
-      const freeTexts = newPath.flatMap(s => s.freeText ? [s.freeText] : []);
-      return {
-        path: newPath,
-        pendingNodes: mergedNext,
-        profile: buildProfile(accumulatedTags, freeTexts),
-        candidateScores: computeCandidateScores(accumulatedTags),
-      };
-    });
-  },
+        set(state => {
+          const newPath = [...state.path, step];
+          // Accumulate all tags from path
+          const accumulatedTags = newPath.flatMap(s => s.tags);
+          const freeTexts = newPath.flatMap(s => s.freeText ? [s.freeText] : []);
+          return {
+            path: newPath,
+            pendingNodes: mergedNext,
+            profile: buildProfile(accumulatedTags, freeTexts),
+            candidateScores: computeCandidateScores(accumulatedTags),
+          };
+        });
+      },
 
-  back: () => set((state) => {
-    const newPath = state.path.slice(0, -1);
-    const accumulatedTags = newPath.flatMap(s => s.tags);
-    const freeTexts = newPath.flatMap(s => s.freeText ? [s.freeText] : []);
-    return {
-      path: newPath,
-      profile: newPath.length > 0 ? buildProfile(accumulatedTags, freeTexts) : null,
-      candidateScores: computeCandidateScores(accumulatedTags),
-    };
-  }),
+      back: () => set((state) => {
+        const newPath = state.path.slice(0, -1);
+        const accumulatedTags = newPath.flatMap(s => s.tags);
+        const freeTexts = newPath.flatMap(s => s.freeText ? [s.freeText] : []);
+        return {
+          path: newPath,
+          profile: newPath.length > 0 ? buildProfile(accumulatedTags, freeTexts) : null,
+          candidateScores: computeCandidateScores(accumulatedTags),
+        };
+      }),
 
-  reset: () => set({ path: [], pendingNodes: [], begun: false, finished: false, profile: null, candidateScores: {} }),
+      reset: () => set({ path: [], pendingNodes: [], begun: false, finished: false, profile: null, candidateScores: {} }),
 
-  finish: () => set((state) => ({ finished: true, profile: state.profile })),
+      finish: () => set((state) => ({ finished: true, profile: state.profile })),
 
-  setLang: (l: Lang) => set({ lang: l }),
-}));
+      setLang: (l: Lang) => set({ lang: l }),
+    }),
+    {
+      name: "ontological-compass-wizard",
+      storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({
+        path: state.path,
+        pendingNodes: state.pendingNodes,
+        begun: state.begun,
+        finished: state.finished,
+        lang: state.lang,
+        profile: state.profile,
+        candidateScores: state.candidateScores,
+      }),
+    }
+  )
+);
 
 // ------------------------------------------------------------
 // Selectors / derived helpers
