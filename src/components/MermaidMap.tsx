@@ -10,7 +10,7 @@
 //   - Pan (drag) + zoom (wheel / buttons) + JPG download.
 // ============================================================
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { NODES } from "@/data/ontology";
 import type { Lang } from "@/data/ontology";
 import { useWizard, pathNodeIds } from "@/store/wizardStore";
@@ -65,11 +65,28 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
   const [autoFitted, setAutoFitted] = useState(false);
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const [isPanning, setIsPanning] = useState(false);
   const [panStart, setPanStart] = useState({ x: 0, y: 0 });
   const svgHostRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const renderIdRef = useRef(0);
+
+  // Fullscreen handler
+  useEffect(() => {
+    if (isFullscreen) {
+      document.body.style.overflow = "hidden";
+      setAutoFitted(false); // reset auto-fit when entering fullscreen
+      const handleEscape = (e: KeyboardEvent) => {
+        if (e.key === "Escape") setIsFullscreen(false);
+      };
+      document.addEventListener("keydown", handleEscape);
+      return () => {
+        document.body.style.overflow = "";
+        document.removeEventListener("keydown", handleEscape);
+      };
+    }
+  }, [isFullscreen]);
 
   // ===== Build mermaid source from current path + language =====
   const buildSource = useCallback(() => {
@@ -226,8 +243,8 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
   return (
     <div
       ref={containerRef}
-      className="rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden"
-      style={{ height }}
+      className={`rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden ${isFullscreen ? "fixed inset-0 z-50 rounded-none" : ""}`}
+      style={{ height: isFullscreen ? "100vh" : height }}
     >
       {/* Toolbar */}
       <div className="flex items-center justify-between p-3 border-b border-slate-800 bg-slate-900/60">
@@ -273,7 +290,23 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
             >
               1:1
             </button>
+            <button
+              type="button"
+              onClick={() => setAutoFitted(false)}
+              className="w-7 h-7 rounded-md text-[10px] font-semibold text-slate-400 hover:bg-slate-700 hover:text-amber-300 transition-colors cursor-pointer"
+              aria-label="Fit to screen"
+            >
+              ⛶
+            </button>
           </div>
+          <button
+            type="button"
+            onClick={() => setIsFullscreen(!isFullscreen)}
+            className="w-7 h-7 rounded-md text-sm font-bold text-slate-300 hover:bg-slate-700 hover:text-amber-300 transition-colors cursor-pointer"
+            aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+          >
+            {isFullscreen ? "⛶" : "⛶"}
+          </button>
           <a
             href="/ontology-tree.mmd"
             target="_blank"

@@ -695,6 +695,619 @@ export const TERM_DEFINITIONS: Record<string, TermDefinition> = {
       wiki("Protestantism (Wikipedia)", "Протестантизм (Википедия)", "Protestantizm (Vikipediya)", "https://en.wikipedia.org/wiki/Protestantism"),
     ],
   },
+  oriental_orthodox: {
+    gloss: {
+      en: "Eastern Christian churches that recognize only the first three ecumenical councils (e.g., Coptic, Armenian, Syriac, Ethiopian, Eritrean, Malankara).",
+      ru: "Восточно-христианские церкви, признающие только первые три вселенских собора (коптская, армянская, сирийская, эфиопская и др.).",
+      az: "Yalnız ilk üç ümumdünya məclisini tanıyan Şərqi-Xristian kilsələri (məs., Qopt, Erməni, Suriyani, Əfiop, Malankara).",
+    },
+    sources: [
+      wiki("Oriental Orthodoxy (Wikipedia)", "Ориентальное православие (Википедия)", "Oriental Pravoslav (Vikipediya)", "https://en.wikipedia.org/wiki/Oriental_Orthodoxy"),
+    ],
+  },
+  restorationist: {
+    gloss: {
+      en: "Christian groups seeking to restore the original church of the New Testament (e.g., Churches of Christ, Disciples of Christ, Latter-day Saints).",
+      ru: "Христианские группы, стремящиеся восстановить первоначальную церковь Нового Завета (Церкви Христа, Ученики Христа, Святые последних дней).",
+      az: "Müqəddəs kitabın orijinal kiləsini bərpa etməyə çalışan Xristian qrupları (məs., Məsih Kilsələri, Məsihin Şagirdləri, Son günlər Qədəsələri).",
+    },
+    sources: [
+      wiki("Restorationism (Wikipedia)", "Реставрационизм (Википедия)", "Restorasionizm (Vikipediya)", "https://en.wikipedia.org/wiki/Restorationism"),
+    ],
+  },
+  // ============ ISLAM (additional) ============
+  ibadi: {
+    gloss: {
+      en: "An early Islamic school distinct from Sunni and Shia, prominent in Oman and parts of North Africa; emphasizes elected leadership.",
+      ru: "Ранняя исламская школа, отличная от суннизма и шиизма, распространена в Омане и частично в Северной Африке; подчёркивает избираемое руководство.",
+      az: "Sünni və Şiədan fərqli əvvəlki İslam məktəbi, Oman və Şimal Afrikasının hissəsində yayılmış; seçilmiş rəhbərliyi vurğulayır.",
+    },
+    sources: [
+      wiki("Ibadi Islam (Wikipedia)", "Ибадизм (Википедия)", "İbadi İslam (Vikipediya)", "https://en.wikipedia.org/wiki/Ibadi"),
+    ],
+  },
+  // ============ EAST ASIAN (additional) ============
+  chinese_folk: {
+    gloss: {
+      en: "Traditional Chinese folk religion: veneration of ancestors, local deities, and cosmic forces; often blended with Buddhism, Daoism, and Confucianism.",
+      ru: "Традиционная китайская народная религия: почитание предков, локальных богов и космических сил; часто смешивается с буддизмом, даосизмом и конфуцианством.",
+      az: "Təqdimat Çin xalq dini: atalar, yerli tanrılar və kosmik qüvvələr pərəstişi; adətən buddizm, daoizm və konfutsiyçiliklə qarışıqdır.",
+    },
+    sources: [
+      wiki("Chinese folk religion (Wikipedia)", "Китайская народная религия (Википедия)", "Çin xalq dini (Vikipediya)", "https://en.wikipedia.org/wiki/Chinese_folk_religion"),
+    ],
+  },
+  korean: {
+    gloss: {
+      en: "Indigenous Korean traditions (Muism/Shamanism) and Korean forms of Buddhism, Confucianism, and Christianity.",
+      ru: "Коренные корейские традиции (Муизм/Шаманизм) и корейские формы буддизма, конфуцианства и христианства.",
+      az: "Yerli Koreya ənənələri (Muizm/Şamanizm) və Koreya formasında buddizm, konfutsiyçilik, xristianlıq.",
+    },
+    sources: [
+      wiki("Korean shamanism (Wikipedia)", "Корейский шаманизм (Википедия)", "Koreya şamanizmi (Vikipediya)", "https://en.wikipedia.org/wiki/Korean_shamanism"),
+    ],
+  },
+  vietnamese: {
+    gloss: {
+      en: "Vietnamese indigenous religion (Đạo Mẫu, ancestor worship) blended with Buddhism, Confucianism, and Taoism.",
+      ru: "Вьетнамская исконная религия (Дао Мау, поклонение предкам), смешанная с буддизмом, конфуцианством и даосизмом.",
+      az: "Vyetnam yerli dini (Dao Mav, atalar pərəstişi) buddizm, konfutsiyçilik və daoizm ilə qarışıqdır.",
+    },
+    sources: [
+      wiki("Vietnamese folk religion (Wikipedia)", "Вьетнамская народная религия (Википедия)", "Vyetnam xalq dini (Vikipediya)", "https://en.wikipedia.org/wiki/Vietnamese_folk_religion"),
+    ],
+  },
+  japanese_new: {
+    gloss: {
+      en: "Japanese new religions (Shinshukyo) founded since the 19th century (e.g., Soka Gakkai, Tenrikyo, PL Kyodan).",
+      ru: "Японские новые религии (Синшукё), основанные с XIX века (Сока Гаккай, Тенрикё, ПЛ Кёдан).",
+      az: "XIX əsrdən etibarən yaradılan Yaponiya yeni dinləri (Şinşukyo) (məs., Soka Qakkai, Tenrikyo, PL Kyodan).",
+    },
+    sources: [
+      wiki("Japanese new religions (Wikipedia)", "Японские новые религии (Википедия)", "Yaponiya yeni dini (Vikipediya)", "https://en.wikipedia.org/wiki/Japanese_new_religions"),
+    ],
+  },
+  // ============ SOUTH ASIAN (additional) ============
+  buddhist_nontheist: {
+    gloss: {
+      en: "Buddhism as a non-theistic path: no creator God, focus on suffering, impermanence, and the path to liberation.",
+      ru: "Буддизм как нетеистический путь: нет творца-Бога, акцент на страдании, непостоянстве и пути к освобождению.",
+      az: "Non-teistik yol kimi buddizm: yaradıcı Tanrı yoxdur, fokus çəkinmədə, daim olmamada və azadlıq yolunda.",
+    },
+    sources: [
+      wiki("Buddhism (Stanford Encyclopedia of Philosophy)", "Буддизм (Стэнфордская энциклопедия)", "Buddizm (Stanford ensiklopediyası)", "https://plato.stanford.edu/entries/buddhism/"),
+    ],
+  },
+  jain: {
+    gloss: {
+      en: "An ancient Indian religion emphasizing non-violence (ahimsa), asceticism, and liberation of the soul (moksha) from karmic bondage.",
+      ru: "Древняя индийская религия, подчёркивающая ненасилие (ахимса), аскезу и освобождение души (мокша) от кармического рабства.",
+      az: "Əsasən qeyri-ziddiyyət (əhimsə), əsketizm və canın karmik qulluqdan azadlığını (mokşa) vurğulayan qədim Hind dinidir.",
+    },
+    sources: [
+      wiki("Jainism (Wikipedia)", "Джайнизм (Википедия)", "Cainizm (Vikipediya)", "https://en.wikipedia.org/wiki/Jainism"),
+    ],
+  },
+  // ============ SECULAR / NON-RELIGIOUS (additional) ============
+  secular_humanist_nt: {
+    gloss: {
+      en: "Secular humanism as a non-theistic ethical life stance centered on human welfare and reason.",
+      ru: "Светский гуманизм как нетеистическая этическая позиция, centred on human welfare and reason.",
+      az: "Dünyəvi humanizm, non-teistik etik hayatı mövqe olaraq, insan refahı və aql üzərində qurulmuş.",
+    },
+    sources: [
+      wiki("Secular Humanism (Stanford Encyclopedia of Philosophy)", "Светский гуманизм (Стэнфордская энциклопедия)", "Dünyəvi humanizm (Stanford ensiklopediyası)", "https://plato.stanford.edu/entries/secular-humanism/"),
+    ],
+  },
+  // ============ PRACTICE-FIRST / NON-CATEGORICAL ============
+  practice_first_nt: {
+    gloss: {
+      en: "Starting from practice, ritual, or community rather than abstract belief or doctrine.",
+      ru: "Начало от практики, ритуала или общины, а не от абстрактной веры или доктрины.",
+      az: "Soyut inam və ya doktrinadan deyil, praktika, ritual və ya cəmiyyətdən başlamaq.",
+    },
+    sources: [
+      wiki("Religious practice (Wikipedia)", "Религиозная практика (Википедия)", "Dini praktika (Vikipediya)", "https://en.wikipedia.org/wiki/Religious_practice"),
+    ],
+  },
+  // ============ EPISTEMIC SOURCES (additional) ============
+  no_epistemic: {
+    gloss: {
+      en: "No claim to religious/spiritual knowledge; such knowledge is not central or accessible.",
+      ru: "Нет претензии на религиозное/духовное знание; такое знание не является центральным или доступным.",
+      az: "Dini/mənəvi bilik iddiası yoxdur; belə bilik mərkəzi və ya məhvuldur.",
+    },
+    sources: [
+      wiki("Agnosticism (Stanford Encyclopedia of Philosophy)", "Агностицизм (Стэнфордская энциклопедия)", "Aqnostisizm (Stanford ensiklopediyası)", "https://plato.stanford.edu/entries/agnosticism/"),
+    ],
+  },
+  // ============ RELATION (additional) ============
+  identity: {
+    gloss: {
+      en: "The divine is not separate from world, self, or nature — nondual identity or immanence.",
+      ru: "Божественное не отделено от мира, себя или природы — недуальная идентичность или имманентность.",
+      az: "İlahi dünya, öz və ya təbiətdən ayrı deyil — qeyri-dual identlik və ya immanençlik.",
+    },
+    sources: [
+      wiki("Nondualism (Wikipedia)", "Недуализм (Википедия)", "Qeyri-dualizm (Vikipediya)", "https://en.wikipedia.org/wiki/Nondualism"),
+    ],
+  },
+  participant: {
+    gloss: {
+      en: "Ultimate reality acts, communicates, or responds in the world (revelation, providence, intervention).",
+      ru: "Высшая реальность действует, общается или отвечает в мире (откровение, провиденция, вмешательство).",
+      az: "Ali reallik dünyada hərəkət edir, əlaqə qurur və ya cavab verir (vəhy, pırovidens, müdaxilə).",
+    },
+    sources: [
+      wiki("Divine providence (Wikipedia)", "Божественное промысление (Википедия)", "İlahi pırovidens (Vikipediya)", "https://en.wikipedia.org/wiki/Divine_providence"),
+    ],
+  },
+  sustainer: {
+    gloss: {
+      en: "Ultimate reality maintains, orders, or upholds the cosmos (providence, cosmic order).",
+      ru: "Высшая реальность поддерживает, упорядочивает или держит космос (промысл, космический порядок).",
+      az: "Ali reallik kosmosu dəstəkləyir, nizama salır və ya saxlayır (pırovidens, kosmik nizam).",
+    },
+    sources: [
+      wiki("Divine providence (Wikipedia)", "Божественное промысление (Википедия)", "İlahi pırovidens (Vikipediya)", "https://en.wikipedia.org/wiki/Divine_providence"),
+    ],
+  },
+  creator: {
+    gloss: {
+      en: "Ultimate reality creates or originates the world; distinct from it (creation ex nihilo or emanation).",
+      ru: "Высшая реальность создаёт или порождает мир; отлична от него (творение из ничего или эманация).",
+      az: "Ali reallik dünyanı yaradır və ya mənbə olur; ondan fərqlidir (heçlikdən yaradılma və ya emanasiya).",
+    },
+    sources: [
+      wiki("Creation (Wikipedia)", "Творение (Википедия)", "Yaradılma (Vikipediya)", "https://en.wikipedia.org/wiki/Creation_myth"),
+    ],
+  },
+  mixed_relation: {
+    gloss: {
+      en: "Several of these relational modes apply, or the view is unsettled/mixed.",
+      ru: "Несколько из этих реляционных модей подходят, или взгляд неопределён/смешан.",
+      az: "Bu əlaqə modullarından bir neçəsi tətbiq olunur və ya näzar qarışıq/bələnməmişdir.",
+    },
+    sources: [],
+  },
+  unknown_relation: {
+    gloss: {
+      en: "Suspended judgment on how ultimate reality relates to the world.",
+      ru: "Приостановленное суждение о том, как высшая реальность относится к миру.",
+      az: "Ali reallığın dünyayla necə əlaqədar olduğu haqqında hökmün dayandırılması.",
+    },
+    sources: [],
+  },
+  not_frame_relation: {
+    gloss: {
+      en: "This question does not fit how I frame my orientation.",
+      ru: "Этот вопрос не подходит тому, как я формулирую свой взгляд.",
+      az: "Bu sual mənim yanaşmanı necə formullaşdırdığıma uyğun gəlmir.",
+    },
+    sources: [],
+  },
+  // ============ AGENCY (additional) ============
+  not_frame_agency: {
+    gloss: {
+      en: "This question does not fit how I frame my orientation.",
+      ru: "Этот вопрос не подходит тому, как я формулирую свой взгляд.",
+      az: "Bu sual mənim yanaşmanı necə formullaşdırdığıma uyğun gəlmir.",
+    },
+    sources: [],
+  },
+  unknown_agency: {
+    gloss: {
+      en: "Suspended judgment on whether ultimate reality is personal, impersonal, or beyond categories.",
+      ru: "Приостановленное суждение о том, является ли высшая реальность личной, безличной или выходит за категории.",
+      az: "Ali reallığın şəxsi, şəxsiyyətsiz və ya kateqoriyalar ötesində olub-olmaması haqqında hökmün dayandırılması.",
+    },
+    sources: [],
+  },
+  // ============ REALITY (additional) ============
+  not_frame_reality: {
+    gloss: {
+      en: "This question does not fit how I frame my orientation.",
+      ru: "Этот вопрос не подходит тому, как я формулирую свой взгляд.",
+      az: "Bu sual mənim yanaşmanı necə formullaşdırdığıma uyğun gəlmir.",
+    },
+    sources: [],
+  },
+  unknown_count: {
+    gloss: {
+      en: "Suspended judgment on the number/nature of divine beings.",
+      ru: "Приостановленное суждение о числе/природе божественных существ.",
+      az: "İlahi varlıların sayı/xüsusiyyəti haqqında hökmün dayandırılması.",
+    },
+    sources: [],
+  },
+  // ============ ULTIMATE (additional) ============
+  not_framed: {
+    gloss: {
+      en: "I don't frame my orientation in terms of ultimate reality — I start from practice, community, ancestry, or tradition.",
+      ru: "Я не формулирую свой взгляд через высшую реальность — начинаю с практики, общины, предков или традиции.",
+      az: "Mən yanaşmanımı ali reallik terminləri ilə formullaşdırmıram — praktika, cəmiyyət, atalar və ya ənənə ilə başlayıram.",
+    },
+    sources: [],
+  },
+  no_ultimate: {
+    gloss: {
+      en: "I do not affirm an ultimate, sacred, or transcendent reality.",
+      ru: "Я не признаю высшую, священную или траендентную реальность.",
+      az: "Mən ali, məqdis və ya üstdə bir realliyi təsdiqləmirəm.",
+    },
+    sources: [
+      wiki("Atheism (Stanford Encyclopedia of Philosophy)", "Атеизм (Стэнфордская энциклопедия)", "Ateizm (Stanford ensiklopediyası)", "https://plato.stanford.edu/entries/atheism-agnosticism/"),
+    ],
+  },
+  unsure_ultimate: {
+    gloss: {
+      en: "Unsure, suspended judgment, or actively seeking regarding ultimate reality.",
+      ru: "Не уверен, приостановленное суждение или активный поиск в отношении высшей реальности.",
+      az: "Əmin deyiləm, hökm dayandırılıb və ya fəal axtarış ali reallik haqqinda.",
+    },
+    sources: [
+      wiki("Agnosticism (Stanford Encyclopedia of Philosophy)", "Агностицизм (Стэнфордская энциклопедия)", "Aqnostisizm (Stanford ensiklopediyası)", "https://plato.stanford.edu/entries/agnosticism/"),
+    ],
+  },
+  // ============ NON-RELIGIOUS FRAME (additional) ============
+  unclear_nonreligious: {
+    gloss: {
+      en: "The question of sacredness is unclear or doesn't apply to my framework.",
+      ru: "Вопрос о священности неясен или не применим к моему фреймворку.",
+      az: "Müqəddəslik sualı anlaşılmır və ya mənim çərçivəmə tətbiq olmur.",
+    },
+    sources: [],
+  },
+  // ============ BELONGING (additional) ============
+  unaffiliated: {
+    gloss: {
+      en: "No formal religious affiliation; may include cultural-only, mixed, or no label.",
+      ru: "Нет формальной религиозной аффилиации; может включать только культурную, смешанную или без ярлыка.",
+      az: "Rəsmi dini aidiyyət yoxdur; yalnız mədəni, qarışıq aidiyyət və ya etiketsiz ola bilər.",
+    },
+    sources: [
+      wiki("Unaffiliated (religion) (Wikipedia)", "Неаффилированные (Википедия)", "Aidiyyətsizlər (Vikipediya)", "https://en.wikipedia.org/wiki/Unaffiliated_(religion)"),
+    ],
+  },
+  self_described_belonging: {
+    gloss: {
+      en: "A self-described tradition, cultural inheritance, or identity not covered by the listed options.",
+      ru: "Самоописание традиции, культурного наследия или идентичности, не охваченное перечисленными вариантами.",
+      az: "Siyahılanmış variantlar tərəfindən qaplanmayan öz təsvirli ənənə, mədəni irs və ya kimlik.",
+    },
+    sources: [],
+  },
+  // ============ PAGAN (additional) ============
+  reconstructionist: {
+    gloss: {
+      en: "Polytheist reconstructionist: reviving historical pre-Christian traditions (Greek, Roman, Egyptian, Celtic, etc.) through scholarly sources.",
+      ru: "Политеист-реконструкционист: возрождение исторических дохристианских традиций (греческой, римской, египетской, кельтской и др.) через научные источники.",
+      az: "Politeist rekonstrüksionist: elmi mənbələr vasitəsilə tarixi xristianlıqdan əvvəlki ənənələrin (Yunan, Roma, Misir, Kelt və s.) diriltməsi.",
+    },
+    sources: [
+      wiki("Polytheistic reconstructionism (Wikipedia)", "Политеистический реконструкционизм (Википедия)", "Politeistik rekonstrüksionizm (Vikipediya)", "https://en.wikipedia.org/wiki/Polytheistic_reconstructionism"),
+    ],
+  },
+  other_pagan: {
+    gloss: {
+      en: "Another Pagan or related path not listed here.",
+      ru: "Другой языческий или смежный путь, не указанный здесь.",
+      az: "Burada göstərilməyib digər Yaqutçuluq və ya əlaqəli yol.",
+    },
+    sources: [],
+  },
+  // ============ ESOTERIC (additional) ============
+  other_esoteric: {
+    gloss: {
+      en: "Another esoteric, occult, or spiritualist tradition not listed here.",
+      ru: "Другая эзотерическая, оккультная или спиритуалистическая традиция, не указанная здесь.",
+      az: "Burada göstərilməyib digər ezoterik, okkult və ya spiritualist ənənə.",
+    },
+    sources: [],
+  },
+  // ============ SOUTH ASIAN (additional) ============
+  other_southasian: {
+    gloss: {
+      en: "Another South Asian/Himalayan tradition not listed here.",
+      ru: "Другая Южноазиатская/Гималайская традиция, не указанная здесь.",
+      az: "Burada göstərilməyib digər Cənubi Asiya/Himalaya ənənəsi.",
+    },
+    sources: [],
+  },
+  // ============ EAST ASIAN (additional) ============
+  other_eastasian: {
+    gloss: {
+      en: "Another East Asian tradition not listed here.",
+      ru: "Другая Восточноазиатская традиция, не указанная здесь.",
+      az: "Burada göstərilməyib digər Şərqi Asiya ənənəsi.",
+    },
+    sources: [],
+  },
+  // ============ HINDU (additional) ============
+  other_hindu: {
+    gloss: {
+      en: "Another Hindu tradition or new movement not listed here.",
+      ru: "Другая индуистская традиция или новое движение, не указанное здесь.",
+      az: "Burada göstərilməyib digər Hindu ənənəsi və ya yeni hərəkat.",
+    },
+    sources: [],
+  },
+  // ============ INDIGENOUS ============
+  indigenous: {
+    gloss: {
+      en: "Indigenous, land-based, ancestral, African traditional, African diasporic, Pacific, American, or circumpolar traditions — self-described region/people first.",
+      ru: "Коренные, земельные, родовые, Африканские традиционные, Африканские диаспорные, Тихоокеанские, Американские или полярные традиции — самописание региона/народа превыше всего.",
+      az: "Yerli, torpaq-asılı, əsəlli, Afrika ənənəvi, Afrika diasporası, Pasifik, Amerikan və ya qütb traditions — region/xalq öz təsviri birinci.",
+    },
+    sources: [
+      wiki("Indigenous religions (Wikipedia)", "Коренные религии (Википедия)", "Yerli dinlər (Vikipediya)", "https://en.wikipedia.org/wiki/Indigenous_religions"),
+    ],
+  },
+  // ============ SIKH (additional) ============
+  sikh_cultural: {
+    gloss: {
+      en: "Cultural or ancestral connection to Sikhism without formal initiation or doctrinal commitment.",
+      ru: "Культурная или родовая связь с сикхизмом без формального посвящения или догматической приверженности.",
+      az: "Rəsmi keçirmə və ya doktrinal razılıq olmadan Sikhizmlə mədəni və ya əcdadi əlaqə.",
+    },
+    sources: [
+      wiki("Sikhism (Wikipedia)", "Сихизм (Википедия)", "Sikxizm (Vikipediya)", "https://en.wikipedia.org/wiki/Sikhism"),
+    ],
+  },
+  // ============ UNIVERSAL ESCAPE HATCHES ============
+  no_frame: {
+    gloss: {
+      en: "I do not use religious or spiritual categories to orient myself.",
+      ru: "Я не использую религиозные или духовные категории для ориентации.",
+      az: "Mən özümü orientasiya etmək üçün dini və ya mənəvi kateqoriyalar istifadə etmirəm.",
+    },
+    sources: [],
+  },
+  explore: {
+    gloss: {
+      en: "I use, or am open to, religious/spiritual/philosophical categories.",
+      ru: "Я использую или открыт к религиозным/духовным/философским категориям.",
+      az: "Mən dini/mənəvi/fəlsəfi kateqoriyalardan istifadə edirəm və ya onlara açıqəm.",
+    },
+    sources: [],
+  },
+  unsure_frame: {
+    gloss: {
+      en: "Unsure / exploring / varies by context — the framing doesn't quite fit.",
+      ru: "Не уверен / изучаю / зависит от контекста — фрейминг не совсем подходит.",
+      az: "Əmin deyiləm / araşırəm / kontekstə görə dəyişir — çərçivə tam uyğun gəlmir.",
+    },
+    sources: [],
+  },
+  agnostic_skeptical: {
+    gloss: {
+      en: "Agnostic / sceptical — the truth is unknown or unknowable; doubt is warranted.",
+      ru: "Агностик / скептик — истина неизвестна или непознаваема; сомнение обосновано.",
+      az: "Agnostik / skeptik — həqiqət naməlum və ya bilinməzdir; şübhə əsassızdır.",
+    },
+    sources: [
+      wiki("Agnosticism (Stanford Encyclopedia of Philosophy)", "Агностицизм (Стэнфордская энциклопедия)", "Aqnostisizm (Stanford ensiklopediyası)", "https://plato.stanford.edu/entries/agnosticism/"),
+    ],
+  },
+  seeking: {
+    gloss: {
+      en: "Actively seeking / exploring — in a process of inquiry.",
+      ru: "Активно ищу / изучаю — в процессе исследования.",
+      az: "Fəal axtarırəm / araşırəm — araşdırma prosesində.",
+    },
+    sources: [],
+  },
+  suspended: {
+    gloss: {
+      en: "Suspended judgment — deliberately withholding belief or disbelief.",
+      ru: "Приостановленное суждение — намеренно воздерживаюсь от веры или неверия.",
+      az: "Dayandırılmış hökm — inam və ya inamsızlığa məsuliyyətlə çəkinirəm.",
+    },
+    sources: [
+      wiki("Epoché (Wikipedia)", "Эпохэ (Википедия)", "Epokhe (Vikipediya)", "https://en.wikipedia.org/wiki/Epoché"),
+    ],
+  },
+  varies_context: {
+    gloss: {
+      en: "Varies by context / moment — no single fixed stance.",
+      ru: "Зависит от контекста / момента — нет единой фиксированной позиции.",
+      az: "Kontekstə / anına görə dəyişir — tək sabit vəziyyət yoxdur.",
+    },
+    sources: [],
+  },
+  self_described_agnostic: {
+    gloss: {
+      en: "Other self-described agnostic stance not captured by the options.",
+      ru: "Другая самоописанная агностическая позиция, не охваченная вариантами.",
+      az: "Variantlar tərəfindən qaplanmayan digər öz təsvirli agnostik vəziyyət.",
+    },
+    sources: [],
+  },
+  // ============ PRACTICE-FIRST ============
+  practice_primary: {
+    gloss: {
+      en: "Practice (meditation, ritual, prayer, service) as the primary entry point.",
+      ru: "Практика (медитация, ритуал, молитва, служение) как главная точка входа.",
+      az: "Praktika (meditasiya, ritual, dua, xidmət) kimi əsas giriş nöqtəsi.",
+    },
+    sources: [],
+  },
+  community_primary: {
+    gloss: {
+      en: "Community / sangha / congregation / tribe as the primary entry point.",
+      ru: "Община / сангха / приход / племя как главная точка входа.",
+      az: "Cəmiyyət / sangha / cəmaət / qabilə kimi əsas giriş nöqtəsi.",
+    },
+    sources: [],
+  },
+  ancestry_primary: {
+    gloss: {
+      en: "Ancestry / lineage / land / heritage as the primary entry point.",
+      ru: "Происхождение / родословная / земля / наследие как главная точка входа.",
+      az: "Əsəl / soy / torpaq / irsi kimi əsas giriş nöqtəsi.",
+    },
+    sources: [],
+  },
+  tradition_primary: {
+    gloss: {
+      en: "Tradition / school / path (even if mixed) as the primary entry point.",
+      ru: "Традиция / школа / путь (даже если смешанная) как главная точка входа.",
+      az: "Ənənə / məktəb / yol (çoxlu olsa da) kimi əsas giriş nöqtəsi.",
+    },
+    sources: [],
+  },
+  self_described_practice: {
+    gloss: {
+      en: "Other self-described practice/community entry point not listed.",
+      ru: "Другая самоописанная точка входа через практику/общину, не в списке.",
+      az: "Siyahıda olmayan digər öz təsvirli praktika/cəmiyyət giriş nöqtəsi.",
+    },
+    sources: [],
+  },
+  // ============ KNOWING (additional) ============
+  scripture: {
+    gloss: {
+      en: "Scripture, prophets, or historical revelation as the primary source of religious truth.",
+      ru: "Писание, пророки или историческое откровение как главный источник религиозной правды.",
+      az: "Müqəddəs kitab, peyğəmbərlər və ya tarixi vəhiy dini haqqın əsas mənbəyi kimi.",
+    },
+    sources: [
+      wiki("Revelation (Stanford Encyclopedia of Philosophy)", "Откровение (Стэнфордская энциклопедия)", "Vəhy (Stanford ensiklopediyası)", "https://plato.stanford.edu/entries/revelation/"),
+    ],
+  },
+  reason: {
+    gloss: {
+      en: "Reason, philosophy, or natural theology as the primary way to know religious truth.",
+      ru: "Разум, философия или естественное богословие как главный способ познать религиозную правду.",
+      az: "Ağıl, fəlsəfə və ya təbii ilahiyyet dini haqqı bilmək yolu kimi.",
+    },
+    sources: [
+      wiki("Natural theology (Stanford Encyclopedia of Philosophy)", "Естественное богословие (Стэнфордская энциклопедия)", "Təbii ilahiyyet (Stanford ensiklopediyası)", "https://plato.stanford.edu/entries/natural-theology/"),
+    ],
+  },
+  experience: {
+    gloss: {
+      en: "Mystical, contemplative, or direct experience as the primary way to know religious truth.",
+      ru: "Мистический, контемплативный или прямой опыт как главный способ познать религиозную правду.",
+      az: "Mistik, konteмплятив və ya birbaşa təcrübə dini haqqın bilmə yolu kimi.",
+    },
+    sources: [
+      wiki("Mysticism (Stanford Encyclopedia of Philosophy)", "Мистицизм (Стэнфордская энциклопедия)", "Mistikizm (Stanford ensiklopediyası)", "https://plato.stanford.edu/entries/mysticism/"),
+    ],
+  },
+  ritual: {
+    gloss: {
+      en: "Ritual, practice, divination, or embodied tradition as the primary way to know religious truth.",
+      ru: "Ритуал, практика, гадание или телесная традиция как главный способ познать религиозную правду.",
+      az: "Ritual, praktika, fal və ya cismani ənənə dini haqqın bilmə yolu kimi.",
+    },
+    sources: [
+      wiki("Ritual (Wikipedia)", "Ритуал (Википедия)", "Ritual (Vikipediya)", "https://en.wikipedia.org/wiki/Ritual"),
+    ],
+  },
+  ancestry: {
+    gloss: {
+      en: "Ancestors, elders, land, oral tradition, or community as the primary source of religious truth.",
+      ru: "Предки, старшие, земля, устная традиция или община как главный источник религиозной правды.",
+      az: "Atalar, yaşlılar, torpaq, sözlü ənənə və ya cəmiyyət dini haqqın mənbəyi kimi.",
+    },
+    sources: [],
+  },
+  plural_sources: {
+    gloss: {
+      en: "Several sources / pluralistic approach to religious truth.",
+      ru: "Несколько источников / плюралистичный подход к религиозной правде.",
+      az: "Bir neçə mənbə / plyuralistik yanaşma dini haqqına.",
+    },
+    sources: [],
+  },
+  // ============ CANDIDATE TRADITIONS (additional) ============
+  explore_christian: {
+    gloss: {
+      en: "Explore Christianity as a compatible pathway based on your answers so far.",
+      ru: "Исследовать христианство как совместимый путь на основе ваших ответов.",
+      az: "Cavablarınıza əsasən uyğun yol kimi Xristianlığı araşdırın.",
+    },
+    sources: [
+      wiki("Christianity (Wikipedia)", "Христианство (Википедия)", "Xristianlıq (Vikipediya)", "https://en.wikipedia.org/wiki/Christianity"),
+    ],
+  },
+  explore_islam: {
+    gloss: {
+      en: "Explore Islam as a compatible pathway based on your answers so far.",
+      ru: "Исследовать ислам как совместимый путь на основе ваших ответов.",
+      az: "Cavablarınıza əsasən uyğun yol kimi İslamı araşdırın.",
+    },
+    sources: [
+      wiki("Islam (Wikipedia)", "Ислам (Википедия)", "İslam (Vikipediya)", "https://en.wikipedia.org/wiki/Islam"),
+    ],
+  },
+  explore_jewish: {
+    gloss: {
+      en: "Explore Judaism as a compatible pathway based on your answers so far.",
+      ru: "Исследовать иудаизм как совместимый путь на основе ваших ответов.",
+      az: "Cavablarınıza əsasən uyğun yol kimi Yəhudiliyi araşdırın.",
+    },
+    sources: [
+      wiki("Judaism (Wikipedia)", "Иудаизм (Википедия)", "Yəhudilik (Vikipediya)", "https://en.wikipedia.org/wiki/Judaism"),
+    ],
+  },
+  explore_sikh: {
+    gloss: {
+      en: "Explore Sikhism as a compatible pathway based on your answers so far.",
+      ru: "Исследовать сикхизм как совместимый путь на основе ваших ответов.",
+      az: "Cavablarınıza əsasən uyğun yol kimi Sikxizmi araşdırın.",
+    },
+    sources: [
+      wiki("Sikhism (Wikipedia)", "Сихизм (Википедия)", "Sikxizm (Vikipediya)", "https://en.wikipedia.org/wiki/Sikhism"),
+    ],
+  },
+  explore_bahai: {
+    gloss: {
+      en: "Explore the Bahá'í Faith as a compatible pathway based on your answers so far.",
+      ru: "Исследовать Веру Бахаи как совместимый путь на основе ваших ответов.",
+      az: "Cavablarınıza əsasən uyğun yol kimi Bəhai İnancını araşdırın.",
+    },
+    sources: [
+      wiki("Bahá'í Faith (Wikipedia)", "Бахаи (Википедия)", "Bəhai dini (Vikipediya)", "https://en.wikipedia.org/wiki/Bah%C3%A1%27%C3%AD_Faith"),
+    ],
+  },
+  explore_hindu: {
+    gloss: {
+      en: "Explore Hindu traditions as a compatible pathway based on your answers so far.",
+      ru: "Исследовать индуистские традиции как совместимый путь на основе ваших ответов.",
+      az: "Cavablarınıza əsasən uyğun yol kimi Hindu ənənələrini araşdırın.",
+    },
+    sources: [
+      wiki("Hinduism (Wikipedia)", "Индуизм (Википедия)", "Hinduizm (Vikipediya)", "https://en.wikipedia.org/wiki/Hinduism"),
+    ],
+  },
+  explore_buddhist: {
+    gloss: {
+      en: "Explore Buddhism as a compatible pathway based on your answers so far.",
+      ru: "Исследовать буддизм как совместимый путь на основе ваших ответов.",
+      az: "Cavablarınıza əsasən uyğun yol kimi Buddizmi araşdırın.",
+    },
+    sources: [
+      wiki("Buddhism (Wikipedia)", "Буддизм (Википедия)", "Buddizm (Vikipediya)", "https://en.wikipedia.org/wiki/Buddhism"),
+    ],
+  },
+  explore_none: {
+    gloss: {
+      en: "None of these fit — continue answering general questions instead.",
+      ru: "Ничего из этого не подходит — продолжить отвечать на общие вопросы.",
+      az: "Bunlardan heç biri uyğun deyil — ümumi suallara cavab verməyə davam et.",
+    },
+    sources: [],
+  },
+  already_identify: {
+    gloss: {
+      en: "I already identify with a specific tradition — proceed to belonging questions.",
+      ru: "Я уже отношу себя к определённой традиции — перейти к вопросам о принадлежности.",
+      az: "Mən artıq müəyyən bir ənənə ilə eyniləşirəm — aidiyyət suallarına keç.",
+    },
+    sources: [],
+  },
 };
 
 /**
@@ -705,8 +1318,10 @@ const TERM_ALIASES: Record<string, string> = {
   // non-religious frame
   no_sacred: "naturalist",
   yes_sacred: "religious_naturalist",
+  unclear_nonreligious: "naturalist",
   // secular profile
   agnostic_skeptical: "agnostic",
+  self_described_nonrel: "agnostic",
   // reality structure
   one: "monotheism",
   many: "polytheism",
@@ -718,58 +1333,172 @@ const TERM_ALIASES: Record<string, string> = {
   impersonal: "impersonalism",
   both_agency: "transpersonal",
   beyond_agency: "apophatic",
+  not_frame_agency: "apophatic",
+  unknown_agency: "agnostic",
   // relation
   karmic: "karmic",
   nonintervention: "deism",
+  participant: "participant",
+  sustainer: "sustainer",
+  creator: "creator",
+  identity: "nondual",
+  mixed_relation: "mixed_relation",
+  unknown_relation: "agnostic",
+  not_frame_relation: "nondual",
   // knowing
   reason: "natural_theology",
   experience: "mystical",
   ritual: "contemplative",
+  scripture: "scripture",
+  ancestry: "ancestry",
+  plural_sources: "pluralistic",
+  no_epistemic: "agnostic",
+  unknown_knowing: "agnostic",
+  not_frame_knowing: "nondual",
   // candidate traditions
   explore_deism: "deism",
   explore_pantheism: "panentheism",
   explore_polytheism: "polytheism",
   explore_secular: "secular_humanist",
+  explore_christian: "christian",
+  explore_islam: "muslim",
+  explore_jewish: "orthodox_jewish",
+  explore_sikh: "khalsa",
+  explore_bahai: "bahai",
+  explore_hindu: "vaishnava",
+  explore_buddhist: "theravada",
+  explore_none: "agnostic",
+  already_identify: "agnostic",
   // deism detail
   classical_deism: "deism",
+  pandeism: "pandeism",
+  deistic_naturalism: "religious_naturalist",
+  deism_unsure: "deism",
   // pantheism detail
   pantheism: "pantheism",
   panentheism: "panentheism",
+  process_theism: "process_theism",
+  immanence_unsure: "pantheism",
   // belonging
   southasian: "karmic",
   eastasian: "daoist",
   pagan: "wiccan",
   esoteric: "theosophical",
+  newreligion: "new_age",
+  unaffiliated: "secular_humanist",
+  self_described_belonging: "agnostic",
   // abrahamic detail
   jewish: "orthodox_jewish",
   christian: "catholic",
   muslim: "sunni",
+  bahai: "bahai",
+  samaritan: "samaritan",
+  druze: "druze",
+  mandaean: "mandaen",
+  yazidi: "yazidi",
+  rastafari: "rastafari",
+  other_abrahamic: "orthodox_jewish",
   // south asian detail
   hindu: "vaishnava",
-  jain: "karmic",
+  sikh: "khalsa",
+  jain: "jain",
   buddhist_sa: "theravada",
+  other_southasian: "karmic",
   // east asian detail
+  daoist: "daoist",
+  confucian: "confucian",
+  chinese_folk: "chinese_folk",
   shinto: "shinto",
+  korean: "korean",
+  vietnamese: "vietnamese",
+  japanese_new: "japanese_new",
+  other_eastasian: "daoist",
+  // indigenous detail
+  indigenous_self: "indigenous",
   // pagan detail
+  heathen: "heathen",
+  druid: "druid",
+  wiccan: "wiccan",
   reconstructionist: "heathen",
+  other_pagan: "wiccan",
   // esoteric detail
   spiritualist: "spiritualist",
   theosophical: "theosophical",
+  occult: "occult",
   new_thought: "new_thought",
   new_age: "new_age",
+  other_esoteric: "new_age",
+  // newreligion detail
+  nr_self: "new_age",
   // hindu detail
+  vaishnava: "vaishnava",
+  shaiva: "shaiva",
+  shakta: "shakta",
   smarta: "smarta",
+  other_hindu: "vaishnava",
   // sikh detail
   sikh_khalsa: "khalsa",
   sikh_sehajdhari: "sehajdhari",
+  sikh_cultural: "khalsa",
+  sikh_unsure: "khalsa",
   // islam detail
+  sunni: "sunni",
+  shia: "shia",
+  ibadi: "ibadi",
+  sufi: "sufi",
+  quranist: "quranist",
   muslim_unsure: "sunni",
   // christian detail
+  catholic: "catholic",
+  orthodox: "orthodox",
+  oriental_orthodox: "oriental_orthodox",
+  protestant: "protestant",
+  restorationist: "restorationist",
   christian_unsure: "catholic",
   // jewish detail
+  orthodox_jewish: "orthodox_jewish",
+  conservative_jewish: "conservative_jewish",
+  reform_jewish: "reform_jewish",
+  reconstructionist_jewish: "reconstructionist_jewish",
+  secular_cultural_jewish: "secular_humanist",
   jewish_unsure: "orthodox_jewish",
   // bahai detail
+  bahai_unity: "bahai",
   bahai_manifestation: "bahai",
+  bahai_community: "bahai",
+  bahai_unsure: "bahai",
+  // buddhist detail
+  theravada: "theravada",
+  mahayana: "mahayana",
+  vajrayana: "vajrayana",
+  buddhist_unsure: "theravada",
+  // nontheistic
+  buddhist_nontheist: "theravada",
+  // universal escape hatches
+  no_frame: "naturalist",
+  explore: "open-to-categories",
+  unsure_frame: "unsure",
+  seeking: "seeking",
+  suspended: "agnostic",
+  varies_context: "contextual",
+  self_described_agnostic: "agnostic",
+  self_described_nt: "agnostic",
+  self_described_rnatural: "religious_naturalist",
+  self_described_practice: "practice-first",
+  practice_first_nt: "practice-first",
+  // practice-first
+  practice_primary: "practice-first",
+  community_primary: "community-primary",
+  ancestry_primary: "ancestry-primary",
+  tradition_primary: "tradition-primary",
+  // reality (additional)
+  none: "non-theism",
+  unknown_count: "agnostic",
+  not_frame_reality: "nondual",
+  // ultimate (additional)
+  no_ultimate: "non-theism",
+  unsure_ultimate: "agnostic",
+  not_framed: "practice-first",
 };
 
 /** Lookup helper: returns the definition for a choice id/tag, or undefined. */

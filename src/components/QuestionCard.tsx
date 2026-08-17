@@ -125,10 +125,34 @@ export default function QuestionCard() {
   const isFreeText = node.responseMode === "free-text";
   const isScale = node.responseMode === "scale";
 
+  const isUniversalEscapeHatch = (choice: typeof node.choices[0]) =>
+    choice.isUniversal === "unsure" || choice.isUniversal === "not_my_frame";
+
   const handleChoiceToggle = (choiceId: string) => {
-    setSelectedIds((prev) =>
-      prev.includes(choiceId) ? prev.filter((id) => id !== choiceId) : [...prev, choiceId]
-    );
+    setSelectedIds((prev) => {
+      const choice = node.choices.find(c => c.id === choiceId);
+      if (!choice) return prev;
+
+      const isCurrentlySelected = prev.includes(choiceId);
+      const isEscapeHatch = isUniversalEscapeHatch(choice);
+
+      if (isCurrentlySelected) {
+        // Deselecting - just remove it
+        return prev.filter((id) => id !== choiceId);
+      }
+
+      // Selecting
+      if (isEscapeHatch) {
+        // Selecting an escape hatch: clear all other choices
+        return [choiceId];
+      } else {
+        // Selecting a regular choice: remove any escape hatches
+        return [...prev.filter(id => {
+          const c = node.choices.find(opt => opt.id === id);
+          return c && !isUniversalEscapeHatch(c);
+        }), choiceId];
+      }
+    });
   };
 
   const handleSubmit = () => {
