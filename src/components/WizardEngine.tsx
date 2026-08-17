@@ -17,7 +17,9 @@ import QuestionCard from "./QuestionCard";
 import DefinitionCard from "./DefinitionCard";
 import MermaidMap from "./MermaidMap";
 import CandidateCard from "./CandidateCard";
+import InfoModal from "./InfoModal";
 import { useWizard, isAtTerminal } from "@/store/wizardStore";
+import { useState } from "react";
 
 export default function WizardEngine() {
   const { t } = useTranslation();
@@ -35,6 +37,10 @@ export default function WizardEngine() {
   const done = isAtTerminal({ path, pendingNodes, finished });
   // Show candidate card at candidate_traditions stage or when scores exist mid-journey
   const showCandidates = started && !done && path.length >= 3 && Object.keys(candidateScores).length > 0 && path[path.length - 1]?.nextNodeIds[0] === "candidate_traditions";
+
+  // Modal states
+  const [showWhatAppDoes, setShowWhatAppDoes] = useState(false);
+  const [showWhatPersonGains, setShowWhatPersonGains] = useState(false);
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
@@ -56,7 +62,30 @@ export default function WizardEngine() {
           <div className="flex-1">
             <ProgressBar />
           </div>
-          <LanguageToggle />
+          <div className="flex items-center gap-3">
+            {/* Info buttons - only show when started */}
+            {started && (
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowWhatAppDoes(true)}
+                  className="rounded-xl border border-slate-700/70 bg-slate-900/60 px-4 py-2 text-sm text-slate-300 hover:border-amber-400/60 hover:bg-slate-800/70 hover:text-amber-200 transition-colors cursor-pointer"
+                  aria-label={t("app.whatAppDoes") || "What the app does"}
+                >
+                  {t("app.whatAppDoes") || "What it does"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowWhatPersonGains(true)}
+                  className="rounded-xl border border-slate-700/70 bg-slate-900/60 px-4 py-2 text-sm text-slate-300 hover:border-amber-400/60 hover:bg-slate-800/70 hover:text-amber-200 transition-colors cursor-pointer"
+                  aria-label={t("app.whatPersonGains") || "What a person gains"}
+                >
+                  {t("app.whatPersonGains") || "What you gain"}
+                </button>
+              </div>
+            )}
+            <LanguageToggle />
+          </div>
         </header>
 
         {/* ===== Title (start screen) ===== */}
@@ -140,6 +169,20 @@ export default function WizardEngine() {
             Copyright 2026 © www.klaud.uk
           </div>
         </footer>
+
+        {/* ===== Info Modals ===== */}
+        <InfoModal
+          isOpen={showWhatAppDoes}
+          onClose={() => setShowWhatAppDoes(false)}
+          titleKey="whatAppDoes"
+          contentKey="whatAppDoes"
+        />
+        <InfoModal
+          isOpen={showWhatPersonGains}
+          onClose={() => setShowWhatPersonGains(false)}
+          titleKey="whatPersonGains"
+          contentKey="whatPersonGains"
+        />
       </div>
     </div>
   );
