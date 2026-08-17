@@ -78,11 +78,8 @@ export default function QuestionCard() {
     if (isFreeText) {
       answer([], freeText);
     } else if (isMulti) {
-      if (selectedIds.length === 0) {
-        // Allow skipping if universal choices available
-        const hasUniversal = node.choices.some(c => c.isUniversal);
-        if (!hasUniversal) return;
-      }
+      // Require at least one selected choice before advancing
+      if (selectedIds.length === 0) return;
       answer(selectedIds, freeText);
     } else {
       // Single select - handled by onClick in option
@@ -246,11 +243,11 @@ export default function QuestionCard() {
             <motion.button
               type="button"
               onClick={handleSubmit}
-              disabled={isMulti && selectedIds.length === 0 && !universalChoices.length}
-              whileHover={{ scale: 1.01, y: -1 }}
-              whileTap={{ scale: 0.99 }}
+              disabled={isMulti && selectedIds.length === 0}
+              whileHover={isMulti && selectedIds.length === 0 ? undefined : { scale: 1.01, y: -1 }}
+              whileTap={isMulti && selectedIds.length === 0 ? undefined : { scale: 0.99 }}
               className={`rounded-xl px-5 py-3.5 font-semibold text-base transition-colors cursor-pointer flex items-center justify-center gap-2 ${
-                (isMulti && selectedIds.length === 0 && !universalChoices.length)
+                (isMulti && selectedIds.length === 0)
                   ? "border-slate-700 bg-slate-800/50 text-slate-500 cursor-not-allowed"
                   : "bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 hover:shadow-amber-500/30 hover:shadow-lg"
               }`}

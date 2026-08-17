@@ -28,7 +28,14 @@ export const resources = {
         footer: "Built with philosophical rigor, not dogma.",
         freeTextPlaceholder: "Describe in your own words...",
         scaleLow: "Not at all",
-        scaleHigh: "Completely"
+        scaleHigh: "Completely",
+        finish: "Finish for now",
+        candidatesTitle: "Most Compatible Pathways",
+        candidatesHint: "Your answers do not determine your religion — they identify paths you may wish to explore next.",
+        explorePath: "Explore this path",
+        noneFit: "None of these fit",
+        alreadyIdentify: "I already identify with a tradition",
+        keepAnswering: "Keep answering general questions",
       },
       animal: {
         neutral: "Watching...",
@@ -72,7 +79,14 @@ export const resources = {
         footer: "Создано с философской строгостью, а не догмой.",
         freeTextPlaceholder: "Опишите своими словами...",
         scaleLow: "Совсем нет",
-        scaleHigh: "Полностью"
+        scaleHigh: "Полностью",
+        finish: "Завершить сейчас",
+        candidatesTitle: "Наиболее совместимые пути",
+        candidatesHint: "Ваши ответы не определяют вашу религию — они выявляют пути, которые вы можете исследовать дальше.",
+        explorePath: "Исследовать этот путь",
+        noneFit: "Ничего из этого не подходит",
+        alreadyIdentify: "Я уже отношу себя к традиции",
+        keepAnswering: "Продолжить отвечать на общие вопросы",
       },
       animal: {
         neutral: "Наблюдает...",
@@ -116,7 +130,14 @@ export const resources = {
         footer: "Fəlsəfi sərtliklə qurulub, dogma ilə yox.",
         freeTextPlaceholder: "Öz sözlərinizlə təsvir edin...",
         scaleLow: "Həqiqətən yox",
-        scaleHigh: "Tamamilə"
+        scaleHigh: "Tamamilə",
+        finish: "İndi tamamla",
+        candidatesTitle: "Ən uyğun yollar",
+        candidatesHint: "Cavablarınız dininizi müəyyən etmir — onlar araşdıra biləcəyiniz yolları göstərir.",
+        explorePath: "Bu yolu araşdır",
+        noneFit: "Bunlardan heç biri uyğun deyil",
+        alreadyIdentify: "Mən artıq bir ənənə ilə eyniləşirəm",
+        keepAnswering: "Ümumi suallara cavab verməyə davam et",
       },
       animal: {
         neutral: "Müşahidə edir...",

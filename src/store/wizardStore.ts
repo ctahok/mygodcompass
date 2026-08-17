@@ -18,24 +18,28 @@ export interface PathStep {
 interface WizardState {
   /** History of steps; empty = at start node */
   path: PathStep[];
+  /** Queue of upcoming nodes when a step branches to multiple */
+  pendingNodes: string[];
   /** Whether the user has clicked "Begin the Journey" */
   begun: boolean;
+  /** Whether the user explicitly finished (incomplete profile) */
+  finished: boolean;
   /** Localization used for UI (mirrors i18next) */
   lang: Lang;
   /** Computed multi-axis profile */
   profile: Profile | null;
+  /** Weighted candidate pathway scores */
+  candidateScores: Record<string, number>;
   /** Reveal the first question */
   begin: () => void;
   /** Answer a question (supports multiple choices) */
   answer: (choiceIds: string[], freeText?: string) => void;
-  /** Toggle a single choice (for multi-select) */
-  toggleChoice: (choiceId: string) => void;
-  /** Submit current multi-select and advance */
-  submitMulti: () => void;
   /** Go back one step */
   back: () => void;
   /** Reset the whole journey */
   reset: () => void;
+  /** Explicitly finish (marks profile incomplete if dimensions are missing) */
+  finish: () => void;
   setLang: (l: Lang) => void;
 }
 
@@ -126,6 +130,101 @@ export function coherenceState(tags: string[]): "neutral" | "coherent" | "confli
   if (s < 0) return "conflict";
   if (s > 0) return "coherent";
   return "neutral";
+}
+
+// ============================================================
+// Candidate pathway scoring — transparent weighted system
+// Each answer's tags adjust candidate scores (positive/negative).
+// ============================================================
+const CANDIDATE_WEIGHTS: Record<string, Record<string, number>> = {
+  // Tag → candidate pathway score delta
+  monotheism: { christianity: 2, islam: 2, judaism: 2, sikhism: 2, bahai: 2, deism: 1 },
+  "affirms-ultimate": { christianity: 1, islam: 1, judaism: 1, sikhism: 1, bahai: 1, deism: 1, hindu: 1, pantheism: 1 },
+  personalism: { christianity: 2, islam: 2, judaism: 2, sikhism: 2, bahai: 2, deism: 1, process_theism: 1 },
+  impersonalism: { hindu: 2, buddhism: 1, pantheism: 1, secular: 1 },
+  creator: { christianity: 1, islam: 1, judaism: 1, sikhism: 1, bahai: 1, deism: 2, classical_theism: 1 },
+  interventionist: { christianity: 2, islam: 2, judaism: 2, sikhism: 1, bahai: 2 },
+  deism: { deism: 3 },
+  nonintervention: { deism: 2, pantheism: 1 },
+  immanence: { pantheism: 2, hindu: 1, process_theism: 1 },
+  pantheism: { pantheism: 3 },
+  panentheism: { pantheism: 2, christianity: 1, hindu: 1, process_theism: 1 },
+  nondual: { hindu: 2, buddhism: 2 },
+  plurality: { polytheism: 3, pagan: 3, hindu: 1 },
+  polytheism: { polytheism: 3, pagan: 3, hindu: 2 },
+  revelation: { christianity: 2, islam: 2, judaism: 2, sikhism: 2, bahai: 2 },
+  scripture: { christianity: 1, islam: 1, judaism: 1, sikhism: 1, bahai: 1 },
+  prophetic: { christianity: 1, islam: 1, judaism: 1, sikhism: 1, bahai: 1 },
+  reason: { deism: 1, secular: 1, process_theism: 1 },
+  mystical: { hindu: 1, buddhism: 1, islam: 1, christianity: 1, sufism: 1 },
+  experience: { hindu: 1, buddhism: 1 },
+  ritual: { hindu: 1, buddhism: 1, pagan: 1 },
+  practice: { hindu: 1, buddhism: 1, pagan: 1 },
+  ancestry: { judaism: 1, indigenous: 2, pagan: 1 },
+  secular: { secular: 3, atheism: 2, humanism: 2 },
+  atheist: { atheism: 3, secular: 2 },
+  "secular-humanist": { humanism: 3, secular: 2, atheism: 1 },
+  naturalist: { secular: 2, naturalism: 2 },
+  "religious-naturalist": { naturalism: 2, pantheism: 1, deism: 1 },
+  "spiritual-naturalist": { naturalism: 2, pantheism: 1 },
+  agnostic: { agnosticism: 3, secular: 1 },
+  seeking: { agnosticism: 1, process_theism: 1 },
+  "non-theism": { buddhism: 2, atheism: 2, secular: 1, jainism: 1 },
+  karmic: { hindu: 2, buddhism: 2, jainism: 2, sikhism: 1 },
+  "cosmic-order": { hindu: 1, buddhism: 1, daoism: 1 },
+  "ritual-order": { hindu: 1, pagan: 1 },
+  christian: { christianity: 3 },
+  muslim: { islam: 3 },
+  jewish: { judaism: 3 },
+  sikh: { sikhism: 3 },
+  bahai: { bahai: 3 },
+  hindu: { hindu: 3 },
+  buddhist: { buddhism: 3 },
+  daoist: { daoism: 3 },
+  shinto: { shinto: 2 },
+  pagan: { pagan: 3, polytheism: 2 },
+  indigenous: { indigenous: 3 },
+  "one expressed through many": { hindu: 1, bahai: 1 },
+  henotheism: { hindu: 2, polytheism: 1 },
+  advaita: { hindu: 2 },
+  vaishnava: { hindu: 1 },
+  shaiva: { hindu: 1 },
+  shakta: { hindu: 1 },
+  smarta: { hindu: 1 },
+  theravada: { buddhism: 1 },
+  mahayana: { buddhism: 1 },
+  vajrayana: { buddhism: 1 },
+  sunni: { islam: 1 },
+  shia: { islam: 1 },
+  ibadi: { islam: 1 },
+  sufi: { islam: 1, sufism: 2 },
+  quranist: { islam: 1 },
+  catholic: { christianity: 1 },
+  orthodox: { christianity: 1 },
+  protestant: { christianity: 1 },
+  // Negative weights — explicit rejections
+  "non-religious-frame": { christianity: -1, islam: -1, judaism: -1, sikhism: -1, bahai: -1 },
+  "non-categorised": {},
+};
+
+export function computeCandidateScores(tags: string[]): Record<string, number> {
+  const scores: Record<string, number> = {};
+  for (const tag of tags) {
+    const weights = CANDIDATE_WEIGHTS[tag];
+    if (!weights) continue;
+    for (const [candidate, delta] of Object.entries(weights)) {
+      scores[candidate] = (scores[candidate] || 0) + delta;
+    }
+  }
+  return scores;
+}
+
+export function topCandidates(scores: Record<string, number>, n = 6): { id: string; score: number }[] {
+  return Object.entries(scores)
+    .filter(([, s]) => s > 0)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, n)
+    .map(([id, score]) => ({ id, score }));
 }
 
 /** Build a multi-axis Profile from accumulated tags */
@@ -290,16 +389,19 @@ function buildProfile(tags: string[], freeTexts: string[]): Profile {
 
 export const useWizard = create<WizardState>((set, get) => ({
   path: [],
+  pendingNodes: [],
   begun: false,
+  finished: false,
   lang: "en",
   profile: null,
+  candidateScores: {},
 
   begin: () => set({ begun: true }),
 
   // For single-select nodes (or first choice in multi)
   answer: (choiceIds: string[], freeText?: string) => {
-    const { path } = get();
-    const currentNodeId = path.length === 0 ? START_NODE : path[path.length - 1].nextNodeIds[0];
+    const { path, pendingNodes } = get();
+    const currentNodeId = path.length === 0 ? START_NODE : (path[path.length - 1].nextNodeIds[0] || pendingNodes[0] || START_NODE);
     const node = NODES[currentNodeId];
     if (!node) return;
 
@@ -309,11 +411,14 @@ export const useWizard = create<WizardState>((set, get) => ({
     const allTags = choices.flatMap(c => c.tags || []);
     const allNext = choices.flatMap(c => c.next || []);
 
+    // Merge: if a next node is already pending, don't duplicate; otherwise append new ones
+    const mergedNext = [...new Set([...pendingNodes, ...allNext])];
+
     const step: PathStep = {
       nodeId: currentNodeId,
       choiceIds,
       tags: allTags,
-      nextNodeIds: allNext.length > 0 ? allNext : [],
+      nextNodeIds: allNext.length > 0 ? allNext : (pendingNodes.length > 0 ? [pendingNodes[0]] : []),
       freeText,
     };
 
@@ -324,21 +429,11 @@ export const useWizard = create<WizardState>((set, get) => ({
       const freeTexts = newPath.flatMap(s => s.freeText ? [s.freeText] : []);
       return {
         path: newPath,
+        pendingNodes: mergedNext,
         profile: buildProfile(accumulatedTags, freeTexts),
+        candidateScores: computeCandidateScores(accumulatedTags),
       };
     });
-  },
-
-  // Toggle a choice in current multi-select node (doesn't advance)
-  toggleChoice: (_choiceId: string) => {
-    // This is handled locally in QuestionCard via local state
-    // Store only gets updated on submitMulti
-  },
-
-  // Submit current multi-select and advance
-  submitMulti: () => {
-    // The actual choices are collected in QuestionCard local state
-    // and passed to answer(). This is a no-op here; kept for API compat.
   },
 
   back: () => set((state) => {
@@ -348,10 +443,13 @@ export const useWizard = create<WizardState>((set, get) => ({
     return {
       path: newPath,
       profile: newPath.length > 0 ? buildProfile(accumulatedTags, freeTexts) : null,
+      candidateScores: computeCandidateScores(accumulatedTags),
     };
   }),
 
-  reset: () => set({ path: [], begun: false, profile: null }),
+  reset: () => set({ path: [], pendingNodes: [], begun: false, finished: false, profile: null, candidateScores: {} }),
+
+  finish: () => set((state) => ({ finished: true, profile: state.profile })),
 
   setLang: (l: Lang) => set({ lang: l }),
 }));
@@ -360,30 +458,42 @@ export const useWizard = create<WizardState>((set, get) => ({
 // Selectors / derived helpers
 // ------------------------------------------------------------
 
-export function currentNodeId(state: { path: PathStep[] }): string {
+export function currentNodeId(state: { path: PathStep[]; pendingNodes?: string[] }): string {
   if (state.path.length === 0) return START_NODE;
   const last = state.path[state.path.length - 1];
-  // If multiple next nodes, pick first (UI handles branching)
-  return last.nextNodeIds[0] || START_NODE;
+  // If the last step declared next nodes, use the first (queue handles the rest)
+  if (last.nextNodeIds.length > 0) return last.nextNodeIds[0];
+  // Fall back to pending queue
+  const pending = state.pendingNodes?.[0];
+  if (pending) return pending;
+  return START_NODE;
 }
 
-export function currentNode(state: { path: PathStep[] }): Node | null {
+export function currentNode(state: { path: PathStep[]; pendingNodes?: string[] }): Node | null {
   const id = currentNodeId(state);
   return NODES[id] || null;
 }
 
-export function isAtTerminal(state: { path: PathStep[] }): boolean {
+export function isAtTerminal(state: { path: PathStep[]; pendingNodes?: string[]; finished?: boolean }): boolean {
+  // Explicit finish always counts as terminal
+  if (state.finished) return true;
   const node = currentNode(state);
-  // Terminal if no outgoing edges (no choices or all choices have no next)
+  // If the current node has no choices and no next, it's a genuine terminal
   if (!node) return true;
-  return node.choices.length === 0 || node.choices.every(c => !c.next || c.next.length === 0);
+  // Genuine terminal: node has no choices at all (e.g., free-text leaf without exits)
+  if (node.choices.length === 0) return true;
+  // If any choice leads onward (has next), the journey is NOT over
+  const anyOutgoing = node.choices.some(c => c.next && c.next.length > 0);
+  if (anyOutgoing) return false;
+  // If there are still pending nodes queued, keep going
+  if (state.pendingNodes && state.pendingNodes.length > 0) return false;
+  return true;
 }
 
-export function currentTerminal(state: { path: PathStep[]; profile: Profile | null }): { title: LocalizedText; blueprint: LocalizedText; percent_of_users: number; social_proof: number; similar_minds: LocalizedText[] } | null {
-  // Build a terminal-like object from the multi-axis profile for backward compat
+export function currentTerminal(state: { path: PathStep[]; profile: Profile | null; finished?: boolean; candidateScores?: Record<string, number> }): { title: LocalizedText; blueprint: LocalizedText; percent_of_users: number; social_proof: number; similar_minds: LocalizedText[] } | null {
   const profile = state.profile;
   if (!profile) return null;
-  
+
   const orientation = profile.orientation?.join(", ") || "exploring";
   const ultimate = profile.ultimateReality?.join(", ") || "undetermined";
   const agency = profile.agency?.join(", ") || "unspecified";
@@ -391,19 +501,51 @@ export function currentTerminal(state: { path: PathStep[]; profile: Profile | nu
   const epistemic = profile.epistemicSources?.join(", ") || "unspecified";
   const traditions = profile.traditions?.join(", ") || "none";
   const confidence = profile.confidence || "tentative";
-  
+
+  // Candidate pathway presentation
+  const scores = state.candidateScores || computeCandidateScores(state.path.flatMap(s => s.tags));
+  const candidates = topCandidates(scores, 5);
+  const candidateNames: Record<string, string> = {
+    christianity: "Christianity", islam: "Islam", judaism: "Judaism", sikhism: "Sikhism",
+    bahai: "the Baháʼí Faith", hindu: "Hindu traditions", buddhism: "Buddhism",
+    deism: "Deism", pantheism: "Pantheism / Panentheism", polytheism: "Polytheist paths",
+    pagan: "Pagan paths", secular: "Secular / non-religious", atheism: "Atheism",
+    agnosticism: "Agnosticism", humanism: "Humanism", naturalism: "Religious naturalism",
+    daoism: "Daoism", shinto: "Shinto", jainism: "Jainism", indigenous: "Indigenous / ancestral paths",
+    classical_theism: "Classical theism", process_theism: "Process / relational theism", sufism: "Sufi-oriented Islam",
+  };
+  const candidateList = candidates.map(c => candidateNames[c.id] || c.id).join(", ");
+
+  const isIncomplete = !state.finished && candidates.length === 0;
+  const statusLabel = isIncomplete ? "incomplete" : confidence;
+
   const title = {
-    en: `${confidence.charAt(0).toUpperCase() + confidence.slice(1)} ${orientation} orientation`,
-    ru: `${confidence.charAt(0).toUpperCase() + confidence.slice(1)} ${orientation} ориентация`,
-    az: `${confidence.charAt(0).toUpperCase() + confidence.slice(1)} ${orientation} yanaşması`,
+    en: state.finished ? "Provisional Profile (Incomplete)" : candidates.length > 0
+      ? "Most Compatible Pathways"
+      : `${confidence.charAt(0).toUpperCase() + confidence.slice(1)} Orientation (Incomplete)`,
+    ru: state.finished ? "Предварительный профиль (неполный)" : candidates.length > 0
+      ? "Наиболее совместимые пути"
+      : `${confidence.charAt(0).toUpperCase() + confidence.slice(1)} ориентация (неполная)`,
+    az: state.finished ? "Müvəqqəti Profil (Natamam)" : candidates.length > 0
+      ? "Ən uyğun yollar"
+      : `${confidence.charAt(0).toUpperCase() + confidence.slice(1)} yanaşma (Natamam)`,
   };
-  
-  const blueprint = {
-    en: `Your answers describe a ${confidence} ${orientation} orientation. You ${ultimate}, draw primarily on ${epistemic}, and identify connections with ${traditions}. This is a description, not an authoritative label.`,
-    ru: `Ваши ответы описывают ${confidence} ${orientation} ориентацию. Вы ${ultimate}, опираетесь на ${epistemic} и идентифицируете связи с ${traditions}. Это описание, а не авторитетный ярлык.`,
-    az: `Cavablarınız ${confidence} ${orientation} yanaşmasını təsvir edir. Siz ${ultimate}, əsasən ${epistemic} üzərinə dayanırsınız və ${traditions} ilə əlaqələri müəyyən edirsiniz. Bu təsvirdir, авторитетli etiket deyil.`,
-  };
-  
+
+  let blueprint: LocalizedText;
+  if (candidates.length > 0) {
+    blueprint = {
+      en: `Most compatible pathways so far: ${candidateList}. Your answers currently suggest ${ultimate}, ${agency}, ${relation}, and ${epistemic}. These answers do not determine your religion; they identify paths you may wish to explore next.`,
+      ru: `Наиболее совместимые пути на данный момент: ${candidateList}. Ваши ответы указывают на ${ultimate}, ${agency}, ${relation} и ${epistemic}. Эти ответы не определяют вашу религию; они выявляют пути, которые вы можете исследовать дальше.`,
+      az: `Hazırda ən uyğun yollar: ${candidateList}. Cavablarınız ${ultimate}, ${agency}, ${relation} və ${epistemic} olduğunu göstərir. Bu cavablar dininizi müəyyən etmir; onlar araşdıra biləcəyiniz yolları göstərir.`,
+    };
+  } else {
+    blueprint = {
+      en: `Your answers describe a ${statusLabel} ${orientation} orientation. You ${ultimate}, draw primarily on ${epistemic}, and identify connections with ${traditions}. This is a description, not an authoritative label.`,
+      ru: `Ваши ответы описывают ${statusLabel} ${orientation} ориентацию. Вы ${ultimate}, опираетесь на ${epistemic} и идентифицируете связи с ${traditions}. Это описание, а не авторитетный ярлык.`,
+      az: `Cavablarınız ${statusLabel} ${orientation} yanaşmasını təsvir edir. Siz ${ultimate}, əsasən ${epistemic} üzərinə dayanırsınız və ${traditions} ilə əlaqələri müəyyən edirsiniz. Bu təsvirdir, авторитетli etiket deyil.`,
+    };
+  }
+
   return {
     title,
     blueprint,

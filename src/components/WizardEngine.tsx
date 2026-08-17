@@ -16,6 +16,7 @@ import LanguageToggle from "./LanguageToggle";
 import QuestionCard from "./QuestionCard";
 import DefinitionCard from "./DefinitionCard";
 import MermaidMap from "./MermaidMap";
+import CandidateCard from "./CandidateCard";
 import { useWizard, isAtTerminal } from "@/store/wizardStore";
 
 export default function WizardEngine() {
@@ -25,9 +26,15 @@ export default function WizardEngine() {
   const begin = useWizard((s) => s.begin);
   const back = useWizard((s) => s.back);
   const reset = useWizard((s) => s.reset);
+  const finish = useWizard((s) => s.finish);
+  const finished = useWizard((s) => s.finished);
+  const pendingNodes = useWizard((s) => s.pendingNodes);
+  const candidateScores = useWizard((s) => s.candidateScores);
 
   const started = begun;
-  const done = isAtTerminal({ path });
+  const done = isAtTerminal({ path, pendingNodes, finished });
+  // Show candidate card at candidate_traditions stage or when scores exist mid-journey
+  const showCandidates = started && !done && path.length >= 3 && Object.keys(candidateScores).length > 0 && path[path.length - 1]?.nextNodeIds[0] === "candidate_traditions";
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
@@ -80,11 +87,11 @@ export default function WizardEngine() {
         {/* ===== Main stage ===== */}
         {started && (
           <main className="mb-8">
-            {done ? <DefinitionCard /> : <QuestionCard />}
+            {showCandidates ? <CandidateCard /> : done ? <DefinitionCard /> : <QuestionCard />}
           </main>
         )}
 
-        {/* ===== Controls (Back / Restart) ===== */}
+        {/* ===== Controls (Back / Finish / Restart) ===== */}
         {started && (
           <div className="flex items-center justify-center gap-4 mb-8">
             <button
@@ -95,6 +102,15 @@ export default function WizardEngine() {
             >
               ← {t("app.back")}
             </button>
+            {!done && (
+              <button
+                type="button"
+                onClick={finish}
+                className="rounded-xl border border-slate-600 px-5 py-2.5 text-sm text-slate-300 hover:border-amber-400/60 hover:text-amber-200 transition-colors cursor-pointer"
+              >
+                {t("app.finish")}
+              </button>
+            )}
             <button
               type="button"
               onClick={reset}

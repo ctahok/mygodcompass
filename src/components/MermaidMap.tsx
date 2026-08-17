@@ -59,9 +59,11 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
   const path = useWizard((s) => s.path);
   const lang = useWizard((s) => s.lang);
   const [source, setSource] = useState("");
+  const [svgContent, setSvgContent] = useState<string | null>(null);
   const [svgKey, setSvgKey] = useState(0);
   const [viewMode, setViewMode] = useState<"full" | "pruned">("pruned");
   const [autoFitted, setAutoFitted] = useState(false);
+  const [zoom, setZoom] = useState(1);
   const svgHostRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const renderIdRef = useRef(0);
@@ -105,7 +107,7 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
     return lines.join("\n");
   }, [path, lang]);
 
-  // Debounced render
+  // Debounced render - use dangerouslySetInnerHTML via state to avoid React reconciliation conflicts
   useEffect(() => {
     const src = buildSource();
     setSource(src);
@@ -116,7 +118,8 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
         const id = `theogony-${++renderIdRef.current}`;
         const { svg } = await mermaid.render(id, src);
         if (!svgHostRef.current) return;
-        svgHostRef.current.innerHTML = svg;
+        // Store SVG in state; render via dangerouslySetInnerHTML with key to force remount
+        setSvgContent(svg);
         setSvgKey((k) => k + 1);
       } catch (err) {
         console.error("Mermaid render failed:", err);
@@ -125,20 +128,25 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
     return () => clearTimeout(timer);
   }, [buildSource]);
 
-  // Auto-fit after SVG renders
+  // Auto-fit after SVG renders - use ref callback to avoid direct DOM mutation
   useEffect(() => {
     if (!svgHostRef.current) return;
     const svg = svgHostRef.current.querySelector("svg");
     if (!svg || autoFitted) return;
 
-    // Wait for layout
     const timer = setTimeout(() => {
       try {
-        svg.setAttribute("width", "100%");
-        svg.setAttribute("height", "100%");
-        svg.style.maxWidth = "100%";
-        svg.style.maxHeight = "100%";
-        setAutoFitted(true);
+        // Use requestAnimationFrame to ensure SVG is in DOM before measuring
+        requestAnimationFrame(() => {
+          const currentSvg = svgHostRef.current?.querySelector("svg");
+          if (currentSvg && !autoFitted) {
+            currentSvg.setAttribute("width", "100%");
+            currentSvg.setAttribute("height", "100%");
+            currentSvg.style.maxWidth = "100%";
+            currentSvg.style.maxHeight = "100%";
+            setAutoFitted(true);
+          }
+        });
       } catch (e) {
         console.warn("Auto-fit failed:", e);
       }
@@ -214,6 +222,34 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
           </button>
         </div>
         <div className="flex items-center gap-2">
+          {/* Zoom controls */}
+          <div className="flex items-center gap-1 rounded-lg bg-slate-800 border border-slate-700 px-1 py-0.5">
+            <button
+              type="button"
+              onClick={() => setZoom((z) => Math.max(0.5, +(z - 0.25).toFixed(2)))}
+              className="w-7 h-7 rounded-md text-sm font-bold text-slate-300 hover:bg-slate-700 hover:text-amber-300 transition-colors cursor-pointer"
+              aria-label="Zoom out"
+            >
+              −
+            </button>
+            <span className="text-xs text-slate-400 font-mono w-10 text-center">{Math.round(zoom * 100)}%</span>
+            <button
+              type="button"
+              onClick={() => setZoom((z) => Math.min(3, +(z + 0.25).toFixed(2)))}
+              className="w-7 h-7 rounded-md text-sm font-bold text-slate-300 hover:bg-slate-700 hover:text-amber-300 transition-colors cursor-pointer"
+              aria-label="Zoom in"
+            >
+              +
+            </button>
+            <button
+              type="button"
+              onClick={() => setZoom(1)}
+              className="w-7 h-7 rounded-md text-[10px] font-semibold text-slate-400 hover:bg-slate-700 hover:text-amber-300 transition-colors cursor-pointer"
+              aria-label="Reset zoom"
+            >
+              1:1
+            </button>
+          </div>
           <a
             href="/ontology-tree.mmd"
             target="_blank"
@@ -242,7 +278,13 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
         }}
       >
         <div key={svgKey} className="min-w-full min-h-full" style={{ minHeight: height }}>
-          {source && <div className="w-full h-full" />}
+          {svgContent && (
+            <div
+              className="w-full h-full"
+              style={{ transform: `scale(${zoom})`, transformOrigin: "top left", width: `${100 / zoom}%`, height: `${100 / zoom}%` }}
+              dangerouslySetInnerHTML={{ __html: svgContent }}
+            />
+          )}
         </div>
       </div>
     </div>
