@@ -132,7 +132,7 @@ export const resources = {
         share: "Tərifimi paylaş",
         copied: "Panoya kopyalandı!",
         footer: "Fəlsəfi sərtliklə qurulub, dogma ilə yox.",
-        freeTextPlaceholder: "Öz sözlerinizlə təsvir edin...",
+        freeTextPlaceholder: "Öz sözlərinizlə təsvir edin...",
         scaleLow: "Həqiqətən yox",
         scaleHigh: "Tamamilə",
         finish: "İndi tamamla",

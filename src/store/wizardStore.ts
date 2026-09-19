@@ -560,7 +560,7 @@ export function currentTerminal(state: { path: PathStep[]; profile: Profile | nu
     blueprint = {
       en: `Your answers describe a ${statusLabel} ${orientation} orientation. You ${ultimate}, draw primarily on ${epistemic}, and identify connections with ${traditions}. This is a description, not an authoritative label.`,
       ru: `Ваши ответы описывают ${statusLabel} ${orientation} ориентацию. Вы ${ultimate}, опираетесь на ${epistemic} и идентифицируете связи с ${traditions}. Это описание, а не авторитетный ярлык.`,
-      az: `Cavablarınız ${statusLabel} ${orientation} yanaşmasını təsvir edir. Siz ${ultimate}, əsasən ${epistemic} üzərinə dayanırsınız və ${traditions} ilə əlaqələri müəyyən edirsiniz. Bu təsvirdir, авторитетli etiket deyil.`,
+      az: `Cavablarınız ${statusLabel} ${orientation} yanaşmasını təsvir edir. Siz ${ultimate}, əsasən ${epistemic} üzərinə dayanırsınız və ${traditions} ilə əlaqələri müəyyən edirsiniz. Bu təsvirdir, avtoritetli etiket deyil.`,
     };
   }
 

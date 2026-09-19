@@ -67,7 +67,7 @@ export const NODES: Record<string, Node> = {
     prompt: {
       en: "What kind of orientation best describes you?",
       ru: "Какой подход лучше всего описывает ваш взгляд?",
-      az: "Hangi yanaşma sizi ən yaxşı təsvir edir?",
+      az: "Hansı yanaşma sizi ən yaxşı təsvir edir?",
     },
     help: {
       en: "You can select more than one. This sets the overall pathway.",
@@ -117,12 +117,12 @@ export const NODES: Record<string, Node> = {
     prompt: {
       en: "Do you nevertheless regard any reality, value, or experience as sacred, transcendent, or spiritually significant?",
       ru: "Всё же считаете ли вы какую-то реальность, ценность или опыт священным, траендентным или духовно значимым?",
-      az: "Hər də, hansısa realliyi, dəyəri və ya təcrübəni məqdis, üstdə və ya mənəvi cəhətdən əhəmiyyətli hesab edirsiniz?",
+      az: "Hər də, hansısa realliyi, dəyəri və ya təcrübəni müqəddəs, transsendental və ya mənəvi cəhətdən əhəmiyyətli hesab edirsiniz?",
     },
     help: {
       en: "Some non-religious people still hold certain things as sacred (e.g., nature, humanity, truth).",
       ru: "Некоторые нерелигиозные люди всё равно считают что-то священным (природа, человечество, правда).",
-      az: "Bəzi dini deyil şəxslər hələ də bir şeyi məqdis hesab edir (təbiat, insanlıq, haqq).",
+      az: "Bəzi dini deyil şəxslər hələ də bir şeyi müqəddəs hesab edir (təbiat, insanlıq, haqq).",
     },
     responseMode: "single",
     universalChoices: true,
@@ -132,7 +132,7 @@ export const NODES: Record<string, Node> = {
         label: {
           en: "No — nothing is sacred or transcendent for me",
           ru: "Нет — ничего не является священным или траендентным для меня",
-          az: "Xeyr — heç bir şey məni üçün məqdis və ya üstdə deyil",
+          az: "Xeyr — heç bir şey məni üçün müqəddəs və ya transsendental deyil",
         },
         tags: ["secular", "naturalist"],
         next: ["secular_profile"],
@@ -142,7 +142,7 @@ export const NODES: Record<string, Node> = {
         label: {
           en: "Yes or perhaps — I relate to something as sacred/transcendent",
           ru: "Да или, возможно, — я отношусь к чему-то как к священному/траендентному",
-          az: "Bəli və ya belə ki — mən bir şeyə məqdis/üstdə kimi baxırım",
+          az: "Bəli və ya belə ki — mən bir şeyə müqəddəs/transsendental kimi baxırım",
         },
         tags: ["religious-naturalist", "spiritual-naturalist"],
         next: ["rnatural_profile"],
@@ -185,14 +185,14 @@ export const NODES: Record<string, Node> = {
     prompt: {
       en: "Which term fits your naturalistic sacred orientation?",
       ru: "Какой термин подходит для вашего натуралистического священного отношения?",
-      az: "Hansı termin sizin naturalistik məqdis yanaşmanıza uyğun gəlir?",
+      az: "Hansı termin sizin naturalistik müqəddəs yanaşmanıza uyğun gəlir?",
     },
     responseMode: "multiple",
     universalChoices: true,
     choices: [
       { id: "religious_naturalist", label: { en: "Religious naturalist", ru: "Религиозный натуралист", az: "Dini naturalist" }, tags: ["religious-naturalist"] },
       { id: "spiritual_naturalist", label: { en: "Spiritual naturalist", ru: "Духовный натуралист", az: "Mənəvi naturalist" }, tags: ["spiritual-naturalist"] },
-      { id: "nontheistic_sacred", label: { en: "Non-theistic sacred orientation", ru: "Нетеистическое священное отношение", az: "Non-teistik məqdis yanaşma" }, tags: ["nontheistic-sacred"] },
+      { id: "nontheistic_sacred", label: { en: "Non-theistic sacred orientation", ru: "Нетеистическое священное отношение", az: "Non-teistik müqəddəs yanaşma" }, tags: ["nontheistic-sacred"] },
       { id: "self_described_rnatural", label: { en: "Other self-described", ru: "Другое (своё описание)", az: "Digər (öz təsviriniz)" }, tags: ["self-described"], next: ["free_text_rnatural"] },
     ],
   },
@@ -217,7 +217,7 @@ export const NODES: Record<string, Node> = {
     prompt: {
       en: "Do you affirm an ultimate, sacred, divine, spiritual, or transcendent reality?",
       ru: "Признаете ли вы высшую, священную, божественную, духовную или траендентную реальность?",
-      az: "Siz əlli, məqdis, ilahi, mənəvi və ya üstdə bir realliyi təsdiqləyirsiniz?",
+      az: "Daha yüksək, müqəddəs, ilahi, mənəvi və ya transsendental bir reallığı qəbul edirsinizmi?",
     },
     help: {
       en: "This question is about metaphysical commitment, not institutional membership.",
@@ -264,7 +264,7 @@ export const NODES: Record<string, Node> = {
         label: {
           en: "Yes — I affirm an ultimate/sacred/divine reality",
           ru: "Да — я признаю высшую/священную/божественную реальность",
-          az: "Bəli — mən əlli/məqdis/ilahi realliyi təsdiqləyirəm",
+          az: "Bəli — mən daha yüksək/müqəddəs/ilahi reallığı qəbul edirəm",
         },
         tags: ["affirms-ultimate"],
         next: ["reality"],
@@ -334,24 +334,24 @@ export const NODES: Record<string, Node> = {
     prompt: {
       en: "How do you understand ultimate or sacred reality?",
       ru: "Как вы понимаете высшую или священную реальность?",
-      az: "Siz üstdə və ya məqdis realliyi necə anlaya bilərsiniz?",
+      az: "Siz daha yüksək və ya müqəddəs realliyi necə anlaya bilərsiniz?",
     },
     help: {
       en: "Select all that fit. You can also say the question does not fit your outlook.",
       ru: "Выберите все подходящее. Можно также сказать, что вопрос не подходит вашему взгляду.",
-      az: "Uyğun gələnlərə seçin. Sualın sizin näzarınızə uyğun olmadığını da qeyd edə bilərsiniz.",
+      az: "Uyğun gələnlərə seçin. Sualın sizin nazarınızə uyğun olmadığını da qeyd edə bilərsiniz.",
     },
     responseMode: "multiple",
     universalChoices: true,
     choices: [
       { id: "none", label: { en: "I do not affirm such a reality", ru: "Я не утверждаю существование такой реальности", az: "Mən belə realliyin mövcudluğunu iddia etmirəm" }, tags: ["non-theism"], next: ["nontheistic"] },
-      { id: "one", label: { en: "One ultimate reality", ru: "Одна высшая реальность", az: "Bir üstdə reallik" }, tags: ["monism", "monotheism", "one"], next: ["agency"] },
-      { id: "many", label: { en: "Many divine beings, spirits, ancestors, or sacred powers", ru: "Много божественных существ, духов, предков или священных сил", az: "Çoxlu ilahi varlıqlar, ruhlar, atalar və ya məqdis qüvvələr" }, tags: ["plurality", "many"], next: ["agency"] },
+      { id: "one", label: { en: "One ultimate reality", ru: "Одна высшая реальность", az: "Bir daha yüksək reallik" }, tags: ["monism", "monotheism", "one"], next: ["agency"] },
+      { id: "many", label: { en: "Many divine beings, spirits, ancestors, or sacred powers", ru: "Много божественных существ, духов, предков или священных сил", az: "Çoxlu ilahi varlıqlar, ruhlar, atalar və ya müqəddəs qüvvələr" }, tags: ["plurality", "many"], next: ["agency"] },
       { id: "one_many", label: { en: "One reality expressed through many beings/forms", ru: "Одна реальность, выражающаяся через много существ/форм", az: "Bir reallik, çoxlu varlıqlar/formalar vasitəsilə ifadə edilən" }, tags: ["unity-plurality", "henotheism", "monolatry"], next: ["agency"] },
       { id: "nondual", label: { en: "Non-dual or beyond meaningful counting", ru: "Недуалистическая или за пределами осмысленного счёта", az: "Non-dual və ya mənalı saymaqın ötesində" }, tags: ["non-dual", "advaita"], next: ["agency"] },
       { id: "cosmic", label: { en: "Identical with, or wholly immanent within, the cosmos/nature", ru: "Тождественна или полностью имманентна космосу/природе", az: "Kosmos/təbiat ilə eynidir və ya tamamilə immanentdir" }, tags: ["immanence", "pantheism", "panentheism"], next: ["agency"] },
       { id: "unknown_count", label: { en: "Unknown or suspended judgment", ru: "Неизвестно или приостановленное суждение", az: "Naməlum və ya dayandırılmış hökm" }, tags: ["agnostic"], isUniversal: "unsure", next: ["agency"] },
-      { id: "not_frame_reality", label: { en: "This is not how I frame my outlook", ru: "Так я свой взгляд не формулирую", az: "Mən öz näzarımı belə formullaşdırmıram" }, tags: ["non-categorised"], isUniversal: "not_my_frame", next: ["practicefirst"] },
+      { id: "not_frame_reality", label: { en: "This is not how I frame my outlook", ru: "Так я свой взгляд не формулирую", az: "Mən öz nazarımı belə formullaşdırmıram" }, tags: ["non-categorised"], isUniversal: "not_my_frame", next: ["practicefirst"] },
     ],
   },
 
@@ -361,7 +361,7 @@ export const NODES: Record<string, Node> = {
       prompt: {
         en: "Is ultimate reality personal, impersonal, both, or beyond those categories?",
         ru: "Является ли высшая реальность личной, безличной, и тем, и другим, или выходит за эти категории?",
-        az: "Üstdə reallik şəxsidirmi, şəxsiyyətsizmi, her ikisimi, yoxsa bu kateqoriyaların ötesindəmidir?",
+        az: "Daha yüksək reallik şəxsidirmi, şəxsiyyətsizmi, her ikisimi, yoxsa bu kateqoriyaların ötesindəmidir?",
       },
       help: {
         en: "\"Personal\" = has will, intention, relationality. \"Impersonal\" = law-like, principle, ground. \"Beyond\" = apophatic, transpersonal.",
@@ -371,12 +371,12 @@ export const NODES: Record<string, Node> = {
       responseMode: "multiple",
       universalChoices: true,
       choices: [
-        { id: "personal", label: { en: "Personal or relational ultimate reality", ru: "Личная или реляционная высшая реальность", az: "Şəxsi və ya əlaqəli üstdə reallik" }, tags: ["personalism", "relational"], next: ["relation"] },
-        { id: "impersonal", label: { en: "Impersonal ultimate reality (law, principle, ground)", ru: "Безличная высшая реальность (закон, принцип, основание)", az: "Şəxsiyyətsiz üstdə reallik (qanun, prinsip, əsas)" }, tags: ["impersonalism"], next: ["relation"] },
+        { id: "personal", label: { en: "Personal or relational ultimate reality", ru: "Личная или реляционная высшая реальность", az: "Şəxsi və ya əlaqəli daha yüksək reallik" }, tags: ["personalism", "relational"], next: ["relation"] },
+        { id: "impersonal", label: { en: "Impersonal ultimate reality (law, principle, ground)", ru: "Безличная высшая реальность (закон, принцип, основание)", az: "Şəxsiyyətsiz daha yüksək reallik (qanun, prinsip, əsas)" }, tags: ["impersonalism"], next: ["relation"] },
         { id: "both_agency", label: { en: "Personal and impersonal / transpersonal", ru: "Личная и безличная / трансперсональная", az: "Şəxsi və şəxsiyyətsiz / transpersonal" }, tags: ["transpersonal", "both"], next: ["relation"] },
         { id: "beyond_agency", label: { en: "Beyond personal-versus-impersonal language", ru: "За пределами языка «личное против безличного»", az: "\"Şəxsi qarşı şəxsiyyətsiz\" dili ötesində" }, tags: ["apophatic", "beyond-categories"], next: ["relation"] },
         { id: "unknown_agency", label: { en: "Unknown / suspended judgment", ru: "Неизвестно / приостановленное суждение", az: "Naməlum / dayandırılmış hökm" }, tags: ["agnostic"], isUniversal: "unsure", next: ["relation"] },
-        { id: "not_frame_agency", label: { en: "This is not how I frame my outlook", ru: "Так я свой взгляд не формулирую", az: "Mən öz näzarımı belə formullaşdırmıram" }, tags: ["non-categorised"], isUniversal: "not_my_frame", next: ["practicefirst"] },
+        { id: "not_frame_agency", label: { en: "This is not how I frame my outlook", ru: "Так я свой взгляд не формулирую", az: "Mən öz nazarımı belə formullaşdırmıram" }, tags: ["non-categorised"], isUniversal: "not_my_frame", next: ["practicefirst"] },
       ],
     },
 
@@ -399,7 +399,7 @@ export const NODES: Record<string, Node> = {
       { id: "identity", label: { en: "Is not separate from world / self / nature", ru: "Не отделена от мира / себя / природы", az: "Dünya / öz / təbiətdən ayrı deyil" }, tags: ["nondual", "identity", "immanence"], next: ["knowing"] },
       { id: "mixed_relation", label: { en: "Several of these / not settled", ru: "Несколько из перечисленных / не определено", az: "Bunların bir neçəsi / müəyyən edilməyib" }, tags: ["mixed", "unsettled"], next: ["knowing"] },
       { id: "unknown_relation", label: { en: "Unknown / suspended judgment", ru: "Неизвестно / приостановленное суждение", az: "Naməlum / dayandırılmış hökm" }, tags: ["agnostic"], isUniversal: "unsure", next: ["knowing"] },
-      { id: "not_frame_relation", label: { en: "This is not how I frame my outlook", ru: "Так я свой взгляд не формулирую", az: "Mən öz näzarımı belə formullaşdırmıram" }, tags: ["non-categorised"], isUniversal: "not_my_frame", next: ["practicefirst"] },
+      { id: "not_frame_relation", label: { en: "This is not how I frame my outlook", ru: "Так я свой взгляд не формулирую", az: "Mən öz nazarımı belə formullaşdırmıram" }, tags: ["non-categorised"], isUniversal: "not_my_frame", next: ["practicefirst"] },
     ],
   },
 
@@ -420,9 +420,9 @@ export const NODES: Record<string, Node> = {
       { id: "ritual", label: { en: "Ritual, practice, divination, or embodied tradition", ru: "Ритуал, практика, гадание или телесная традиция", az: "Ritual, praktika, fal və ya cismani ənənə" }, tags: ["ritual", "practice", "embodied"], next: ["candidate_traditions"] },
       { id: "ancestry", label: { en: "Ancestors, elders, land, oral tradition, or community", ru: "Предки, старшие, земля, устная традиция или община", az: "Atalar, yaşlılar, torpaq, sözlü ənənə və ya cəmiyyət" }, tags: ["ancestry", "oral-tradition", "elders"], next: ["candidate_traditions"] },
       { id: "plural_sources", label: { en: "Several sources / pluralistic", ru: "Несколько источников / плюралистично", az: "Bir neçə mənbə / plyuralistik" }, tags: ["pluralistic", "multiple-sources"], next: ["candidate_traditions"] },
-      { id: "no_epistemic", label: { en: "No claim to know / not central to my orientation", ru: "Не претендую на знание / не центрально для моего взгляда", az: "Bilmək iddiası yoxdur / mənim näzarımın mərkəzi deyil" }, tags: ["agnostic", "non-epistemic"], next: ["candidate_traditions"] },
+      { id: "no_epistemic", label: { en: "No claim to know / not central to my orientation", ru: "Не претендую на знание / не центрально для моего взгляда", az: "Bilmək iddiası yoxdur / mənim nazarımın mərkəzi deyil" }, tags: ["agnostic", "non-epistemic"], next: ["candidate_traditions"] },
       { id: "unknown_knowing", label: { en: "Unknown / suspended judgment", ru: "Неизвестно / приостановленное суждение", az: "Naməlum / dayandırılmış hökm" }, tags: ["agnostic"], isUniversal: "unsure", next: ["candidate_traditions"] },
-      { id: "not_frame_knowing", label: { en: "This is not how I frame my outlook", ru: "Так я свой взгляд не формулирую", az: "Mən öz näzarımı belə formullaşdırmıram" }, tags: ["non-categorised"], isUniversal: "not_my_frame", next: ["practicefirst"] },
+      { id: "not_frame_knowing", label: { en: "This is not how I frame my outlook", ru: "Так я свой взгляд не формулирую", az: "Mən öz nazarımı belə formullaşdırmıram" }, tags: ["non-categorised"], isUniversal: "not_my_frame", next: ["practicefirst"] },
     ],
   },
 
@@ -451,7 +451,7 @@ export const NODES: Record<string, Node> = {
       { id: "explore_buddhist", label: { en: "Explore Buddhism", ru: "Исследовать буддизм", az: "Buddizmi araşdır" }, tags: ["exploring-buddhist"], next: ["buddhist_detail"] },
       { id: "explore_deism", label: { en: "Explore Deism", ru: "Исследовать деизм", az: "Deizmi araşdır" }, tags: ["exploring-deism"], next: ["deism_detail"] },
       { id: "explore_pantheism", label: { en: "Explore Pantheism / Panentheism", ru: "Исследовать пантеизм / панентеизм", az: "Panteizm / Panenteizmi araşdır" }, tags: ["exploring-pantheism"], next: ["pantheism_detail"] },
-      { id: "explore_polytheism", label: { en: "Explore Polytheist / Pagan paths", ru: "Исследовать политеистические / языческие пути", az: "Politeist / Yaqutçuluq yollarını araşdır" }, tags: ["exploring-polytheism"], next: ["pagan_detail"] },
+      { id: "explore_polytheism", label: { en: "Explore Polytheist / Pagan paths", ru: "Исследовать политеистические / языческие пути", az: "Politeist / bütpərəstlik yollarını araşdır" }, tags: ["exploring-polytheism"], next: ["pagan_detail"] },
       { id: "explore_secular", label: { en: "Explore Secular / Non-religious outlooks", ru: "Исследовать светские / нерелигиозные взгляды", az: "Dünyəvi / dini olmayan görüşləri araşdır" }, tags: ["exploring-secular"], next: ["secular_profile"] },
       { id: "explore_none", label: { en: "None of these fit — keep answering general questions", ru: "Ничего из этого не подходит — продолжу отвечать на общие вопросы", az: "Bunlardan heç biri uyğun deyil — ümumi suallara cavab verməyə davam et" }, tags: ["none-fit"], next: ["belonging"] },
       { id: "already_identify", label: { en: "I already identify with a tradition", ru: "Я уже отношу себя к традиции", az: "Mən artıq bir ənənə ilə eyniləşirəm" }, tags: ["already-identify"], next: ["belonging"] },
@@ -612,21 +612,21 @@ export const NODES: Record<string, Node> = {
     prompt: {
       en: "Which traditions, communities, practices, and cultural inheritances matter to you? Select all that apply.",
       ru: "Какие традиции, общины, практики и культурное наследие важны для вас? Выберите все подходящее.",
-      az: "Hansı ənənələr, cəmiyyətlər, praktikalar və mədəni irsi sizin üçün əhəmiyyətli? Uğurlu gələn hamısını seçin.",
+      az: "Hansı ənənələr, cəmiyyətlər, praktikalar və mədəni irsi sizin üçün əhəmiyyətli? Uyğun gələn hamısını seçin.",
     },
     help: {
       en: "Belonging and belief do not always match. Affiliation may be multiple, cultural-only, or ancestral without doctrinal assent.",
       ru: "Принадлежность и вера не всегда совпадают. Аффилиация может быть множественной, только культурной или родовой без догматического согласия.",
-      az: "Aidiyyət və inam daima uyğun gəlmür. Aidiyyət çoxlu, yalnız mədəni və ya əqli razılıqsız əsəlli ola bilər.",
+      az: "Aidiyyət və inam daima uyğun gəlmür. Aidiyyət çoxlu, yalnız mədəni və ya əqli razılıqsız əcdadi ola bilər.",
     },
     responseMode: "multiple",
     universalChoices: true,
     choices: [
-      { id: "abrahamic", label: { en: "Jewish; Christian; Muslim; Baháʼí; Samaritan; Druze; Mandaean; Yazidi; Rastafari; other Abrahamic/West Asian", ru: "Еврейская; Христианская; Мусульманская; Бахаи; Самаритянская; Дерзская; Мандейская; Езидская; Растафари; другое Авраамическое/Западноазиатское", az: "Yəhudi; Xristian; Müslüman; Baháʼi; Samaritan; Druze; Mandey; Yezidi; Rastafari; digər İbrahimi/Qərbi Asiya" }, tags: ["abrahamic"], next: ["abrahamic_detail"] },
+      { id: "abrahamic", label: { en: "Jewish; Christian; Muslim; Baháʼí; Samaritan; Druze; Mandaean; Yazidi; Rastafari; other Abrahamic/West Asian", ru: "Еврейская; Христианская; Мусульманская; Бахаи; Самаритянская; Дерзская; Мандейская; Езидская; Растафари; другое Авраамическое/Западноазиатское", az: "Yəhudi; Xristian; Müsəlman; Baháʼi; Samaritan; Druze; Mandey; Yezidi; Rastafari; digər İbrahimi/Qərbi Asiya" }, tags: ["abrahamic"], next: ["abrahamic_detail"] },
       { id: "southasian", label: { en: "Hindu traditions; Sikh; Jain; Buddhist; other South Asian/Himalayan traditions", ru: "Индуистские традиции; Сикх; Джайн; Буддист; другие Южноазиатские/Гималайские традиции", az: "Hindu ənənələri; Sikh; Jain; Buddhist; digər Cənubi Asiya/Himalaya ənənələri" }, tags: ["south-asian"], next: ["southasian_detail"] },
       { id: "eastasian", label: { en: "Daoist; Confucian; Chinese folk/religious traditions; Shinto; Korean traditions; Vietnamese traditions; Japanese new religions", ru: "Даосизм; Конфуцианство; Китайские народные/религиозные традиции; Синто; Корейские традиции; Вьетнамские традиции; Японские новые религии", az: "Daost; Konfutsiyçilik; Çin xalq/dini ənənələri; Şinto; Koreya ənənələri; Vietnam ənənələri; Yaponiya yeni dini" }, tags: ["east-asian"], next: ["eastasian_detail"] },
-      { id: "indigenous", label: { en: "Indigenous, land-based, ancestral, African traditional, African diasporic, Pacific, American, or circumpolar traditions — self-described region/people first", ru: "Коренные, земельные, родовые, Африканские традиционные, Африканские диаспорные, Тихоокеанские, Американские или полярные традиции — самописание региона/народа превыше всего", az: "Yerli, torpaq-asılı, əsəlli, Afrika ənənəvi, Afrika diasporası, Pasifik, Amerikan və ya qütb traditions — region/xalq öz təsviri birinci" }, tags: ["indigenous", "land-based", "ancestral"], next: ["indigenous_detail"] },
-      { id: "pagan", label: { en: "Contemporary Pagan, Heathen, Druid, Wiccan, reconstructionist, or related", ru: "Современное язычество, Хейтн, Друидизм, Уикка, реконструкционизм или смежное", az: "Müasir Yaqutçuluq, Heathen, Druid, Wiccan, rekonstrüksionist və ya əlaqəli" }, tags: ["pagan", "heathen", "druid", "wiccan", "reconstructionist"], next: ["pagan_detail"] },
+      { id: "indigenous", label: { en: "Indigenous, land-based, ancestral, African traditional, African diasporic, Pacific, American, or circumpolar traditions — self-described region/people first", ru: "Коренные, земельные, родовые, Африканские традиционные, Африканские диаспорные, Тихоокеанские, Американские или полярные традиции — самописание региона/народа превыше всего", az: "Yerli, torpaq-asılı, əcdadi, Afrika ənənəvi, Afrika diasporası, Pasifik, Amerikan və ya qütb ənənələri — region/xalq öz təsviri birinci" }, tags: ["indigenous", "land-based", "ancestral"], next: ["indigenous_detail"] },
+      { id: "pagan", label: { en: "Contemporary Pagan, Heathen, Druid, Wiccan, reconstructionist, or related", ru: "Современное язычество, Хейтн, Друидизм, Уикка, реконструкционизм или смежное", az: "Müasir bütpərəstlik, Heathen, Druid, Wiccan, rekonstrüksionist və ya əlaqəli" }, tags: ["pagan", "heathen", "druid", "wiccan", "reconstructionist"], next: ["pagan_detail"] },
       { id: "esoteric", label: { en: "Spiritualist, Theosophical, occult/esoteric, New Thought, New Age, or related", ru: "Спиритуализм, Теософия, оккультное/эзотерическое, Нью Сот, Новый век или смежное", az: "Spiritualist, Teosofiya, okkult/ezoterik, Yeni Fikir, Yeni Dövr və ya əlaqəli" }, tags: ["esoteric", "theosophical", "occult", "new-thought", "new-age"], next: ["esoteric_detail"] },
       { id: "newreligion", label: { en: "New religious movement or independent spiritual path", ru: "Новое религиозное движение или независимый духовный путь", az: "Yeni dini hərəkat və ya müstəqil mənəvi yol" }, tags: ["new-religious-movement", "independent-path"], next: ["newreligion_detail"] },
       { id: "unaffiliated", label: { en: "Unaffiliated, cultural affiliation only, mixed affiliation, or no label", ru: "Неаффилированный, только культурная принадлежность, смешанная принадлежность, или без ярлыка", az: "Aidiyyətsiz, yalnız mədəni aidiyyət, qarışıq aidiyyət və ya etiketsiz" }, tags: ["unaffiliated", "cultural-only", "mixed", "no-label"] },
@@ -640,14 +640,14 @@ export const NODES: Record<string, Node> = {
     prompt: {
       en: "Which Abrahamic tradition(s) do you identify with? Select all that apply.",
       ru: "С какой авраамической традицией(ями) вы себя идентифицируете? Выберите все подходящее.",
-      az: "Hansı İbrahimi ənənəsi ilə özünüzü aid edirsiz? Uğurlu gələn hamısını seçin.",
+      az: "Hansı İbrahimi ənənəsi ilə özünüzü aid edirsiz? Uyğun gələn hamısını seçin.",
     },
     responseMode: "multiple",
     universalChoices: true,
     choices: [
       { id: "jewish", label: { en: "Jewish", ru: "Еврейская", az: "Yəhudi" }, tags: ["jewish"] },
       { id: "christian", label: { en: "Christian", ru: "Христианская", az: "Xristian" }, tags: ["christian"] },
-      { id: "muslim", label: { en: "Muslim", ru: "Мусульманская", az: "Müslüman" }, tags: ["muslim"] },
+      { id: "muslim", label: { en: "Muslim", ru: "Мусульманская", az: "Müsəlman" }, tags: ["muslim"] },
       { id: "bahai", label: { en: "Baháʼí", ru: "Бахаи", az: "Bahai" }, tags: ["bahai"] },
       { id: "samaritan", label: { en: "Samaritan", ru: "Самаритянская", az: "Samaritan" }, tags: ["samaritan"] },
       { id: "druze", label: { en: "Druze", ru: "Дерзская", az: "Druze" }, tags: ["druze"] },
@@ -663,7 +663,7 @@ export const NODES: Record<string, Node> = {
     prompt: {
       en: "Which South Asian tradition(s)? Select all that apply.",
       ru: "Какая(ие) Южноазиатская(ие) традиция(ии)? Выберите все подходящее.",
-      az: "Hansı Cənubi Asiya ənənəsi? Uğurlu gələn hamısını seçin.",
+      az: "Hansı Cənubi Asiya ənənəsi? Uyğun gələn hamısını seçin.",
     },
     responseMode: "multiple",
     universalChoices: true,
@@ -681,7 +681,7 @@ export const NODES: Record<string, Node> = {
     prompt: {
       en: "Which East Asian tradition(s)? Select all that apply.",
       ru: "Какая(ие) Восточноазиатская(ие) традиция(ии)? Выберите все подходящее.",
-      az: "Hansı Şərqi Asiya ənənəsi? Uğurlu gələn hamısını seçin.",
+      az: "Hansı Şərqi Asiya ənənəsi? Uyğun gələn hamısını seçin.",
     },
     responseMode: "multiple",
     universalChoices: true,
@@ -702,7 +702,7 @@ export const NODES: Record<string, Node> = {
     prompt: {
       en: "Which Indigenous / ancestral tradition? Self-describe your people/region.",
       ru: "Какая коренная / родовая традиция? Самоопишите свой народ/регион.",
-      az: "Hansı Yerli / əsəlli ənənə? Xalqınızı / regionunuzu özünüz təsvir edin.",
+      az: "Hansı Yerli / əcdadi ənənə? Xalqınızı / regionunuzu özünüz təsvir edin.",
     },
     responseMode: "free-text",
     universalChoices: true,
@@ -716,7 +716,7 @@ export const NODES: Record<string, Node> = {
     prompt: {
       en: "Which contemporary Pagan path? Select all that apply.",
       ru: "Какой современный языческий путь? Выберите все подходящее.",
-      az: "Hansı müasir Yaqutçuluq yolu? Uğurlu gələn hamısını seçin.",
+      az: "Hansı müasir bütpərəstlik yolu? Uyğun gələn hamısını seçin.",
     },
     responseMode: "multiple",
     universalChoices: true,
@@ -725,7 +725,7 @@ export const NODES: Record<string, Node> = {
       { id: "druid", label: { en: "Druid / Celtic reconstructionist", ru: "Друид / Кельтский реконструкционизм", az: "Druid / Kelt rekonstrüksionist" }, tags: ["druid"] },
       { id: "wiccan", label: { en: "Wiccan / Neo-Wiccan", ru: "Уиккан / Нео-уиккан", az: "Wiccan / Neo-Wiccan" }, tags: ["wiccan"] },
       { id: "reconstructionist", label: { en: "Polytheist reconstructionist (Greek, Roman, Egyptian, etc.)", ru: "Политеист-реконструкционист (Греческий, Римский, Египетский и др.)", az: "Politeist rekonstrüksionist (Yunan, Roma, Misir və s.)" }, tags: ["reconstructionist"] },
-      { id: "other_pagan", label: { en: "Other Pagan / related (self-described)", ru: "Другое язычество / смежное (самоописание)", az: "Digər Yaqutçuluq / əlaqəli (öz təsviri)" }, tags: ["other-pagan"], next: ["free_text_pagan"] },
+      { id: "other_pagan", label: { en: "Other Pagan / related (self-described)", ru: "Другое язычество / смежное (самоописание)", az: "Digər bütpərəstlik / əlaqəli (öz təsviri)" }, tags: ["other-pagan"], next: ["free_text_pagan"] },
     ],
   },
 
@@ -734,7 +734,7 @@ export const NODES: Record<string, Node> = {
     prompt: {
       en: "Which esoteric / spiritualist tradition? Select all that apply.",
       ru: "Какая эзотерическая / спиритуалистическая традиция? Выберите все подходящее.",
-      az: "Hansı ezoterik / spiritualist ənənə? Uğurlu gələn hamısını seçin.",
+      az: "Hansı ezoterik / spiritualist ənənə? Uyğun gələn hamısını seçin.",
     },
     responseMode: "multiple",
     universalChoices: true,
@@ -767,7 +767,7 @@ export const NODES: Record<string, Node> = {
     prompt: {
       en: "Which Hindu tradition(s)? Select all that apply.",
       ru: "Какая(ие) индуистская(ие) традиция(ии)? Выберите все подходящее.",
-      az: "Hansı Hindu ənənəsi? Uğurlu gələn hamısını seçin.",
+      az: "Hansı Hindu ənənəsi? Uyğun gələn hamısını seçin.",
     },
     responseMode: "multiple",
     universalChoices: true,
@@ -782,15 +782,15 @@ export const NODES: Record<string, Node> = {
 
   // ============ FREE-TEXT NODES ============
   free_text_nonrel: { id: "free_text_nonrel", prompt: { en: "Describe your non-religious orientation", ru: "Опишите вашу нерелигиозную ориентацию", az: "Dini olmayan yanaşmanızı təsvir edin" }, responseMode: "free-text", choices: [] },
-  free_text_rnatural: { id: "free_text_rnatural", prompt: { en: "Describe your naturalistic sacred orientation", ru: "Опишите ваше натуралистическое священное отношение", az: "Naturalistik məqdis yanaşmanızı təsvir edin" }, responseMode: "free-text", choices: [] },
+  free_text_rnatural: { id: "free_text_rnatural", prompt: { en: "Describe your naturalistic sacred orientation", ru: "Опишите ваше натуралистическое священное отношение", az: "Naturalistik müqəddəs yanaşmanızı təsvir edin" }, responseMode: "free-text", choices: [] },
   free_text_nt: { id: "free_text_nt", prompt: { en: "Describe your non-theistic identification", ru: "Опишите вашу нетеистическую идентификацию", az: "Non-teistik aidiyyətinizi təsvir edin" }, responseMode: "free-text", choices: [] },
   free_text_agnostic: { id: "free_text_agnostic", prompt: { en: "Describe your agnostic stance", ru: "Опишите вашу агностическую позицию", az: "Agnostik vəziyyətinizi təsvir edin" }, responseMode: "free-text", choices: [] },
   free_text_practice: { id: "free_text_practice", prompt: { en: "Describe your practice/community entry point", ru: "Опишите вашу точку входа через практику/общину", az: "Praktika/cəmiyyət giriş nöqtənizi təsvir edin" }, responseMode: "free-text", choices: [] },
   free_text_abrahamic: { id: "free_text_abrahamic", prompt: { en: "Describe your Abrahamic identification", ru: "Опишите вашу авраамическую идентификацию", az: "İbrahimi aidiyyətinizi təsvir edin" }, responseMode: "free-text", choices: [] },
   free_text_southasian: { id: "free_text_southasian", prompt: { en: "Describe your South Asian identification", ru: "Опишите вашу южноазиатскую идентификацию", az: "Cənubi Asiya aidiyyətinizi təsvir edin" }, responseMode: "free-text", choices: [] },
   free_text_eastasian: { id: "free_text_eastasian", prompt: { en: "Describe your East Asian identification", ru: "Опишите вашу восточноазиатскую идентификацию", az: "Şərqi Asiya aidiyyətinizi təsvir edin" }, responseMode: "free-text", choices: [] },
-  free_text_indigenous: { id: "free_text_indigenous", prompt: { en: "Describe your Indigenous/ancestral tradition", ru: "Опишите вашу коренную/родовую традицию", az: "Yerli/əsəlli ənənənizi təsvir edin" }, responseMode: "free-text", choices: [] },
-  free_text_pagan: { id: "free_text_pagan", prompt: { en: "Describe your Pagan path", ru: "Опишите ваш языческий путь", az: "Yaqutçuluq yolunuzu təsvir edin" }, responseMode: "free-text", choices: [] },
+  free_text_indigenous: { id: "free_text_indigenous", prompt: { en: "Describe your Indigenous/ancestral tradition", ru: "Опишите вашу коренную/родовую традицию", az: "Yerli/əcdadi ənənənizi təsvir edin" }, responseMode: "free-text", choices: [] },
+  free_text_pagan: { id: "free_text_pagan", prompt: { en: "Describe your Pagan path", ru: "Опишите ваш языческий путь", az: "Bütpərəstlik yolunuzu təsvir edin" }, responseMode: "free-text", choices: [] },
   free_text_esoteric: { id: "free_text_esoteric", prompt: { en: "Describe your esoteric tradition", ru: "Опишите вашу эзотерическую традицию", az: "Ezoterik ənənənizi təsvir edin" }, responseMode: "free-text", choices: [] },
   free_text_nr: { id: "free_text_nr", prompt: { en: "Describe your new religious movement / independent path", ru: "Опишите ваше новое религиозное движение / независимый путь", az: "Yeni dini hərəkatınızı / müstəqil yolunuzu təsvir edin" }, responseMode: "free-text", choices: [] },
   free_text_hindu: { id: "free_text_hindu", prompt: { en: "Describe your Hindu tradition", ru: "Опишите вашу индуистскую традицию", az: "Hindu ənənənizi təsvir edin" }, responseMode: "free-text", choices: [] },
@@ -805,7 +805,7 @@ export const TERMINAL_PROFILES: Record<string, { title: LocalizedText; blueprint
   // Kept here for reference structure only
   profile_template: {
     title: { en: "Your Orientation Profile", ru: "Ваш профиль ориентации", az: "Yanaşma Profiliniz" },
-    blueprint: { en: "Your answers currently describe a {confidence} {orientation} orientation. You {ultimateReality}, draw primarily on {epistemicSources}, and identify connections with {traditions}. This is a description, not an authoritative label.", ru: "Ваши ответы описывают {confidence} {orientation} ориентацию. Вы {ultimateReality}, опираетесь на {epistemicSources} и идентифицируете связи с {traditions}. Это описание, а не авторитетный ярлык.", az: "Cavablarınız {confidence} {orientation} yanaşmasını təsvir edir. Siz {ultimateReality}, əsasən {epistemicSources} üzərinə dayanırsınız və {traditions} ilə əlaqələri müəyyən edirsiniz. Bu təsvirdir,авторитетli etiket deyil." },
+    blueprint: { en: "Your answers currently describe a {confidence} {orientation} orientation. You {ultimateReality}, draw primarily on {epistemicSources}, and identify connections with {traditions}. This is a description, not an authoritative label.", ru: "Ваши ответы описывают {confidence} {orientation} ориентацию. Вы {ultimateReality}, опираетесь на {epistemicSources} и идентифицируете связи с {traditions}. Это описание, а не авторитетный ярлык.", az: "Cavablarınız {confidence} {orientation} yanaşmasını təsvir edir. Siz {ultimateReality}, əsasən {epistemicSources} üzərinə dayanırsınız və {traditions} ilə əlaqələri müəyyən edirsiniz. Bu təsvirdir, авторитетli etiket deyil." },
     tags: [],
   },
 };

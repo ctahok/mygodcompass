@@ -933,7 +933,7 @@ export const TERM_DEFINITIONS: Record<string, TermDefinition> = {
     gloss: {
       en: "I do not affirm an ultimate, sacred, or transcendent reality.",
       ru: "Я не признаю высшую, священную или траендентную реальность.",
-      az: "Mən ali, məqdis və ya üstdə bir realliyi təsdiqləmirəm.",
+      az: "Mən daha yüksək, müqəddəs və ya transsendental bir reallığı qəbul etmirəm.",
     },
     sources: [
       wiki("Atheism (Stanford Encyclopedia of Philosophy)", "Атеизм (Стэнфордская энциклопедия)", "Ateizm (Stanford ensiklopediyası)", "https://plato.stanford.edu/entries/atheism-agnosticism/"),
@@ -992,7 +992,7 @@ export const TERM_DEFINITIONS: Record<string, TermDefinition> = {
     gloss: {
       en: "Another Pagan or related path not listed here.",
       ru: "Другой языческий или смежный путь, не указанный здесь.",
-      az: "Burada göstərilməyib digər Yaqutçuluq və ya əlaqəli yol.",
+      az: "Burada göstərilməyib digər bütpərəstlik və ya əlaqəli yol.",
     },
     sources: [],
   },
@@ -1037,7 +1037,7 @@ export const TERM_DEFINITIONS: Record<string, TermDefinition> = {
     gloss: {
       en: "Indigenous, land-based, ancestral, African traditional, African diasporic, Pacific, American, or circumpolar traditions — self-described region/people first.",
       ru: "Коренные, земельные, родовые, Африканские традиционные, Африканские диаспорные, Тихоокеанские, Американские или полярные традиции — самописание региона/народа превыше всего.",
-      az: "Yerli, torpaq-asılı, əsəlli, Afrika ənənəvi, Afrika diasporası, Pasifik, Amerikan və ya qütb traditions — region/xalq öz təsviri birinci.",
+      az: "Yerli, torpaq-asılı, əcdadi, Afrika ənənəvi, Afrika diasporası, Pasifik, Amerikan və ya qütb ənənələri — region/xalq öz təsviri birinci.",
     },
     sources: [
       wiki("Indigenous religions (Wikipedia)", "Коренные религии (Википедия)", "Yerli dinlər (Vikipediya)", "https://en.wikipedia.org/wiki/Indigenous_religions"),

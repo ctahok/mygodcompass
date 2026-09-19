@@ -7,19 +7,126 @@
 // ============================================================
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { type Choice, type LocalizedText, type Lang } from "@/data/ontology";
+import type { ReactNode, RefObject } from "react";
+import { type LocalizedText, type Lang } from "@/data/ontology";
 import { useWizard, currentNodeId, currentNode } from "@/store/wizardStore";
 import { getTermDefinition, type TermDefinition } from "@/data/termDefinitions";
+
+type TooltipPosition = {
+  left: number;
+  top: number;
+  placement: "above" | "below";
+};
+
+function useTooltipPosition(
+  open: boolean,
+  triggerRef: RefObject<HTMLButtonElement>,
+  tooltipRef: RefObject<HTMLSpanElement>,
+) {
+  const [position, setPosition] = useState<TooltipPosition | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const positionTooltip = () => {
+      const trigger = triggerRef.current;
+      const tooltip = tooltipRef.current;
+      if (!trigger || !tooltip) return;
+
+      const popupWidth = tooltip.offsetWidth;
+      const popupHeight = tooltip.offsetHeight;
+      const triggerRect = trigger.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const padding = 8;
+      const center = triggerRect.left + triggerRect.width / 2;
+      const left = Math.min(
+        Math.max(center - popupWidth / 2, padding),
+        Math.max(padding, viewportWidth - popupWidth - padding),
+      );
+
+      let top = triggerRect.top - popupHeight - padding;
+      let placement: TooltipPosition["placement"] = "above";
+      if (top < padding) {
+        top = triggerRect.bottom + padding;
+        placement = "below";
+      }
+      top = Math.min(
+        Math.max(top, padding),
+        Math.max(padding, viewportHeight - popupHeight - padding),
+      );
+
+      setPosition({ left, top, placement });
+    };
+
+    positionTooltip();
+    window.addEventListener("resize", positionTooltip);
+    return () => window.removeEventListener("resize", positionTooltip);
+  }, [open, triggerRef, tooltipRef]);
+
+  return { position };
+}
+
+function Tooltip({
+  open,
+  tooltipRef,
+  position,
+  children,
+  zIndex,
+}: {
+  open: boolean;
+  tooltipRef: RefObject<HTMLSpanElement>;
+  position: TooltipPosition | null;
+  children: ReactNode;
+  zIndex: number;
+}) {
+  return (
+    <AnimatePresence>
+      {open && position && (
+        <motion.span
+          ref={tooltipRef}
+          initial={{ opacity: 0, y: 4, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 4, scale: 0.96 }}
+          transition={{ duration: 0.15 }}
+          style={{
+            left: `${position.left}px`,
+            top: `${position.top}px`,
+          }}
+          className={`fixed z-${zIndex} w-max max-w-[calc(100vw-1rem)] max-h-[calc(100vh-1rem)] overflow-y-auto rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-[11px] leading-snug text-slate-300 shadow-xl ${
+            position.placement === "above"
+              ? "mb-2"
+              : "mt-2"
+          }`}
+        >
+          {children}
+          <span
+            className={`absolute left-1/2 -translate-x-1/2 border-4 border-transparent ${
+              position.placement === "above"
+                ? "top-full border-t-slate-700"
+                : "bottom-full border-b-slate-700"
+            }`}
+          />
+        </motion.span>
+      )}
+    </AnimatePresence>
+  );
+}
 
 function TermTip({ text }: { text: LocalizedText }) {
   const { t } = useTranslation();
   const lang = useWizard((s) => s.lang);
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const tooltipRef = useRef<HTMLSpanElement>(null);
+  const { position } = useTooltipPosition(open, triggerRef, tooltipRef);
+
   return (
-    <span className="relative inline-flex items-center">
+    <span className="relative inline-flex items-center overflow-visible">
       <button
+        ref={triggerRef}
         type="button"
         aria-label={t("app.tooltip")}
         onClick={() => setOpen((o) => !o)}
@@ -27,20 +134,14 @@ function TermTip({ text }: { text: LocalizedText }) {
       >
         i
       </button>
-      <AnimatePresence>
-        {open && (
-          <motion.span
-            initial={{ opacity: 0, y: 4, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 4, scale: 0.96 }}
-            transition={{ duration: 0.15 }}
-            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-[11px] leading-snug text-slate-300 shadow-xl z-30"
-          >
-            {text[lang]}
-            <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-700" />
-          </motion.span>
-        )}
-      </AnimatePresence>
+      <Tooltip
+        open={open}
+        tooltipRef={tooltipRef}
+        position={position}
+        zIndex={30}
+      >
+        {text[lang]}
+      </Tooltip>
     </span>
   );
 }
@@ -53,12 +154,17 @@ function TermInfo({ def }: { def: TermDefinition }) {
   const { t } = useTranslation();
   const lang = useWizard((s) => s.lang);
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const tooltipRef = useRef<HTMLSpanElement>(null);
+  const { position } = useTooltipPosition(open, triggerRef, tooltipRef);
 
   return (
-    <span className="relative inline-flex items-center">
+    <span className="relative inline-flex items-center overflow-visible">
       <button
+        ref={triggerRef}
         type="button"
         aria-label={t("app.tooltip")}
+        aria-expanded={open}
         onClick={(e) => {
           e.stopPropagation();
           setOpen((o) => !o);
@@ -67,36 +173,30 @@ function TermInfo({ def }: { def: TermDefinition }) {
       >
         i
       </button>
-      <AnimatePresence>
-        {open && (
-          <motion.span
-            initial={{ opacity: 0, y: 4, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 4, scale: 0.96 }}
-            transition={{ duration: 0.15 }}
-            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 rounded-lg border border-slate-700 bg-slate-900 px-3.5 py-3 text-[11px] leading-snug text-slate-300 shadow-xl z-40"
-          >
-            <span className="block text-slate-200">{def.gloss[lang]}</span>
-            {def.sources.length > 0 && (
-              <span className="mt-2 block border-t border-slate-800 pt-1.5">
-                {def.sources.map((src, idx) => (
-                  <a
-                    key={idx}
-                    href={src.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="block py-0.5 text-amber-300/90 hover:text-amber-200 hover:underline"
-                  >
-                    ↗ {src.title[lang]}
-                  </a>
-                ))}
-              </span>
-            )}
-            <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-700" />
-          </motion.span>
+      <Tooltip
+        open={open}
+        tooltipRef={tooltipRef}
+        position={position}
+        zIndex={40}
+      >
+        <span className="block text-slate-200">{def.gloss[lang]}</span>
+        {def.sources.length > 0 && (
+          <span className="mt-2 block border-t border-slate-800 pt-1.5">
+            {def.sources.map((src, idx) => (
+              <a
+                key={idx}
+                href={src.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="block py-0.5 text-amber-300/90 hover:text-amber-200 hover:underline"
+              >
+                ↗ {src.title[lang]}
+              </a>
+            ))}
+          </span>
         )}
-      </AnimatePresence>
+      </Tooltip>
     </span>
   );
 }

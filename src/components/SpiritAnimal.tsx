@@ -16,7 +16,7 @@ export default function SpiritAnimal() {
           alt={done ? "Journey complete" : "Ontological Compass DAG"}
           width={72}
           height={72}
-          className="rounded-xl object-cover border border-slate-700/50"
+          className="rounded-xl object-cover border border-slate-700/50 w-12 h-12 md:w-[72px] md:h-[72px]"
           style={{ filter: "drop-shadow(0 0 12px rgba(251,191,36,0.3))" }}
           priority
         />

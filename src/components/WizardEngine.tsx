@@ -53,23 +53,23 @@ export default function WizardEngine() {
         }}
       />
 
-      <div className="relative mx-auto max-w-4xl px-4 py-8 md:py-12">
+      <div className="relative mx-auto max-w-4xl px-4 py-8 md:py-12 overflow-x-hidden">
         {/* ===== Header ===== */}
-        <header className="flex items-center justify-between gap-4 mb-8">
-          <div className="w-24">
+        <header className="flex flex-wrap items-center justify-between gap-3 mb-8">
+          <div className="w-16 md:w-24 shrink-0">
             <SpiritAnimal />
           </div>
-          <div className="flex-1">
+          <div className="flex-1 min-w-[120px]">
             <ProgressBar />
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 md:gap-3 flex-wrap">
             {/* Info buttons - only show when started */}
             {started && (
               <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={() => setShowWhatAppDoes(true)}
-                  className="rounded-xl border border-slate-700/70 bg-slate-900/60 px-4 py-2 text-sm text-slate-300 hover:border-amber-400/60 hover:bg-slate-800/70 hover:text-amber-200 transition-colors cursor-pointer"
+                  className="rounded-xl border border-slate-700/70 bg-slate-900/60 px-3 md:px-4 py-2 text-xs md:text-sm text-slate-300 hover:border-amber-400/60 hover:bg-slate-800/70 hover:text-amber-200 transition-colors cursor-pointer"
                   aria-label={t("app.whatAppDoes") || "What the app does"}
                 >
                   {t("app.whatAppDoes") || "What it does"}
@@ -77,7 +77,7 @@ export default function WizardEngine() {
                 <button
                   type="button"
                   onClick={() => setShowWhatPersonGains(true)}
-                  className="rounded-xl border border-slate-700/70 bg-slate-900/60 px-4 py-2 text-sm text-slate-300 hover:border-amber-400/60 hover:bg-slate-800/70 hover:text-amber-200 transition-colors cursor-pointer"
+                  className="rounded-xl border border-slate-700/70 bg-slate-900/60 px-3 md:px-4 py-2 text-xs md:text-sm text-slate-300 hover:border-amber-400/60 hover:bg-slate-800/70 hover:text-amber-200 transition-colors cursor-pointer"
                   aria-label={t("app.whatPersonGains") || "What a person gains"}
                 >
                   {t("app.whatPersonGains") || "What you gain"}
@@ -98,14 +98,14 @@ export default function WizardEngine() {
               exit={{ opacity: 0, y: -20 }}
               className="text-center mb-10"
             >
-              <h1 className="text-4xl md:text-6xl font-black tracking-tight bg-gradient-to-br from-amber-200 via-amber-400 to-orange-500 bg-clip-text text-transparent mb-4">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight bg-gradient-to-br from-amber-200 via-amber-400 to-orange-500 bg-clip-text text-transparent mb-4 break-words">
                 {t("app.title")}
               </h1>
-              <p className="text-slate-400 text-lg max-w-xl mx-auto mb-8">{t("app.subtitle")}</p>
+              <p className="text-slate-400 text-base md:text-lg max-w-xl mx-auto mb-8 px-2">{t("app.subtitle")}</p>
               <button
                 type="button"
                 onClick={begin}
-                className="rounded-2xl bg-gradient-to-r from-amber-400 to-orange-500 px-10 py-4 text-lg font-bold text-slate-950 shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+                className="rounded-2xl bg-gradient-to-r from-amber-400 to-orange-500 px-8 sm:px-10 py-4 text-base md:text-lg font-bold text-slate-950 shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
               >
                 {t("app.start")}
               </button>
@@ -122,12 +122,12 @@ export default function WizardEngine() {
 
         {/* ===== Controls (Back / Finish / Restart) ===== */}
         {started && (
-          <div className="flex items-center justify-center gap-4 mb-8">
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
             <button
               type="button"
               onClick={back}
               disabled={path.length === 0}
-              className="rounded-xl border border-slate-700 px-5 py-2.5 text-sm text-slate-300 hover:border-slate-500 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
+              className="rounded-xl border border-slate-700 px-4 sm:px-5 py-2.5 text-sm text-slate-300 hover:border-slate-500 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
             >
               ← {t("app.back")}
             </button>
@@ -135,7 +135,7 @@ export default function WizardEngine() {
               <button
                 type="button"
                 onClick={finish}
-                className="rounded-xl border border-slate-600 px-5 py-2.5 text-sm text-slate-300 hover:border-amber-400/60 hover:text-amber-200 transition-colors cursor-pointer"
+                className="rounded-xl border border-slate-600 px-4 sm:px-5 py-2.5 text-sm text-slate-300 hover:border-amber-400/60 hover:text-amber-200 transition-colors cursor-pointer"
               >
                 {t("app.finish")}
               </button>
@@ -143,7 +143,7 @@ export default function WizardEngine() {
             <button
               type="button"
               onClick={reset}
-              className="rounded-xl border border-slate-700 px-5 py-2.5 text-sm text-slate-400 hover:border-slate-500 hover:text-slate-200 transition-colors cursor-pointer"
+              className="rounded-xl border border-slate-700 px-4 sm:px-5 py-2.5 text-sm text-slate-400 hover:border-slate-500 hover:text-slate-200 transition-colors cursor-pointer"
             >
               ↺ {t("app.restart")}
             </button>
@@ -153,7 +153,7 @@ export default function WizardEngine() {
         {/* ===== The Theogony Decision Map (mermaid.js) ===== */}
         {started && (
           <div className="mb-10">
-            <MermaidMap />
+            <MermaidMap height={360} />
           </div>
         )}
 

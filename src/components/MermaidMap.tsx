@@ -43,11 +43,11 @@ function loadMermaid() {
 function mmd(s: string): string {
   const DQ = String.fromCharCode(34);
   return s
-    .replace(/&/g, "&")
+    .replace(/&/g, "&amp;")
     .replace(new RegExp(DQ, "g"), "\\\"")
     .replace(/#/g, "&#35;")
     .replace(/—/g, "&#8212;") // em-dash breaks the edge-label parser
-    .replace(/[^\x00-\x7F]/g, (c) => "#" + c.codePointAt(0)! + ";") // any other non-ASCII -> numeric entity
+    .replace(/[^\x00-\x7F]/g, (c) => "&#" + c.codePointAt(0)! + ";") // any other non-ASCII -> numeric entity
     .replace(/\n/g, "<br/>");
 }
 
@@ -148,7 +148,7 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
     return () => clearTimeout(timer);
   }, [buildSource]);
 
-  // Auto-fit after SVG renders - use ref callback to avoid direct DOM mutation
+  // Auto-fit after SVG renders — scale the map to fit the container width
   useEffect(() => {
     if (!svgHostRef.current) return;
     const svg = svgHostRef.current.querySelector("svg");
@@ -158,14 +158,33 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
       try {
         // Use requestAnimationFrame to ensure SVG is in DOM before measuring
         requestAnimationFrame(() => {
-          const currentSvg = svgHostRef.current?.querySelector("svg");
-          if (currentSvg && !autoFitted) {
+          const host = svgHostRef.current;
+          const currentSvg = host?.querySelector("svg");
+          if (!host || !currentSvg || autoFitted) return;
+
+          const naturalWidth = currentSvg.getBBox ? currentSvg.getBBox().width || currentSvg.viewBox?.baseVal?.width : currentSvg.clientWidth;
+          const containerWidth = host.clientWidth;
+          const naturalHeight = currentSvg.getBBox ? currentSvg.getBBox().height || currentSvg.viewBox?.baseVal?.height : currentSvg.clientHeight;
+          const containerHeight = host.clientHeight;
+
+          // Compute scale to fit BOTH dimensions (contain)
+          let scale = 1;
+          if (naturalWidth > 0 && naturalHeight > 0 && (naturalWidth > containerWidth || naturalHeight > containerHeight)) {
+            scale = Math.min(containerWidth / naturalWidth, containerHeight / naturalHeight, 1);
+            // Don't go below 15% — user can zoom further manually
+            scale = Math.max(scale, 0.15);
+          }
+
+          if (scale < 1) {
+            setZoom(scale);
+            setPan({ x: 0, y: 0 });
+          } else {
             currentSvg.setAttribute("width", "100%");
             currentSvg.setAttribute("height", "100%");
             currentSvg.style.maxWidth = "100%";
             currentSvg.style.maxHeight = "100%";
-            setAutoFitted(true);
           }
+          setAutoFitted(true);
         });
       } catch (e) {
         console.warn("Auto-fit failed:", e);
@@ -247,9 +266,9 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
       style={{ height: isFullscreen ? "100vh" : height }}
     >
       {/* Toolbar */}
-      <div className="flex items-center justify-between p-3 border-b border-slate-800 bg-slate-900/60">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-2 p-3 border-b border-slate-800 bg-slate-900/60">
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-slate-300">{viewMode === "pruned" ? "Pruned view" : "Full DAG"}</span>
+          <span className="text-sm font-medium text-slate-300 hidden sm:inline">{viewMode === "pruned" ? "Pruned view" : "Full DAG"}</span>
           <button
             type="button"
             onClick={() => setViewMode((v) => (v === "pruned" ? "full" : "pruned"))}
@@ -262,12 +281,12 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
             Toggle
           </button>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap justify-end">
           {/* Zoom controls */}
           <div className="flex items-center gap-1 rounded-lg bg-slate-800 border border-slate-700 px-1 py-0.5">
             <button
               type="button"
-              onClick={() => setZoom((z) => Math.max(0.5, +(z - 0.25).toFixed(2)))}
+              onClick={() => setZoom((z) => Math.max(0.15, +(z - 0.15).toFixed(2)))}
               className="w-7 h-7 rounded-md text-sm font-bold text-slate-300 hover:bg-slate-700 hover:text-amber-300 transition-colors cursor-pointer"
               aria-label="Zoom out"
             >
@@ -276,7 +295,7 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
             <span className="text-xs text-slate-400 font-mono w-10 text-center">{Math.round(zoom * 100)}%</span>
             <button
               type="button"
-              onClick={() => setZoom((z) => Math.min(3, +(z + 0.25).toFixed(2)))}
+              onClick={() => setZoom((z) => Math.min(4, +(z + 0.15).toFixed(2)))}
               className="w-7 h-7 rounded-md text-sm font-bold text-slate-300 hover:bg-slate-700 hover:text-amber-300 transition-colors cursor-pointer"
               aria-label="Zoom in"
             >
@@ -311,7 +330,7 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
             href="/ontology-tree.mmd"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg px-3 py-1.5 text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition-colors"
+            className="rounded-lg px-3 py-1.5 text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition-colors hidden sm:inline-flex"
           >
             📄 Source
           </a>

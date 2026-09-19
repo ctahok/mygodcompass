@@ -42,7 +42,7 @@ export default function DefinitionCard() {
       transition={{ duration: 0.45, ease: "easeOut" }}
       className="w-full max-w-xl mx-auto"
     >
-      <div className="rounded-2xl border border-amber-400/30 bg-gradient-to-b from-slate-900/90 to-slate-950/90 p-7 shadow-2xl shadow-amber-500/10">
+      <div className="rounded-2xl border border-amber-400/30 bg-gradient-to-b from-slate-900/90 to-slate-950/90 p-5 md:p-7 shadow-2xl shadow-amber-500/10">
         <p className="text-[11px] uppercase tracking-[0.2em] text-amber-400/80 mb-2">{t("app.blueprint")}</p>
 
         {/* Title */}

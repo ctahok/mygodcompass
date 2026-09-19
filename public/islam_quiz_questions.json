@@ -1,0 +1,422 @@
+[
+  {
+    "id": "q1",
+    "question_ru": "Что сказал Абу Бакр, когда аль Мухаджир отрубил руку и выбил передний зуб певицы, оскорблявшей посланника Аллаха?",
+    "question_en": "What did Abu Bakr say when al-Muhajir cut off the hand and knocked out the front tooth of a female singer who had insulted the Messenger of Allah?",
+    "options_ru": {
+      "А": "Ты поступил слишком жёстко. Женщин следует прощать.",
+      "Б": "Отдай её под суд, чтобы её судили по справедливости.",
+      "В": "Такие дела нужно разбирать только при наличии свидетелей.",
+      "Г": "Если бы ты не опередил меня, я сам бы приказал убить её."
+    },
+    "options_en": {
+      "A": "You acted too harshly. Women should be forgiven.",
+      "B": "Hand her over to the court so she may be judged justly.",
+      "C": "Such matters should be investigated only in the presence of witnesses.",
+      "D": "If you had not beaten me to it, I would have ordered her killed myself."
+    },
+    "correct": "Г",
+    "correct_en": "D",
+    "source": "Ибн Джарира Табари, Тарих, том 3, стр. 341",
+    "source_en": "Ibn Jarir al-Tabari, Tarikh, Vol. 3, p. 341"
+  },
+  {
+    "id": "q2",
+    "question_ru": "Как называют тех, кто не признаёт возвышенность арабов?",
+    "question_en": "What are those called who do not recognise the superiority of Arabs?",
+    "options_ru": {
+      "А": "Шуубия",
+      "Б": "Наджасы",
+      "В": "Папуасы",
+      "Г": "Фуфайсики"
+    },
+    "options_en": {
+      "A": "Shu'ubiyya",
+      "B": "Najasa",
+      "C": "Papuans",
+      "D": "Fufaysiks"
+    },
+    "correct": "А",
+    "correct_en": "A",
+    "source": "Сахих Бухари 6829",
+    "source_en": "Sahih al-Bukhari 6829"
+  },
+  {
+    "id": "q3",
+    "question_ru": "Куда делись аяты о раджме (побивании камнями за прелюбодеяние), относительно которых Умар ибн аль-Хаттаб переживал, что люди их не найдут в Коране?",
+    "question_en": "What happened to the verses about rajstoning (stoning for adultery), concerning which Umar ibn al-Khattab worried that people would not find them in the Quran?",
+    "options_ru": {
+      "А": "Аят и сегодня находится в Коране",
+      "Б": "Потерян",
+      "В": "Аята не было. В Умара вселился джинн",
+      "Г": "Аллах забрал"
+    },
+    "options_en": {
+      "A": "The verse is still in the Quran today",
+      "B": "Lost",
+      "C": "There was no verse; a jinn possessed Umar",
+      "D": "Allah took it away"
+    },
+    "correct": "Б",
+    "correct_en": "B",
+    "source": "Сахих Бухари 6829, со слов Ибн Аббаса",
+    "source_en": "Sahih al-Bukhari 6829, on the authority of Ibn Abbas"
+  },
+  {
+    "id": "q4",
+    "question_ru": "Как Умар и Али оценили поступок женщины, которая хотела пить воды, а мужчина у колодца давал воду только если она отдастся ему?",
+    "question_en": "How did Umar and Ali judge the case of a woman who wanted water, and a man at a well gave her water only if she submitted to him?",
+    "options_ru": {
+      "А": "Побили камнями",
+      "Б": "100 ударов плетью дали ей",
+      "В": "Выдали замуж за него",
+      "Г": "Отпустили, сказав: \"Это вынужденная мера\""
+    },
+    "options_en": {
+      "A": "Stoned her",
+      "B": "Gave her 100 lashes",
+      "C": "Married her off to him",
+      "D": "Released her, saying: 'This was a compelled measure'"
+    },
+    "correct": "Г",
+    "correct_en": "D",
+    "source": "Аль-Мугни Ибн Кудама, том 10, стр. 9; Ахмад",
+    "source_en": "Al-Mughni by Ibn Qudamah, Vol. 10, p. 9; Ahmad"
+  },
+  {
+    "id": "q5",
+    "question_ru": "Что сказал пророк о награде за убийство ящерицы?",
+    "question_en": "What did the Prophet say about the reward for killing a lizard?",
+    "options_ru": {
+      "А": "Кто убьёт ящерицу с первого удара, получит 100 добрых дел",
+      "Б": "Убить ящерицу — нейтральное действие, не приносящее награды",
+      "В": "Убивайте ящериц, чтобы защитить имущество и еду",
+      "Г": "Ящерицы не вредны. Их не следует трогать без нужды"
+    },
+    "options_en": {
+      "A": "Whoever kills a lizard with the first strike gets 100 good deeds",
+      "B": "Killing a lizard is a neutral action bringing no reward",
+      "C": "Kill lizards to protect property and food",
+      "D": "Lizards are harmless. They should not be touched without need"
+    },
+    "correct": "А",
+    "correct_en": "A",
+    "source": "Хадис (не указан конкретный сборник в записи)",
+    "source_en": "Hadith (specific collection not cited in transcript)"
+  },
+  {
+    "id": "q6",
+    "question_ru": "Откуда согласно исламу появляется ветер на земле?",
+    "question_en": "According to Islam, where does wind on earth come from?",
+    "options_ru": {
+      "А": "Из-за вращения земли",
+      "Б": "Из ада",
+      "В": "Из рая",
+      "Г": "Ангел работает"
+    },
+    "options_en": {
+      "A": "Due to Earth's rotation",
+      "B": "From Hell",
+      "C": "From Paradise",
+      "D": "An angel works (it)"
+    },
+    "correct": "В",
+    "correct_en": "C",
+    "source": "Хадис, переданный от Абу Зара",
+    "source_en": "Hadith narrated from Abu Dharr"
+  },
+  {
+    "id": "q7",
+    "question_ru": "Что сказал Мухаммад, когда ему сказали, что ему принесли воду из колодца Будаа, в который бросают мёртвых собак, тряпки, запачканные менструальной кровью и человеческие экскременты?",
+    "question_en": "What did Muhammad say when he was told that water was brought to him from the well of Buda'ah, into which dead dogs, rags stained with menstrual blood, and human excrement were thrown?",
+    "options_ru": {
+      "А": "Вы туда ещё не пишите случайно",
+      "Б": "Установил наказание тем, кто оскверняет колодцы",
+      "В": "Почему вы оскверняете колодец?",
+      "Г": "Эта вода чистая. Ничто не оскверняет воду."
+    },
+    "options_en": {
+      "A": "You haven't written there by chance",
+      "B": "Established punishment for those who defile wells",
+      "C": "Why do you defile the well?",
+      "D": "This water is pure. Nothing defiles water."
+    },
+    "correct": "Г",
+    "correct_en": "D",
+    "source": "Не указан явно в записи",
+    "source_en": "Not explicitly cited in transcript"
+  },
+  {
+    "id": "q8",
+    "question_ru": "Почему пророк Мухаммад ходил в гости к Ум Харан бинт Мильхан, жене сподвижника Убады ибн ас-Самита, которая не была его родственницей?",
+    "question_en": "Why did the Prophet Muhammad visit Umm Haram bint Milhan, wife of the Companion Ubada ibn al-Samit, who was not his relative?",
+    "options_ru": {
+      "А": "Чтобы научить её чтению Корана",
+      "Б": "Чтобы помолиться вместе с ней",
+      "В": "Чтобы обсудить джихад и поход",
+      "Г": "Чтобы она вычесала вошь из его головы"
+    },
+    "options_en": {
+      "A": "To teach her to read the Quran",
+      "B": "To pray together with her",
+      "C": "To discuss jihad and a campaign",
+      "D": "So she could remove lice from his head"
+    },
+    "correct": "Г",
+    "correct_en": "D",
+    "source": "Сунан Абу Дауд 2491",
+    "source_en": "Sunan Abu Dawud 2491"
+  },
+  {
+    "id": "q9",
+    "question_ru": "Когда Умар ибн аль-Хаттаб увидел, как Сауда, жена пророка, ночью вышла справить большую нужду и крикнул ей: \"О Сауда, мы узнали тебя\", что произошло после этого?",
+    "question_en": "When Umar ibn al-Khattab saw Sawda, the Prophet's wife, go out at night to relieve herself and called out 'O Sawda, we recognised you', what happened next?",
+    "options_ru": {
+      "А": "Сауда послала его на три буквы",
+      "Б": "Сауда кинула в него три камня",
+      "В": "По этому случаю был ниспослан аят",
+      "Г": "Сауда приказала закопать то, что она сделала"
+    },
+    "options_en": {
+      "A": "Sawda told him off rudely",
+      "B": "Sawda threw three stones at him",
+      "C": "A verse was revealed on this occasion",
+      "D": "Sawda ordered to bury what she had done"
+    },
+    "correct": "В",
+    "correct_en": "C",
+    "source": "Сахих Аль-Бухари / Тфсиры",
+    "source_en": "Sahih al-Bukhari / Tafsirs"
+  },
+  {
+    "id": "q10",
+    "question_ru": "Что лучше всего сделать с рабом?",
+    "question_en": "What is the best thing to do with a slave?",
+    "options_ru": {
+      "А": "Освободить",
+      "Б": "Убить",
+      "В": "Погладить по голове",
+      "Г": "Подарить родственнику"
+    },
+    "options_en": {
+      "A": "Free him",
+      "B": "Kill him",
+      "C": "Pat him on the head",
+      "D": "Give him as a gift to a relative"
+    },
+    "correct": "Г",
+    "correct_en": "D",
+    "source": "Сахих Аль-Бухари 2592",
+    "source_en": "Sahih al-Bukhari 2592"
+  },
+  {
+    "id": "q11",
+    "question_ru": "Когда Заид ибн Сабит собирал аяты для составления мусхафа, он не мог найти один аят из суры Аль-Ахзаб. У скольких людей он в итоге нашёл этот аят?",
+    "question_en": "When Zayd ibn Thabit collected verses for the mushaf, he could not find one verse from Surah Al-Ahzab. From how many people did he ultimately find this verse?",
+    "options_ru": {
+      "А": "У троих сподвижников",
+      "Б": "Только у одного сподвижника",
+      "В": "У десяти сподвижников",
+      "Г": "Этот аят был у большинства сподвижников, но Зайд его не записал сразу"
+    },
+    "options_en": {
+      "A": "From three Companions",
+      "B": "From only one Companion",
+      "C": "From ten Companions",
+      "D": "This verse was with most Companions but Zayd didn't record it immediately"
+    },
+    "correct": "Б",
+    "correct_en": "B",
+    "source": "Сахих Аль-Бухари 2824",
+    "source_en": "Sahih al-Bukhari 2824"
+  },
+  {
+    "id": "q12",
+    "question_ru": "Какой из основателей мазхабов разрешал жениться на собственной родной дочери, если она родилась в результате прелюбодеяния?",
+    "question_en": "Which founder of a madhhab permitted marrying one's own biological daughter if she was born as a result of adultery?",
+    "options_ru": {
+      "А": "Абу Ханифа",
+      "Б": "Шафии и Малик",
+      "В": "Малик",
+      "Г": "Ахмад ибн Ханбаль"
+    },
+    "options_en": {
+      "A": "Abu Hanifa",
+      "B": "Al-Shafi'i and Malik",
+      "C": "Malik",
+      "D": "Ahmad ibn Hanbal"
+    },
+    "correct": "Б",
+    "correct_en": "B",
+    "source": "Аль-Мугни Ибн Кудама; Шарх Ан-Навави на Сахих Муслим; Ихтиляф аль-Мазахиб",
+    "source_en": "Al-Mughni by Ibn Qudamah; Al-Nawawi's Sharh on Sahih Muslim; Ikhtilaf al-Madhahib"
+  },
+  {
+    "id": "q13",
+    "question_ru": "Что сказал пророк Мухаммад о молитве раба, который сбежал от своего хозяина?",
+    "question_en": "What did the Prophet Muhammad say about the prayer of a slave who fled from his master?",
+    "options_ru": {
+      "А": "Она не принимается",
+      "Б": "Она принимается, но с грехом",
+      "В": "Она становится обязательной и чаще, чем обычно",
+      "Г": "Его молитва принимается, если он раскаивается"
+    },
+    "options_en": {
+      "A": "It is not accepted",
+      "B": "It is accepted but with sin",
+      "C": "It becomes obligatory and more frequent than usual",
+      "D": "His prayer is accepted if he repents"
+    },
+    "correct": "А",
+    "correct_en": "A",
+    "source": "Сунан Абу Дауд 5170 / Ибн Аббас",
+    "source_en": "Sunan Abu Dawud 5170 / Ibn Abbas"
+  },
+  {
+    "id": "q14",
+    "question_ru": "Сколько сур было в Коране величайшего знатока Корана Абдуллаха ибн Масуда?",
+    "question_en": "How many surahs were in the Quran of the greatest Quranic expert Abdullah ibn Mas'ud?",
+    "options_ru": {
+      "А": "114 сур, полный современный Коран",
+      "Б": "112 сур. Он исключил две последние суры Аль-Муавизатayn",
+      "В": "113 сур",
+      "Г": "116 сур, он добавил дополнительные суры"
+    },
+    "options_en": {
+      "A": "114 surahs, the complete modern Quran",
+      "B": "112 surahs. He excluded the last two surahs Al-Mu'awwidhatayn",
+      "C": "113 surahs",
+      "D": "116 surahs, he added extra surahs"
+    },
+    "correct": "Б",
+    "correct_en": "B",
+    "source": "Ибн Масуд стирал эти суры и говорил, что они не из Корана",
+    "source_en": "Ibn Mas'ud erased these surahs and said they were not from the Quran"
+  },
+  {
+    "id": "q15",
+    "question_ru": "Сколько аятов изначально было в суре Аль-Ахзаб?",
+    "question_en": "How many verses were originally in Surah Al-Ahzab?",
+    "options_ru": {
+      "А": "73 аята (как сейчас)",
+      "Б": "99 аятов",
+      "В": "286 аятов было изначально в суре Аль-Ахзаб",
+      "Г": "120 аятов"
+    },
+    "options_en": {
+      "A": "73 verses (as now)",
+      "B": "99 verses",
+      "C": "286 verses were originally in Surah Al-Ahzab",
+      "D": "120 verses"
+    },
+    "correct": "В",
+    "correct_en": "C",
+    "source": "Аль-Мугни Ибн Кудама / Тфсиры",
+    "source_en": "Al-Mughni by Ibn Qudamah / Tafsirs"
+  },
+  {
+    "id": "q16",
+    "question_ru": "Рабов какой национальности приказал освобождать Мухаммад?",
+    "question_en": "Slaves of which nationality did Muhammad order to be freed?",
+    "options_ru": {
+      "А": "Арабов",
+      "Б": "Персов",
+      "В": "Эфиопов",
+      "Г": "Римлян"
+    },
+    "options_en": {
+      "A": "Arabs",
+      "B": "Persians",
+      "C": "Ethiopians",
+      "D": "Romans/Byzantines"
+    },
+    "correct": "В",
+    "correct_en": "C",
+    "source": "Хадис (не указан конкретный сборник в записи)",
+    "source_en": "Hadith (specific collection not cited in transcript)"
+  },
+  {
+    "id": "q17",
+    "question_ru": "Как была убита Ум Кирфа по приказу Зайда ибн Хариса, направленного пророком?",
+    "question_en": "How was Umm Qirfa killed by order of Zayd ibn Harithah, sent by the Prophet?",
+    "options_ru": {
+      "А": "Её сослали в Тайф и лишили имущества",
+      "Б": "Её убили жесточайшим образом (разорвали на части)",
+      "В": "Её поразила молния, когда она пыталась бежать",
+      "Г": "Её просто заковали в цепи"
+    },
+    "options_en": {
+      "A": "She was exiled to Ta'if and dispossessed",
+      "B": "She was killed in the most brutal manner (torn apart)",
+      "C": "Lightning struck her as she tried to flee",
+      "D": "She was simply put in chains"
+    },
+    "correct": "Б",
+    "correct_en": "B",
+    "source": "Табари, Тарих, том 2, стр. 642",
+    "source_en": "Al-Tabari, Tarikh, Vol. 2, p. 642"
+  },
+  {
+    "id": "q18",
+    "question_ru": "Что сделал Умар с рабыней, которая надела хиджаб?",
+    "question_en": "What did Umar do with a slave woman who put on a hijab?",
+    "options_ru": {
+      "А": "Удалил палкой по голове и велел снять",
+      "Б": "Похвалил её",
+      "В": "Освободил",
+      "Г": "Ничего не сделал"
+    },
+    "options_en": {
+      "A": "Struck her on the head with a stick and ordered her to remove it",
+      "B": "Praised her",
+      "C": "Freed her",
+      "D": "Did nothing"
+    },
+    "correct": "А",
+    "correct_en": "A",
+    "source": "Аль-Мусаннаф Абдурраззак / Сахих Бухари",
+    "source_en": "Al-Musannaf of Abd al-Razzaq / Sahih al-Bukhari"
+  },
+  {
+    "id": "q19",
+    "question_ru": "Что сказал Мухаммад о мусульманах, которые живут среди немусульман?",
+    "question_en": "What did Muhammad say about Muslims living among non-Muslims?",
+    "options_ru": {
+      "А": "Обнимать и дружить",
+      "Б": "Игнорировать их полностью",
+      "В": "Вести себя достойно. Я отказываюсь от вас",
+      "Г": "Они должны уехать в Даруль-Ислам"
+    },
+    "options_en": {
+      "A": "Embrace and befriend",
+      "B": "Ignore them completely",
+      "C": "Behave with dignity. I disown you",
+      "D": "They must migrate to Dar al-Islam"
+    },
+    "correct": "В",
+    "correct_en": "C",
+    "source": "Хадис (не указан конкретный сборник в записи)",
+    "source_en": "Hadith (specific collection not cited in transcript)"
+  },
+  {
+    "id": "q20",
+    "question_ru": "Какое максимальное время беременности по исламу?",
+    "question_en": "What is the maximum duration of pregnancy according to Islam?",
+    "options_ru": {
+      "А": "4-7 лет",
+      "Б": "9 месяцев",
+      "В": "2 года",
+      "Г": "5 лет"
+    },
+    "options_en": {
+      "A": "4-7 years",
+      "B": "9 months",
+      "C": "2 years",
+      "D": "5 years"
+    },
+    "correct": "А",
+    "correct_en": "A",
+    "source": "Фикх / Мазхабы (Малики, Шафииты: до 4-5 лет; Ханафиты: до 2 лет; некоторые ученые: до 7 лет)",
+    "source_en": "Fiqh / Madhhabs (Malikis, Shafi'is: up to 4-5 years; Hanafis: up to 2 years; some scholars: up to 7 years)"
+  }
+]
