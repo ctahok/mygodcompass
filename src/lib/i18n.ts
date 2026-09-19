@@ -137,7 +137,7 @@ export const resources = {
         scaleHigh: "Tamamilə",
         finish: "İndi tamamla",
         whatAppDoes: "Tətbiq nə edir",
-        whatPersonGains: "Siz nə qazandırırsınız",
+        whatPersonGains: "Bu sayt insana nə qazandırır\n\nSualları cavablandırmaqla insan öz dünyagörüşünün daha aydın və daha dəqiq mənzərəsinə nail ola bilər: nəyin mövcud olduğuna inandığını, həqiqətin necə dərk edildiyini düşündüyünü, ənənəni necə təcrübədən keçirdiyini və ya onunla necə əlaqə qurduğunu, eləcə də hansı icmaların və ya mədəni irsin onun üçün önəmli olduğunu fərqləndirən bir baxış əldə edər. Nəticə onların \"əslində nə olduqlarına\" dair bir hökm deyil, mövqelərini anlamağı, ifadə etməyi, müqayisə etməyi və başqaları ilə müzakirə etməyi asanlaşdıran, dəyişikliklərə açıq bir bələdçi xəritədir.",
         candidatesTitle: "Ən uyğun yollar",
         candidatesHint: "Cavablarınız dininizi müəyyən etmir — onlar araşdıra biləcəyiniz yolları göstərir.",
         explorePath: "Bu yolu araşdır",
