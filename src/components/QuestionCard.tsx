@@ -9,8 +9,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import type { ReactNode, RefObject } from "react";
+import type { ReactNode, RefObject, MouseEvent } from "react";
 import { create } from "zustand";
+import type { StoreApi } from "zustand";
 import { type LocalizedText, type Lang } from "@/data/ontology";
 
 interface TooltipStore {
@@ -18,7 +19,7 @@ interface TooltipStore {
   setActiveId: (id: string | null) => void;
 }
 
-export const useTooltipStore = create<TooltipStore>((set: any) => ({
+export const useTooltipStore = create<TooltipStore>((set: StoreApi<TooltipStore>['setState']) => ({
   activeId: null,
   setActiveId: (id: string | null) => set({ activeId: id }),
 }));
@@ -85,7 +86,7 @@ function Tooltip({
   tooltipRef,
   position,
   children,
-  zIndex,
+  zIndex, // eslint-disable-line @typescript-eslint/no-unused-vars
 }: {
   open: boolean;
   tooltipRef: RefObject<HTMLSpanElement>;
@@ -99,7 +100,7 @@ function Tooltip({
   return (
     <span
       ref={tooltipRef}
-      onClick={(e: any) => e.stopPropagation()}
+      onClick={(e: MouseEvent) => e.stopPropagation()}
       style={{
         position: "fixed",
         left: `${position.left}px`,
