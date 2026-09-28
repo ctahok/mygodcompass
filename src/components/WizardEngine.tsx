@@ -161,8 +161,8 @@ export default function WizardEngine() {
         <footer className="text-center text-xs text-slate-600 mt-4">
           {t("app.footer")}
           <div className="mt-1">
-            <a href="mailto:ij@klaud.uk" className="text-amber-500/80 hover:text-amber-400 transition-colors">
-              ij@klaud.uk
+            <a href="https://www.klaud.uk" className="text-amber-500/80 hover:text-amber-400 transition-colors" target="_blank" rel="noopener noreferrer">
+              www.klaud.uk
             </a>
           </div>
           <div className="mt-1 text-slate-500">
