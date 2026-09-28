@@ -53,7 +53,6 @@ function mmd(s: string): string {
   }
 
   // 2. Escape specifically for Mermaid's quoted string syntax
-  // Mermaid uses a proprietary #xxx; syntax for entities inside labels to avoid semicolon conflicts
   return text
     .replace(/"/g, "#quot;") // Mermaid's specific entity for quotes
     .replace(/;/g, "#59;")   // Semicolons break Mermaid statement parsing
@@ -61,10 +60,10 @@ function mmd(s: string): string {
     .replace(/\)/g, "#41;")  
     .replace(/\[/g, "#91;")  // Brackets
     .replace(/\]/g, "#93;")  
-    .replace(/—/g, "#8212;") // Em-dashes
-    .replace(/</g, "&lt;")   // HTML brackets (Mermaid htmlLabels allows these)
+    .replace(/—/g, "-")      // Replace em-dash with regular dash (safest)
+    .replace(/</g, "&lt;")   // HTML brackets
     .replace(/>/g, "&gt;")
-    .replace(/\n/g, "<br/>"); // Newlines to HTML line breaks
+    .replace(/\n/g, " ");    // Replace newlines with spaces instead of <br/> to avoid parser confusion
 }
 
 interface MermaidMapProps {
