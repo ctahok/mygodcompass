@@ -39,35 +39,29 @@ function loadMermaid() {
   return mermaidPromise;
 }
 
-function decodeHtmlEntities(s: string): string {
-  if (typeof document === 'undefined') { // Handle server-side rendering
-    // Simplified server-side decoding to avoid DOMParser
-    return s
-      .replace(/&amp;/g, '&')
-      .replace(/&lt;/g, '<')
-      .replace(/&gt;/g, '>')
-      .replace(/&quot;/g, '"')
-      .replace(/&#39;/g, "'")
-      .replace(/&#8212;/g, '—')
-      .replace(/&#40;/g, '(')
-      .replace(/&#41;/g, ')')
-      .replace(/&#225;&#700;&#237;/g, 'Baháʼí'); // Specific entity from the user's error source
-  }
-  const doc = new DOMParser().parseFromString(s, "text/html");
-  return doc.documentElement.textContent || s;
-}
-
-/** Escape text for safe use inside mermaid quoted labels */
 function mmd(s: string): string {
-  // Decode existing HTML entities in the source string first
-  let decoded = decodeHtmlEntities(s);
-  // Then, escape Mermaid-specific syntax characters
-  // Only escape actual double quotes as \" for Mermaid's parser.
-  // Convert newlines to HTML <br/> for display.
-  // Other characters are passed directly. Mermaid's htmlLabels: true should handle their rendering.
-  return decoded
-    .replace(/"/g, "\\\"") // Escape actual double quotes with a backslash
-    .replace(/\n/g, "<br/>"); // Newlines to HTML line breaks
+  if (!s) return "";
+  
+  // 1. Decode any existing HTML entities so we start with raw text
+  let text = s;
+  if (typeof document !== 'undefined') {
+    const doc = new DOMParser().parseFromString(text, "text/html");
+    text = doc.documentElement.textContent || text;
+  } else {
+    // Basic server-side fallback
+    text = text.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&#8212;/g, '—').replace(/&#40;/g, '(').replace(/&#41;/g, ')');
+  }
+
+  // 2. Escape specifically for Mermaid's quoted string syntax: Node["Label"] or Node -->|"Label"| Node
+  return text
+    .replace(/"/g, "#quot;") // Mermaid prefers its own entity for quotes inside strings
+    .replace(/\(/g, "#40;")  // Parentheses can sometimes confuse the parser
+    .replace(/\)/g, "#41;")
+    .replace(/\[/g, "#91;")  // Brackets definitely confuse the parser
+    .replace(/\]/g, "#93;")
+    .replace(/</g, "&lt;")   // HTML brackets
+    .replace(/>/g, "&gt;")
+    .replace(/\n/g, "<br/>"); // Newlines must be HTML <br/> for htmlLabels: true
 }
 
 interface MermaidMapProps {
