@@ -402,13 +402,14 @@ export default function IslamQuiz() {
         <footer className="text-center text-xs text-slate-600 mt-10">
           <p>{t("app.footer") || "Built with philosophical rigor, not dogma."}</p>
           <div className="mt-1">
-            <a href="https://www.klaud.uk" className="text-amber-500/80 hover:text-amber-400 transition-colors" target="_blank" rel="noopener noreferrer">
-              www.klaud.uk
+            <a href="mailto:ij@klaud.uk" className="text-amber-500/80 hover:text-amber-400 transition-colors">
+              ij@klaud.uk
             </a>
           </div>
           <div className="mt-1 text-slate-500">
+            Copyright 2026 © 
             <a href="https://www.klaud.uk" className="text-amber-500/80 hover:text-amber-400 transition-colors" target="_blank" rel="noopener noreferrer">
-              Copyright 2026 © www.klaud.uk
+              www.klaud.uk
             </a>
           </div>
         </footer>
