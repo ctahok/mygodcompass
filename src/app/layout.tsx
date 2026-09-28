@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import packageJson from "../../package.json";
 
 export const metadata: Metadata = {
   title: "The Ontological Compass",
@@ -28,7 +29,12 @@ export default async function RootLayout({
   const lang = locale ?? "en";
   return (
     <html lang={lang} className="dark">
-      <body className="bg-slate-950 antialiased">{children}</body>
+      <body className="bg-slate-950 antialiased">
+        {children}
+        <div className="fixed bottom-1 left-1 text-[10px] text-slate-500/30 z-50 pointer-events-none select-none font-mono">
+          v{packageJson.version}
+        </div>
+      </body>
     </html>
   );
 }
