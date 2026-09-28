@@ -63,6 +63,8 @@ function mmd(s: string): string {
     .replace(/\]/g, "&#93;")
     // em-dash explicitly breaks Mermaid v11 edge labels
     .replace(/—/g, "&#8212;")
+    // Semicolons can also break Mermaid statements if unescaped
+    .replace(/;/g, "&#59;")
     // HTML brackets
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
