@@ -10,7 +10,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { ReactNode, RefObject } from "react";
+import { create } from "zustand";
 import { type LocalizedText, type Lang } from "@/data/ontology";
+
+interface TooltipStore {
+  activeId: string | null;
+  setActiveId: (id: string | null) => void;
+}
+
+export const useTooltipStore = create<TooltipStore>((set: any) => ({
+  activeId: null,
+  setActiveId: (id: string | null) => set({ activeId: id }),
+}));
 import { useWizard, currentNodeId, currentNode } from "@/store/wizardStore";
 import { getTermDefinition, type TermDefinition } from "@/data/termDefinitions";
 
@@ -82,24 +93,28 @@ function Tooltip({
   children: ReactNode;
   zIndex: number;
 }) {
+  // If not open or no position, do not render at all. This physically removes the DOM element.
+  if (!open || !position) return null;
+
   return (
     <span
       ref={tooltipRef}
+      onClick={(e: any) => e.stopPropagation()}
       style={{
         position: "fixed",
-        left: position ? `${position.left}px` : "0px",
-        top: position ? `${position.top}px` : "0px",
-        visibility: open && position ? "visible" : "hidden",
-        opacity: open && position ? 1 : 0,
-        transition: "opacity 0.15s ease-out, transform 0.15s ease-out",
-        transform: open && position ? "scale(1)" : "scale(0.96)",
+        left: `${position.left}px`,
+        top: `${position.top}px`,
+        // Start visible immediately since it's mounted conditionally
+        visibility: "visible",
+        opacity: 1,
+        transform: "scale(1)",
         transformOrigin: "top left",
         zIndex: 99999, // Ensure it's above any frames/cards
       }}
       className={`w-max max-w-[calc(100vw-2rem)] sm:max-w-[320px] max-h-[calc(100vh-1rem)] overflow-y-auto rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-[11px] leading-snug text-slate-300 shadow-xl ${
-        position?.placement === "above"
+        position.placement === "above"
           ? "mb-2"
-          : position?.placement === "below"
+          : position.placement === "below"
           ? "mt-2"
           : ""
       }`}
@@ -107,9 +122,9 @@ function Tooltip({
       {children}
       <span
         className={`absolute left-1/2 -translate-x-1/2 border-4 border-transparent ${
-          position?.placement === "above"
+          position.placement === "above"
             ? "top-full border-t-slate-700"
-            : position?.placement === "below"
+            : position.placement === "below"
             ? "bottom-full border-b-slate-700"
             : ""
         }`}
@@ -121,7 +136,13 @@ function Tooltip({
 function TermTip({ text }: { text: LocalizedText }) {
   const { t } = useTranslation();
   const lang = useWizard((s) => s.lang);
-  const [open, setOpen] = useState(false);
+  
+  const activeId = useTooltipStore((s) => s.activeId);
+  const setActiveId = useTooltipStore((s) => s.setActiveId);
+  const tipId = useRef(`tip-${Math.random()}`).current;
+  const open = activeId === tipId;
+  const toggleOpen = () => setActiveId(open ? null : tipId);
+
   const triggerRef = useRef<HTMLButtonElement>(null);
   const tooltipRef = useRef<HTMLSpanElement>(null);
   const { position } = useTooltipPosition(open, triggerRef, tooltipRef);
@@ -132,7 +153,10 @@ function TermTip({ text }: { text: LocalizedText }) {
         ref={triggerRef}
         type="button"
         aria-label={t("app.tooltip")}
-        onClick={() => setOpen((o) => !o)}
+        onClick={(e) => {
+          e.stopPropagation();
+          toggleOpen();
+        }}
         className="ml-1.5 inline-flex h-4 w-4 items-center justify-center rounded-full bg-slate-700/70 text-[10px] font-bold text-slate-300 hover:bg-slate-600 transition-colors cursor-pointer"
       >
         i
@@ -156,7 +180,13 @@ function TermTip({ text }: { text: LocalizedText }) {
 function TermInfo({ def }: { def: TermDefinition }) {
   const { t } = useTranslation();
   const lang = useWizard((s) => s.lang);
-  const [open, setOpen] = useState(false);
+  
+  const activeId = useTooltipStore((s) => s.activeId);
+  const setActiveId = useTooltipStore((s) => s.setActiveId);
+  const tipId = useRef(`tip-${Math.random()}`).current;
+  const open = activeId === tipId;
+  const toggleOpen = () => setActiveId(open ? null : tipId);
+
   const triggerRef = useRef<HTMLButtonElement>(null);
   const tooltipRef = useRef<HTMLSpanElement>(null);
   const { position } = useTooltipPosition(open, triggerRef, tooltipRef);
@@ -170,7 +200,7 @@ function TermInfo({ def }: { def: TermDefinition }) {
         aria-expanded={open}
         onClick={(e) => {
           e.stopPropagation();
-          setOpen((o) => !o);
+          toggleOpen();
         }}
         className="ml-1.5 inline-flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full border border-slate-600/70 bg-slate-800/80 text-[11px] font-bold text-slate-400 hover:border-amber-400/70 hover:text-amber-300 focus-visible:outline-amber-400 transition-colors cursor-pointer"
       >
@@ -213,6 +243,13 @@ export default function QuestionCard() {
   const path = useWizard((s) => s.path);
   const answer = useWizard((s) => s.answer);
   const lang = useWizard((s) => s.lang);
+
+  // Close tooltips on outside click
+  useEffect(() => {
+    const handleClickOutside = () => useTooltipStore.getState().setActiveId(null);
+    window.addEventListener("click", handleClickOutside);
+    return () => window.removeEventListener("click", handleClickOutside);
+  }, []);
 
   // Local state for multi-select (always initialized, used conditionally)
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
