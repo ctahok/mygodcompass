@@ -53,6 +53,7 @@ function mmd(s: string): string {
   }
 
   // 2. Escape specifically for Mermaid's quoted string syntax: Node["Label"] or Node -->|"Label"| Node
+  // Mermaid v11 requires very specific escaping: #quot; for quotes, #91;/#93; for brackets, etc.
   return text
     .replace(/"/g, "#quot;") // Mermaid prefers its own entity for quotes inside strings
     .replace(/\(/g, "#40;")  // Parentheses can sometimes confuse the parser
@@ -61,6 +62,8 @@ function mmd(s: string): string {
     .replace(/\]/g, "#93;")
     .replace(/</g, "&lt;")   // HTML brackets
     .replace(/>/g, "&gt;")
+    .replace(/—/g, "#8212;") // em-dash explicitly breaks Mermaid v11 edge labels
+    .replace(/[^\x00-\x7F]/g, (c) => "#" + c.codePointAt(0)! + ";") // All non-ASCII must be numeric entities in Mermaid
     .replace(/\n/g, "<br/>"); // Newlines must be HTML <br/> for htmlLabels: true
 }
 
