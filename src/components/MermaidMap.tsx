@@ -39,13 +39,34 @@ function loadMermaid() {
   return mermaidPromise;
 }
 
+function decodeHtmlEntities(s: string): string {
+  if (typeof document === 'undefined') { // Handle server-side rendering
+    // Simplified server-side decoding to avoid DOMParser
+    return s
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/&#8212;/g, '—')
+      .replace(/&#40;/g, '(')
+      .replace(/&#41;/g, ')')
+      .replace(/&#225;&#700;&#237;/g, 'Baháʼí'); // Specific entity from the user's error source
+  }
+  const doc = new DOMParser().parseFromString(s, "text/html");
+  return doc.documentElement.textContent || s;
+}
+
 /** Escape text for safe use inside mermaid quoted labels */
 function mmd(s: string): string {
-  // Only escape double quotes and convert newlines to <br/>
-  // Other characters like em-dash, parentheses, and non-ASCII will be passed directly
-  // Mermaid's htmlLabels: true should handle their rendering.
-  return s
-    .replace(/"/g, "&quot;") // Escape double quotes within label text
+  // Decode existing HTML entities in the source string first
+  let decoded = decodeHtmlEntities(s);
+  // Then, escape Mermaid-specific syntax characters
+  // Only escape actual double quotes as \" for Mermaid's parser.
+  // Convert newlines to HTML <br/> for display.
+  // Other characters are passed directly. Mermaid's htmlLabels: true should handle their rendering.
+  return decoded
+    .replace(/"/g, "\\\"") // Escape actual double quotes with a backslash
     .replace(/\n/g, "<br/>"); // Newlines to HTML line breaks
 }
 
