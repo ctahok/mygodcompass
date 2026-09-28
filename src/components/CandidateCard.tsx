@@ -41,7 +41,6 @@ export default function CandidateCard() {
   const { t } = useTranslation();
   const answer = useWizard((s) => s.answer);
   const candidateScores = useWizard((s) => s.candidateScores);
-  const path = useWizard((s) => s.path);
 
   const candidates = topCandidates(candidateScores, 6);
 

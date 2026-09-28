@@ -13,7 +13,7 @@ interface InfoModalProps {
   onClose: () => void;
   titleKey: string;
   // contentKey kept for API consistency but not used (content derived from titleKey)
-  contentKey: string; // eslint-disable-line @typescript-eslint/no-unused-vars
+  contentKey?: string; // eslint-disable-line @typescript-eslint/no-unused-vars
 }
 
 const translations = {
@@ -49,7 +49,7 @@ const translations = {
   }
 };
 
-export default function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalProps) {
+export default function InfoModal({ isOpen, onClose, titleKey }: InfoModalProps) {
   const lang = useWizard((s) => s.lang) as Lang;
 
   const getContent = (lang: Lang, key: string) => {

@@ -10,7 +10,6 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { currentTerminal, useWizard } from "@/store/wizardStore";
-import type { Profile } from "@/data/ontology";
 
 export default function DefinitionCard() {
   const { t } = useTranslation();
