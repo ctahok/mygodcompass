@@ -41,18 +41,12 @@ function loadMermaid() {
 
 /** Escape text for safe use inside mermaid quoted labels */
 function mmd(s: string): string {
-  // Escape characters that would break HTML or cause issues in Mermaid's HTML rendering
+  // Escape characters that would break HTML or Mermaid's syntax within labels
   return s
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;") // Single quotes
-    .replace(/`/g, "&#96;") // Backticks
-    .replace(/\(/g, "&#40;") // Left parenthesis
-    .replace(/\)/g, "&#41;") // Right parenthesis
-    .replace(/—/g, "&#8212;") // em-dash
-    .replace(/[^\x00-\x7F]/g, (c) => `&#${c.codePointAt(0)};`) // non-ASCII to numeric HTML entity
     .replace(/\n/g, "<br/>"); // Newlines to HTML line breaks
 }
 
