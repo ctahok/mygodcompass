@@ -41,13 +41,14 @@ function loadMermaid() {
 
 /** Escape text for safe use inside mermaid quoted labels */
 function mmd(s: string): string {
-  const DQ = String.fromCharCode(34);
+  // Use mermaid entity syntax (#1234;) instead of HTML entity syntax (&#1234;)
+  // Mermaid v11+ requires specific escaping for certain characters
   return s
-    .replace(/&/g, "&amp;")
-    .replace(new RegExp(DQ, "g"), "\\\"")
-    .replace(/#/g, "&#35;")
-    .replace(/—/g, "&#8212;") // em-dash breaks the edge-label parser
-    .replace(/[^\x00-\x7F]/g, (c) => "&#" + c.codePointAt(0)! + ";") // any other non-ASCII -> numeric entity
+    .replace(/&/g, "#amp;")
+    .replace(/"/g, "#quot;")
+    .replace(/#/g, "#35;")
+    .replace(/—/g, "#8212;") // em-dash breaks the edge-label parser
+    .replace(/[^\x00-\x7F]/g, (c) => "#" + c.codePointAt(0)! + ";") // non-ASCII -> mermaid numeric entity
     .replace(/\n/g, "<br/>");
 }
 
@@ -138,6 +139,12 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
         const id = `theogony-${++renderIdRef.current}`;
         const { svg } = await mermaid.render(id, src);
         if (!svgHostRef.current) return;
+        // Detect error SVG (mermaid with securityLevel: "loose" can resolve with error SVG)
+        if (svg.includes("error-text") || svg.includes("Syntax error")) {
+          console.error("Mermaid render produced error SVG. This indicates a parsing issue in the mermaid source.");
+          console.error("Mermaid source that caused error:", src);
+          return;
+        }
         // Store SVG in state; render via dangerouslySetInnerHTML with key to force remount
         setSvgContent(svg);
         setSvgKey((k) => k + 1);

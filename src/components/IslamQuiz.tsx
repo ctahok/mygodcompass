@@ -407,7 +407,7 @@ export default function IslamQuiz() {
             </a>
           </div>
           <div className="mt-1 text-slate-500">
-            Copyright 2026 © 
+            Copyright 2026 ©{" "}
             <a href="https://www.klaud.uk" className="text-amber-500/80 hover:text-amber-400 transition-colors" target="_blank" rel="noopener noreferrer">
               www.klaud.uk
             </a>

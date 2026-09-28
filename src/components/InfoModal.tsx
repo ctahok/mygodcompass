@@ -43,7 +43,7 @@ const translations = {
       content: "Ontoloji Kompas — bir şəxsin Tanrı, tanrılar, yekun reallıq, mənəviyyət və dini həyata əlaqəsini təsvir etməyə kömək edən sualların rehber xəritəsidir. Yeganə müayyən etiket qoymaq yerine, bu tətbiq mövcudluq, vahidlik və ya çoxluqluq, şəxsiyyət, dünya ilə əlaqə, vahiy, bilik və aidiyyət sualları boylama inci bir orientasiya qurur. Bu vacibdir: o, dini, təcrübəni, inanı, etniya/mədaniyyəti və əsili bir-birinə bərabər görmür: kimsə inanışların метафизикаschen inanışlarını paylaşmadan bir ənənədə iştirak edə bilər, dini praktika olmadan mədəni və ya əsilli identiteti miras olaraq götürə bilər, institut-a aidiyyət olmadan mənəvi inanışları ola bilər və ya bir neçə ənənəyə eyni vaxtda mənalı aidiyyəti ola bilər."
     },
     whatPersonGains: {
-          title: "Siz əldə edirsiniz",
+          title: "Tətbiq nə qazandırır?",
           content: 'Sualara cavab verərək, insan öz dünyagörüşünün daha aydın və daha dəqiq mənzərəsinə nail ola bilər: nəyin mövcud olduğuna inandığını, həqiqətin necə dərk edildiyini düşündüyünü, ənənəni necə təcrübədən keçirdiyini və ya onunla necə əlaqə qurduğunu, eləcə də hansı icmaların və ya mədəni irsin onun üçün önəmli olduğunu fərqləndirən bir baxış əldə edir. Nəticə onların "əslində nə olduqlarına" dair bir hökm deyil, mövqelərini anlamağı, ifadə etməyi, müqayisə etməyi və başqaları ilə müzakirə etməyi asanlaşdıran, dəyişikliklərə açıq bir bələdçi xəritədir.'
     }
   }

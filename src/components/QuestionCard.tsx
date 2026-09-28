@@ -83,35 +83,37 @@ function Tooltip({
   zIndex: number;
 }) {
   return (
-    <AnimatePresence>
-      {open && position && (
-        <motion.span
-          ref={tooltipRef}
-          initial={{ opacity: 0, y: 4, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 4, scale: 0.96 }}
-          transition={{ duration: 0.15 }}
-          style={{
-            left: `${position.left}px`,
-            top: `${position.top}px`,
-          }}
-          className={`fixed z-${zIndex} w-max max-w-[calc(100vw-1rem)] max-h-[calc(100vh-1rem)] overflow-y-auto rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-[11px] leading-snug text-slate-300 shadow-xl ${
-            position.placement === "above"
-              ? "mb-2"
-              : "mt-2"
-          }`}
-        >
-          {children}
-          <span
-            className={`absolute left-1/2 -translate-x-1/2 border-4 border-transparent ${
-              position.placement === "above"
-                ? "top-full border-t-slate-700"
-                : "bottom-full border-b-slate-700"
-            }`}
-          />
-        </motion.span>
-      )}
-    </AnimatePresence>
+    <span
+      ref={tooltipRef}
+      style={{
+        position: "fixed",
+        left: position ? `${position.left}px` : "0px",
+        top: position ? `${position.top}px` : "0px",
+        visibility: open && position ? "visible" : "hidden",
+        opacity: open && position ? 1 : 0,
+        transition: "opacity 0.15s ease-out, transform 0.15s ease-out",
+        transform: open && position ? "scale(1)" : "scale(0.96)",
+        transformOrigin: "top left",
+      }}
+      className={`z-${zIndex} w-max max-w-[calc(100vw-1rem)] max-h-[calc(100vh-1rem)] overflow-y-auto rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-[11px] leading-snug text-slate-300 shadow-xl ${
+        position?.placement === "above"
+          ? "mb-2"
+          : position?.placement === "below"
+          ? "mt-2"
+          : ""
+      }`}
+    >
+      {children}
+      <span
+        className={`absolute left-1/2 -translate-x-1/2 border-4 border-transparent ${
+          position?.placement === "above"
+            ? "top-full border-t-slate-700"
+            : position?.placement === "below"
+            ? "bottom-full border-b-slate-700"
+            : ""
+        }`}
+      />
+    </span>
   );
 }
 
