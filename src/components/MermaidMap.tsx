@@ -41,12 +41,11 @@ function loadMermaid() {
 
 /** Escape text for safe use inside mermaid quoted labels */
 function mmd(s: string): string {
-  // Escape characters that would break HTML or Mermaid's syntax within labels
+  // Only escape double quotes and convert newlines to <br/>
+  // Other characters like em-dash, parentheses, and non-ASCII will be passed directly
+  // Mermaid's htmlLabels: true should handle their rendering.
   return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
+    .replace(/"/g, "&quot;") // Escape double quotes within label text
     .replace(/\n/g, "<br/>"); // Newlines to HTML line breaks
 }
 
