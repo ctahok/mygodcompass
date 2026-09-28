@@ -53,18 +53,21 @@ function mmd(s: string): string {
   }
 
   // 2. Escape specifically for Mermaid's quoted string syntax: Node["Label"] or Node -->|"Label"| Node
-  // Mermaid v11 requires very specific escaping: #quot; for quotes, #91;/#93; for brackets, etc.
   return text
-    .replace(/"/g, "#quot;") // Mermaid prefers its own entity for quotes inside strings
-    .replace(/\(/g, "#40;")  // Parentheses can sometimes confuse the parser
-    .replace(/\)/g, "#41;")
-    .replace(/\[/g, "#91;")  // Brackets definitely confuse the parser
-    .replace(/\]/g, "#93;")
-    .replace(/</g, "&lt;")   // HTML brackets
+    // Mermaid requires its own specific entity #quot; for quotes inside strings, not &quot; or \"
+    .replace(/"/g, "#quot;")
+    // Parentheses and brackets sometimes confuse the parser, use STANDARD numeric entities with &#
+    .replace(/\(/g, "&#40;")
+    .replace(/\)/g, "&#41;")
+    .replace(/\[/g, "&#91;")
+    .replace(/\]/g, "&#93;")
+    // em-dash explicitly breaks Mermaid v11 edge labels
+    .replace(/—/g, "&#8212;")
+    // HTML brackets
+    .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/—/g, "#8212;") // em-dash explicitly breaks Mermaid v11 edge labels
-    .replace(/[^\x00-\x7F]/g, (c) => "#" + c.codePointAt(0)! + ";") // All non-ASCII must be numeric entities in Mermaid
-    .replace(/\n/g, "<br/>"); // Newlines must be HTML <br/> for htmlLabels: true
+    // Newlines must be HTML <br/> for htmlLabels: true
+    .replace(/\n/g, "<br/>");
 }
 
 interface MermaidMapProps {
