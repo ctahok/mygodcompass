@@ -41,15 +41,19 @@ function loadMermaid() {
 
 /** Escape text for safe use inside mermaid quoted labels */
 function mmd(s: string): string {
-  // Use mermaid entity syntax (#1234;) instead of HTML entity syntax (&#1234;)
-  // Mermaid v11+ requires specific escaping for certain characters
+  // Escape characters that would break HTML or cause issues in Mermaid's HTML rendering
   return s
-    .replace(/&/g, "#amp;")
-    .replace(/"/g, "#quot;")
-    .replace(/#/g, "#35;")
-    .replace(/—/g, "#8212;") // em-dash breaks the edge-label parser
-    .replace(/[^\x00-\x7F]/g, (c) => "#" + c.codePointAt(0)! + ";") // non-ASCII -> mermaid numeric entity
-    .replace(/\n/g, "<br/>");
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;") // Single quotes
+    .replace(/`/g, "&#96;") // Backticks
+    .replace(/\(/g, "&#40;") // Left parenthesis
+    .replace(/\)/g, "&#41;") // Right parenthesis
+    .replace(/—/g, "&#8212;") // em-dash
+    .replace(/[^\x00-\x7F]/g, (c) => `&#${c.codePointAt(0)};`) // non-ASCII to numeric HTML entity
+    .replace(/\n/g, "<br/>"); // Newlines to HTML line breaks
 }
 
 interface MermaidMapProps {
