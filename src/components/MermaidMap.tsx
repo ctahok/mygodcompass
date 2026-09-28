@@ -52,24 +52,19 @@ function mmd(s: string): string {
     text = text.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&#8212;/g, '—').replace(/&#40;/g, '(').replace(/&#41;/g, ')');
   }
 
-  // 2. Escape specifically for Mermaid's quoted string syntax: Node["Label"] or Node -->|"Label"| Node
+  // 2. Escape specifically for Mermaid's quoted string syntax
+  // Mermaid uses a proprietary #xxx; syntax for entities inside labels to avoid semicolon conflicts
   return text
-    // Mermaid requires its own specific entity #quot; for quotes inside strings, not &quot; or \"
-    .replace(/"/g, "#quot;")
-    // Parentheses and brackets sometimes confuse the parser, use STANDARD numeric entities with &#
-    .replace(/\(/g, "&#40;")
-    .replace(/\)/g, "&#41;")
-    .replace(/\[/g, "&#91;")
-    .replace(/\]/g, "&#93;")
-    // em-dash explicitly breaks Mermaid v11 edge labels
-    .replace(/—/g, "&#8212;")
-    // Semicolons can also break Mermaid statements if unescaped
-    .replace(/;/g, "&#59;")
-    // HTML brackets
-    .replace(/</g, "&lt;")
+    .replace(/"/g, "#quot;") // Mermaid's specific entity for quotes
+    .replace(/;/g, "#59;")   // Semicolons break Mermaid statement parsing
+    .replace(/\(/g, "#40;")  // Parentheses
+    .replace(/\)/g, "#41;")  
+    .replace(/\[/g, "#91;")  // Brackets
+    .replace(/\]/g, "#93;")  
+    .replace(/—/g, "#8212;") // Em-dashes
+    .replace(/</g, "&lt;")   // HTML brackets (Mermaid htmlLabels allows these)
     .replace(/>/g, "&gt;")
-    // Newlines must be HTML <br/> for htmlLabels: true
-    .replace(/\n/g, "<br/>");
+    .replace(/\n/g, "<br/>"); // Newlines to HTML line breaks
 }
 
 interface MermaidMapProps {
