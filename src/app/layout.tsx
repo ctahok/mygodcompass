@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import ThemeToggle from "@/components/ThemeToggle";
 import "./globals.css";
 import packageJson from "../../package.json";
 
@@ -31,6 +32,7 @@ export default async function RootLayout({
     <html lang={lang} className="dark">
       <body className="bg-slate-950 antialiased">
         {children}
+        <ThemeToggle />
         <div className="fixed bottom-1 left-1 text-[10px] text-slate-500/30 z-50 pointer-events-none select-none font-mono">
           v{packageJson.version}
         </div>
