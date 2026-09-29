@@ -52,18 +52,18 @@ function mmd(s: string): string {
     text = text.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&#8212;/g, '—').replace(/&#40;/g, '(').replace(/&#41;/g, ')');
   }
 
-  // 2. Escape specifically for Mermaid's quoted string syntax
+  // 2. Escape specifically for Mermaid's quoted string syntax (standard HTML entities)
   return text
-    .replace(/"/g, "#quot;") // Mermaid's specific entity for quotes
-    .replace(/;/g, "#59;")   // Semicolons break Mermaid statement parsing
-    .replace(/\(/g, "#40;")  // Parentheses
-    .replace(/\)/g, "#41;")  
-    .replace(/\[/g, "#91;")  // Brackets
-    .replace(/\]/g, "#93;")  
-    .replace(/—/g, "-")      // Replace em-dash with regular dash (safest)
+    .replace(/"/g, "&quot;") // Standard HTML entity for quotes
+    .replace(/;/g, "&#59;")   // Standard numeric entity for semicolons
+    .replace(/\(/g, "&#40;")  // Parentheses
+    .replace(/\)/g, "&#41;")  
+    .replace(/\[/g, "&#91;")  // Brackets
+    .replace(/\]/g, "&#93;")  
+    .replace(/—/g, "&#8212;")  // Em-dash
     .replace(/</g, "&lt;")   // HTML brackets
     .replace(/>/g, "&gt;")
-    .replace(/\n/g, " ");    // Replace newlines with spaces instead of <br/> to avoid parser confusion
+    .replace(/\n/g, " ");    // Replace newlines with spaces
 }
 
 interface MermaidMapProps {

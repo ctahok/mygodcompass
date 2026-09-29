@@ -19,6 +19,14 @@ export default function ThemeToggle() {
     if (meta) {
       meta.setAttribute("content", isDark ? "#020617" : "#f8fafc");
     }
+    const body = document.body;
+    if (!isDark) {
+      body.classList.remove("bg-slate-950", "text-slate-100");
+      body.classList.add("bg-slate-50", "text-slate-900");
+    } else {
+      body.classList.remove("bg-slate-50", "text-slate-900");
+      body.classList.add("bg-slate-950", "text-slate-100");
+    }
   }, [isDark]);
 
   return (
