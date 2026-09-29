@@ -137,7 +137,7 @@ export const resources = {
         scaleHigh: "Tamamilə",
         finish: "İndi tamamla",
         whatAppDoes: "Tətbiq nə edir",
-        whatPersonGains: "Siz əldəedirsiniz",
+        whatPersonGains: "Siz nə əldə edirsiniz?",
         candidatesTitle: "Ən uyğun yollar",
         candidatesHint: "Cavablarınız dininizi müəyyən etmir — onlar araşdıra biləcəyiniz yolları göstərir.",
         explorePath: "Bu yolu araşdır",

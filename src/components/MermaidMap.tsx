@@ -21,7 +21,7 @@ function loadMermaid() {
     mermaidPromise = import("mermaid").then((m) => {
       m.default.initialize({
         startOnLoad: false,
-        securityLevel: "loose",
+        securityLevel: "strict",
         theme: "dark",
         fontFamily: "inherit",
         flowchart: {
