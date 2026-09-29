@@ -7,7 +7,7 @@
 // ============================================================
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import type { ReactNode, RefObject, MouseEvent } from "react";
 import { create } from "zustand";
@@ -138,7 +138,7 @@ function TermTip({ text }: { text: LocalizedText }) {
   
   const activeId = useTooltipStore((s) => s.activeId);
   const setActiveId = useTooltipStore((s) => s.setActiveId);
-  const tipId = useRef(`tip-${Math.random()}`).current;
+  const tipId = useMemo(() => `tip-${Math.random()}`, []);
   const open = activeId === tipId;
   const toggleOpen = () => setActiveId(open ? null : tipId);
 
@@ -181,7 +181,7 @@ function TermInfo({ def }: { def: TermDefinition }) {
   
   const activeId = useTooltipStore((s) => s.activeId);
   const setActiveId = useTooltipStore((s) => s.setActiveId);
-  const tipId = useRef(`tip-${Math.random()}`).current;
+  const tipId = useMemo(() => `tip-${Math.random()}`, []);
   const open = activeId === tipId;
   const toggleOpen = () => setActiveId(open ? null : tipId);
 

@@ -15,11 +15,11 @@ import { NODES } from "@/data/ontology";
 import type { Lang } from "@/data/ontology";
 import { useWizard, pathNodeIds } from "@/store/wizardStore";
 
-let mermaidPromise: Promise<typeof import("mermaid").default> | null = null;
+let mermaidPromise: any = null;
 function loadMermaid() {
   if (!mermaidPromise) {
     mermaidPromise = import("mermaid").then((m) => {
-      m.default.initialize({
+      (m.default || m).initialize({
         startOnLoad: false,
         securityLevel: "strict",
         theme: "dark",
@@ -33,7 +33,7 @@ function loadMermaid() {
           rankSpacing: 48,
         },
       });
-      return m.default;
+      return m.default || m;
     });
   }
   return mermaidPromise;
