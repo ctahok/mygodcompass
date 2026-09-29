@@ -15,7 +15,7 @@ import { NODES } from "@/data/ontology";
 import type { Lang } from "@/data/ontology";
 import { useWizard, pathNodeIds } from "@/store/wizardStore";
 
-let mermaidPromise: any = null;
+let mermaidPromise: any = null; // eslint-disable-line @typescript-eslint/no-explicit-any
 function loadMermaid() {
   if (!mermaidPromise) {
     mermaidPromise = import("mermaid").then((m) => {

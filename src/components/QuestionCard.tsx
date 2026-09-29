@@ -11,7 +11,7 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import type { ReactNode, RefObject, MouseEvent } from "react";
 import { create } from "zustand";
-import type { StoreApi } from "zustand";
+
 import { type LocalizedText, type Lang } from "@/data/ontology";
 
 interface TooltipStore {
