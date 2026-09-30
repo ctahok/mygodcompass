@@ -7,7 +7,8 @@
 // ============================================================
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, useMemo } from "react";
+import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 import type { ReactNode, RefObject, MouseEvent } from "react";
 import { create } from "zustand";
@@ -39,30 +40,36 @@ function useTooltipPosition(
 ) {
   const [position, setPosition] = useState<TooltipPosition | null>(null);
 
-  useEffect(() => {
-    if (!open) return;
+  useLayoutEffect(() => {
+    if (!open) {
+      setPosition(null);
+      return;
+    }
 
     const positionTooltip = () => {
       const trigger = triggerRef.current;
       const tooltip = tooltipRef.current;
       if (!trigger || !tooltip) return;
 
-      const popupWidth = tooltip.offsetWidth;
-      const popupHeight = tooltip.offsetHeight;
+      const popupWidth = tooltip.offsetWidth || 280;
+      const popupHeight = tooltip.offsetHeight || 80;
       const triggerRect = trigger.getBoundingClientRect();
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
-      const padding = 8;
+      const padding = 12;
+
+      // Position horizontally aligned with the trigger, clamped within viewport
       const center = triggerRect.left + triggerRect.width / 2;
       const left = Math.min(
         Math.max(center - popupWidth / 2, padding),
         Math.max(padding, viewportWidth - popupWidth - padding),
       );
 
-      let top = triggerRect.top - popupHeight - padding;
+      // Prefer displaying above the trigger; flip below if tight on space above
+      let top = triggerRect.top - popupHeight - 8;
       let placement: TooltipPosition["placement"] = "above";
       if (top < padding) {
-        top = triggerRect.bottom + padding;
+        top = triggerRect.bottom + 8;
         placement = "below";
       }
       top = Math.min(
@@ -75,7 +82,11 @@ function useTooltipPosition(
 
     positionTooltip();
     window.addEventListener("resize", positionTooltip);
-    return () => window.removeEventListener("resize", positionTooltip);
+    window.addEventListener("scroll", positionTooltip, true);
+    return () => {
+      window.removeEventListener("resize", positionTooltip);
+      window.removeEventListener("scroll", positionTooltip, true);
+    };
   }, [open, triggerRef, tooltipRef]);
 
   return { position };
@@ -92,44 +103,36 @@ function Tooltip({
   position: TooltipPosition | null;
   children: ReactNode;
 }) {
-  // If not open or no position, do not render at all. This physically removes the DOM element.
-  if (!open || !position) return null;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  return (
+  if (!open || !mounted) return null;
+
+  const content = (
     <span
       ref={tooltipRef}
-      onClick={(e: MouseEvent) => { e.stopPropagation(); }} // eslint-disable-line @typescript-eslint/no-explicit-any
+      onClick={(e: MouseEvent) => {
+        e.stopPropagation();
+      }}
       style={{
         position: "fixed",
-        left: `${position.left}px`,
-        top: `${position.top}px`,
-        // Start visible immediately since it's mounted conditionally
-        visibility: "visible",
-        opacity: 1,
-        transform: "scale(1)",
-        transformOrigin: "top left",
-        zIndex: 99999, // Ensure it's above any frames/cards
+        left: position ? `${position.left}px` : "0px",
+        top: position ? `${position.top}px` : "0px",
+        visibility: position ? "visible" : "hidden",
+        opacity: position ? 1 : 0,
+        zIndex: 99999,
       }}
-      className={`w-max max-w-[calc(100vw-2rem)] sm:max-w-[320px] max-h-[calc(100vh-1rem)] overflow-y-auto rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-[11px] leading-snug text-slate-300 shadow-xl ${
-        position.placement === "above"
-          ? "mb-2"
-          : position.placement === "below"
-          ? "mt-2"
-          : ""
+      className={`w-max max-w-[calc(100vw-2rem)] sm:max-w-[340px] max-h-[calc(100vh-2rem)] overflow-y-auto rounded-xl border border-slate-700 bg-slate-900/95 backdrop-blur-md px-3.5 py-2.5 text-xs leading-snug text-slate-200 shadow-2xl transition-opacity duration-150 ${
+        position?.placement === "above" ? "mb-2" : "mt-2"
       }`}
     >
       {children}
-      <span
-        className={`absolute left-1/2 -translate-x-1/2 border-4 border-transparent ${
-          position.placement === "above"
-            ? "top-full border-t-slate-700"
-            : position.placement === "below"
-            ? "bottom-full border-b-slate-700"
-            : ""
-        }`}
-      />
     </span>
   );
+
+  return createPortal(content, document.body);
 }
 
 function TermTip({ text }: { text: LocalizedText }) {

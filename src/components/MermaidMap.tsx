@@ -2,12 +2,13 @@
 
 // ============================================================
 // <MermaidMap /> — the Theogony Decision Map, rendered with
-// mermaid.js instead of React Flow.
-//   - Full DAG: every question node + every answer option as
-//     an edge label, terminal archetypes as stadium nodes.
+// mermaid.js.
+//   - Supports Pruned View (active path + immediate next steps)
+//     and Full DAG.
 //   - Localized to the current UI language.
-//   - Active path highlighted (amber), rejected branches dashed.
+//   - Active path highlighted (amber), branches clearly indicated.
 //   - Pan (drag) + zoom (wheel / buttons) + JPG download.
+//   - Fallback error state with retry.
 // ============================================================
 
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -15,69 +16,52 @@ import { NODES } from "@/data/ontology";
 import type { Lang } from "@/data/ontology";
 import { useWizard, pathNodeIds } from "@/store/wizardStore";
 
-let mermaidPromise: any = null; // eslint-disable-line @typescript-eslint/no-explicit-any
-function loadMermaid() {
-  if (!mermaidPromise) {
-    mermaidPromise = import("mermaid").then((m) => {
-      (m.default || m).initialize({
-        startOnLoad: false,
-        securityLevel: "strict",
-        theme: "dark",
-        fontFamily: "inherit",
-        flowchart: {
-          htmlLabels: true,
-          curve: "basis",
-          padding: 10,
-          useMaxWidth: false,
-          nodeSpacing: 36,
-          rankSpacing: 48,
-        },
-      });
-      return m.default || m;
+function loadMermaid(isDark = true) {
+  return import("mermaid").then((m) => {
+    const instance = m.default || m;
+    instance.initialize({
+      startOnLoad: false,
+      securityLevel: "loose",
+      theme: isDark ? "dark" : "default",
+      fontFamily: "inherit",
+      flowchart: {
+        htmlLabels: true,
+        curve: "basis",
+        padding: 12,
+        useMaxWidth: false,
+        nodeSpacing: 36,
+        rankSpacing: 48,
+      },
     });
-  }
-  return mermaidPromise;
+    return instance;
+  });
 }
 
+/**
+ * Clean and escape label text safely for Mermaid node/edge labels.
+ * Avoids double-escaping entities and strips syntax breakers.
+ */
 function mmd(s: string): string {
   if (!s) return "";
-  
-  // 1. Decode any existing HTML entities so we start with raw text
-  let text = s;
-  if (typeof document !== 'undefined') {
-    const doc = new DOMParser().parseFromString(text, "text/html");
-    text = doc.documentElement.textContent || text;
-  } else {
-    // Basic server-side fallback
-    text = text.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&#8212;/g, '—').replace(/&#40;/g, '(').replace(/&#41;/g, ')');
-  }
-
-  // 2. Escape specifically for Mermaid's quoted string syntax (standard HTML entities)
-  return text
-    .replace(/"/g, "&quot;") // Standard HTML entity for quotes
-    .replace(/;/g, "&#59;")   // Standard numeric entity for semicolons
-    .replace(/\(/g, "&#40;")  // Parentheses
-    .replace(/\)/g, "&#41;")  
-    .replace(/\[/g, "&#91;")  // Brackets
-    .replace(/\]/g, "&#93;")  
-    .replace(/—/g, "&#8212;")  // Em-dash
-    .replace(/</g, "&lt;")   // HTML brackets
-    .replace(/>/g, "&gt;")
-    .replace(/\n/g, " ");    // Replace newlines with spaces
+  return s
+    .replace(/"/g, "'") // replace double quotes with single quotes inside Mermaid labels
+    .replace(/[;\\]/g, " ") // avoid semicolons/backslashes breaking line lexing
+    .replace(/[<>{}]/g, "") // strip angle/curly brackets
+    .replace(/\s+/g, " ") // collapse newlines and extra spaces
+    .trim();
 }
 
 interface MermaidMapProps {
   height?: number;
 }
 
-export default function MermaidMap({ height = 480 }: MermaidMapProps) {
+export default function MermaidMap({ height = 440 }: MermaidMapProps) {
   const path = useWizard((s) => s.path);
   const lang = useWizard((s) => s.lang);
-  const [source, setSource] = useState("");
   const [svgContent, setSvgContent] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [svgKey, setSvgKey] = useState(0);
-  const [viewMode, setViewMode] = useState<"full" | "pruned">("pruned");
-  const [autoFitted, setAutoFitted] = useState(false);
+  const [viewMode, setViewMode] = useState<"pruned" | "full">("pruned");
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -87,141 +71,164 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const renderIdRef = useRef(0);
 
+  // Scale the rendered SVG to fit the host container (contain, min 40%)
+  const fitToScreen = useCallback(() => {
+    const host = svgHostRef.current;
+    const svg = host?.querySelector("svg");
+    if (!host || !svg) return;
+
+    try {
+      const bbox = typeof svg.getBBox === "function" ? svg.getBBox() : null;
+      const naturalWidth = bbox && bbox.width > 0 ? bbox.width : svg.clientWidth;
+      const naturalHeight = bbox && bbox.height > 0 ? bbox.height : svg.clientHeight;
+      const containerWidth = host.clientWidth;
+      const containerHeight = host.clientHeight;
+
+      let scale = 1;
+      if (naturalWidth > 0 && containerWidth > 0) {
+        scale = Math.min(containerWidth / naturalWidth, containerHeight / naturalHeight, 1);
+        scale = Math.max(scale, 0.4); // don't shrink past 40% for readability
+      }
+
+      setZoom(scale);
+      setPan({ x: 0, y: 0 });
+    } catch (e) {
+      console.warn("Auto-fit note:", e);
+    }
+  }, []);
+
   // Fullscreen handler
   useEffect(() => {
     if (isFullscreen) {
       document.body.style.overflow = "hidden";
-      setAutoFitted(false); // reset auto-fit when entering fullscreen
+      const fitTimer = setTimeout(fitToScreen, 150);
       const handleEscape = (e: KeyboardEvent) => {
         if (e.key === "Escape") setIsFullscreen(false);
       };
       document.addEventListener("keydown", handleEscape);
       return () => {
+        clearTimeout(fitTimer);
         document.body.style.overflow = "";
         document.removeEventListener("keydown", handleEscape);
       };
     }
-  }, [isFullscreen]);
+  }, [isFullscreen, fitToScreen]);
 
-  // ===== Build mermaid source from current path + language =====
+  // ===== Build mermaid source from current path + language + viewMode =====
   const buildSource = useCallback(() => {
     const l: Lang = lang;
     const lines: string[] = [];
     lines.push("flowchart TD");
-    lines.push("  %% Ontological Compass — Theogony Map");
-    lines.push(`  %% lang: ${l}`);
 
-    // Nodes (questions)
-    for (const node of Object.values(NODES)) {
-      const q = node.prompt?.[l] || node.id;
-      lines.push(`  ${node.id}["${mmd(q)}"]`);
+    const pathIds = new Set(pathNodeIds({ path }));
+
+    // In pruned view, include path nodes plus immediate next candidates
+    const activeNodes = new Set<string>();
+    if (viewMode === "pruned") {
+      for (const id of pathIds) activeNodes.add(id);
+      // add next nodes from the last path step
+      if (path.length > 0) {
+        const lastStep = path[path.length - 1];
+        for (const nxt of lastStep.nextNodeIds) activeNodes.add(nxt);
+      } else {
+        // at start: include start and its immediate targets
+        activeNodes.add("start");
+        const startNode = NODES.start;
+        if (startNode) {
+          for (const c of startNode.choices) {
+            for (const nxt of c.next || []) activeNodes.add(nxt);
+          }
+        }
+      }
+    } else {
+      // Full DAG
+      for (const id of Object.keys(NODES)) activeNodes.add(id);
     }
 
-    // Edges with answer options as labels
-    for (const node of Object.values(NODES)) {
+    // Nodes
+    for (const nid of activeNodes) {
+      const node = NODES[nid];
+      if (!node) continue;
+      const q = node.prompt?.[l] || node.id;
+      lines.push(`  ${nid}["${mmd(q)}"]`);
+    }
+
+    // Edges
+    for (const nid of activeNodes) {
+      const node = NODES[nid];
+      if (!node) continue;
       for (const opt of node.choices) {
         for (const next of opt.next || []) {
-          lines.push(`  ${node.id} -->|"${mmd(opt.label[l])}"| ${next}`);
+          if (activeNodes.has(next)) {
+            const edgeLabel = mmd(opt.label?.[l] || opt.id);
+            if (edgeLabel) {
+              lines.push(`  ${nid} -->|"${edgeLabel}"| ${next}`);
+            } else {
+              lines.push(`  ${nid} --> ${next}`);
+            }
+          }
         }
       }
     }
 
-    // Classes
-    lines.push(`  classDef term fill:#3b1d05,stroke:#fbbf24,color:#fde68a,stroke-width:1.5px;`);
-    lines.push(`  classDef onp fill:#451a03,stroke:#fbbf24,color:#fde68a,stroke-width:1px;`);
-    lines.push(`  classDef cur fill:#fbbf24,stroke:#fff7ed,color:#451a03,stroke-width:2px;`);
+    // Class styles
+    lines.push(`  classDef default fill:#1e293b,stroke:#475569,color:#e2e8f0,stroke-width:1.5px;`);
+    lines.push(`  classDef cur fill:#fbbf24,stroke:#fff7ed,color:#0f172a,stroke-width:2.5px;`);
+    lines.push(`  classDef past fill:#78350f,stroke:#f59e0b,color:#fef3c7,stroke-width:1.5px;`);
 
-    // Highlight answered path
-    const visited = new Set<string>();
-    const pathIds = pathNodeIds({ path });
-    for (const pid of pathIds) visited.add(pid);
-    for (const pid of visited) {
-      lines.push(`  class ${pid} cur;`);
+    // Apply classes: current active node vs earlier visited path
+    const pathArr = Array.from(pathIds);
+    const lastNode = path.length > 0 ? (path[path.length - 1].nextNodeIds[0] || pathArr[pathArr.length - 1]) : "start";
+    for (const pid of pathArr) {
+      if (pid === lastNode) {
+        lines.push(`  class ${pid} cur;`);
+      } else {
+        lines.push(`  class ${pid} past;`);
+      }
     }
 
     return lines.join("\n");
-  }, [path, lang]);
+  }, [path, lang, viewMode]);
 
-  // Debounced render - use dangerouslySetInnerHTML via state to avoid React reconciliation conflicts
+  // Render SVG with debounce and explicit error handling
   useEffect(() => {
     const src = buildSource();
-    setSource(src);
 
     const timer = setTimeout(async () => {
       try {
-        const mermaid = await loadMermaid();
+        const isDark = typeof document !== "undefined" && !document.documentElement.classList.contains("light");
+        const mermaid = await loadMermaid(isDark);
         const id = `theogony-${++renderIdRef.current}`;
         const { svg } = await mermaid.render(id, src);
+
         if (!svgHostRef.current) return;
-        // Detect error SVG (mermaid with securityLevel: "loose" can resolve with error SVG)
         if (svg.includes("error-text") || svg.includes("Syntax error")) {
-          console.error("Mermaid render produced error SVG. This indicates a parsing issue in the mermaid source.");
-          console.error("Mermaid source that caused error:", src);
+          setErrorMessage("Mermaid encountered a diagram syntax error.");
           return;
         }
-        // Store SVG in state; render via dangerouslySetInnerHTML with key to force remount
+
         setSvgContent(svg);
+        setErrorMessage(null);
         setSvgKey((k) => k + 1);
       } catch (err) {
         console.error("Mermaid render failed:", err);
+        setErrorMessage(err instanceof Error ? err.message : "Failed to render map diagram.");
       }
-    }, 120);
+    }, 80);
+
     return () => clearTimeout(timer);
   }, [buildSource]);
 
-  // Auto-fit after SVG renders — scale the map to fit the container width
+  // Auto-fit after SVG renders
   useEffect(() => {
-    if (!svgHostRef.current) return;
-    const svg = svgHostRef.current.querySelector("svg");
-    if (!svg || autoFitted) return;
-
-    const timer = setTimeout(() => {
-      try {
-        // Use requestAnimationFrame to ensure SVG is in DOM before measuring
-        requestAnimationFrame(() => {
-          const host = svgHostRef.current;
-          const currentSvg = host?.querySelector("svg");
-          if (!host || !currentSvg || autoFitted) return;
-
-          const naturalWidth = currentSvg.getBBox ? currentSvg.getBBox().width || currentSvg.viewBox?.baseVal?.width : currentSvg.clientWidth;
-          const containerWidth = host.clientWidth;
-          const naturalHeight = currentSvg.getBBox ? currentSvg.getBBox().height || currentSvg.viewBox?.baseVal?.height : currentSvg.clientHeight;
-          const containerHeight = host.clientHeight;
-
-          // Compute scale to fit BOTH dimensions (contain)
-          let scale = 1;
-          if (naturalWidth > 0 && naturalHeight > 0 && (naturalWidth > containerWidth || naturalHeight > containerHeight)) {
-            scale = Math.min(containerWidth / naturalWidth, containerHeight / naturalHeight, 1);
-            // Don't go below 15% — user can zoom further manually
-            scale = Math.max(scale, 0.15);
-          }
-
-          if (scale < 1) {
-            setZoom(scale);
-            setPan({ x: 0, y: 0 });
-          } else {
-            currentSvg.setAttribute("width", "100%");
-            currentSvg.setAttribute("height", "100%");
-            currentSvg.style.maxWidth = "100%";
-            currentSvg.style.maxHeight = "100%";
-          }
-          setAutoFitted(true);
-        });
-      } catch (e) {
-        console.warn("Auto-fit failed:", e);
-      }
-    }, 100);
+    if (!svgContent) return;
+    const timer = setTimeout(fitToScreen, 100);
     return () => clearTimeout(timer);
-  }, [svgKey, autoFitted]);
-
-  // Reset auto-fitted when source changes
-  useEffect(() => {
-    setAutoFitted(false);
-  }, [source]);
+  }, [svgKey, svgContent, fitToScreen]);
 
   // Pan handlers
   const handleMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.button !== 0) return; // only left click
+    if (e.button !== 0) return;
     setIsPanning(true);
     setPanStart({ x: e.clientX - pan.x, y: e.clientY - pan.y });
     e.preventDefault();
@@ -241,12 +248,11 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
   }, []);
 
   const handleDownload = useCallback(async () => {
-    if (!svgHostRef.current || !containerRef.current) return;
+    if (!svgHostRef.current) return;
     const svg = svgHostRef.current.querySelector("svg");
     if (!svg) return;
 
     try {
-      // Create a canvas and draw the SVG
       const serializer = new XMLSerializer();
       const svgString = serializer.serializeToString(svg);
       const canvas = document.createElement("canvas");
@@ -258,12 +264,11 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
       const url = URL.createObjectURL(svgBlob);
 
       img.onload = () => {
-        // 2x scale for crispness
         const scale = 2;
         canvas.width = img.width * scale;
         canvas.height = img.height * scale;
         ctx.scale(scale, scale);
-        ctx.fillStyle = "#0f172a"; // dark bg matching slate-950
+        ctx.fillStyle = "#0f172a";
         ctx.fillRect(0, 0, img.width, img.height);
         ctx.drawImage(img, 0, 0);
         URL.revokeObjectURL(url);
@@ -283,31 +288,32 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
   return (
     <div
       ref={containerRef}
-      className={`rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden ${isFullscreen ? "fixed inset-0 z-50 rounded-none" : ""}`}
+      className={`rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden flex flex-col ${
+        isFullscreen ? "fixed inset-0 z-50 rounded-none h-screen" : ""
+      }`}
       style={{ height: isFullscreen ? "100vh" : height }}
     >
       {/* Toolbar */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-2 p-3 border-b border-slate-800 bg-slate-900/60">
+      <div className="flex flex-wrap items-center justify-between gap-2 p-3 border-b border-slate-800 bg-slate-900/60 shrink-0">
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-slate-300 hidden sm:inline">{viewMode === "pruned" ? "Pruned view" : "Full DAG"}</span>
+          <span className="text-xs font-semibold text-slate-300">
+            {viewMode === "pruned" ? "Focus View (Path)" : "Full Diagram"}
+          </span>
           <button
             type="button"
             onClick={() => setViewMode((v) => (v === "pruned" ? "full" : "pruned"))}
-            className={`rounded-lg px-2 py-1 text-xs font-medium transition-colors ${
-              viewMode === "pruned"
-                ? "bg-amber-400/20 text-amber-300 border border-amber-400/30"
-                : "bg-slate-800 text-slate-400 border border-slate-700 hover:bg-slate-700"
-            }`}
+            className="rounded-lg px-2.5 py-1 text-xs font-medium bg-amber-400/20 text-amber-300 border border-amber-400/40 hover:bg-amber-400/30 transition-colors cursor-pointer"
           >
-            Toggle
+            Switch to {viewMode === "pruned" ? "Full DAG" : "Focus"}
           </button>
         </div>
-        <div className="flex items-center gap-2 flex-wrap justify-end">
+
+        <div className="flex items-center gap-1.5 flex-wrap justify-end">
           {/* Zoom controls */}
           <div className="flex items-center gap-1 rounded-lg bg-slate-800 border border-slate-700 px-1 py-0.5">
             <button
               type="button"
-              onClick={() => setZoom((z) => Math.max(0.15, +(z - 0.15).toFixed(2)))}
+              onClick={() => setZoom((z) => Math.max(0.2, +(z - 0.15).toFixed(2)))}
               className="w-7 h-7 rounded-md text-sm font-bold text-slate-300 hover:bg-slate-700 hover:text-amber-300 transition-colors cursor-pointer"
               aria-label="Zoom out"
             >
@@ -316,7 +322,7 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
             <span className="text-xs text-slate-400 font-mono w-10 text-center">{Math.round(zoom * 100)}%</span>
             <button
               type="button"
-              onClick={() => setZoom((z) => Math.min(4, +(z + 0.15).toFixed(2)))}
+              onClick={() => setZoom((z) => Math.min(3, +(z + 0.15).toFixed(2)))}
               className="w-7 h-7 rounded-md text-sm font-bold text-slate-300 hover:bg-slate-700 hover:text-amber-300 transition-colors cursor-pointer"
               aria-label="Zoom in"
             >
@@ -324,7 +330,10 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
             </button>
             <button
               type="button"
-              onClick={() => setZoom(1)}
+              onClick={() => {
+                setZoom(1);
+                setPan({ x: 0, y: 0 });
+              }}
               className="w-7 h-7 rounded-md text-[10px] font-semibold text-slate-400 hover:bg-slate-700 hover:text-amber-300 transition-colors cursor-pointer"
               aria-label="Reset zoom"
             >
@@ -332,33 +341,27 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
             </button>
             <button
               type="button"
-              onClick={() => setAutoFitted(false)}
+              onClick={fitToScreen}
               className="w-7 h-7 rounded-md text-[10px] font-semibold text-slate-400 hover:bg-slate-700 hover:text-amber-300 transition-colors cursor-pointer"
               aria-label="Fit to screen"
             >
               ⛶
             </button>
           </div>
+
           <button
             type="button"
             onClick={() => setIsFullscreen(!isFullscreen)}
             className="w-7 h-7 rounded-md text-sm font-bold text-slate-300 hover:bg-slate-700 hover:text-amber-300 transition-colors cursor-pointer"
             aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
           >
-            {isFullscreen ? "⛶" : "⛶"}
+            {isFullscreen ? "✕" : "⛶"}
           </button>
-          <a
-            href="/ontology-tree.mmd"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg px-3 py-1.5 text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition-colors hidden sm:inline-flex"
-          >
-            📄 Source
-          </a>
+
           <button
             type="button"
             onClick={handleDownload}
-            className="rounded-lg px-3 py-1.5 text-xs font-medium bg-amber-400/20 text-amber-300 border border-amber-400/30 hover:bg-amber-400/30 transition-colors"
+            className="rounded-lg px-2.5 py-1 text-xs font-medium bg-amber-400/20 text-amber-300 border border-amber-400/30 hover:bg-amber-400/30 transition-colors cursor-pointer"
           >
             ⬇ JPG
           </button>
@@ -368,30 +371,47 @@ export default function MermaidMap({ height = 480 }: MermaidMapProps) {
       {/* SVG Host */}
       <div
         ref={svgHostRef}
-        className="w-full h-full touch-pan-x touch-pan-y cursor-grab"
-        style={{
-          overflow: "auto",
-          WebkitOverflowScrolling: "touch",
-        }}
+        className="mermaid-svg-host flex-1 w-full overflow-hidden touch-pan-x touch-pan-y cursor-grab active:cursor-grabbing relative p-4 flex items-center justify-center bg-slate-950/40"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
       >
-        <div key={svgKey} className="min-w-full min-h-full" style={{ minHeight: height }}>
-          {svgContent && (
-            <div
-              className="w-full h-full"
-              style={{
-                transform: `scale(${zoom}) translate(${pan.x / zoom}px, ${pan.y / zoom}px)`,
-                transformOrigin: "top left",
-                width: `${100 / zoom}%`,
-                height: `${100 / zoom}%`,
+        {errorMessage && (
+          <div className="p-6 text-center max-w-md">
+            <p className="text-amber-300 font-semibold mb-2">Diagram rendering</p>
+            <p className="text-xs text-slate-400 mb-4">{errorMessage}</p>
+            <button
+              type="button"
+              onClick={() => {
+                setErrorMessage(null);
+                setSvgKey((k) => k + 1);
               }}
-              dangerouslySetInnerHTML={{ __html: svgContent }}
-            />
-          )}
-        </div>
+              className="px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 font-semibold text-xs"
+            >
+              Retry
+            </button>
+          </div>
+        )}
+
+        {!errorMessage && svgContent && (
+          <div
+            key={svgKey}
+            style={{
+              transform: `scale(${zoom}) translate(${pan.x}px, ${pan.y}px)`,
+              transformOrigin: "center center",
+              transition: isPanning ? "none" : "transform 0.15s ease-out",
+            }}
+            dangerouslySetInnerHTML={{ __html: svgContent }}
+          />
+        )}
+
+        {!errorMessage && !svgContent && (
+          <div className="text-xs text-slate-500 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+            Loading decision map…
+          </div>
+        )}
       </div>
     </div>
   );

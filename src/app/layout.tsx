@@ -29,8 +29,29 @@ export default async function RootLayout({
   const { locale } = await params;
   const lang = locale ?? "en";
   return (
-    <html lang={lang} className="dark">
-      <body className="bg-slate-950 antialiased">
+    <html lang={lang} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var stored = localStorage.getItem('theme');
+                  var isDark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                  } else {
+                    document.documentElement.classList.add('light');
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="antialiased min-h-screen">
         {children}
         <ThemeToggle />
         <div className="fixed bottom-1 left-1 text-[10px] text-slate-500/30 z-50 pointer-events-none select-none font-mono">
