@@ -1,6 +1,6 @@
 {
   "name": "ontological-compass",
-  "version": "1.4.2",
+  "version": "3.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
