@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>mermaid repro</title>
+  </head>
+  <body>
+    <pre id="out">STARTING</pre>
+    <script type="module">
+      import mermaidDefault from "/node_modules/mermaid/dist/mermaid.esm.mjs";
+
+      const out = document.getElementById("out");
+      const lines = [];
+      const log = (s) => {
+        lines.push(s);
+        out.textContent = lines.join("\n");
+      };
+
+      try {
+        const mermaid = mermaidDefault.default || mermaidDefault;
+        const cases = await (await fetch("/sources.json")).json();
+        log(`cases=${cases.length} ua=${navigator.userAgent}`);
+
+        mermaid.initialize({
+          startOnLoad: false,
+          securityLevel: "loose",
+          theme: "dark",
+          fontFamily: "inherit",
+          flowchart: {
+            htmlLabels: true,
+            curve: "basis",
+            padding: 12,
+            useMaxWidth: false,
+            nodeSpacing: 36,
+            rankSpacing: 48,
+          },
+        });
+
+        for (const c of cases) {
+          try {
+            const { svg } = await mermaid.render(c.id, c.src);
+            const a = svg.indexOf("error-text");
+            const b = svg.indexOf("Syntax error");
+            if (a < 0 && b < 0) {
+              log(`${c.name}: OK len=${svg.length}`);
+            } else {
+              const at = a >= 0 ? a : b;
+              const pat = a >= 0 ? "error-text" : "Syntax error";
+              log(
+                `${c.name}: FALSE_HIT pat="${pat}" len=${svg.length} ctx=${JSON.stringify(
+                  svg.slice(Math.max(0, at - 150), at + 150),
+                )}`,
+              );
+            }
+          } catch (e) {
+            log(`${c.name}: THROW ${(e && e.message) || e}`);
+          }
+        }
+        log("DONE");
+      } catch (e) {
+        log(`HARNESS_FAILURE ${(e && e.message) || e}`);
+      }
+    </script>
+  </body>
+</html>

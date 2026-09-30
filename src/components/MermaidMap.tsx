@@ -12,9 +12,8 @@
 // ============================================================
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { NODES } from "@/data/ontology";
-import type { Lang } from "@/data/ontology";
-import { useWizard, pathNodeIds } from "@/store/wizardStore";
+import { useWizard } from "@/store/wizardStore";
+import { buildMermaidSource } from "@/lib/mermaidSource";
 
 function loadMermaid(isDark = true) {
   return import("mermaid").then((m) => {
@@ -35,20 +34,6 @@ function loadMermaid(isDark = true) {
     });
     return instance;
   });
-}
-
-/**
- * Clean and escape label text safely for Mermaid node/edge labels.
- * Avoids double-escaping entities and strips syntax breakers.
- */
-function mmd(s: string): string {
-  if (!s) return "";
-  return s
-    .replace(/"/g, "'") // replace double quotes with single quotes inside Mermaid labels
-    .replace(/[;\\]/g, " ") // avoid semicolons/backslashes breaking line lexing
-    .replace(/[<>{}]/g, "") // strip angle/curly brackets
-    .replace(/\s+/g, " ") // collapse newlines and extra spaces
-    .trim();
 }
 
 interface MermaidMapProps {
@@ -115,102 +100,31 @@ export default function MermaidMap({ height = 440 }: MermaidMapProps) {
   }, [isFullscreen, fitToScreen]);
 
   // ===== Build mermaid source from current path + language + viewMode =====
-  const buildSource = useCallback(() => {
-    const l: Lang = lang;
-    const lines: string[] = [];
-    lines.push("flowchart TD");
-
-    const pathIds = new Set(pathNodeIds({ path }));
-
-    // In pruned view, include path nodes plus immediate next candidates
-    const activeNodes = new Set<string>();
-    if (viewMode === "pruned") {
-      for (const id of pathIds) activeNodes.add(id);
-      // add next nodes from the last path step
-      if (path.length > 0) {
-        const lastStep = path[path.length - 1];
-        for (const nxt of lastStep.nextNodeIds) activeNodes.add(nxt);
-      } else {
-        // at start: include start and its immediate targets
-        activeNodes.add("start");
-        const startNode = NODES.start;
-        if (startNode) {
-          for (const c of startNode.choices) {
-            for (const nxt of c.next || []) activeNodes.add(nxt);
-          }
-        }
-      }
-    } else {
-      // Full DAG
-      for (const id of Object.keys(NODES)) activeNodes.add(id);
-    }
-
-    // Nodes
-    for (const nid of activeNodes) {
-      const node = NODES[nid];
-      if (!node) continue;
-      const q = node.prompt?.[l] || node.id;
-      lines.push(`  ${nid}["${mmd(q)}"]`);
-    }
-
-    // Edges
-    for (const nid of activeNodes) {
-      const node = NODES[nid];
-      if (!node) continue;
-      for (const opt of node.choices) {
-        for (const next of opt.next || []) {
-          if (activeNodes.has(next)) {
-            const edgeLabel = mmd(opt.label?.[l] || opt.id);
-            if (edgeLabel) {
-              lines.push(`  ${nid} -->|"${edgeLabel}"| ${next}`);
-            } else {
-              lines.push(`  ${nid} --> ${next}`);
-            }
-          }
-        }
-      }
-    }
-
-    // Class styles
-    lines.push(`  classDef default fill:#1e293b,stroke:#475569,color:#e2e8f0,stroke-width:1.5px;`);
-    lines.push(`  classDef cur fill:#fbbf24,stroke:#fff7ed,color:#0f172a,stroke-width:2.5px;`);
-    lines.push(`  classDef past fill:#78350f,stroke:#f59e0b,color:#fef3c7,stroke-width:1.5px;`);
-
-    // Apply classes: current active node vs earlier visited path
-    const pathArr = Array.from(pathIds);
-    const lastNode = path.length > 0 ? (path[path.length - 1].nextNodeIds[0] || pathArr[pathArr.length - 1]) : "start";
-    for (const pid of pathArr) {
-      if (pid === lastNode) {
-        lines.push(`  class ${pid} cur;`);
-      } else {
-        lines.push(`  class ${pid} past;`);
-      }
-    }
-
-    return lines.join("\n");
-  }, [path, lang, viewMode]);
+  const buildSource = useCallback(
+    () => buildMermaidSource({ path, lang, viewMode }),
+    [path, lang, viewMode],
+  );
 
   // Render SVG with debounce and explicit error handling
   useEffect(() => {
     const src = buildSource();
 
     const timer = setTimeout(async () => {
+      const runId = ++renderIdRef.current;
       try {
         const isDark = typeof document !== "undefined" && !document.documentElement.classList.contains("light");
         const mermaid = await loadMermaid(isDark);
-        const id = `theogony-${++renderIdRef.current}`;
-        const { svg } = await mermaid.render(id, src);
+        const { svg } = await mermaid.render(`theogony-${runId}`, src);
 
         if (!svgHostRef.current) return;
-        if (svg.includes("error-text") || svg.includes("Syntax error")) {
-          setErrorMessage("Mermaid encountered a diagram syntax error.");
-          return;
-        }
+        // A newer render was requested while this one was in flight.
+        if (renderIdRef.current !== runId) return;
 
         setSvgContent(svg);
         setErrorMessage(null);
         setSvgKey((k) => k + 1);
       } catch (err) {
+        if (renderIdRef.current !== runId) return;
         console.error("Mermaid render failed:", err);
         setErrorMessage(err instanceof Error ? err.message : "Failed to render map diagram.");
       }
