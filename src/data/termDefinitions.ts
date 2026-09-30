@@ -836,7 +836,7 @@ export const TERM_DEFINITIONS: Record<string, TermDefinition> = {
     gloss: {
       en: "Ultimate reality acts, communicates, or responds in the world (revelation, providence, intervention).",
       ru: "Высшая реальность действует, общается или отвечает в мире (откровение, провиденция, вмешательство).",
-      az: "Ali reallik dünyada hərəkət edir, əlaqə qurur və ya cavab verir (vəhy, pırovidens, müdaxilə).",
+      az: "Ali reallıq dünyada fəaliyyət göstərir, ünsiyyət qurur və ya cavab verir (vəhy, ilahi təqdir, lütf).",
     },
     sources: [
       wiki("Divine providence (Wikipedia)", "Божественное промысление (Википедия)", "İlahi pırovidens (Vikipediya)", "https://en.wikipedia.org/wiki/Divine_providence"),
@@ -846,7 +846,7 @@ export const TERM_DEFINITIONS: Record<string, TermDefinition> = {
     gloss: {
       en: "Ultimate reality maintains, orders, or upholds the cosmos (providence, cosmic order).",
       ru: "Высшая реальность поддерживает, упорядочивает или держит космос (промысл, космический порядок).",
-      az: "Ali reallik kosmosu dəstəkləyir, nizama salır və ya saxlayır (pırovidens, kosmik nizam).",
+      az: "Ali reallıq kosmosu dəstəkləyir, nizama salır və ya qoruyur (ilahi təqdir, kosmik nizam).",
     },
     sources: [
       wiki("Divine providence (Wikipedia)", "Божественное промысление (Википедия)", "İlahi pırovidens (Vikipediya)", "https://en.wikipedia.org/wiki/Divine_providence"),
@@ -856,7 +856,7 @@ export const TERM_DEFINITIONS: Record<string, TermDefinition> = {
     gloss: {
       en: "Ultimate reality creates or originates the world; distinct from it (creation ex nihilo or emanation).",
       ru: "Высшая реальность создаёт или порождает мир; отлична от него (творение из ничего или эманация).",
-      az: "Ali reallik dünyanı yaradır və ya mənbə olur; ondan fərqlidir (heçlikdən yaradılma və ya emanasiya).",
+      az: "Ali reallıq dünyanı yaradır və ya onun ilk qaynağıdır; ondan fərqlidir (yoxdan yaradılma və ya emanasiya).",
     },
     sources: [
       wiki("Creation (Wikipedia)", "Творение (Википедия)", "Yaradılma (Vikipediya)", "https://en.wikipedia.org/wiki/Creation_myth"),
@@ -899,7 +899,7 @@ export const TERM_DEFINITIONS: Record<string, TermDefinition> = {
     gloss: {
       en: "Suspended judgment on whether ultimate reality is personal, impersonal, or beyond categories.",
       ru: "Приостановленное суждение о том, является ли высшая реальность личной, безличной или выходит за категории.",
-      az: "Ali reallığın şəxsi, şəxsiyyətsiz və ya kateqoriyalar ötesində olub-olmaması haqqında hökmün dayandırılması.",
+      az: "Ali reallığın şəxsi, şəxsiyyətsiz və ya bu kateqoriyaların fövqündə olub-olmaması haqqında hökmün dayandırılması.",
     },
     sources: [],
   },
@@ -925,7 +925,7 @@ export const TERM_DEFINITIONS: Record<string, TermDefinition> = {
     gloss: {
       en: "I don't frame my orientation in terms of ultimate reality — I start from practice, community, ancestry, or tradition.",
       ru: "Я не формулирую свой взгляд через высшую реальность — начинаю с практики, общины, предков или традиции.",
-      az: "Mən yanaşmanımı ali reallik terminləri ilə formullaşdırmıram — praktika, cəmiyyət, atalar və ya ənənə ilə başlayıram.",
+      az: "Mən dünyagörüşümü ali reallıq anlayışları ilə ifadə etmirəm — əməli təcrübə, cəmiyyət, əcdadlar və ya ənənə ilə başlayıram.",
     },
     sources: [],
   },
@@ -943,7 +943,7 @@ export const TERM_DEFINITIONS: Record<string, TermDefinition> = {
     gloss: {
       en: "Unsure, suspended judgment, or actively seeking regarding ultimate reality.",
       ru: "Не уверен, приостановленное суждение или активный поиск в отношении высшей реальности.",
-      az: "Əmin deyiləm, hökm dayandırılıb və ya fəal axtarış ali reallik haqqinda.",
+      az: "Əmin deyiləm, hökm dayandırılıb və ya ali reallıq haqqında fəal axtarışdayam.",
     },
     sources: [
       wiki("Agnosticism (Stanford Encyclopedia of Philosophy)", "Агностицизм (Стэнфордская энциклопедия)", "Aqnostisizm (Stanford ensiklopediyası)", "https://plato.stanford.edu/entries/agnosticism/"),
@@ -1189,7 +1189,7 @@ export const TERM_DEFINITIONS: Record<string, TermDefinition> = {
     gloss: {
       en: "Mystical, contemplative, or direct experience as the primary way to know religious truth.",
       ru: "Мистический, контемплативный или прямой опыт как главный способ познать религиозную правду.",
-      az: "Mistik, konteмплятив və ya birbaşa təcrübə dini haqqın bilmə yolu kimi.",
+      az: "Mistik, kontemplativ (daxili seyr) və ya birbaşa təcrübə dini həqiqəti dərk etmə yolu kimi.",
     },
     sources: [
       wiki("Mysticism (Stanford Encyclopedia of Philosophy)", "Мистицизм (Стэнфордская энциклопедия)", "Mistikizm (Stanford ensiklopediyası)", "https://plato.stanford.edu/entries/mysticism/"),
@@ -1308,6 +1308,72 @@ export const TERM_DEFINITIONS: Record<string, TermDefinition> = {
     },
     sources: [],
   },
+  // ============ GENERAL TRADITIONS (for abrahamic_detail / southasian_detail) ============
+  christian: {
+    gloss: {
+      en: "An Abrahamic monotheistic religion based on the life, teachings, death, and resurrection of Jesus of Nazareth.",
+      ru: "Авраамическая монотеистическая религия, основанная на жизни, учении, смерти и воскресении Иисуса из Назарета.",
+      az: "Nazaretli İsanın həyatı, təlimləri, ölümü və dirilməsi üzərində qurulmuş İbrahimi monoteist din.",
+    },
+    sources: [
+      wiki("Christianity (Wikipedia)", "Христианство (Википедия)", "Xristianlıq (Vikipediya)", "https://en.wikipedia.org/wiki/Christianity"),
+      wiki("Christianity (Stanford Encyclopedia of Philosophy)", "Христианство (Стэнфордская энциклопедия)", "Xristianlıq (Stanford ensiklopediyası)", "https://plato.stanford.edu/entries/christianity/"),
+    ],
+  },
+  muslim: {
+    gloss: {
+      en: "An Abrahamic monotheistic religion teaching that there is only one God (Allah) and that Muhammad is His prophet.",
+      ru: "Авраамическая монотеистическая религия, учащая, что есть только один Бог (Аллах), а Мухаммад — Его пророк.",
+      az: "Vahid Allaha və Məhəmmədin (s.ə.s.) Onun elçisi olduğuna inama əsaslanan İbrahimi monoteist din.",
+    },
+    sources: [
+      wiki("Islam (Wikipedia)", "Ислам (Википедия)", "İslam (Vikipediya)", "https://en.wikipedia.org/wiki/Islam"),
+    ],
+  },
+  jewish: {
+    gloss: {
+      en: "An ancient Abrahamic monotheistic religion characterized by the Covenant between God and the Children of Israel.",
+      ru: "Древняя авраамическая монотеистическая религия, основанная на Завете между Богом и народом Израиля.",
+      az: "Allah ilə İsrail övladları arasındakı Əhdə və Tövrat təliminə əsaslanan qədim İbrahimi monoteist din.",
+    },
+    sources: [
+      wiki("Judaism (Wikipedia)", "Иудаизм (Википедия)", "Yəhudilik (Vikipediya)", "https://en.wikipedia.org/wiki/Judaism"),
+      wiki("Judaism (Stanford Encyclopedia of Philosophy)", "Иудаизм (Стэнфордская энциклопедия)", "Yəhudilik (Stanford ensiklopediyası)", "https://plato.stanford.edu/entries/judaism/"),
+    ],
+  },
+  sikh: {
+    gloss: {
+      en: "A monotheistic Indian religion founded in the 15th century by Guru Nanak, centered on devotion to the One Creator (Ik Onkar) and selfless service.",
+      ru: "Монотеистическая индийская религия, основанная в XV веке Гуру Нанаком, сосредоточенная на преданности Единому Творцу (Ик Онкар) и бескорыстном служении.",
+      az: "XV əsrdə Quru Nanak tərəfindən əsası qoyulan, Vahid Yaradana (İk Onkar) sədaqət və təmənnasız xidmətə əsaslanan monoteist din.",
+    },
+    sources: [
+      wiki("Sikhism (Wikipedia)", "Сикхизм (Википедия)", "Siqhizm (Vikipediya)", "https://en.wikipedia.org/wiki/Sikhism"),
+    ],
+  },
+  hindu: {
+    gloss: {
+      en: "A major world religion originating in the Indian subcontinent, encompassing diverse philosophical systems (Sanatana Dharma), rituals, and paths to liberation.",
+      ru: "Крупнейшая религия индийского субконтинента, охватывающая разнообразные философские системы (Санатана Дхарма), ритуалы и пути к освобождению.",
+      az: "Hindistan yarımadasında formalaşmış, çoxşaxəli fəlsəfi təlimləri (Sanatana Dxarma), ritualları və qurtuluş yollarını ehtiva edən qədim din.",
+    },
+    sources: [
+      wiki("Hinduism (Wikipedia)", "Индуизм (Википедия)", "Hinduizm (Vikipediya)", "https://en.wikipedia.org/wiki/Hinduism"),
+      wiki("Hindu Philosophy (Stanford Encyclopedia of Philosophy)", "Индуистская философия (Стэнфордская энциклопедия)", "Hindu fəlsəfəsi (Stanford ensiklopediyası)", "https://plato.stanford.edu/entries/hindu-philosophy/"),
+    ],
+  },
+  buddhist_sa: {
+    gloss: {
+      en: "An ancient Indian non-theistic spiritual path founded by Siddhartha Gautama (the Buddha), centered on the Four Noble Truths and liberation from suffering.",
+      ru: "Древнее индийское нетеистическое учение, основанное Сиддхартхой Гаутамой (Буддой), сосредоточенное на Четырёх благородных истинах и освобождении от страданий.",
+      az: "Siddhartha Qautama (Budda) tərəfindən əsası qoyulan, Dörd Ali Həqiqətə və əzablardan qurtuluşa yönəlmiş qədim fəlsəfi-mənəvi təlim.",
+    },
+    sources: [
+      wiki("Buddhism (Wikipedia)", "Буддизм (Википедия)", "Buddizm (Vikipediya)", "https://en.wikipedia.org/wiki/Buddhism"),
+      wiki("Buddhism (Stanford Encyclopedia of Philosophy)", "Буддизм (Стэнфордская энциклопедия)", "Buddizm (Stanford ensiklopediyası)", "https://plato.stanford.edu/entries/buddhism/"),
+    ],
+  },
+
 };
 
 /**
@@ -1321,7 +1387,6 @@ const TERM_ALIASES: Record<string, string> = {
   unclear_nonreligious: "naturalist",
   // secular profile
   agnostic_skeptical: "agnostic",
-  self_described_nonrel: "agnostic",
   // reality structure
   one: "monotheism",
   many: "polytheism",
@@ -1373,12 +1438,10 @@ const TERM_ALIASES: Record<string, string> = {
   classical_deism: "deism",
   pandeism: "pandeism",
   deistic_naturalism: "religious_naturalist",
-  deism_unsure: "deism",
   // pantheism detail
   pantheism: "pantheism",
   panentheism: "panentheism",
   process_theism: "process_theism",
-  immanence_unsure: "pantheism",
   // belonging
   southasian: "karmic",
   eastasian: "daoist",
@@ -1388,21 +1451,14 @@ const TERM_ALIASES: Record<string, string> = {
   unaffiliated: "secular_humanist",
   self_described_belonging: "agnostic",
   // abrahamic detail
-  jewish: "orthodox_jewish",
-  christian: "catholic",
-  muslim: "sunni",
   bahai: "bahai",
   samaritan: "samaritan",
   druze: "druze",
   mandaean: "mandaen",
   yazidi: "yazidi",
   rastafari: "rastafari",
-  other_abrahamic: "orthodox_jewish",
   // south asian detail
-  hindu: "vaishnava",
-  sikh: "khalsa",
   jain: "jain",
-  buddhist_sa: "theravada",
   other_southasian: "karmic",
   // east asian detail
   daoist: "daoist",
@@ -1429,49 +1485,41 @@ const TERM_ALIASES: Record<string, string> = {
   new_age: "new_age",
   other_esoteric: "new_age",
   // newreligion detail
-  nr_self: "new_age",
   // hindu detail
   vaishnava: "vaishnava",
   shaiva: "shaiva",
   shakta: "shakta",
   smarta: "smarta",
-  other_hindu: "vaishnava",
   // sikh detail
   sikh_khalsa: "khalsa",
   sikh_sehajdhari: "sehajdhari",
   sikh_cultural: "khalsa",
-  sikh_unsure: "khalsa",
   // islam detail
   sunni: "sunni",
   shia: "shia",
   ibadi: "ibadi",
   sufi: "sufi",
   quranist: "quranist",
-  muslim_unsure: "sunni",
   // christian detail
   catholic: "catholic",
   orthodox: "orthodox",
   oriental_orthodox: "oriental_orthodox",
   protestant: "protestant",
   restorationist: "restorationist",
-  christian_unsure: "catholic",
   // jewish detail
   orthodox_jewish: "orthodox_jewish",
   conservative_jewish: "conservative_jewish",
   reform_jewish: "reform_jewish",
   reconstructionist_jewish: "reconstructionist_jewish",
   secular_cultural_jewish: "secular_humanist",
-  jewish_unsure: "orthodox_jewish",
   // bahai detail
   bahai_unity: "bahai",
   bahai_manifestation: "bahai",
   bahai_community: "bahai",
-  bahai_unsure: "bahai",
   // buddhist detail
   theravada: "theravada",
   mahayana: "mahayana",
   vajrayana: "vajrayana",
-  buddhist_unsure: "theravada",
   // nontheistic
   buddhist_nontheist: "theravada",
   // universal escape hatches
@@ -1482,8 +1530,6 @@ const TERM_ALIASES: Record<string, string> = {
   suspended: "agnostic",
   varies_context: "contextual",
   self_described_agnostic: "agnostic",
-  self_described_nt: "agnostic",
-  self_described_rnatural: "religious_naturalist",
   self_described_practice: "practice-first",
   practice_first_nt: "practice-first",
   // practice-first
