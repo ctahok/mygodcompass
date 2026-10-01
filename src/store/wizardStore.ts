@@ -7,6 +7,7 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { NODES, type Choice, type Node, type Profile, type Lang, type LocalizedText } from "@/data/ontology";
+import { LOCALIZED_CANDIDATES, LOCALIZED_DESCRIPTOR_MAP } from "@/data/localizedProfileTerms";
 
 export interface PathStep {
   nodeId: string;
@@ -512,30 +513,29 @@ export function currentTerminal(state: { path: PathStep[]; profile: Profile | nu
   const profile = state.profile;
   if (!profile) return null;
 
-  const orientation = profile.orientation?.join(", ") || "exploring";
-  const ultimate = profile.ultimateReality?.join(", ") || "undetermined";
-  const agency = profile.agency?.join(", ") || "unspecified";
-  const relation = profile.worldRelation?.join(", ") || "unspecified";
-  const epistemic = profile.epistemicSources?.join(", ") || "unspecified";
-  const traditions = profile.traditions?.join(", ") || "none";
-  const confidence = profile.confidence || "tentative";
+  const loc = (token: string, l: Lang): string => {
+    return LOCALIZED_DESCRIPTOR_MAP[token]?.[l] || token;
+  };
+
+  const getTokens = (arr: string[] | undefined, l: Lang, sep = ", "): string => {
+    if (!arr || arr.length === 0) return l === "az" ? "müəyyən edilməyib" : l === "ru" ? "не определено" : "unspecified";
+    return arr.map(t => loc(t, l)).join(sep);
+  };
 
   // Candidate pathway presentation
   const scores = state.candidateScores || computeCandidateScores(state.path.flatMap(s => s.tags));
   const candidates = topCandidates(scores, 5);
-  const candidateNames: Record<string, string> = {
-    christianity: "Christianity", islam: "Islam", judaism: "Judaism", sikhism: "Sikhism",
-    bahai: "the Baháʼí Faith", hindu: "Hindu traditions", buddhism: "Buddhism",
-    deism: "Deism", pantheism: "Pantheism / Panentheism", polytheism: "Polytheist paths",
-    pagan: "Pagan paths", secular: "Secular / non-religious", atheism: "Atheism",
-    agnosticism: "Agnosticism", humanism: "Humanism", naturalism: "Religious naturalism",
-    daoism: "Daoism", shinto: "Shinto", jainism: "Jainism", indigenous: "Indigenous / ancestral paths",
-    classical_theism: "Classical theism", process_theism: "Process / relational theism", sufism: "Sufi-oriented Islam",
+  const getCandidateList = (l: Lang): string => {
+    return candidates.map(c => LOCALIZED_CANDIDATES[c.id]?.name[l] || c.id).join(", ");
   };
-  const candidateList = candidates.map(c => candidateNames[c.id] || c.id).join(", ");
 
   const isIncomplete = !state.finished && candidates.length === 0;
-  const statusLabel = isIncomplete ? "incomplete" : confidence;
+  const statusLabel = (l: Lang): string => {
+    const key = isIncomplete ? "incomplete" : (profile.confidence || "tentative");
+    return loc(key, l);
+  };
+
+  const confidence = profile.confidence || "tentative";
 
   const title = {
     en: state.finished ? "Provisional Profile (Incomplete)" : candidates.length > 0
@@ -552,15 +552,15 @@ export function currentTerminal(state: { path: PathStep[]; profile: Profile | nu
   let blueprint: LocalizedText;
   if (candidates.length > 0) {
     blueprint = {
-      en: `Most compatible pathways so far: ${candidateList}. Your answers currently suggest ${ultimate}, ${agency}, ${relation}, and ${epistemic}. These answers do not determine your religion; they identify paths you may wish to explore next.`,
-      ru: `Наиболее совместимые пути на данный момент: ${candidateList}. Ваши ответы указывают на ${ultimate}, ${agency}, ${relation} и ${epistemic}. Эти ответы не определяют вашу религию; они выявляют пути, которые вы можете исследовать дальше.`,
-      az: `Hazırda ən uyğun yollar: ${candidateList}. Cavablarınız ${ultimate}, ${agency}, ${relation} və ${epistemic} olduğunu göstərir. Bu cavablar dininizi müəyyən etmir; onlar araşdıra biləcəyiniz yolları göstərir.`,
+      en: `Most compatible pathways so far: ${getCandidateList("en")}. Your answers currently suggest: ${getTokens(profile.ultimateReality, "en")}; ${getTokens(profile.agency, "en")}; ${getTokens(profile.worldRelation, "en")}; ${getTokens(profile.epistemicSources, "en")}. These answers do not determine your religion; they identify paths you may wish to explore next.`,
+      ru: `Наиболее совместимые пути на данный момент: ${getCandidateList("ru")}. Ваши ответы отражают следующие аспекты: ${getTokens(profile.ultimateReality, "ru")}; ${getTokens(profile.agency, "ru")}; ${getTokens(profile.worldRelation, "ru")}; ${getTokens(profile.epistemicSources, "ru")}. Эти ответы не определяют вашу религию; они лишь указывают направления для дальнейшего исследования.`,
+      az: `Hazırda ən uyğun yollar: ${getCandidateList("az")}. Cavablarınız aşağıdakı xüsusiyyətləri əks etdirir: ${getTokens(profile.ultimateReality, "az")}; ${getTokens(profile.agency, "az")}; ${getTokens(profile.worldRelation, "az")}; ${getTokens(profile.epistemicSources, "az")}. Bu cavablar dininizi müəyyən etmir; sadəcə növbəti addımda araşdıra biləcəyiniz yolları göstərir.`,
     };
   } else {
     blueprint = {
-      en: `Your answers describe a ${statusLabel} ${orientation} orientation. You ${ultimate}, draw primarily on ${epistemic}, and identify connections with ${traditions}. This is a description, not an authoritative label.`,
-      ru: `Ваши ответы описывают ${statusLabel} ${orientation} ориентацию. Вы ${ultimate}, опираетесь на ${epistemic} и идентифицируете связи с ${traditions}. Это описание, а не авторитетный ярлык.`,
-      az: `Cavablarınız ${statusLabel} ${orientation} yanaşmasını təsvir edir. Siz ${ultimate}, əsasən ${epistemic} üzərinə dayanırsınız və ${traditions} ilə əlaqələri müəyyən edirsiniz. Bu təsvirdir, avtoritetli etiket deyil.`,
+      en: `Your answers describe a ${statusLabel("en")} ${getTokens(profile.orientation, "en")} orientation. You ${getTokens(profile.ultimateReality, "en")}, draw primarily on ${getTokens(profile.epistemicSources, "en")}, and identify connections with ${getTokens(profile.traditions, "en")}. This is a description, not an authoritative label.`,
+      ru: `Ваши ответы описывают ${statusLabel("ru")} ${getTokens(profile.orientation, "ru")} ориентацию. Ваши взгляды включают: ${getTokens(profile.ultimateReality, "ru")}, опираются на ${getTokens(profile.epistemicSources, "ru")} и обнаруживают связи с: ${getTokens(profile.traditions, "ru")}. Это описание, а не авторитетный ярлык.`,
+      az: `Cavablarınız ${statusLabel("az")} ${getTokens(profile.orientation, "az")} yanaşmasını təsvir edir. Baxışlarınız: ${getTokens(profile.ultimateReality, "az")}, əsasən ${getTokens(profile.epistemicSources, "az")} mənbələrinə dayanır və ${getTokens(profile.traditions, "az")} ilə əlaqələri əks etdirir. Bu təsvirdir, rəsmi bir etiket deyil.`,
     };
   }
 

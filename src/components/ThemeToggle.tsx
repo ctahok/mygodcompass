@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function ThemeToggle() {
+  const { t } = useTranslation();
   const [isDark, setIsDark] = useState(true);
   const [mounted, setMounted] = useState(false);
 
@@ -53,10 +55,10 @@ export default function ThemeToggle() {
           ? "bg-slate-900/90 text-amber-300 border-slate-700/80 hover:border-amber-400/70 hover:bg-slate-800"
           : "bg-white/95 text-slate-800 border-slate-300 hover:border-amber-500 hover:bg-slate-100 shadow-md"
       }`}
-      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      aria-label={isDark ? (t("app.themeLight") || "Light") : (t("app.themeDark") || "Dark")}
     >
       <span className="text-sm">{isDark ? "☀" : "🌙"}</span>
-      <span>{isDark ? "Light" : "Dark"}</span>
+      <span>{isDark ? (t("app.themeLight") || "Light") : (t("app.themeDark") || "Dark")}</span>
     </button>
   );
 }

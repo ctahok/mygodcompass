@@ -40,11 +40,11 @@ const translations = {
   az: {
     whatAppDoes: {
       title: "Tətbiq nə edir",
-      content: "Ontoloji Kompas — bir şəxsin Tanrı, tanrılar, yekun reallıq, mənəviyyət və dini həyata əlaqəsini təsvir etməyə kömək edən sualların rehber xəritəsidir. Yeganə müayyən etiket qoymaq yerine, bu tətbiq mövcudluq, vahidlik və ya çoxluqluq, şəxsiyyət, dünya ilə əlaqə, vahiy, bilik və aidiyyət sualları boylama inci bir orientasiya qurur. Bu vacibdir: o, dini, təcrübəni, inanı, etniya/mədaniyyəti və əsili bir-birinə bərabər görmür: kimsə inanışların метафизикаschen inanışlarını paylaşmadan bir ənənədə iştirak edə bilər, dini praktika olmadan mədəni və ya əsilli identiteti miras olaraq götürə bilər, institut-a aidiyyət olmadan mənəvi inanışları ola bilər və ya bir neçə ənənəyə eyni vaxtda mənalı aidiyyəti ola bilər."
+      content: "Ontoloji Kompas — bir şəxsin Tanrı, tanrılar, ali reallıq, mənəviyyat və dini həyata münasibətini ifadə etməyə kömək edən suallar naviqatorudur. Yalnız tək bir etiket yapışdırmaq əvəzinə, bu tətbiq varlıq, təklik və ya çoxluq, şəxsiyyət, dünya ilə münasibət, vəhy, bilik və aidiyyət sualları əsasında dərin və çoxşaxəli bir baxış formalaşdırır. Bu olduqca vacibdir: o dini, dini təcrübəni, inamı, etnik/mədəni kimliyi və mənşəyi bir-biri ilə qarışdırmır: insan metafizik inancları bölüşmədən də bir ənənədə iştirak edə bilər, dini etiqadı olmadan mədəni kimliyi daşıya bilər, hər hansı təşkilata/instituta bağlı olmadan mənəvi baxışlara sahib ola bilər və ya eyni zamanda bir neçə ənənəyə dərindən bağlılıq hiss edə bilər."
     },
     whatPersonGains: {
-          title: "Tətbiq nə qazandırır?",
-          content: 'Sualara cavab verərək, insan öz dünyagörüşünün daha aydın və daha dəqiq mənzərəsinə nail ola bilər: nəyin mövcud olduğuna inandığını, həqiqətin necə dərk edildiyini düşündüyünü, ənənəni necə təcrübədən keçirdiyini və ya onunla necə əlaqə qurduğunu, eləcə də hansı icmaların və ya mədəni irsin onun üçün önəmli olduğunu fərqləndirən bir baxış əldə edir. Nəticə onların "əslində nə olduqlarına" dair bir hökm deyil, mövqelərini anlamağı, ifadə etməyi, müqayisə etməyi və başqaları ilə müzakirə etməyi asanlaşdıran, dəyişikliklərə açıq bir bələdçi xəritədir.'
+      title: "Tətbiq nə qazandırır?",
+      content: 'Suallara cavab verərək, insan öz dünyagörüşünün daha aydın və daha dəqiq mənzərəsinə nail ola bilər: nəyin mövcud olduğuna inandığını, həqiqətin necə dərk edildiyini düşündüyünü, ənənəni necə təcrübədən keçirdiyini və ya onunla necə əlaqə qurduğunu, eləcə də hansı icmaların və ya mədəni irsin onun üçün önəmli olduğunu fərqləndirən bir baxış əldə edir. Nəticə onların "əslində nə olduqlarına" dair bir hökm deyil, mövqelərini anlamağı, ifadə etməyi, müqayisə etməyi və başqaları ilə müzakirə etməyi asanlaşdıran, dəyişikliklərə açıq bir bələdçi xəritədir.'
     }
   }
 };

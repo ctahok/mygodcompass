@@ -3,6 +3,7 @@
     "id": "q1",
     "question_ru": "Что сказал Абу Бакр, когда аль Мухаджир отрубил руку и выбил передний зуб певицы, оскорблявшей посланника Аллаха?",
     "question_en": "What did Abu Bakr say when al-Muhajir cut off the hand and knocked out the front tooth of a female singer who had insulted the Messenger of Allah?",
+    "question_az": "Əl-Mühacir Allahın elçisini təhqir edən müğənni qadının əlini kəsib ön dişini sındıranda Əbu Bəkr nə dedi?",
     "options_ru": {
       "А": "Ты поступил слишком жёстко. Женщин следует прощать.",
       "Б": "Отдай её под суд, чтобы её судили по справедливости.",
@@ -15,15 +16,24 @@
       "C": "Such matters should be investigated only in the presence of witnesses.",
       "D": "If you had not beaten me to it, I would have ordered her killed myself."
     },
+    "options_az": {
+      "A": "Çox sərt davrandın. Qadınları bağışlamaq lazımdır.",
+      "B": "Onu məhkəməyə ver ki, ədalətlə mühakimə olunsun.",
+      "C": "Bu cür işlər yalnız şahidlərin iştirakı ilə araşdırılmalıdır.",
+      "D": "Əgər məni qabaqlamasaydın, onun öldürülməsini şəxsən özüm əmr edərdim."
+    },
     "correct": "Г",
     "correct_en": "D",
+    "correct_az": "D",
     "source": "Ибн Джарира Табари, Тарих, том 3, стр. 341",
-    "source_en": "Ibn Jarir al-Tabari, Tarikh, Vol. 3, p. 341"
+    "source_en": "Ibn Jarir al-Tabari, Tarikh, Vol. 3, p. 341",
+    "source_az": "İbn Cərir ət-Təbəri, Tarix, 3-cü cild, səh. 341"
   },
   {
     "id": "q2",
     "question_ru": "Как называют тех, кто не признаёт возвышенность арабов?",
     "question_en": "What are those called who do not recognise the superiority of Arabs?",
+    "question_az": "Ərəblərin üstünlüyünü qəbul etməyənləri necə adlandırırlar?",
     "options_ru": {
       "А": "Шуубия",
       "Б": "Наджасы",
@@ -36,15 +46,24 @@
       "C": "Papuans",
       "D": "Fufaysiks"
     },
+    "options_az": {
+      "A": "Şuubiyyə",
+      "B": "Nəcəslər",
+      "C": "Papuaslar",
+      "D": "Fufaysiklər"
+    },
     "correct": "А",
     "correct_en": "A",
+    "correct_az": "A",
     "source": "Сахих Бухари 6829",
-    "source_en": "Sahih al-Bukhari 6829"
+    "source_en": "Sahih al-Bukhari 6829",
+    "source_az": "Səhih əl-Buxari 6829"
   },
   {
     "id": "q3",
     "question_ru": "Куда делись аяты о раджме (побивании камнями за прелюбодеяние), относительно которых Умар ибн аль-Хаттаб переживал, что люди их не найдут в Коране?",
     "question_en": "What happened to the verses about rajstoning (stoning for adultery), concerning which Umar ibn al-Khattab worried that people would not find them in the Quran?",
+    "question_az": "Ömər ibn əl-Xəttabın insanların Quranda tapa bilməyəcəyindən narahat olduğu rəcm (zina edənin daşqalaq edilməsi) ayələrinə nə oldu?",
     "options_ru": {
       "А": "Аят и сегодня находится в Коране",
       "Б": "Потерян",
@@ -57,15 +76,24 @@
       "C": "There was no verse; a jinn possessed Umar",
       "D": "Allah took it away"
     },
+    "options_az": {
+      "A": "Ayə bu gün də Qurandadır",
+      "B": "İtib",
+      "C": "Belə bir ayə olmayıb; Ömərə cin toxunmuşdu",
+      "D": "Allah geri götürüb"
+    },
     "correct": "Б",
     "correct_en": "B",
+    "correct_az": "B",
     "source": "Сахих Бухари 6829, со слов Ибн Аббаса",
-    "source_en": "Sahih al-Bukhari 6829, on the authority of Ibn Abbas"
+    "source_en": "Sahih al-Bukhari 6829, on the authority of Ibn Abbas",
+    "source_az": "Səhih əl-Buxari 6829, İbn Abbasın rəvayəti"
   },
   {
     "id": "q4",
     "question_ru": "Как Умар и Али оценили поступок женщины, которая хотела пить воды, а мужчина у колодца давал воду только если она отдастся ему?",
     "question_en": "How did Umar and Ali judge the case of a woman who wanted water, and a man at a well gave her water only if she submitted to him?",
+    "question_az": "Ömər və Əli su içmək istəyən və quyu başındakı kişinin yalnız onunla yaxınlıq müqabilində su verdiyi qadının hərəkətini necə qiymətləndirdilər?",
     "options_ru": {
       "А": "Побили камнями",
       "Б": "100 ударов плетью дали ей",
@@ -78,15 +106,24 @@
       "C": "Married her off to him",
       "D": "Released her, saying: 'This was a compelled measure'"
     },
+    "options_az": {
+      "A": "Daşqalaq etdilər",
+      "B": "Ona 100 şallaq vurdular",
+      "C": "Onu həmin kişiyə ərə verdilər",
+      "D": "\"Bu məcburiyyətdən irəli gələn tədbir idi\" deyərək onu sərbəst buraxdılar"
+    },
     "correct": "Г",
     "correct_en": "D",
+    "correct_az": "D",
     "source": "Аль-Мугни Ибн Кудама, том 10, стр. 9; Ахмад",
-    "source_en": "Al-Mughni by Ibn Qudamah, Vol. 10, p. 9; Ahmad"
+    "source_en": "Al-Mughni by Ibn Qudamah, Vol. 10, p. 9; Ahmad",
+    "source_az": "Əl-Muğni, İbn Qüdamə, 10-cu cild, səh. 9; Əhməd"
   },
   {
     "id": "q5",
     "question_ru": "Что сказал пророк о награде за убийство ящерицы?",
     "question_en": "What did the Prophet say about the reward for killing a lizard?",
+    "question_az": "Peyğəmbər kərtənkələni öldürməyin savabı haqqında nə demişdir?",
     "options_ru": {
       "А": "Кто убьёт ящерицу с первого удара, получит 100 добрых дел",
       "Б": "Убить ящерицу — нейтральное действие, не приносящее награды",
@@ -99,15 +136,24 @@
       "C": "Kill lizards to protect property and food",
       "D": "Lizards are harmless. They should not be touched without need"
     },
+    "options_az": {
+      "A": "Kərtənkələni ilk zərbədə öldürən şəxs 100 savab qazanar",
+      "B": "Kərtənkələni öldürmək heç bir savab gətirməyən neytral əməldir",
+      "C": "Mülkünüzü və yeməyinizi qorumaq üçün kərtənkələləri öldürün",
+      "D": "Kərtənkələlər zərərsizdir, ehtiyac olmadan onlara toxunulmamalıdır"
+    },
     "correct": "А",
     "correct_en": "A",
+    "correct_az": "A",
     "source": "Хадис (не указан конкретный сборник в записи)",
-    "source_en": "Hadith (specific collection not cited in transcript)"
+    "source_en": "Hadith (specific collection not cited in transcript)",
+    "source_az": "Hədis (qeyddə konkret məcmuə göstərilməyib)"
   },
   {
     "id": "q6",
     "question_ru": "Откуда согласно исламу появляется ветер на земле?",
     "question_en": "According to Islam, where does wind on earth come from?",
+    "question_az": "İslama görə yerdə külək haradan yaranır?",
     "options_ru": {
       "А": "Из-за вращения земли",
       "Б": "Из ада",
@@ -120,15 +166,24 @@
       "C": "From Paradise",
       "D": "An angel works (it)"
     },
+    "options_az": {
+      "A": "Yerin fırlanması nəticəsində",
+      "B": "Cəhənnəmdən",
+      "C": "Cənnətdən",
+      "D": "Mələk işləyir"
+    },
     "correct": "В",
     "correct_en": "C",
+    "correct_az": "C",
     "source": "Хадис, переданный от Абу Зара",
-    "source_en": "Hadith narrated from Abu Dharr"
+    "source_en": "Hadith narrated from Abu Dharr",
+    "source_az": "Əbu Zərdən rəvayət olunan hədis"
   },
   {
     "id": "q7",
     "question_ru": "Что сказал Мухаммад, когда ему сказали, что ему принесли воду из колодца Будаа, в который бросают мёртвых собак, тряпки, запачканные менструальной кровью и человеческие экскременты?",
     "question_en": "What did Muhammad say when he was told that water was brought to him from the well of Buda'ah, into which dead dogs, rags stained with menstrual blood, and human excrement were thrown?",
+    "question_az": "Məhəmmədə içinə ölü itlərin, heyz qanı bulaşmış bezlərin və insan nəcisinin atıldığı Budaə quyusundan su gətirildiyi deyiləndə o nə cavab verdi?",
     "options_ru": {
       "А": "Вы туда ещё не пишите случайно",
       "Б": "Установил наказание тем, кто оскверняет колодцы",
@@ -141,15 +196,24 @@
       "C": "Why do you defile the well?",
       "D": "This water is pure. Nothing defiles water."
     },
+    "options_az": {
+      "A": "Təsadüfən ora da sidik ifraz etməmisiniz ki?",
+      "B": "Quyuları murdarlayanlar üçün cəza təyin etdi",
+      "C": "Niyə quyunu murdarlayırsınız?",
+      "D": "Bu su təmizdir. Heç bir şey suyu murdarlaya bilməz."
+    },
     "correct": "Г",
     "correct_en": "D",
+    "correct_az": "D",
     "source": "Не указан явно в записи",
-    "source_en": "Not explicitly cited in transcript"
+    "source_en": "Not explicitly cited in transcript",
+    "source_az": "Qeyddə açıq şəkildə göstərilməyib"
   },
   {
     "id": "q8",
     "question_ru": "Почему пророк Мухаммад ходил в гости к Ум Харан бинт Мильхан, жене сподвижника Убады ибн ас-Самита, которая не была его родственницей?",
     "question_en": "Why did the Prophet Muhammad visit Umm Haram bint Milhan, wife of the Companion Ubada ibn al-Samit, who was not his relative?",
+    "question_az": "Peyğəmbər Məhəmməd nə üçün qohumu olmayan səhabə Übadə ibn əs-Samitin zövcəsi Ümmü Haram bint Milhanın evinə gedirdi?",
     "options_ru": {
       "А": "Чтобы научить её чтению Корана",
       "Б": "Чтобы помолиться вместе с ней",
@@ -162,15 +226,24 @@
       "C": "To discuss jihad and a campaign",
       "D": "So she could remove lice from his head"
     },
+    "options_az": {
+      "A": "Ona Quran oxumağı öyrətmək üçün",
+      "B": "Onunla birlikdə namaz qılmaq üçün",
+      "C": "Cihad və döyüş yürüşünü müzakirə etmək üçün",
+      "D": "Başındakı bitləri təmizləməsi üçün"
+    },
     "correct": "Г",
     "correct_en": "D",
+    "correct_az": "D",
     "source": "Сунан Абу Дауд 2491",
-    "source_en": "Sunan Abu Dawud 2491"
+    "source_en": "Sunan Abu Dawud 2491",
+    "source_az": "Sünən Əbu Davud 2491"
   },
   {
     "id": "q9",
     "question_ru": "Когда Умар ибн аль-Хаттаб увидел, как Сауда, жена пророка, ночью вышла справить большую нужду и крикнул ей: \"О Сауда, мы узнали тебя\", что произошло после этого?",
     "question_en": "When Umar ibn al-Khattab saw Sawda, the Prophet's wife, go out at night to relieve herself and called out 'O Sawda, we recognised you', what happened next?",
+    "question_az": "Ömər ibn əl-Xəttab peyğəmbərin zövcəsi Sövdənin gecə təbii ehtiyacını ödəmək üçün çıxdığını görüb \"Ey Sövdə, biz səni tanıdıq!\" deyə qışqıranda bundan sonra nə baş verdi?",
     "options_ru": {
       "А": "Сауда послала его на три буквы",
       "Б": "Сауда кинула в него три камня",
@@ -183,15 +256,24 @@
       "C": "A verse was revealed on this occasion",
       "D": "Sawda ordered to bury what she had done"
     },
+    "options_az": {
+      "A": "Sövdə onu kobud şəkildə qovdu",
+      "B": "Sövdə ona üç daş atdı",
+      "C": "Bu hadisə ilə əlaqədar ayə nazil oldu",
+      "D": "Sövdə etdiyi şeyi basdırmağı əmr etdi"
+    },
     "correct": "В",
     "correct_en": "C",
+    "correct_az": "C",
     "source": "Сахих Аль-Бухари / Тфсиры",
-    "source_en": "Sahih al-Bukhari / Tafsirs"
+    "source_en": "Sahih al-Bukhari / Tafsirs",
+    "source_az": "Səhih əl-Buxari / Təfsirlər"
   },
   {
     "id": "q10",
     "question_ru": "Что лучше всего сделать с рабом?",
     "question_en": "What is the best thing to do with a slave?",
+    "question_az": "Qulla bağlı ən yaxşı əməl nə hesab olunur?",
     "options_ru": {
       "А": "Освободить",
       "Б": "Убить",
@@ -204,15 +286,24 @@
       "C": "Pat him on the head",
       "D": "Give him as a gift to a relative"
     },
+    "options_az": {
+      "A": "Azad etmək",
+      "B": "Öldürmək",
+      "C": "Başını sığallamaq",
+      "D": "Qohuma hədiyyə etmək"
+    },
     "correct": "Г",
     "correct_en": "D",
+    "correct_az": "D",
     "source": "Сахих Аль-Бухари 2592",
-    "source_en": "Sahih al-Bukhari 2592"
+    "source_en": "Sahih al-Bukhari 2592",
+    "source_az": "Səhih əl-Buxari 2592"
   },
   {
     "id": "q11",
     "question_ru": "Когда Заид ибн Сабит собирал аяты для составления мусхафа, он не мог найти один аят из суры Аль-Ахзаб. У скольких людей он в итоге нашёл этот аят?",
     "question_en": "When Zayd ibn Thabit collected verses for the mushaf, he could not find one verse from Surah Al-Ahzab. From how many people did he ultimately find this verse?",
+    "question_az": "Zeyd ibn Sabit Quran nüsxəsini (müshəfi) toplayarkən Əl-Əhzab surəsindən bir ayəni tapa bilmirdi. O, bu ayəni sonda neçə nəfərdə tapdı?",
     "options_ru": {
       "А": "У троих сподвижников",
       "Б": "Только у одного сподвижника",
@@ -225,15 +316,24 @@
       "C": "From ten Companions",
       "D": "This verse was with most Companions but Zayd didn't record it immediately"
     },
+    "options_az": {
+      "A": "Üç səhabədə",
+      "B": "Yalnız bir səhabədə",
+      "C": "On səhabədə",
+      "D": "Bu ayə səhabələrin əksəriyyətində var idi, lakin Zeyd onu dərhal qeyd etməmişdi"
+    },
     "correct": "Б",
     "correct_en": "B",
+    "correct_az": "B",
     "source": "Сахих Аль-Бухари 2824",
-    "source_en": "Sahih al-Bukhari 2824"
+    "source_en": "Sahih al-Bukhari 2824",
+    "source_az": "Səhih əl-Buxari 2824"
   },
   {
     "id": "q12",
     "question_ru": "Какой из основателей мазхабов разрешал жениться на собственной родной дочери, если она родилась в результате прелюбодеяния?",
     "question_en": "Which founder of a madhhab permitted marrying one's own biological daughter if she was born as a result of adultery?",
+    "question_az": "Məzhəb banilərindən hansı zina nəticəsində doğulmuş doğma qızı ilə evlənməyə icazə verirdi?",
     "options_ru": {
       "А": "Абу Ханифа",
       "Б": "Шафии и Малик",
@@ -246,15 +346,24 @@
       "C": "Malik",
       "D": "Ahmad ibn Hanbal"
     },
+    "options_az": {
+      "A": "Əbu Hənifə",
+      "B": "Şafii və Malik",
+      "C": "Malik",
+      "D": "Əhməd ibn Hənbəl"
+    },
     "correct": "Б",
     "correct_en": "B",
+    "correct_az": "B",
     "source": "Аль-Мугни Ибн Кудама; Шарх Ан-Навави на Сахих Муслим; Ихтиляф аль-Мазахиб",
-    "source_en": "Al-Mughni by Ibn Qudamah; Al-Nawawi's Sharh on Sahih Muslim; Ikhtilaf al-Madhahib"
+    "source_en": "Al-Mughni by Ibn Qudamah; Al-Nawawi's Sharh on Sahih Muslim; Ikhtilaf al-Madhahib",
+    "source_az": "Əl-Muğni, İbn Qüdamə; Ən-Nəvəvinin Səhih Müslimə şərhi; İxtilaf əl-Məzahib"
   },
   {
     "id": "q13",
     "question_ru": "Что сказал пророк Мухаммад о молитве раба, который сбежал от своего хозяина?",
     "question_en": "What did the Prophet Muhammad say about the prayer of a slave who fled from his master?",
+    "question_az": "Peyğəmbər Məhəmməd sahibindən qaçan qulun namazı haqqında nə demişdir?",
     "options_ru": {
       "А": "Она не принимается",
       "Б": "Она принимается, но с грехом",
@@ -267,15 +376,24 @@
       "C": "It becomes obligatory and more frequent than usual",
       "D": "His prayer is accepted if he repents"
     },
+    "options_az": {
+      "A": "Qəbul olunmur",
+      "B": "Qəbul olunur, lakin günahla",
+      "C": "Daha vacib və həmişəkindən daha tez-tez olur",
+      "D": "Tövbə edərsə, namazı qəbul olunur"
+    },
     "correct": "А",
     "correct_en": "A",
+    "correct_az": "A",
     "source": "Сунан Абу Дауд 5170 / Ибн Аббас",
-    "source_en": "Sunan Abu Dawud 5170 / Ibn Abbas"
+    "source_en": "Sunan Abu Dawud 5170 / Ibn Abbas",
+    "source_az": "Sünən Əbu Davud 5170 / İbn Abbas"
   },
   {
     "id": "q14",
     "question_ru": "Сколько сур было в Коране величайшего знатока Корана Абдуллаха ибн Масуда?",
     "question_en": "How many surahs were in the Quran of the greatest Quranic expert Abdullah ibn Mas'ud?",
+    "question_az": "Ən böyük Quran bilicisi Abdullah ibn Məsudun Quran nüsxəsində neçə surə var idi?",
     "options_ru": {
       "А": "114 сур, полный современный Коран",
       "Б": "112 сур. Он исключил две последние суры Аль-Муавизатayn",
@@ -288,15 +406,24 @@
       "C": "113 surahs",
       "D": "116 surahs, he added extra surahs"
     },
+    "options_az": {
+      "A": "114 surə, tam müasir Quran",
+      "B": "112 surə. O, son iki Muəvvizətəyn surəsini xaric etmişdi",
+      "C": "113 surə",
+      "D": "116 surə, o, əlavə surələr qatmışdı"
+    },
     "correct": "Б",
     "correct_en": "B",
+    "correct_az": "B",
     "source": "Ибн Масуд стирал эти суры и говорил, что они не из Корана",
-    "source_en": "Ibn Mas'ud erased these surahs and said they were not from the Quran"
+    "source_en": "Ibn Mas'ud erased these surahs and said they were not from the Quran",
+    "source_az": "İbn Məsud bu surələri silir və onların Qurandan olmadığını deyirdi"
   },
   {
     "id": "q15",
     "question_ru": "Сколько аятов изначально было в суре Аль-Ахзаб?",
     "question_en": "How many verses were originally in Surah Al-Ahzab?",
+    "question_az": "Əl-Əhzab surəsində əvvəlcə neçə ayə var idi?",
     "options_ru": {
       "А": "73 аята (как сейчас)",
       "Б": "99 аятов",
@@ -309,15 +436,24 @@
       "C": "286 verses were originally in Surah Al-Ahzab",
       "D": "120 verses"
     },
+    "options_az": {
+      "A": "73 ayə (indiki kimi)",
+      "B": "99 ayə",
+      "C": "Əvvəlcə Əl-Əhzab surəsində 286 ayə var idi",
+      "D": "120 ayə"
+    },
     "correct": "В",
     "correct_en": "C",
+    "correct_az": "C",
     "source": "Аль-Мугни Ибн Кудама / Тфсиры",
-    "source_en": "Al-Mughni by Ibn Qudamah / Tafsirs"
+    "source_en": "Al-Mughni by Ibn Qudamah / Tafsirs",
+    "source_az": "Əl-Muğni, İbn Qüdamə / Təfsirlər"
   },
   {
     "id": "q16",
     "question_ru": "Рабов какой национальности приказал освобождать Мухаммад?",
     "question_en": "Slaves of which nationality did Muhammad order to be freed?",
+    "question_az": "Məhəmməd hansı millətdən olan qulların azad edilməsini əmr etmişdi?",
     "options_ru": {
       "А": "Арабов",
       "Б": "Персов",
@@ -330,15 +466,24 @@
       "C": "Ethiopians",
       "D": "Romans/Byzantines"
     },
+    "options_az": {
+      "A": "Ərəbləri",
+      "B": "Farsları",
+      "C": "Həbəşiləri (efiyopiyalıları)",
+      "D": "Rumluları (bizanslıları)"
+    },
     "correct": "В",
     "correct_en": "C",
+    "correct_az": "C",
     "source": "Хадис (не указан конкретный сборник в записи)",
-    "source_en": "Hadith (specific collection not cited in transcript)"
+    "source_en": "Hadith (specific collection not cited in transcript)",
+    "source_az": "Hədis (qeyddə konkret məcmuə göstərilməyib)"
   },
   {
     "id": "q17",
     "question_ru": "Как была убита Ум Кирфа по приказу Зайда ибн Хариса, направленного пророком?",
     "question_en": "How was Umm Qirfa killed by order of Zayd ibn Harithah, sent by the Prophet?",
+    "question_az": "Peyğəmbər tərəfindən göndərilən Zeyd ibn Harisənin əmri ilə Ümmü Qirfə necə qətlə yetirildi?",
     "options_ru": {
       "А": "Её сослали в Тайф и лишили имущества",
       "Б": "Её убили жесточайшим образом (разорвали на части)",
@@ -351,15 +496,24 @@
       "C": "Lightning struck her as she tried to flee",
       "D": "She was simply put in chains"
     },
+    "options_az": {
+      "A": "Taifə sürgün edildi və mülkiyyətindən məhrum olundu",
+      "B": "Ən qəddar şəkildə öldürüldü (bədəni hissələrə parçalandı)",
+      "C": "Qaçmağa çalışarkən onu ildırım vurdu",
+      "D": "Sadəcə zəncirlərə vuruldu"
+    },
     "correct": "Б",
     "correct_en": "B",
+    "correct_az": "B",
     "source": "Табари, Тарих, том 2, стр. 642",
-    "source_en": "Al-Tabari, Tarikh, Vol. 2, p. 642"
+    "source_en": "Al-Tabari, Tarikh, Vol. 2, p. 642",
+    "source_az": "Təbəri, Tarix, 2-ci cild, səh. 642"
   },
   {
     "id": "q18",
     "question_ru": "Что сделал Умар с рабыней, которая надела хиджаб?",
     "question_en": "What did Umar do with a slave woman who put on a hijab?",
+    "question_az": "Ömər hicab bağlayan kənizə (qadın qula) nə etdi?",
     "options_ru": {
       "А": "Удалил палкой по голове и велел снять",
       "Б": "Похвалил её",
@@ -372,15 +526,24 @@
       "C": "Freed her",
       "D": "Did nothing"
     },
+    "options_az": {
+      "A": "Başına çubuqla vurdu və çıxarmağı əmr etdi",
+      "B": "Onu təriflədi",
+      "C": "Onu azad etdi",
+      "D": "Heç bir şey etmədi"
+    },
     "correct": "А",
     "correct_en": "A",
+    "correct_az": "A",
     "source": "Аль-Мусаннаф Абдурраззак / Сахих Бухари",
-    "source_en": "Al-Musannaf of Abd al-Razzaq / Sahih al-Bukhari"
+    "source_en": "Al-Musannaf of Abd al-Razzaq / Sahih al-Bukhari",
+    "source_az": "Əl-Müsənnəf, Əbdürrəzzaq / Səhih əl-Buxari"
   },
   {
     "id": "q19",
     "question_ru": "Что сказал Мухаммад о мусульманах, которые живут среди немусульман?",
     "question_en": "What did Muhammad say about Muslims living among non-Muslims?",
+    "question_az": "Məhəmməd qeyri-müsəlmanların arasında yaşayan müsəlmanlar haqqında nə demişdir?",
     "options_ru": {
       "А": "Обнимать и дружить",
       "Б": "Игнорировать их полностью",
@@ -393,15 +556,24 @@
       "C": "Behave with dignity. I disown you",
       "D": "They must migrate to Dar al-Islam"
     },
+    "options_az": {
+      "A": "Qucaqlaşıb dostluq edin",
+      "B": "Onlara tamamilə məhəl qoymayın",
+      "C": "Ləyaqətlə davranın. Mən sizdən uzağam (məsuliyyət daşımıram)",
+      "D": "Onlar Darül-İslama köçməlidirlər"
+    },
     "correct": "В",
     "correct_en": "C",
+    "correct_az": "C",
     "source": "Хадис (не указан конкретный сборник в записи)",
-    "source_en": "Hadith (specific collection not cited in transcript)"
+    "source_en": "Hadith (specific collection not cited in transcript)",
+    "source_az": "Hədis (qeyddə konkret məcmuə göstərilməyib)"
   },
   {
     "id": "q20",
     "question_ru": "Какое максимальное время беременности по исламу?",
     "question_en": "What is the maximum duration of pregnancy according to Islam?",
+    "question_az": "İslama görə hamiləliyin maksimal müddəti nə qədərdir?",
     "options_ru": {
       "А": "4-7 лет",
       "Б": "9 месяцев",
@@ -414,9 +586,17 @@
       "C": "2 years",
       "D": "5 years"
     },
+    "options_az": {
+      "A": "4-7 il",
+      "B": "9 ay",
+      "C": "2 il",
+      "D": "5 il"
+    },
     "correct": "А",
     "correct_en": "A",
+    "correct_az": "A",
     "source": "Фикх / Мазхабы (Малики, Шафииты: до 4-5 лет; Ханафиты: до 2 лет; некоторые ученые: до 7 лет)",
-    "source_en": "Fiqh / Madhhabs (Malikis, Shafi'is: up to 4-5 years; Hanafis: up to 2 years; some scholars: up to 7 years)"
+    "source_en": "Fiqh / Madhhabs (Malikis, Shafi'is: up to 4-5 years; Hanafis: up to 2 years; some scholars: up to 7 years)",
+    "source_az": "Fiqh / Məzhəblər (Malikilər, Şafiilər: 4-5 ilə qədər; Hənəfilər: 2 ilə qədər; bəzi alimlər: 7 ilə qədər)"
   }
 ]

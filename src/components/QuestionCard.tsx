@@ -377,7 +377,7 @@ export default function QuestionCard() {
               {getTermDefinition(opt.id) && <TermInfo def={getTermDefinition(opt.id)!} />}
               {opt.allowsMultiple && (
                 <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-700 text-slate-400">
-                  +more
+                  {t("app.allowMore") || "+more"}
                 </span>
               )}
             </motion.button>

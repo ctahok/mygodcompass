@@ -7,12 +7,16 @@ interface QuizQuestion {
   id: string;
   question_ru: string;
   question_en: string;
+  question_az?: string;
   options_ru: Record<string, string>;
   options_en: Record<string, string>;
+  options_az?: Record<string, string>;
   correct: string;
   correct_en: string;
+  correct_az?: string;
   source: string;
   source_en: string;
+  source_az?: string;
 }
 
 interface QuizState {
@@ -59,7 +63,11 @@ export default function IslamQuiz() {
   const handleAnswer = (answerKey: string) => {
     if (quizState.showResult) return;
     
-    const correct = lang === 'ru' ? currentQuestion.correct : currentQuestion.correct_en;
+    const correct = lang === 'ru'
+      ? currentQuestion.correct
+      : lang === 'az'
+      ? (currentQuestion.correct_az || currentQuestion.correct_en)
+      : currentQuestion.correct_en;
     const isCorrect = answerKey === correct;
     
     setQuizState(prev => ({
@@ -116,12 +124,31 @@ export default function IslamQuiz() {
     return null;
   }
 
-  const questionText = lang === 'ru' ? currentQuestion.question_ru : currentQuestion.question_en;
-  const options = lang === 'ru' ? currentQuestion.options_ru : currentQuestion.options_en;
+  const questionText = lang === 'ru'
+    ? currentQuestion.question_ru
+    : lang === 'az'
+    ? (currentQuestion.question_az || currentQuestion.question_en)
+    : currentQuestion.question_en;
+
+  const options = lang === 'ru'
+    ? currentQuestion.options_ru
+    : lang === 'az'
+    ? (currentQuestion.options_az || currentQuestion.options_en)
+    : currentQuestion.options_en;
+
   const optionKeys = Object.keys(options).sort();
   
-  const correctKey = lang === 'ru' ? currentQuestion.correct : currentQuestion.correct_en;
-  const sourceText = lang === 'ru' ? currentQuestion.source : currentQuestion.source_en;
+  const correctKey = lang === 'ru'
+    ? currentQuestion.correct
+    : lang === 'az'
+    ? (currentQuestion.correct_az || currentQuestion.correct_en)
+    : currentQuestion.correct_en;
+
+  const sourceText = lang === 'ru'
+    ? currentQuestion.source
+    : lang === 'az'
+    ? (currentQuestion.source_az || currentQuestion.source_en)
+    : currentQuestion.source_en;
 
   const progress = ((quizState.currentIndex + 1) / questions.length) * 100;
 
@@ -168,7 +195,7 @@ export default function IslamQuiz() {
           
           <div className="flex-1 text-center">
             <h1 className="text-2xl md:text-3xl font-black tracking-tight bg-gradient-to-r from-amber-200 via-amber-400 to-orange-500 bg-clip-text text-transparent">
-              {lang === 'ru' ? 'Кто хочет стать мусульманином?' : 'Who Wants to Become a Muslim?'}
+              {lang === 'ru' ? 'Кто хочет стать мусульманином?' : lang === 'az' ? 'Kim Müsəlman Olmaq İstəyir?' : 'Who Wants to Become a Muslim?'}
             </h1>
           </div>
           
@@ -350,7 +377,7 @@ export default function IslamQuiz() {
                 </motion.button>
               ) : (
                 <div className="text-sm text-slate-500">
-                  {lang === 'ru' ? 'Выберите ответ' : 'Select an answer'}
+                  {lang === 'ru' ? 'Выберите ответ' : lang === 'az' ? 'Cavab seçin' : 'Select an answer'}
                 </div>
               )}
             </div>
@@ -365,7 +392,7 @@ export default function IslamQuiz() {
             className="rounded-2xl border border-amber-400/50 bg-amber-400/10 p-8 text-center mt-8"
           >
             <h2 className="text-3xl md:text-4xl font-black bg-gradient-to-r from-amber-200 to-orange-500 bg-clip-text text-transparent mb-4">
-              {lang === 'ru' ? 'Викторина завершена!' : 'Quiz Complete!'}
+              {lang === 'ru' ? 'Викторина завершена!' : lang === 'az' ? 'Viktorina başa çatdı!' : 'Quiz Complete!'}
             </h2>
             <div className="text-6xl font-black bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent mb-4">
               {quizState.score} / {questions.length}
@@ -373,12 +400,16 @@ export default function IslamQuiz() {
             <p className="text-slate-300 text-lg mb-6">
               {lang === 'ru' 
                 ? `Вы ответили правильно на ${quizState.score} из ${questions.length} вопросов.`
+                : lang === 'az'
+                ? `${questions.length} sualdan ${quizState.score} suala düzgün cavab verdiniz.`
                 : `You answered ${quizState.score} out of ${questions.length} questions correctly.`
               }
             </p>
             <p className="text-slate-400 text-sm mb-6">
               {lang === 'ru'
                 ? 'Источники: Сахих аль-Бухари, Сахих Муслим, Табари, Ибн Кудама, Сунан Абу Дауд, Тфсир Ибн Касир'
+                : lang === 'az'
+                ? 'Mənbələr: Səhih əl-Buxari, Səhih Müslim, Təbəri, İbn Qüdamə, Sünən Əbu Davud, Təfsir İbn Kəsir'
                 : 'Sources: Sahih al-Bukhari, Sahih Muslim, Tabari, Ibn Qudamah, Sunan Abu Dawud, Tafsir Ibn Kathir'
               }
             </p>

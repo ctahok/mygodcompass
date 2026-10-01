@@ -12,6 +12,7 @@
 // ============================================================
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useWizard } from "@/store/wizardStore";
 import { buildMermaidSource } from "@/lib/mermaidSource";
 
@@ -41,6 +42,7 @@ interface MermaidMapProps {
 }
 
 export default function MermaidMap({ height = 440 }: MermaidMapProps) {
+  const { t } = useTranslation();
   const path = useWizard((s) => s.path);
   const lang = useWizard((s) => s.lang);
   const [svgContent, setSvgContent] = useState<string | null>(null);
@@ -211,14 +213,18 @@ export default function MermaidMap({ height = 440 }: MermaidMapProps) {
       <div className="flex flex-wrap items-center justify-between gap-2 p-3 border-b border-slate-800 bg-slate-900/60 shrink-0">
         <div className="flex items-center gap-2">
           <span className="text-xs font-semibold text-slate-300">
-            {viewMode === "pruned" ? "Focus View (Path)" : "Full Diagram"}
+            {viewMode === "pruned"
+              ? (t("app.mapFocusView") || "Focus View (Path)")
+              : (t("app.mapFullDiagram") || "Full Diagram")}
           </span>
           <button
             type="button"
             onClick={() => setViewMode((v) => (v === "pruned" ? "full" : "pruned"))}
             className="rounded-lg px-2.5 py-1 text-xs font-medium bg-amber-400/20 text-amber-300 border border-amber-400/40 hover:bg-amber-400/30 transition-colors cursor-pointer"
           >
-            Switch to {viewMode === "pruned" ? "Full DAG" : "Focus"}
+            {viewMode === "pruned"
+              ? (t("app.mapSwitchToFull") || "Switch to Full DAG")
+              : (t("app.mapSwitchToFocus") || "Switch to Focus")}
           </button>
         </div>
 
@@ -249,7 +255,7 @@ export default function MermaidMap({ height = 440 }: MermaidMapProps) {
                 setPan({ x: 0, y: 0 });
               }}
               className="w-7 h-7 rounded-md text-[10px] font-semibold text-slate-400 hover:bg-slate-700 hover:text-amber-300 transition-colors cursor-pointer"
-              aria-label="Reset zoom"
+              aria-label={t("app.mapResetZoom") || "Reset zoom"}
             >
               1:1
             </button>
@@ -257,7 +263,7 @@ export default function MermaidMap({ height = 440 }: MermaidMapProps) {
               type="button"
               onClick={fitToScreen}
               className="w-7 h-7 rounded-md text-[10px] font-semibold text-slate-400 hover:bg-slate-700 hover:text-amber-300 transition-colors cursor-pointer"
-              aria-label="Fit to screen"
+              aria-label={t("app.mapFitToScreen") || "Fit to screen"}
             >
               ⛶
             </button>
@@ -277,7 +283,7 @@ export default function MermaidMap({ height = 440 }: MermaidMapProps) {
             onClick={handleDownload}
             className="rounded-lg px-2.5 py-1 text-xs font-medium bg-amber-400/20 text-amber-300 border border-amber-400/30 hover:bg-amber-400/30 transition-colors cursor-pointer"
           >
-            ⬇ JPG
+            {t("app.mapDownloadJpg") || "⬇ JPG"}
           </button>
         </div>
       </div>
@@ -293,7 +299,7 @@ export default function MermaidMap({ height = 440 }: MermaidMapProps) {
       >
         {errorMessage && (
           <div className="p-6 text-center max-w-md">
-            <p className="text-amber-300 font-semibold mb-2">Diagram rendering</p>
+            <p className="text-amber-300 font-semibold mb-2">{t("app.mapRendering") || "Diagram rendering"}</p>
             <p className="text-xs text-slate-400 mb-4">{errorMessage}</p>
             <button
               type="button"
@@ -301,9 +307,9 @@ export default function MermaidMap({ height = 440 }: MermaidMapProps) {
                 setErrorMessage(null);
                 setSvgKey((k) => k + 1);
               }}
-              className="px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 font-semibold text-xs"
+              className="px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 font-semibold text-xs cursor-pointer"
             >
-              Retry
+              {t("app.retry") || "Retry"}
             </button>
           </div>
         )}
@@ -323,7 +329,7 @@ export default function MermaidMap({ height = 440 }: MermaidMapProps) {
         {!errorMessage && !svgContent && (
           <div className="text-xs text-slate-500 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-            Loading decision map…
+            {t("app.mapLoading") || "Loading decision map…"}
           </div>
         )}
       </div>

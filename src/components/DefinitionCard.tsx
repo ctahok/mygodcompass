@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { currentTerminal, useWizard } from "@/store/wizardStore";
+import { LOCALIZED_DESCRIPTOR_MAP } from "@/data/localizedProfileTerms";
 
 export default function DefinitionCard() {
   const { t } = useTranslation();
@@ -57,7 +58,7 @@ export default function DefinitionCard() {
         <div className="flex flex-wrap gap-2 mb-6">
           {(profile?.orientation || []).slice(0, 3).map((k) => (
             <span key={k} className="rounded-full border border-slate-700 bg-slate-800/60 px-3 py-1 text-[11px] text-slate-300 capitalize">
-              {k}
+              {LOCALIZED_DESCRIPTOR_MAP[k]?.[lang] || k}
             </span>
           ))}
         </div>
